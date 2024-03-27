@@ -1,0 +1,40 @@
+name: Unit Tests with Jest
+
+on:
+  push:
+    branches-ignore: 
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+
+      - name: Run Unit Tests
+        run: pnpm run test:ci
+
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@main
+        if: (success() || failure()) && github.event_name == 'pull_request'
+        with:
+          coverage-summary-path: ./coverage/coverage-summary.json
+          summary-title: "Test Coverage"
+          badge-title: Coverage
+          create-new-comment: false
+          junitxml-title: Tests Results
+          junitxml-path: ./coverage/jest-junit.xml
+          coverage-title: Tests Details
+          coverage-path: ./coverage/coverage.txt
+          report-only-changed-files: true
