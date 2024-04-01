@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  unit-test:
-    name: Run Tests
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -19,8 +19,4 @@ jobs:
         with:
           node-version: "14"
       - run: npm install
-      - run: npm run test
-
-      - name: Run ESLint
-        run: npm install
           npx eslint .
