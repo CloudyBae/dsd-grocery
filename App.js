@@ -28,6 +28,9 @@ export default function App() {
           ➕
         </Button>
       </View>
+      <Button isLoading={true} onPress={() => console.log("click!")}>
+        Sign Up
+      </Button>
 
       <StatusBar style="auto" />
     </View>

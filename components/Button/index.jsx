@@ -5,7 +5,6 @@ import { ActivityIndicator } from "react-native";
 const Button = ({
   id,
   children,
-  icon,
   startEnhancer,
   endEnhancer,
   onPress,
