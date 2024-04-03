@@ -6,7 +6,7 @@ const Accordion = () => {
 
 const [accordion, setAccordion] = useState([
   {id: 1, title: 'Product Details', details: 'Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a heartful and varied diet.', showContent: false},
-  {id: 2, title: 'Nutrition', details: 'Calories: 94.6. Water: 156 grams. Protein: 0.43 grams. Carbs: 25.1 grams. Sugar: 18.9 grams. Fiber: 4.37 grams. Fat: 0.3 grams.', showContent: false},
+  {id: 2, title: 'Nutritions', details: 'Calories: 94.6. Water: 156 grams. Protein: 0.43 grams. Carbs: 25.1 grams. Sugar: 18.9 grams. Fiber: 4.37 grams. Fat: 0.3 grams.', showContent: false},
   {id: 3, title: 'Review', details: 'Truly, spectacularly delicious!', showContent: false}
 ])  
 const animationController = useRef(new Animated.Value(0)).current;
