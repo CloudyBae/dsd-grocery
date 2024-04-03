@@ -1,23 +1,47 @@
-import React from 'react';
-import {StyleSheet, Text, SearchBar} from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native'
+import {SearchBar} from 'react-native-elements';
 
-export default function SearchBarComp(props) {
-    const bar ={search, title} = props;
+const App = () => {
+    const [search, setSearch] = useState('');
+
+    const updateSearch = (search) => {
+        setSearch(search);
+    };
+
     return (
-        <SearchBar
-            search ={() => console.log("")}>
-
-            <Text style={styles.text}>{title}</Text>
-        </SearchBar>
+        <View style={{ marginTop: 50 }}>
+            <SearchBar
+                placeholder='Type Here To Search...'
+                placeholderTextColor={"rgba(255, 255, 255, 0.5"}
+                onChangeText={updateSearch}
+                value={search}
+                inputStyle={styles.text}
+                inputContainerStyle={styles.input}
+                containerStyle= {{ backgroundColor: 'transparent', borderBottomColor: 'transparent', borderTopColor: 'transparent' }}
+                searchIcon={{ color: 'rgba(255, 255, 255, 0.5' }}
+            />
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-	search: {
-		justifyContent: 'left',
-		alignItems: 'left',
-		width: 420,
-		height: 75,
-		borderRadius: 25,
-	},
+    text: {
+        fontSize: 18,
+        lineHeight: 21,
+        fontWeight: '400',
+        letterSpacing: 0.25,
+        color: 'rgb(255, 255, 255)',
+    },
+    input: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 364,
+        height: 67,
+        //borderRadius: 19,
+       // tintColor: '#52B175',
+        backgroundColor: 'rgb(82, 177, 117)',
+    },
 });
+
+export default App;
