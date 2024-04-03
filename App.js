@@ -17,26 +17,6 @@ export default function App() {
       >
         Add to the Basket
       </Button>
-      <Button onPress={() => console.log("click!")}>➕</Button>
-      <Button disabled={true}>Disable</Button>
-      <Button kind="ghost" onPress={() => console.log("click!")}>
-        Sign Up
-      </Button>
-      <View style={{ display: "flex", flexDirection:"row", alignItems:"center" }}>
-        <Button kind="outline" onPress={() => console.log("click!")}>
-          ➖
-        </Button>
-        <Text>    1    </Text>
-        <Button kind="outline" onPress={() => console.log("click!")}>
-          ➕
-        </Button>
-      </View>
-      <Button isLoading={true} onPress={() => console.log("click!")}>
-        Sign Up
-      </Button>
-
-
-
       <MainButton />
       <Macro macro={"Protein"} percentage={50} goal={100}/>
     </View>
@@ -49,5 +29,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    gap: 10,
   },
 });
