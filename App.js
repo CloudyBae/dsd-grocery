@@ -1,6 +1,9 @@
-import { StatusBar } from "expo-status-bar";
+
 import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/Button";
+import { StyleSheet, Text, View } from 'react-native';
+import MainButton from './components/MainButton';
+
 
 export default function App() {
   return (
@@ -32,7 +35,9 @@ export default function App() {
         Sign Up
       </Button>
 
-      <StatusBar style="auto" />
+
+
+      <MainButton />
     </View>
   );
 }
