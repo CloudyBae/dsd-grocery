@@ -7,7 +7,8 @@ import Accordion from './components/Accordion';
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <MainButton />
+      <Macro macro={"Protein"} percentage={50} goal={100}/>
       <Accordion/>
     </View>
   );
