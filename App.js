@@ -1,14 +1,15 @@
-
 import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/Button";
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
+import Hero from "./components/Hero";
+import HeroBanner from './assets/hero.png'; 
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Hero image = {HeroBanner}/>
       <Button
         id="add_to_basket_btn"
         isFullWidth={true}
