@@ -1,16 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, Text, View } from "react-native";
+import Button from "./components/Button";
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import Accordion from './components/Accordion';
-import Button from "./components/Button";
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <MainButton />
-      <Macro macro={"Protein"} percentage={50} goal={100}/>
-      <Accordion/>
       <Text>Open up App.js to start working on your app!</Text>
       <Button
         id="add_to_basket_btn"
@@ -21,6 +19,7 @@ export default function App() {
         Add to the Basket
       </Button>
       <MainButton />
+      <Accordion/>
       <Macro macro={"Protein"} percentage={50} goal={100}/>
     </View>
   );
