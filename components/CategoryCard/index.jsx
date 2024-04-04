@@ -3,12 +3,12 @@ import { Image } from "react-native";
 import styled, { css } from "styled-components/native";
 
 const colorMappings = {
-    "#FFF6ED": "#D9C1B6",
-    "#FEF9E4": "#E0D9B1",
-    "#FDE9E4": "#D3A29D",
-    "#ECF6FD": "#A1C8F5",
-    "#F4EBF7": "#C7AAD1"
-  };
+  "#FFF6ED": "#D9C1B6",
+  "#FEF9E4": "#E0D9B1",
+  "#FDE9E4": "#D3A29D",
+  "#ECF6FD": "#A1C8F5",
+  "#F4EBF7": "#C7AAD1",
+};
 
 const alternatingColors = css`
   background-color: ${(props) => props.backgroundColor};
@@ -34,22 +34,24 @@ const Title = styled.Text`
   text-align: center;
 `;
 
-
-
 const getRandomColorPair = () => {
-    const keys = Object.keys(colorMappings);
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    return { 
-      backgroundColor: randomKey, 
-      borderColor: colorMappings[randomKey] 
-    };
+  const keys = Object.keys(colorMappings);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return {
+    backgroundColor: randomKey,
+    borderColor: colorMappings[randomKey],
   };
+};
 
-const CategoryCard = ({ image, title }) => {
-    const { backgroundColor, borderColor } = getRandomColorPair();
-  
+const CategoryCard = ({ id, image, title }) => {
+  const { backgroundColor, borderColor } = getRandomColorPair();
+
   return (
-    <CardContainer backgroundColor={backgroundColor} borderColor={borderColor}>
+    <CardContainer
+      testID={id}
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
+    >
       <Image
         style={{
           width: 100,
