@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/Button";
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
+import CategoryButton from "./components/CategoryButton";
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       </Button>
       <MainButton />
       <Macro macro={"Protein"} percentage={50} goal={100}/>
+      <CategoryButton title={"Plan Meal"} onPress={() => console.log('Plan meal')}/>
     </View>
   );
 }
