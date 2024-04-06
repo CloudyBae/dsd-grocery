@@ -1,8 +1,8 @@
-
 import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/Button";
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
+import Nav from'./components/Nav';
 
 
 export default function App() {
@@ -19,6 +19,7 @@ export default function App() {
       </Button>
       <MainButton />
       <Macro macro={"Protein"} percentage={50} goal={100}/>
+      <Nav/>
     </View>
   );
 }
