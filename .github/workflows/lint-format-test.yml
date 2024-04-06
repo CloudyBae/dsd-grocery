@@ -1,0 +1,34 @@
+name: Lint, Format, & Test
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  lint-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run ESLint
+        run: npm install
+          npx eslint .
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Prettier Check
+        run: npx prettier --check .
