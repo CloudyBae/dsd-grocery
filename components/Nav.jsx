@@ -1,16 +1,25 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { FaHome, FaAppleAlt, FaSearch, FaShoppingBag } from "react-icons/fa";
-import { MdAccountCircle } from "react-icons/md";
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-const Nav = () => {
+export const Nav = () => {
   return (
     <View style={styles.nav}>
-        <FaHome style={styles.icon} />
-        <FaAppleAlt style={styles.icon} />
-        <FaShoppingBag style={styles.icon} />
-        <MdAccountCircle style={styles.icon} />
-        <FaSearch style={styles.icon} />
+        <TouchableOpacity onPress={() => console.log('Home button pressed')}>
+            <FontAwesome5 name="home" style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log('Ingredient button pressed')}>
+            <FontAwesome5 name="apple-alt" style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log('Shopping bag button pressed')}>
+            <FontAwesome5 name="shopping-bag" style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log('Account button pressed')}>
+            <FontAwesome5 name="user-circle" style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => console.log('Search button pressed')}>
+            <FontAwesome5 name="search" style={styles.icon} />
+        </TouchableOpacity>
     </View>
   )
 }
@@ -20,13 +29,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#333',
+    backgroundColor: 'white',
     height: 60,
-    paddingTop: 10,
   },
   icon: {
-    color: 'white',
+    color: 'black',
     fontSize: 24,
+    padding: 10,
   },
 });
 
