@@ -33,3 +33,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# vscode
+.vscode/
+
+# virtual environment
+.venv/
