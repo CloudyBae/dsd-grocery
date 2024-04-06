@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native'
-import {SearchBar} from 'react-native-elements';
+import {SearchBar} from '@rneui/base';
 
 const App = () => {
     const [search, setSearch] = useState('');
