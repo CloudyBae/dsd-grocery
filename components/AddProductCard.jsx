@@ -1,11 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
 
-
-
-
-
-
 export default AddProductCard = (props) => {
   
 const {onPress, title = '+' } = props;
