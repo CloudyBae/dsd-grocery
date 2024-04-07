@@ -4,16 +4,11 @@ import Button from "./components/Button";
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import RecipeCard from "./components/RecipeCard";
-
-
 import AddProductCard from './components/AddProductCard';
+
 export default function App() {
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
-      <AddProductCard />
-      <StatusBar style="auto" />
-=======
       <Text>Open up App.js to start working on your app!</Text>
       <Button
         id="add_to_basket_btn"
@@ -30,7 +25,7 @@ export default function App() {
         minutes={30} 
         rating={4.7}
       />
->>>>>>> 06c2d6d4564d3aab1a4b2a91dac2823bd4ad4675
+      <AddProductCard />
     </View>
   );
 }
