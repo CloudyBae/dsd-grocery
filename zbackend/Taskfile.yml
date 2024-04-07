@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  test:
+    desc: Run testing for django backend unit tests
+    cmds:
+      - pytest
+
+  lint:
+    desc: Run linting checks
+    cmds:
+      - flake8 --max-line-length=90 .
+
+  format:
+    desc: Run code formatting
+    cmds:
+      - black .
