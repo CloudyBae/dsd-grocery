@@ -5,9 +5,6 @@ from django.db import models
 """
 from django.db import models
 
-import uuid
-
-class User(models.Model):
-    userId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    email = models.EmailField(max_length=100, unique=True)
+class Ingredient(models.Model):
+    ingredientId =  models.CharField(max_length=100, primary_key=True)
 """
