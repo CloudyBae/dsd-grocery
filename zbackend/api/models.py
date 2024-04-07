@@ -1,5 +1,3 @@
-from django.db import models
-
 # Example code of api/models.py
 # Remove this example and write your own code
 """

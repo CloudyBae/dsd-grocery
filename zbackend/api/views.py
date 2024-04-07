@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Example code of api/views.py
 # Remove this example and write your own code
 """
