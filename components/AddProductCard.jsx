@@ -2,22 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
 export default AddProductCard = (props) => {
-  const { onPress, title = '+' } = props;
+  const { onPress, title = '+', image = 'https://m.media-amazon.com/images/I/61fZ+YAYGaL._SL1500_.jpg', name = 'Organic Bananas', qty = '5', unit = 'pcs', price = '4.99'} = props;
 
   return (
     <View style={styles.container}>
       <View>
         <Image
-          source={{
-            uri: 'https://m.media-amazon.com/images/I/61fZ+YAYGaL._SL1500_.jpg',
-          }}
+          source={{ uri: image || '' }}
           style={styles.productImg}
         />
 
-        <Text style={styles.headingText}>Organic Bananas</Text>
-        <Text style={styles.amountText}>5pcs</Text>
+        <Text style={styles.headingText}>{name}</Text>
+        <Text style={styles.amountText}>{qty}{unit}</Text>
 
         <View style={styles.bottomCard}>
+        <Text style={styles.priceText}>${price}</Text>
           <Pressable style={styles.addButton} onPress={props.onPress}>
             <Text style={styles.buttonText}>{title}</Text>
           </Pressable>
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
     left: 0,
   },
   productImg: {
-    //    flex: 1,
     paddingHorizontal: 60,
     height: 110,
     width: 80,
@@ -53,6 +51,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     paddingTop: 4,
   },
+  priceText: {
+    fontSize: 12,
+    paddingTop: 4,
+    fontWeight: 'bold'
+  },
   addButton: {
     flex: 0,
     flexDirection: 'row',
@@ -64,15 +67,15 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
   },
-
   buttonText: {
     fontSize: 24,
     color: '#ffffff',
   },
   bottomCard: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: 12,
   },
 });
