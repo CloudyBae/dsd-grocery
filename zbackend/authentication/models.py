@@ -1,7 +1,7 @@
 from django.db import models
 
-# Example code of api/models.py
-# Remove this code and write your own models
+# Example code of authentication/models.py
+# Remove this example and write your own code
 """
 from django.db import models
 
