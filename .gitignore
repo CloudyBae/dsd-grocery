@@ -39,3 +39,7 @@ yarn-error.*
 
 # virtual environment
 .venv/
+
+# backend
+zbackend/.pytest_cache/
+__pycache__
