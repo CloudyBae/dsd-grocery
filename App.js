@@ -1,12 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, Text, View } from "react-native";
+import Button from "./components/Button";
+import MainButton from './components/MainButton';
+import Macro from './components/Macro';
+import RecipeCard from "./components/RecipeCard";
+
 
 import AddProductCard from './components/AddProductCard';
 export default function App() {
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <AddProductCard />
       <StatusBar style="auto" />
+=======
+      <Text>Open up App.js to start working on your app!</Text>
+      <Button
+        id="add_to_basket_btn"
+        isFullWidth={true}
+        startEnhancer={<Text>✔️</Text>}
+        endEnhancer={<Text>$12.96</Text>}
+      >
+        Add to the Basket
+      </Button>
+      <MainButton />
+      <Macro macro={"Protein"} percentage={50} goal={100}/>
+      <RecipeCard title="Banana Pie" 
+        image={'https://assets.epicurious.com/photos/64dce3fb0581466b0dc4c9ea/1:1/w_2560%2Cc_limit/Banana-Cream-Pie_Recipe_2023-08-10_1221.jpg'} 
+        minutes={30} 
+        rating={4.7}
+      />
+>>>>>>> 06c2d6d4564d3aab1a4b2a91dac2823bd4ad4675
     </View>
   );
 }
@@ -14,8 +38,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
   },
 });
