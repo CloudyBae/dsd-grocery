@@ -11,18 +11,17 @@ const Macro = ({ macro, percentage, goal }) => {
         size={120}
         width={15}
         fill={percentage}
-        tintColor="#52B175"
-        backgroundColor="#e0e0df">
-        {
-          (fill) => (
-            <Text>
-              {completed ? completed : 0}/{goal ? goal : 0}g
-            </Text>
-          )
-        }
+        tintColor='#52B175'
+        backgroundColor='#e0e0df'
+      >
+        {(fill) => (
+          <Text>
+            {completed ? completed : 0}/{goal ? goal : 0}g
+          </Text>
+        )}
       </AnimatedCircularProgress>
       <Text>{macro}</Text>
-      <Text>{goal ? (goal - completed) : 0}g left</Text>
+      <Text>{goal ? goal - completed : 0}g left</Text>
     </View>
   );
 };
