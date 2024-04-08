@@ -1,6 +1,6 @@
-import React from "react";
-import { ButtonContainer, ButtonText, Enhancer } from "./styles";
-import { ActivityIndicator } from "react-native";
+import React from 'react';
+import { ButtonContainer, ButtonText, Enhancer } from './styles';
+import { ActivityIndicator } from 'react-native';
 
 const Button = ({
   id,
@@ -9,11 +9,11 @@ const Button = ({
   endEnhancer,
   onPress,
   isFullWidth,
-  disabled=false,
+  disabled = false,
   isLoading = false,
-  kind = "primary",
-  size = "default",
-  shape = "rounded",
+  kind = 'primary',
+  size = 'default',
+  shape = 'rounded',
   accessibilityLabel,
 }) => {
   return (
@@ -28,11 +28,11 @@ const Button = ({
       disabled={disabled}
     >
       {isLoading ? (
-        <ActivityIndicator color="#ffffff" />
+        <ActivityIndicator color='#ffffff' />
       ) : (
         <>
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
-          {children && <ButtonText kind={kind} >{children}</ButtonText>}
+          {children && <ButtonText kind={kind}>{children}</ButtonText>}
           {endEnhancer && <Enhancer>{endEnhancer}</Enhancer>}
         </>
       )}

@@ -33,3 +33,13 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# vscode
+.vscode/
+
+# virtual environment
+.venv/
+
+# backend
+zbackend/.pytest_cache/
+__pycache__
