@@ -4,6 +4,7 @@ import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import ThirdPartySignIn from './components/ThirdPartySignIn';
 
 export default function App() {
   return (
@@ -29,6 +30,30 @@ export default function App() {
         }
         minutes={30}
         rating={4.7}
+      />
+      <ThirdPartySignIn
+        title='Facebook'
+        icon='facebook'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='blue'
+        onPress={() => console.log('Facebook')}
+      />
+      <ThirdPartySignIn
+        title='Google'
+        textColor='gray'
+        icon='google'
+        iconColor='black'
+        backgroundColor='white'
+        onPress={() => console.log('Google')}
+      />
+      <ThirdPartySignIn
+        title='Apple'
+        icon='apple'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='black'
+        onPress={() => console.log('Apple')}
       />
     </View>
   );
