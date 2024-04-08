@@ -12,6 +12,7 @@ import {
   Title,
 } from './components/Typography';
 import ThirdPartySignIn from './components/ThirdPartySignIn';
+import AddProductCard from './components/AddProductCard';
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
         minutes={30}
         rating={4.7}
       />
+      <AddProductCard />
       <Title>Enter your 4-digit code</Title>
       <Body>
         Swithch on your location to stay in tune with what’s happening in your
