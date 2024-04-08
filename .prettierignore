@@ -4,6 +4,5 @@ Pipfile.lock
 *.config.js
 .prettierrc.js
 Taskfile.yml
-App.js
 *.json
 *.md
