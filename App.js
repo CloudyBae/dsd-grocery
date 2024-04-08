@@ -4,6 +4,15 @@ import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
+import {
+  Body,
+  BodySmall,
+  ButtonLarge,
+  Caption,
+  Title,
+} from './components/Typography';
 
 export default function App() {
   return (
@@ -30,6 +39,24 @@ export default function App() {
         minutes={30}
         rating={4.7}
       />
+      <Text style={styles.instructions}>Title</Text>
+      <Title>Enter your 4-digit code</Title>
+      <Body>
+        Swithch on your location to stay in tune with what’s happening in your
+        area
+      </Body>
+      <Caption>
+        By continuing you agree to our Terms of Service and Privacy Policy.
+      </Caption>
+      <ButtonLarge>Organic Bananas</ButtonLarge>
+      <BodySmall
+        style={{
+          color: '#52B175',
+        }}
+      >
+        Apples are nutritious. Apples may be good for weight loss. apples may be
+        good for your heart. As part of a healtful and varied diet.
+      </BodySmall>
     </View>
   );
 }

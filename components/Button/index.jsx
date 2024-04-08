@@ -1,6 +1,7 @@
 import React from 'react';
-import { ButtonContainer, ButtonText, Enhancer } from './styles';
+import { ButtonContainer, Enhancer } from './styles';
 import { ActivityIndicator } from 'react-native';
+import { ButtonText } from '../Typography';
 
 const Button = ({
   id,
@@ -32,7 +33,9 @@ const Button = ({
       ) : (
         <>
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
-          {children && <ButtonText kind={kind}>{children}</ButtonText>}
+          {children && <ButtonText style={{
+            color: kind === 'primary' ? '#ffffff' : '#000000',
+          }} kind={kind}>{children}</ButtonText>}
           {endEnhancer && <Enhancer>{endEnhancer}</Enhancer>}
         </>
       )}
