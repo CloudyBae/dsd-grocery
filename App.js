@@ -103,8 +103,4 @@ const styles = StyleSheet.create({
     gap: 10,
     padding: 10,
   },
-  customContainer: {
-    backgroundColor: 'lightblue',
-    padding: 10,
-  },
 });
