@@ -8,7 +8,6 @@ import RecipeCard from './components/RecipeCard';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <Button
         id='add_to_basket_btn'
         isFullWidth={true}
