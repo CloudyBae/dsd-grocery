@@ -4,8 +4,6 @@ import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
-import { useFonts } from 'expo-font';
-import * as Font from 'expo-font';
 import {
   Body,
   BodySmall,
