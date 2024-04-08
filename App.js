@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Button from './components/Button';
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
+import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
 
 export default function App() {
@@ -17,6 +18,11 @@ export default function App() {
         Add to the Basket
       </Button>
       <MainButton />
+      <Macro macro={'Protein'} percentage={50} goal={100} />
+      <CategoryButton
+        title={'Plan Meal'}
+        onPress={() => console.log('Plan meal')}
+      />
       <Macro macro={'Protein'} percentage={50} goal={100} />
       <RecipeCard
         title='Banana Pie'
