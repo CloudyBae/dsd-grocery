@@ -39,7 +39,6 @@ export default function App() {
         minutes={30}
         rating={4.7}
       />
-      <Text style={styles.instructions}>Title</Text>
       <Title>Enter your 4-digit code</Title>
       <Body>
         Swithch on your location to stay in tune with what’s happening in your
