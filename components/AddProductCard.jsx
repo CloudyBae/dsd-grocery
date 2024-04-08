@@ -2,30 +2,38 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
 export default AddProductCard = (props) => {
-  const { onPress, title = '+', image = 'https://m.media-amazon.com/images/I/61fZ+YAYGaL._SL1500_.jpg', name = 'Organic Bananas', qty = '5', unit = 'pcs', price = '4.99'} = props;
+  const {
+    onPress,
+    title = '+',
+    image = 'https://m.media-amazon.com/images/I/61fZ+YAYGaL._SL1500_.jpg',
+    name = 'Organic Bananas',
+    qty = '5',
+    unit = 'pcs',
+    price = '4.99',
+  } = props;
 
   return (
     <View style={styles.container}>
       <View>
-        <Image
-          source={{ uri: image || '' }}
-          style={styles.productImg}
-        />
+        <Image source={{ uri: image || '' }} style={styles.productImg} />
 
         <Text style={styles.headingText}>{name}</Text>
-        <Text style={styles.amountText}>{qty}{unit}</Text>
+        <Text style={styles.amountText}>
+          {qty}
+          {unit}
+        </Text>
 
         <View style={styles.bottomCard}>
-        <Text style={styles.priceText}>${price}</Text>
-          <Pressable onPress={() => console.log('Button Pressed')}
-        style={({pressed}) => [
-          {
-            opacity: pressed 
-            ? '0.5' 
-            : '1'
-          },
-          styles.addButton,
-        ]}>
+          <Text style={styles.priceText}>${price}</Text>
+          <Pressable
+            onPress={() => console.log('Button Pressed')}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? '0.5' : '1',
+              },
+              styles.addButton,
+            ]}
+          >
             <Text style={styles.buttonText}>{title}</Text>
           </Pressable>
         </View>
@@ -63,10 +71,9 @@ const styles = StyleSheet.create({
   priceText: {
     fontSize: 12,
     paddingTop: 4,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   addButton: {
-    
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
