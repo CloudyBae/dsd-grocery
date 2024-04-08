@@ -4,6 +4,14 @@ import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import {
+  Body,
+  BodySmall,
+  ButtonLarge,
+  Caption,
+  Title,
+} from './components/Typography';
+import ThirdPartySignIn from './components/ThirdPartySignIn';
 
 export default function App() {
   return (
@@ -29,6 +37,47 @@ export default function App() {
         }
         minutes={30}
         rating={4.7}
+      />
+      <Title>Enter your 4-digit code</Title>
+      <Body>
+        Swithch on your location to stay in tune with what’s happening in your
+        area
+      </Body>
+      <Caption>
+        By continuing you agree to our Terms of Service and Privacy Policy.
+      </Caption>
+      <ButtonLarge>Organic Bananas</ButtonLarge>
+      <BodySmall
+        style={{
+          color: '#52B175',
+        }}
+      >
+        Apples are nutritious. Apples may be good for weight loss. apples may be
+        good for your heart. As part of a healtful and varied diet.
+      </BodySmall>
+      <ThirdPartySignIn
+        title='Facebook'
+        icon='facebook'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='blue'
+        onPress={() => console.log('Facebook')}
+      />
+      <ThirdPartySignIn
+        title='Google'
+        textColor='gray'
+        icon='google'
+        iconColor='black'
+        backgroundColor='white'
+        onPress={() => console.log('Google')}
+      />
+      <ThirdPartySignIn
+        title='Apple'
+        icon='apple'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='black'
+        onPress={() => console.log('Apple')}
       />
     </View>
   );
