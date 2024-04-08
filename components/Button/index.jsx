@@ -33,9 +33,16 @@ const Button = ({
       ) : (
         <>
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
-          {children && <ButtonText style={{
-            color: kind === 'primary' ? '#ffffff' : '#000000',
-          }} kind={kind}>{children}</ButtonText>}
+          {children && (
+            <ButtonText
+              style={{
+                color: kind === 'primary' ? '#ffffff' : '#000000',
+              }}
+              kind={kind}
+            >
+              {children}
+            </ButtonText>
+          )}
           {endEnhancer && <Enhancer>{endEnhancer}</Enhancer>}
         </>
       )}
