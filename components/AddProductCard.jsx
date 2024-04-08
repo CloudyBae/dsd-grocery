@@ -17,7 +17,15 @@ export default AddProductCard = (props) => {
 
         <View style={styles.bottomCard}>
         <Text style={styles.priceText}>${price}</Text>
-          <Pressable style={styles.addButton} onPress={props.onPress}>
+          <Pressable onPress={() => console.log('Button Pressed')}
+        style={({pressed}) => [
+          {
+            opacity: pressed 
+            ? '0.5' 
+            : '1'
+          },
+          styles.addButton,
+        ]}>
             <Text style={styles.buttonText}>{title}</Text>
           </Pressable>
         </View>
@@ -50,6 +58,7 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 10,
     paddingTop: 4,
+    paddingBottom: 8,
   },
   priceText: {
     fontSize: 12,
@@ -57,7 +66,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   addButton: {
-    flex: 0,
+    
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
