@@ -4,6 +4,7 @@ import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import AddProductCard from './components/AddProductCard';
 
 export default function App() {
   return (
