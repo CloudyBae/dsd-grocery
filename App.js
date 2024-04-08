@@ -11,6 +11,7 @@ import {
   Caption,
   Title,
 } from './components/Typography';
+import ThirdPartySignIn from './components/ThirdPartySignIn';
 
 export default function App() {
   return (
@@ -54,6 +55,30 @@ export default function App() {
         Apples are nutritious. Apples may be good for weight loss. apples may be
         good for your heart. As part of a healtful and varied diet.
       </BodySmall>
+      <ThirdPartySignIn
+        title='Facebook'
+        icon='facebook'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='blue'
+        onPress={() => console.log('Facebook')}
+      />
+      <ThirdPartySignIn
+        title='Google'
+        textColor='gray'
+        icon='google'
+        iconColor='black'
+        backgroundColor='white'
+        onPress={() => console.log('Google')}
+      />
+      <ThirdPartySignIn
+        title='Apple'
+        icon='apple'
+        textColor='white'
+        iconColor='white'
+        backgroundColor='black'
+        onPress={() => console.log('Apple')}
+      />
     </View>
   );
 }
