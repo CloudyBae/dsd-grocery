@@ -23,7 +23,6 @@ export default function App() {
         title={'Plan Meal'}
         onPress={() => console.log('Plan meal')}
       />
-      <Macro macro={'Protein'} percentage={50} goal={100} />
       <RecipeCard
         title='Banana Pie'
         image={
