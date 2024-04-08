@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 import {SearchBar} from '@rneui/base';
 
-const App = () => {
+const Search = () => {
     const [search, setSearch] = useState('');
 
     const updateSearch = (search) => {
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default App;
+export default Search;
