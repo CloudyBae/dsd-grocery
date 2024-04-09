@@ -5,6 +5,8 @@ import Macro from './components/Macro';
 import SearchBar from './components/SearchBar';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import Nav from './components/Nav';
+import Hero from './components/Hero';
 import {
   Body,
   BodySmall,
@@ -22,6 +24,7 @@ export default function App() {
   return (
     <ScrollView>
       <View style={[styles.container]}>
+        <Hero />
         <Button
           id='add_to_basket_btn'
           isFullWidth={true}
@@ -97,6 +100,7 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
+        <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
       </View>
     </ScrollView>
