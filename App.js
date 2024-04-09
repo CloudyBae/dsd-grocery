@@ -95,10 +95,7 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
-        <Checkbox
-          label='Vegetarian'
-          isChecked={false}
-        />
+        <Checkbox label='Vegetarian' isChecked={false} />
       </View>
     </ScrollView>
   );
