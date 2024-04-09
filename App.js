@@ -2,6 +2,8 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Button from './components/Button';
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
+import SearchBar from './components/SearchBar';
+
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
 import {
@@ -27,6 +29,8 @@ export default function App() {
           Add to the Basket
         </Button>
         <MainButton />
+        <Macro macro={'Protein'} percentage={50} goal={100} />
+        <SearchBar title={'Search Here'} />
         <Macro macro={'Protein'} percentage={50} goal={100} />
         <CategoryButton
           title={'Plan Meal'}
