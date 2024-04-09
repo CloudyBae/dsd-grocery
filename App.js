@@ -23,7 +23,7 @@ export default function App() {
   return (
     <ScrollView>
       <View style={[styles.container]}>
-        <Hero/>
+        <Hero />
         <Button
           id='add_to_basket_btn'
           isFullWidth={true}
