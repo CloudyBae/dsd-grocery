@@ -96,6 +96,9 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
+        <Nav />
+        <Checkbox label='Vegetarian' isChecked={false} />
+
       </View>
     </ScrollView>
   );
