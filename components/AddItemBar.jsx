@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 
+
 export default AddItemBar = (props) => {
     const {
         onPress,
@@ -10,18 +11,19 @@ export default AddItemBar = (props) => {
         qty = '5',
         unit = 'pcs',
         price = '4.99',
-        delete = 'X',
+        
       } = props;
 
   return (
     <View >
+      <Image source={require('../assets/ingredientTag.png')} style={styles.productImg} />
         <Image source={{ uri: image || '' }} style={styles.productImg} />
         <View>
             <Text style={styles.headingText}>{name}</Text>
             <Text style={styles.amountText}>{qty}{unit}</Text>
         </View>
         <View>
-        <Image source={{ uri: delete || '' }} style={styles.deleteBtn} />
+        <Image source={require('../assets/deleteX.png')} style={styles.deleteBtn} />
         <Text style={styles.priceText}>${price}</Text>
         </View>
       
