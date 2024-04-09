@@ -3,7 +3,6 @@ import Button from './components/Button';
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
 import SearchBar from './components/SearchBar';
-
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
 import {
@@ -15,6 +14,7 @@ import {
 } from './components/Typography';
 import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
+import AddProductCard from './components/AddProductCard';
 
 export default function App() {
   return (
@@ -44,6 +44,7 @@ export default function App() {
           minutes={30}
           rating={4.7}
         />
+        <AddProductCard />
         <Title>Enter your 4-digit code</Title>
         <Body>
           Swithch on your location to stay in tune with what’s happening in your
