@@ -5,6 +5,7 @@ import Macro from './components/Macro';
 import SearchBar from './components/SearchBar';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import Nav from './components/Nav';
 import {
   Body,
   BodySmall,
