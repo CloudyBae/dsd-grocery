@@ -14,8 +14,7 @@ import {
 } from './components/Typography';
 import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
-import AddProductCard from './components/AddProductCard';import Nav from'./components/Nav';
-
+import AddProductCard from './components/AddProductCard';
 
 export default function App() {
   return (
@@ -95,8 +94,8 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
-        <Nav/>
-    </View>
+        <Nav />
+      </View>
     </ScrollView>
   );
 }
