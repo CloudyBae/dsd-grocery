@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View, Dimensions } from 'react-native';
 import HeroBanner from '../assets/hero.png';
 
-const myHero = ({ image }) => {
+const Hero = ({ image }) => {
   const screenWidth = Dimensions.get('window').width;
   const aspectRatio = 4 / 3;
   const height = screenWidth / aspectRatio;
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default myHero;
+export default Hero;
