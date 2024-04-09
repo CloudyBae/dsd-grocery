@@ -47,7 +47,6 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: {width: 0, height: -2},
+    shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
