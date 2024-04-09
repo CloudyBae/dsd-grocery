@@ -97,8 +97,7 @@ export default function App() {
         </FlexContainer>
         <Checkbox
           label='Vegetarian'
-          isChecked={true}
-          checkedColor=''
+          isChecked={false}
         />
       </View>
     </ScrollView>
