@@ -98,7 +98,6 @@ export default function App() {
         </FlexContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
-
       </View>
     </ScrollView>
   );
