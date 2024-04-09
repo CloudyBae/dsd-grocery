@@ -18,6 +18,8 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
           source={{
             uri: image,
           }}
+          accessibilityRole="image"
+          accessibilityLabel={title}
         />
         <FlexColumn
           style={{
@@ -34,7 +36,7 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
           </FlexRow>
         </FlexColumn>
       </FlexRow>
-      <Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel="Close button" onClick={() => console.log('close')}>
         <EvilIcons name={'close'} size={24} color='#B3B3B3' />
       </Pressable>
     </Container>

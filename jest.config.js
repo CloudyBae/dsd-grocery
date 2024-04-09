@@ -4,5 +4,8 @@ module.exports = {
     transform: {
         '^.+\\.jsx?$': 'babel-jest',
       },
+      moduleNameMapper: {
+        '^expo-font$': './__mocks__/expo-font.js',
+      },
   };
   
