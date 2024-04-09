@@ -29,7 +29,7 @@ export default AddProductCard = (props) => {
             onPress={() => console.log('Button Pressed')}
             style={({ pressed }) => [
               {
-                opacity: pressed ? '0.5' : '1',
+                opacity: pressed ? 0.5 : 1,
               },
               styles.addButton,
             ]}
