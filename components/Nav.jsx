@@ -27,6 +27,7 @@ export const Nav = () => {
     </View>
   );
 };
+//Test
 
 const styles = StyleSheet.create({
   nav: {
