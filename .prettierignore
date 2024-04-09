@@ -1,0 +1,8 @@
+.github/
+__tests__/
+Pipfile.lock
+*.config.js
+.prettierrc.js
+Taskfile.yml
+*.json
+*.md
