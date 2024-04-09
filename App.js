@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Button from './components/Button';
 import MainButton from './components/MainButton';
 import Macro from './components/Macro';
-import Hero from "./components/Hero"; 
+import Hero from './components/Hero';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
 import {
@@ -18,7 +18,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
-      <Hero/>
+      <Hero />
       {/* <Button
         id='add_to_basket_btn'
         isFullWidth={true}

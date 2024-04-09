@@ -3,12 +3,16 @@ import HeroBanner from '../assets/hero.png';
 
 const myHero = ({ image }) => {
   const screenWidth = Dimensions.get('window').width;
-  const aspectRatio = 4/3;
-  const height = screenWidth/aspectRatio;
+  const aspectRatio = 4 / 3;
+  const height = screenWidth / aspectRatio;
 
   return (
     <View style={styles.container}>
-      <Image source={HeroBanner} style={{width: screenWidth, height}} resizeMode='contain'/>
+      <Image
+        source={HeroBanner}
+        style={{ width: screenWidth, height }}
+        resizeMode='contain'
+      />
     </View>
   );
 };
