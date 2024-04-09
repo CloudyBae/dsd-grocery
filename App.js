@@ -16,6 +16,7 @@ import {
 import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
+import Checkbox from './components/Checkbox';
 
 export default function App() {
   return (
@@ -95,7 +96,6 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
-        <Nav />
       </View>
     </ScrollView>
   );
