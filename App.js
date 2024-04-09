@@ -20,7 +20,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <Hero image = {HeroBanner}/>
-      <Button
+      {/* <Button
         id='add_to_basket_btn'
         isFullWidth={true}
         startEnhancer={<Text>✔️</Text>}
@@ -82,7 +82,7 @@ export default function App() {
         iconColor='white'
         backgroundColor='black'
         onPress={() => console.log('Apple')}
-      />
+      /> */}
     </View>
   );
 }
