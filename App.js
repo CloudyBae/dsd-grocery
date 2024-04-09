@@ -15,8 +15,8 @@ import {
 import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
-import Checkbox from './components/Checkbox';import Accordion from './components/Accordion';
-
+import Checkbox from './components/Checkbox';
+import Accordion from './components/Accordion';
 
 export default function App() {
   return (
@@ -31,8 +31,8 @@ export default function App() {
           Add to the Basket
         </Button>
         <MainButton />
-        <Accordion/>
-      <Macro macro={'Protein'} percentage={50} goal={100} />
+        <Accordion />
+        <Macro macro={'Protein'} percentage={50} goal={100} />
         <SearchBar title={'Search Here'} />
         <Macro macro={'Protein'} percentage={50} goal={100} />
         <CategoryButton
