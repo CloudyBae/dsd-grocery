@@ -7,11 +7,12 @@ const FlexColContainer = ({ children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'col',
+    flex: 2, 
+    display: 'flex',
+    flexDirection: 'column',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 10,
   },
 });
