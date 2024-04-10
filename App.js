@@ -5,6 +5,8 @@ import Macro from './components/Macro';
 import SearchBar from './components/SearchBar';
 import CategoryButton from './components/CategoryButton';
 import RecipeCard from './components/RecipeCard';
+import Nav from './components/Nav';
+import Hero from './components/Hero';
 import {
   Body,
   BodySmall,
@@ -16,11 +18,13 @@ import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
 import SearchItem from './components/SearchItem';
+import Checkbox from './components/Checkbox';
 
 export default function App() {
   return (
     <ScrollView>
       <View style={[styles.container]}>
+        <Hero />
         <Button
           id='add_to_basket_btn'
           isFullWidth={true}
@@ -105,6 +109,8 @@ export default function App() {
             price={'$1.50'}
           />
         </View>
+        <Nav />
+        <Checkbox label='Vegetarian' isChecked={false} />
       </View>
     </ScrollView>
   );
