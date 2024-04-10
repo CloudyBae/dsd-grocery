@@ -101,7 +101,7 @@ export default function App() {
         </FlexContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
-        <RecipeList title='Favorite Recipes' />
+        <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
       </View>
     </ScrollView>
   );

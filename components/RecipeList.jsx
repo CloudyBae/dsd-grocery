@@ -3,14 +3,14 @@ import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 
-const RecipeList = ({ title, scrollEnabled }) => {
+const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const apiKey = '90ce20e792384e9a99fa0bd3d950c094';
 
   const fetchRecipes = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`
+        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=${numberOfRecipes}`
       );
       const data = await response.json();
       setRecipes(data.recipes);
