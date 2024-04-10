@@ -19,11 +19,13 @@ import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
 import Checkbox from './components/Checkbox';
 import RecipeList from './components/RecipeList';
+import Header from './components/Header';
 
 export default function App() {
   return (
     <ScrollView>
       <View style={[styles.container]}>
+        <Header pageTitle={`Ryan's Header`} />
         <Hero />
         <Button
           id='add_to_basket_btn'
