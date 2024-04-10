@@ -18,6 +18,7 @@ import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
 import Checkbox from './components/Checkbox';
+import RecipeList from './components/RecipeList';
 
 export default function App() {
   return (
@@ -100,6 +101,7 @@ export default function App() {
         </FlexContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
+        <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
       </View>
     </ScrollView>
   );
