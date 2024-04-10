@@ -115,8 +115,6 @@ export default function App() {
           <Text>Component 5</Text>
           <Text>Component 5</Text>
           <Text>Component 5</Text>
-          
-
         </FlexColContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
