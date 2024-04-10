@@ -8,11 +8,10 @@ const FlexColContainer = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'col',
-    alignItems: 'center',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    flexWrap: 'wrap',
     gap: 10,
   },
 });
