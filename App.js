@@ -16,6 +16,7 @@ import {
 } from './components/Typography';
 import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
+import FlexColContainer from './components/FlexColContainer';
 import AddProductCard from './components/AddProductCard';
 import Checkbox from './components/Checkbox';
 import Accordion from './components/Accordion';
@@ -100,6 +101,13 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
+        <FlexColContainer>
+          <Text>Component 1</Text>
+          <Text>Component 2</Text>
+          <Text>Component 3</Text>
+          <Text>Component 4</Text>
+          <Text>Component 5</Text>
+        </FlexColContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
       </View>
