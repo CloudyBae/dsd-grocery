@@ -18,6 +18,7 @@ import ThirdPartySignIn from './components/ThirdPartySignIn';
 import FlexContainer from './components/FlexContainer';
 import AddProductCard from './components/AddProductCard';
 import Checkbox from './components/Checkbox';
+import AddItemBar from './components/AddItemBar';
 
 export default function App() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
           rating={4.7}
         />
         <AddProductCard />
+        <AddItemBar />
         <Title>Enter your 4-digit code</Title>
         <Body>
           Swithch on your location to stay in tune with what’s happening in your
