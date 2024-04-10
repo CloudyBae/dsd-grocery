@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
-import { ListItem } from '@rneui/themed';
-import { StyleSheet } from 'react-native-web';
+import { useState } from 'react';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+
 
 const Accordion = () => {
-  const [expanded, setExpanded] = useState([]);
+  const [isProductDetails, setIsProductDetails] = React.useState(false)
+  const [isNutritions, setIsNutritions] = React.useState(false)
+  const [isReview, setIsReview] = React.useState(false)
 
   const list = [
     {
@@ -23,42 +26,77 @@ const Accordion = () => {
     },
   ];
 
-  const toggleAccordion = (index) => {
-    const newExpanded = [...expanded];
-    newExpanded[index] = !newExpanded[index];
-    setExpanded(newExpanded);
+  const toggleProductDetails = () =>{
+    setIsProductDetails(!isProductDetails);
   };
 
+  const toggleNutritions = ()=>{
+    setIsNutritions(!isNutritions);
+  };
+
+  const toggleReview = ()=>{
+    setIsReview(!isReview)
+  }
+
+
   return (
-    <ScrollView>
+<View style={styles.container}>
+      <StatusBar />
       {list.map((item, index) => (
-        <ListItem.Accordion
+        <TouchableOpacity
           key={index}
-          content={
-            <ListItem.Content>
-              <ListItem.Title>{item.title}</ListItem.Title>
-            </ListItem.Content>
-          }
-          isExpanded={expanded[index]}
-          onPress={() => toggleAccordion(index)}
+          style={styles.card}
+          onPress={toggleProductDetails}
         >
-          <ListItem bottomDivider>
-            <ListItem.Content>
-              <ListItem.Subtitle style={styles.subtitle}>
-                {item.details}
-              </ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
-        </ListItem.Accordion>
+          <Text style={styles.cardHeader}>{item.title}</Text>
+          <View style={styles.arrowContent}>
+            <AntDesign
+              name={isProductDetails ? 'up' : 'down'}
+              size={20}
+              color='black'
+            />
+          </View>
+          {isProductDetails && (
+            <View style={styles.cardContent}>
+              <Text style={styles.text}>{item.details}</Text>
+            </View>
+          )}
+        </TouchableOpacity>
+
+        
       ))}
-    </ScrollView>
+    </View>
   );
 };
+  
+
 
 const styles = StyleSheet.create({
-  subtitle: {
-    display: 'flex',
-    justifyContent: 'center',
+  container: {
+    margin: 16,
+    width: 364,
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 13,
+    marginBottom: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 16,
+    fontSize: 18,
+  },
+  cardContent: {
+    padding: 5,
+  },
+  arrowContent: {
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
