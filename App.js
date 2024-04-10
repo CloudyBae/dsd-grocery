@@ -96,17 +96,16 @@ export default function App() {
           <Text>Component 5</Text>
         </FlexContainer>
         <View style={{ width: 500 }}>
-        <SearchItem
-          image={
-            'https://www.simplyrecipes.com/thmb/Lyb-N1grMqHp71kUuQAiCAbz4Sg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Vegan-Chicken-Nuggets-LEAD-02ecd10a65c14c388be1447685dde0e5.jpg'
-          }
-          title='Vegan Chicken Nuggets'
-          prepTime='150 min'
-          price={'$1.50'}
-        />
+          <SearchItem
+            image={
+              'https://www.simplyrecipes.com/thmb/Lyb-N1grMqHp71kUuQAiCAbz4Sg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Vegan-Chicken-Nuggets-LEAD-02ecd10a65c14c388be1447685dde0e5.jpg'
+            }
+            title='Vegan Chicken Nuggets'
+            prepTime='150 min'
+            price={'$1.50'}
+          />
+        </View>
       </View>
-      </View>
-      
     </ScrollView>
   );
 }
