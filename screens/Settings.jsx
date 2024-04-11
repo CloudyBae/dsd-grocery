@@ -1,5 +1,9 @@
-import { View } from 'react-native-web';
+import { Text } from 'react-native';
 
 export const SettingsScreen = () => {
-  return <>⚙️!!</>;
+  return (
+    <>
+      <Text>⚙️!!</Text>
+    </>
+  );
 };
