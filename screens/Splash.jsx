@@ -1,7 +1,5 @@
-import { View } from "react-native-web"
+import { View } from 'react-native-web';
 
 export const SplashScreen = () => {
-    return(
-        <>splash!!</>
-    )
-}
+  return <>splash!!</>;
+};

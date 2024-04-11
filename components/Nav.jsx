@@ -17,7 +17,7 @@ const Nav = () => {
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Ingredients button was pressed!'
-        onPress={() =>navigation.navigate('Ingredient')}
+        onPress={() => navigation.navigate('Ingredient')}
       >
         <FontAwesome5 name='apple-alt' style={styles.icon} />
       </TouchableOpacity>
@@ -48,9 +48,9 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-    position:'absolute',
-    width:'100%',
-    bottom:0,
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
