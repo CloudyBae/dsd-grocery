@@ -1,27 +1,21 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import Button from './components/Button';
-import MainButton from './components/MainButton';
-import Macro from './components/Macro';
-import SearchBar from './components/SearchBar';
-import CategoryButton from './components/CategoryButton';
-import RecipeCard from './components/RecipeCard';
-import Nav from './components/Nav';
-import Hero from './components/Hero';
-import {
-  Body,
-  BodySmall,
-  ButtonLarge,
-  Caption,
-  Title,
-} from './components/Typography';
-import ThirdPartySignIn from './components/ThirdPartySignIn';
-import FlexContainer from './components/FlexContainer';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './screens/Home';
+import { SplashScreen } from './screens/Splash';
+import { IngredientScreen } from './screens/Ingredient';
+import { RecipeScreen } from './screens/Recipe';
+import { FilterScreen } from './screens/Search';
+import { CartScreen } from './screens/Cart';
+import { SettingsScreen } from './screens/Settings';
+import { LoginScreen } from './screens/Login';
 import FlexColContainer from './components/FlexColContainer';
-import AddProductCard from './components/AddProductCard';
-import Checkbox from './components/Checkbox';
+import { SignUpScreen } from './screens/SignUp';
+
+const Stack = createNativeStackNavigator();
 import Accordion from './components/Accordion';
 
-export default function App() {
+function App() {
   return (
     <ScrollView>
       <View style={[styles.container]}>
@@ -35,7 +29,6 @@ export default function App() {
           Add to the Basket
         </Button>
         <MainButton />
-        <Accordion />
         <Macro macro={'Protein'} percentage={50} goal={100} />
         <SearchBar title={'Search Here'} />
         <Macro macro={'Protein'} percentage={50} goal={100} />
@@ -43,55 +36,36 @@ export default function App() {
           title={'Plan Meal'}
           onPress={() => console.log('Plan meal')}
         />
-        <RecipeCard
-          title='Banana Pie'
-          image={
-            'https://assets.epicurious.com/photos/64dce3fb0581466b0dc4c9ea/1:1/w_2560%2Cc_limit/Banana-Cream-Pie_Recipe_2023-08-10_1221.jpg'
-          }
-          minutes={30}
-          rating={4.7}
+
+        <Stack.Screen
+          name='Recipe'
+          component={RecipeScreen}
+          options={{ headerShown: false }}
         />
-        <AddProductCard />
-        <Title>Enter your 4-digit code</Title>
-        <Body>
-          Swithch on your location to stay in tune with what’s happening in your
-          area
-        </Body>
-        <Caption>
-          By continuing you agree to our Terms of Service and Privacy Policy.
-        </Caption>
-        <ButtonLarge>Organic Bananas</ButtonLarge>
-        <BodySmall
-          style={{
-            color: '#52B175',
-          }}
-        >
-          Apples are nutritious. Apples may be good for weight loss. apples may
-          be good for your heart. As part of a healtful and varied diet.
-        </BodySmall>
-        <ThirdPartySignIn
-          title='Facebook'
-          icon='facebook'
-          textColor='white'
-          iconColor='white'
-          backgroundColor='blue'
-          onPress={() => console.log('Facebook')}
+        <Stack.Screen
+          name='Ingredient'
+          component={IngredientScreen}
+          options={{ headerShown: false }}
         />
-        <ThirdPartySignIn
-          title='Google'
-          textColor='gray'
-          icon='google'
-          iconColor='black'
-          backgroundColor='white'
-          onPress={() => console.log('Google')}
+        <Stack.Screen
+          name='Search'
+          component={FilterScreen}
+          options={{ headerShown: false }}
         />
-        <ThirdPartySignIn
-          title='Apple'
-          icon='apple'
-          textColor='white'
-          iconColor='white'
-          backgroundColor='black'
-          onPress={() => console.log('Apple')}
+        <Stack.Screen
+          name='Cart'
+          component={CartScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Settings'
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Login'
+          component={LoginScreen}
+          options={{ headerShown: false }}
         />
 
         <FlexContainer>
@@ -101,13 +75,6 @@ export default function App() {
           <Text>Component 4</Text>
           <Text>Component 5</Text>
         </FlexContainer>
-        <FlexColContainer>
-          <Text>Component 1</Text>
-          <Text>Component 2</Text>
-          <Text>Component 3</Text>
-          <Text>Component 4</Text>
-          <Text>Component 5</Text>
-        </FlexColContainer>
         <Nav />
         <Checkbox label='Vegetarian' isChecked={false} />
       </View>
@@ -115,13 +82,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-    padding: 10,
-  },
-});
+export default App;
