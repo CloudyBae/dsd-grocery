@@ -20,6 +20,7 @@ import FlexContainer from '../components/FlexContainer';
 import Nav from '../components/Nav';
 import Checkbox from '../components/Checkbox';
 import RecipeList from '../components/RecipeList';
+import Accordion from '../components/Accordion';
 import { useNavigation } from '@react-navigation/native';
 
 export const HomeScreen = () => {
@@ -99,7 +100,6 @@ export const HomeScreen = () => {
             backgroundColor='black'
             onPress={() => console.log('Apple')}
           />
-
           <FlexContainer>
             <Text>Component 1</Text>
             <Text>Component 2</Text>
@@ -107,9 +107,9 @@ export const HomeScreen = () => {
             <Text>Component 4</Text>
             <Text>Component 5</Text>
           </FlexContainer>
-
           <Checkbox label='Vegetarian' isChecked={false} />
           <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
+          <Accordion />
         </View>
       </View>
       <Nav />
