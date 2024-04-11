@@ -16,7 +16,8 @@ import {
   Title,
 } from '../components/Typography';
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
-import FlexContainer from '../components/FlexContainer';
+import FlexContainer from '../containers/FlexContainer';
+import FlexColContainer from '../containers/FlexColContainer';
 import Nav from '../components/Nav';
 import Checkbox from '../components/Checkbox';
 import RecipeList from '../components/RecipeList';
@@ -107,6 +108,13 @@ export const HomeScreen = () => {
             <Text>Component 4</Text>
             <Text>Component 5</Text>
           </FlexContainer>
+          <FlexColContainer>
+            <Text>Component 1</Text>
+            <Text>Component 2</Text>
+            <Text>Component 3</Text>
+            <Text>Component 4</Text>
+            <Text>Component 5</Text>
+          </FlexColContainer>
           <Checkbox label='Vegetarian' isChecked={false} />
           <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
           <Accordion />
