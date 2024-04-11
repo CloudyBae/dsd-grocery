@@ -9,32 +9,23 @@ import { FilterScreen } from './screens/Search';
 import { CartScreen } from './screens/Cart';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
-import FlexColContainer from './components/FlexColContainer';
 import { SignUpScreen } from './screens/SignUp';
 
 const Stack = createNativeStackNavigator();
-import Accordion from './components/Accordion';
 
 function App() {
   return (
-    <ScrollView>
-      <View style={[styles.container]}>
-        <Hero />
-        <Button
-          id='add_to_basket_btn'
-          isFullWidth={true}
-          startEnhancer={<Text>✔️</Text>}
-          endEnhancer={<Text>$12.96</Text>}
-        >
-          Add to the Basket
-        </Button>
-        <MainButton />
-        <Macro macro={'Protein'} percentage={50} goal={100} />
-        <SearchBar title={'Search Here'} />
-        <Macro macro={'Protein'} percentage={50} goal={100} />
-        <CategoryButton
-          title={'Plan Meal'}
-          onPress={() => console.log('Plan meal')}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen
+          name='Splash'
+          component={SplashScreen}
+          options={{ headerTitle: 'Home' }}
+        />
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen
@@ -67,18 +58,13 @@ function App() {
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-
-        <FlexContainer>
-          <Text>Component 1</Text>
-          <Text>Component 2</Text>
-          <Text>Component 3</Text>
-          <Text>Component 4</Text>
-          <Text>Component 5</Text>
-        </FlexContainer>
-        <Nav />
-        <Checkbox label='Vegetarian' isChecked={false} />
-      </View>
-    </ScrollView>
+        <Stack.Screen
+          name='Signup'
+          component={SignUpScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
