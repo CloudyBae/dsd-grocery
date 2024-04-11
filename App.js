@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen } from './routes/Home';
-import { SplashScreen } from './routes/Splash';
-import { IngredientScreen } from './routes/Ingredient';
-import { RecipeScreen } from './routes/Recipe';
-import { FilterScreen } from './routes/Search';
-import { CartScreen } from './routes/Cart';
-import { SettingsScreen } from './routes/Settings';
-import { LoginScreen } from './routes/Login';
-import { SignUpScreen } from './routes/SignUp';
+import { HomeScreen } from './screens/Home';
+import { SplashScreen } from './screens/Splash';
+import { IngredientScreen } from './screens/Ingredient';
+import { RecipeScreen } from './screens/Recipe';
+import { FilterScreen } from './screens/Search';
+import { CartScreen } from './screens/Cart';
+import { SettingsScreen } from './screens/Settings';
+import { LoginScreen } from './screens/Login';
+import { SignUpScreen } from './screens/SignUp';
 
 const Stack = createNativeStackNavigator();
 
