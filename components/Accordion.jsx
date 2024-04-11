@@ -1,24 +1,22 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-
 const Accordion = () => {
-  const [isProductDetails, setIsProductDetails] = React.useState(false)
-  const [isNutritions, setIsNutritions] = React.useState(false)
-  const [isReview, setIsReview] = React.useState(false)
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   const list = [
     {
       title: 'Product Details',
-      details:
-        'Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a heartful and varied diet.',
+      details: 'Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a heartful and varied diet.',
     },
     {
       title: 'Nutritions',
-      details:
-        'Calories 94.6. Water 156 grams. Protein 0.43 grams. Carbs 25.1 grams. Sugar 18.9 grams. Fiber 4.37 grams. Fat 0.3 grams.',
+      details: 'Calories 94.6. Water 156 grams. Protein 0.43 grams. Carbs 25.1 grams. Sugar 18.9 grams. Fiber 4.37 grams. Fat 0.3 grams.',
     },
     {
       title: 'Review',
@@ -26,50 +24,31 @@ const Accordion = () => {
     },
   ];
 
-  const toggleProductDetails = () =>{
-    setIsProductDetails(!isProductDetails);
-  };
-
-  const toggleNutritions = ()=>{
-    setIsNutritions(!isNutritions);
-  };
-
-  const toggleReview = ()=>{
-    setIsReview(!isReview)
-  }
-
-
   return (
-<View style={styles.container}>
+    <>
       <StatusBar />
-      {list.map((item, index) => (
-        <TouchableOpacity
-          key={index}
-          style={styles.card}
-          onPress={toggleProductDetails}
-        >
-          <Text style={styles.cardHeader}>{item.title}</Text>
-          <View style={styles.arrowContent}>
-            <AntDesign
-              name={isProductDetails ? 'up' : 'down'}
-              size={20}
-              color='black'
-            />
+      <View style={styles.container}>
+        {list.map((item, index) => (
+          <View key={index} style={styles.card}>
+            <TouchableOpacity style={styles.cardHeader} onPress={() => toggleAccordion(index)}>
+              <Text style={styles.cardHeader}>{item.title}</Text>
+              <AntDesign
+                name={activeIndex === index ? 'up' : 'down'}
+                size={20}
+                color='black'
+              />
+            </TouchableOpacity>
+            {activeIndex === index && (
+              <View style={styles.cardContent}>
+                <Text style = {styles.text}>{item.details}</Text>
+              </View>
+            )}
           </View>
-          {isProductDetails && (
-            <View style={styles.cardContent}>
-              <Text style={styles.text}>{item.details}</Text>
-            </View>
-          )}
-        </TouchableOpacity>
-
-        
-      ))}
-    </View>
+        ))}
+      </View>
+    </>
   );
 };
-  
-
 
 const styles = StyleSheet.create({
   container: {
@@ -80,15 +59,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 13,
     marginBottom: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
     fontSize: 18,
+    fontWeight: 'bold',
   },
   cardContent: {
     padding: 5,
@@ -98,6 +75,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  text:{
+    fontSize: 16,
+
+  }
 });
 
 export default Accordion;
