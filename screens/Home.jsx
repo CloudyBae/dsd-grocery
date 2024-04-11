@@ -16,7 +16,7 @@ import {
   Title,
 } from '../components/Typography';
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
-import FlexContainer from '../components/FlexContainer';
+import FlexContainer from '../containers/FlexContainer';
 import Nav from '../components/Nav';
 import Checkbox from '../components/Checkbox';
 import RecipeList from '../components/RecipeList';
