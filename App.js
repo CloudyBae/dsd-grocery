@@ -39,7 +39,7 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='Search'
+          name='Filter'
           component={FilterScreen}
           options={{ headerShown: false }}
         />

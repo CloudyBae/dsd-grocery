@@ -22,6 +22,7 @@ import Nav from '../components/Nav';
 import Checkbox from '../components/Checkbox';
 import RecipeList from '../components/RecipeList';
 import Accordion from '../components/Accordion';
+import DietaryFilters from '../containers/DietaryFilters';
 import { useNavigation } from '@react-navigation/native';
 
 export const HomeScreen = () => {
@@ -118,6 +119,7 @@ export const HomeScreen = () => {
           <Checkbox label='Vegetarian' isChecked={false} />
           <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
           <Accordion />
+          <DietaryFilters />
         </View>
       </View>
       <Nav />
