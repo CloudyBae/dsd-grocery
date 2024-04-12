@@ -119,7 +119,10 @@ export const HomeScreen = () => {
           <Checkbox label='Vegetarian' isChecked={false} />
           <RecipeList title='Favorite Recipes' numberOfRecipes={2} />
           <Accordion />
-          <DietaryFilters />
+          <DietaryFilters
+            dietHeader='Dietary Preferences'
+            allergenHeader='Allergies'
+          />
         </View>
       </View>
       <Nav />
