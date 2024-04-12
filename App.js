@@ -5,7 +5,7 @@ import { HomeScreen } from './screens/Home';
 import { SplashScreen } from './screens/Splash';
 import { IngredientScreen } from './screens/Ingredient';
 import { RecipeScreen } from './screens/Recipe';
-import { FilterScreen } from './screens/Search';
+import { FilterScreen } from './screens/Filter';
 import { CartScreen } from './screens/Cart';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
