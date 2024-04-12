@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar';
 import CategoryButton from '../components/CategoryButton';
 import RecipeCard from '../components/RecipeCard';
 import AddProductCard from '../components/AddProductCard';
+import AddItemBar from '../components/AddItemBar';
 import {
   Body,
   BodySmall,
@@ -60,6 +61,7 @@ export const HomeScreen = () => {
             rating={4.7}
           />
           <AddProductCard />
+          <AddItemBar />
           <Title>Enter your 4-digit code</Title>
           <Body>
             Swithch on your location to stay in tune with what’s happening in
