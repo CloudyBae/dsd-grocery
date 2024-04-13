@@ -36,15 +36,14 @@ jobs:
       run: terraform init
       working-directory: terraform
 
-    - name: Terraform Plan
-      id: terraform-plan
-      run: |
-        terraform plan -input=false -out=tfplan
-        echo ::set-output name=has_changes::$(terraform show -json tfplan | jq -r '.resource_changes | length > 0')
+    - name: Terraform Format
+      run: terraform fmt -check
       working-directory: terraform
 
-    - name: Conditional Terraform Apply
-      if: steps.terraform-plan.outputs.has_changes == 'true'
-      run: |
-        cat tfplan | terraform apply -auto-approve -
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      working-directory: terraform
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
       working-directory: terraform
