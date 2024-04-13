@@ -1,8 +1,6 @@
-name: 'Terraform'
+name: 'Terraform Destroy'
 
-on:
-  push:
-    branches: [ "deploy" ]
+on: 
   workflow_dispatch:
 
 permissions:
@@ -10,8 +8,8 @@ permissions:
   contents: read
 
 jobs:
-  terraform-apply:
-    name: 'Terraform Apply'
+  terraform-destroy:
+    name: 'Terraform Destroy'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -36,14 +34,6 @@ jobs:
       run: terraform init
       working-directory: terraform
 
-    - name: Terraform Format
-      run: terraform fmt -check
-      working-directory: terraform
-
-    - name: Terraform Plan
-      run: terraform plan -input=false
-      working-directory: terraform
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
       working-directory: terraform
