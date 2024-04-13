@@ -45,5 +45,6 @@ jobs:
 
     - name: Conditional Terraform Apply
       if: steps.terraform-plan.outputs.has_changes == 'true'
-      run: terraform apply -auto-approve tfplan
+      run: |
+        cat tfplan | terraform apply -auto-approve -
       working-directory: terraform
