@@ -1,18 +1,19 @@
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
+import { SPOONACULAR_API_KEY } from '@env';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
-  const apiKey = '90ce20e792384e9a99fa0bd3d950c094';
 
   const fetchRecipes = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=${numberOfRecipes}`
+        `https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_API_KEY}&number=${numberOfRecipes || 1}`
       );
       const data = await response.json();
+      console.log('data.recipes: ', data.recipes);
       setRecipes(data.recipes);
     } catch (error) {
       console.log('Error fetching data: ', error);

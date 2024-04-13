@@ -6,13 +6,13 @@ const Macro = ({ macro, percentage, goal }) => {
   const completed = (percentage / 100) * goal;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.macroContainer}>
       <AnimatedCircularProgress
-        size={120}
+        size={100}
         width={15}
         fill={percentage}
         tintColor='#52B175'
-        backgroundColor='#e0e0df'
+        backgroundColor='#ccc'
       >
         {(fill) => (
           <Text>
@@ -29,9 +29,9 @@ const Macro = ({ macro, percentage, goal }) => {
 export default Macro;
 
 const styles = StyleSheet.create({
-  container: {
+  macroContainer: {
     borderWidth: 1,
-    padding: 10,
+    padding: 5,
     margin: 5,
     alignItems: 'center',
   },
