@@ -2,7 +2,9 @@ name: 'Terraform Destroy'
 
 on: 
   workflow_dispatch:
-
+    branches:
+      - deploy
+      
 permissions:
   id-token: write
   contents: read
