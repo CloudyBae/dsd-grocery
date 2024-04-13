@@ -1,69 +1,54 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
-import FlexContainer from '../containers/FlexContainer';
+import FlexColContainer from '../containers/FlexContainer';
 /*
 const list = [
   {
     id:0,
-    label:'Vegetarian',
+    label:'Gluten',
     checked: false
   },
   {
     id:1,
-    label:'Vegan',
+    label:'Dairy',
     checked: false
   },
   {
     id:2,
-    label:'Paleo',
+    label:'Eggs',
     checked: false
   },
   {
     id:3,
-    label:'High-Fiber',
+    label:'Soy',
     checked: false
   },
   {
     id:4,
-    label:'High-Protein',
+    label:'Wheat',
     checked: false
   },
   {
     id:5,
-    label:'Low-Carb',
+    label:'Fish',
     checked: false
   },
   {
     id:6,
-    label:'Low-Fat',
+    label:'Shellfish',
     checked: false
   },
   {
     id:7,
-    label:'Low-Sodium',
+    label:'Tree Nuts',
     checked: false
   },
   {
     id:8,
-    label:'Low-Sugar',
+    label:'Peanuts',
     checked: false
   },
-  {
-    id:9,
-    label:'Alcohol-Free',
-    checked: false
-  },
-  {
-    id:10,
-    label:'Balanced',
-    checked: false
-  },
-  {
-    id:11,
-    label:'Immunity',
-    checked: false
-  }
 ]
 
 this.state = {
@@ -75,8 +60,8 @@ const DietaryFilters = () => {
   const [checked, setChecked] = React.useState([false, false]);
   return (
     <>
-      <Text style={styles.title}>Dietary Preferences</Text>
-      <FlexContainer>
+      <Text style={styles.title}>Allergies</Text>
+      <FlexColContainer>
       <ListItem>
         <ListItem.CheckBox
           // Use ThemeProvider to change the defaults of the checkbox
@@ -87,7 +72,7 @@ const DietaryFilters = () => {
           onPress={() => setChecked([!checked[0], checked[1]])}
         />
         <ListItem.Content>
-          <ListItem.Title>Vegetarian</ListItem.Title>
+          <ListItem.Title>Gluten</ListItem.Title>
         </ListItem.Content>
       </ListItem>
       <ListItem>
@@ -100,7 +85,7 @@ const DietaryFilters = () => {
           onPress={() => setChecked([checked[0], !checked[1]])}
         />
         <ListItem.Content>
-          <ListItem.Title>Vegan</ListItem.Title>
+          <ListItem.Title>Dairy</ListItem.Title>
         </ListItem.Content>
       </ListItem>
         <ListItem>
@@ -113,7 +98,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>Paleo</ListItem.Title>
+            <ListItem.Title>Eggs</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -126,7 +111,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>High-Fiber</ListItem.Title>
+            <ListItem.Title>Soy</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -139,7 +124,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>High-Protein</ListItem.Title>
+            <ListItem.Title>Wheat</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -152,7 +137,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>Low-Carb</ListItem.Title>
+            <ListItem.Title>Fish</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -165,7 +150,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>Low-Fat</ListItem.Title>
+            <ListItem.Title>Shellfish</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -178,7 +163,7 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>Low-Sodium</ListItem.Title>
+            <ListItem.Title>Tree Nuts</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         <ListItem>
@@ -191,49 +176,11 @@ const DietaryFilters = () => {
             onPress={() => setChecked([checked[0], !checked[1]])}
           />
           <ListItem.Content>
-            <ListItem.Title>Low-Sugar</ListItem.Title>
+            <ListItem.Title>Peanuts</ListItem.Title>
           </ListItem.Content>
         </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Alcohol-Free</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Balanced</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Immunity</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-      </FlexContainer>
+
+      </FlexColContainer>
     </>
   );
 };
