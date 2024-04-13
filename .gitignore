@@ -43,7 +43,8 @@ yarn-error.*
 # backend
 zbackend/.pytest_cache/
 __pycache__
-
+.DS_Store
+*.sqlite3
 .env
 
 #amplify-do-not-edit-begin
