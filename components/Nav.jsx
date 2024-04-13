@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'white',
-    padding: 16,
+    height: 60,
+    paddingBottom: 16,
   },
   icon: {
     color: 'black',
