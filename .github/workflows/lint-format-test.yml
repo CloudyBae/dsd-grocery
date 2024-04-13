@@ -11,7 +11,7 @@ on:
 
 jobs:
   frontend:
-    name: Frontend Lint and Test
+    name: Frontend Lint and Format
     runs-on: ubuntu-latest
 
     steps:
