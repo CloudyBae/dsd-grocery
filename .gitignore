@@ -43,3 +43,6 @@ yarn-error.*
 # backend
 zbackend/.pytest_cache/
 __pycache__
+
+#database
+db.sqlite3/
