@@ -9,11 +9,11 @@ terraform {
       version = "3.4.3"
     }
   }
-  required_version = ">= 1.1.0"
+  required_version = ">= 1.3.9"
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 resource "random_pet" "sg" {}
