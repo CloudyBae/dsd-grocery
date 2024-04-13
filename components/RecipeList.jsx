@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -37,16 +37,22 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     );
   };
   return (
-    <>
+    <View>
       <Text style={style.titleText}>{title}</Text>
-      <FlatList
-        numColumns={2}
-        scrollEnabled={scrollEnabled || false}
-        columnWrapperStyle={style.columnWrapper}
-        data={recipes}
-        renderItem={renderRecipe}
-      />
-    </>
+      {recipes.length === 0 ? (
+        <View style={style.noRecipes}>
+          <Text style={style.noRecipesText}>No recipes found.</Text>
+        </View>
+      ) : (
+        <FlatList
+          numColumns={2}
+          scrollEnabled={scrollEnabled || false}
+          columnWrapperStyle={style.columnWrapper}
+          data={recipes}
+          renderItem={renderRecipe}
+        />
+      )}
+    </View>
   );
 };
 
@@ -61,5 +67,12 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 5,
     marginHorizontal: 5,
+  },
+  noRecipes: {
+    padding: 100,
+    alignItems: 'center',
+  },
+  noRecipesText: {
+    fontSize: 18,
   },
 });
