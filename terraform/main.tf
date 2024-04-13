@@ -16,7 +16,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "random_pet" "sg" {}
+resource "random_pets" "sg" {}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -50,7 +50,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "web-sg" {
-  name = "${random_pet.sg.id}-sg"
+  name = "${random_pets.sg.id}-sg"
   ingress {
     from_port   = 8080
     to_port     = 8080
