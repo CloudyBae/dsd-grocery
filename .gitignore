@@ -34,15 +34,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-# vscode
-.vscode/
-
 # virtual environment
 .venv/
 
 # backend
 zbackend/.pytest_cache/
 __pycache__
-
-#database
-db.sqlite3/
