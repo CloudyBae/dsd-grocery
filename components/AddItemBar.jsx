@@ -74,14 +74,15 @@ export default AddItemBar = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     borderColor: '#e7e7e7',
     borderWidth: 1,
-    height: 160,
-    width: 364,
+    backgroundColor: '#fff',
+    height: 180,
+    
   },
   firstSection: {
     flexDirection: 'column',
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   tagImg: {
-    height: 30,
+    height: 40,
     width: 120,
     borderRadius: 10,
     marginBottom: 2,
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   textSection: {
-    paddingLeft: 2,
+    flex: 1,
+    paddingLeft: 1,
   },
   headingText: {
     fontSize: 11,
