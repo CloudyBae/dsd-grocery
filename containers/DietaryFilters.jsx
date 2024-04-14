@@ -74,12 +74,13 @@ const DietaryFilters = () => {
 
   const [checked, setChecked] = React.useState([false, false]);
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.title}>Dietary Preferences</Text>
       <FlexContainer>
       <ListItem>
         <ListItem.CheckBox
           // Use ThemeProvider to change the defaults of the checkbox
+          checkedColor='#52B175'
           iconType="material-community"
           checkedIcon="checkbox-marked"
           uncheckedIcon="checkbox-blank-outline"
@@ -93,6 +94,7 @@ const DietaryFilters = () => {
       <ListItem>
         <ListItem.CheckBox
           // Use ThemeProvider to change the defaults of the checkbox
+          checkedColor='#52B175'
           iconType="material-community"
           checkedIcon="checkbox-marked"
           uncheckedIcon="checkbox-blank-outline"
@@ -106,6 +108,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -119,6 +122,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -132,6 +136,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -145,6 +150,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -158,6 +164,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -171,6 +178,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -184,6 +192,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -197,6 +206,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -210,6 +220,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -223,6 +234,7 @@ const DietaryFilters = () => {
         <ListItem>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
             iconType="material-community"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
@@ -234,11 +246,16 @@ const DietaryFilters = () => {
           </ListItem.Content>
         </ListItem>
       </FlexContainer>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor:'rgb(240,240,240)'
+  },
   title: {
     height: 60,
     justifyContent: 'flex-start',

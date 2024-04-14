@@ -1,9 +1,38 @@
-import { Text } from 'react-native';
+import { Text, ScrollView, View, StyleSheet } from 'react-native';
+import AllergenFilters from '../containers/AllergenFilters';
+import DietaryFilters from '../containers/DietaryFilters';
+import MainButton from '../components/MainButton';
+import Nav from '../components/Nav';
 
-export const FilterScreen = () => {
+export const DietFilterScreen = () => {
   return (
-    <>
-      <Text>filter</Text>!!
-    </>
+
+    <ScrollView style={styles.container}>
+
+      <DietaryFilters/>
+      <AllergenFilters/>
+
+      <View style={styles.footer}>
+        <MainButton/>
+      </View>
+
+      <Nav/>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: 'rgb(240,240,240)'
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0
+  }
+})
+
+export default DietFilterScreen;
