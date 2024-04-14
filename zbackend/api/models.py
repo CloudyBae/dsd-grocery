@@ -5,18 +5,17 @@ class User(models.Model):
     auth_id = models.CharField(max_length=100)
     auth_provider = models.CharField(max_length=50)
 
-class Ingredients(models.Model):
-    ingredient_id = models.AutoField(primary_key=True)
-    quantity_available = models.DecimalField(max_digits=10, decimal_places=2)
-    delivery_id = models.CharField(max_length=100)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    preference_id = models.ForeignKey('DietaryPreferences', on_delete=models.SET_NULL, null=True)
-
 class DietaryPreferences(models.Model):
     preference_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     preference_name = models.CharField(max_length=100)
     is_selected = models.BooleanField(default=False)
+class Ingredients(models.Model):
+    ingredient_id = models.AutoField(primary_key=True)
+    quantity_available = models.DecimalField(max_digits=10, decimal_places=2)
+    delivery_id = models.CharField(max_length=100)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    preference_id = models.ForeignKey(DietaryPreferences, on_delete=models.SET_NULL, null=True)
 
 class ShoppingList(models.Model):
     item_id = models.AutoField(primary_key=True)
