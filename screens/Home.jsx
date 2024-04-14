@@ -45,7 +45,7 @@ export const HomeScreen = () => {
             <FlexContainer>
               <CategoryButton title='Plan meal' />
             </FlexContainer>
-            <RecipeList title='Favorite Recipes' numberOfRecipes={10} />
+            {/* <RecipeList title='Favorite Recipes' numberOfRecipes={10} /> */}
           </View>
         </ScrollView>
         <Nav />
