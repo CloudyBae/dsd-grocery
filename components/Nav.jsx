@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Nav = () => {
   const navigation = useNavigation();
@@ -23,17 +24,17 @@ const Nav = () => {
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
+        accessibilityLabel='Recipes button was pressed!'
+        onPress={() => navigation.navigate('Recipe')}
+      >
+        <MaterialCommunityIcons name='chef-hat' style={styles.icon} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        accessible={true}
         accessibilityLabel='Shopping bag button was pressed!'
         onPress={() => navigation.navigate('Cart')}
       >
         <FontAwesome5 name='shopping-bag' style={styles.icon} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        accessible={true}
-        accessibilityLabel='Account button was pressed!'
-        onPress={() => navigation.navigate('Settings')}
-      >
-        <FontAwesome5 name='user-circle' style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
