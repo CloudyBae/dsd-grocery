@@ -25,7 +25,7 @@ const Nav = () => {
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Recipes button was pressed!'
-        onPress={() => navigation.navigate('Recipe')}
+        onPress={() => navigation.navigate('Login')}
       >
         <MaterialCommunityIcons name='chef-hat' style={styles.icon} />
       </TouchableOpacity>
