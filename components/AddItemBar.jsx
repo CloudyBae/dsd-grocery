@@ -74,7 +74,6 @@ export default AddItemBar = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#fff',
     height: 180,
-    
   },
   firstSection: {
     flexDirection: 'column',

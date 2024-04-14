@@ -25,21 +25,24 @@ export default AddRecipeBar = (props) => {
         />
       </View>
       <View style={styles.textSection} numberOfLines={null}>
-        <Text style={styles.headingText} numberOfLines={null}>{name}</Text>
+        <Text style={styles.headingText} numberOfLines={null}>
+          {name}
+        </Text>
         <View style={styles.timerView}>
-        <Image
-          source={require('../assets/timerImg.png')}
-          style={styles.timerImg}
-          resizeMode='cover'
-        />
-        <Text style={styles.amountText}>
-          {" " + numMinutes + " "}
-          minutes
-        </Text></View>
+          <Image
+            source={require('../assets/timerImg.png')}
+            style={styles.timerImg}
+            resizeMode='cover'
+          />
+          <Text style={styles.amountText}>
+            {' ' + numMinutes + ' '}
+            minutes
+          </Text>
+        </View>
 
         <Text>
-            {numIngredients + " "}
-            ingredients
+          {numIngredients + ' '}
+          ingredients
         </Text>
       </View>
     </View>
@@ -48,7 +51,6 @@ export default AddRecipeBar = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#fff',
     height: 180,
-    
   },
   firstSection: {
     flexDirection: 'column',
@@ -77,20 +78,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   textSection: {
-   flex: 1,
+    flex: 1,
     paddingLeft: 1,
-   
   },
   headingText: {
-    
     fontSize: 11,
     fontWeight: 'bold',
   },
   timerView: {
-flexDirection: 'row',
-alignItems: 'center',
-justifyContent: 'flex-start',
-paddingTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 4,
   },
   timerImg: {
     height: 18,
@@ -98,7 +97,7 @@ paddingTop: 4,
   },
   amountText: {
     fontSize: 10,
-    
+
     paddingBottom: 4,
   },
 });
