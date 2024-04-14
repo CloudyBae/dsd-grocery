@@ -4,7 +4,7 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     auth_id = models.CharField(max_length=100)
     auth_provider = models.CharField(max_length=50)
-
+    
 class DietaryPreferences(models.Model):
     preference_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
