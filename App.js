@@ -6,7 +6,7 @@ import { SplashScreen } from './screens/Splash';
 import { IngredientScreen } from './screens/Ingredient';
 import { RecipeScreen } from './screens/Recipe';
 import { FilterScreen } from './screens/Search';
-import { CartScreen } from './screens/Cart';
+import { ShoppingListScreen } from './screens/ShoppingList';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
@@ -44,8 +44,8 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='Cart'
-          component={CartScreen}
+          name='ShoppingList'
+          component={ShoppingListScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen

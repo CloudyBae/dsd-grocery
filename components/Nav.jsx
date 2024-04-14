@@ -31,10 +31,10 @@ const Nav = () => {
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
-        accessibilityLabel='Shopping bag button was pressed!'
-        onPress={() => navigation.navigate('Cart')}
+        accessibilityLabel='Shopping list button was pressed!'
+        onPress={() => navigation.navigate('ShoppingList')}
       >
-        <FontAwesome5 name='shopping-bag' style={styles.icon} />
+        <FontAwesome5 name='clipboard-list' style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     height: 60,
+    paddingBottom: 16,
   },
   icon: {
     color: 'black',
