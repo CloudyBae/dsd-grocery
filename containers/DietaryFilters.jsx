@@ -76,6 +76,7 @@ export default function DietaryFilters() {
           <CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
+            backgroundColor='#f0f0f0'
             title={item.label}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: 'rgb(240,240,240)',
+    backgroundColor: 'rgb(255,255,255)',
   },
   title: {
     height: 60,
