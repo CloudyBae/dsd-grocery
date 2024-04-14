@@ -1,204 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
-import FlexColContainer from '../containers/FlexContainer';
-/*
-const list = [
-  {
-    id:0,
-    label:'Gluten',
-    checked: false
-  },
-  {
-    id:1,
-    label:'Dairy',
-    checked: false
-  },
-  {
-    id:2,
-    label:'Eggs',
-    checked: false
-  },
-  {
-    id:3,
-    label:'Soy',
-    checked: false
-  },
-  {
-    id:4,
-    label:'Wheat',
-    checked: false
-  },
-  {
-    id:5,
-    label:'Fish',
-    checked: false
-  },
-  {
-    id:6,
-    label:'Shellfish',
-    checked: false
-  },
-  {
-    id:7,
-    label:'Tree Nuts',
-    checked: false
-  },
-  {
-    id:8,
-    label:'Peanuts',
-    checked: false
-  },
-]
 
-this.state = {
-  list: list
-}
-*/
-const AllergenFilters = () => {
+export default function AllergenFilters() {
+  const [categories, setCategories] = useState([
+    {
+      id: 0,
+      label: 'Dairy',
+      checked: false,
+    },
+    {
+      id: 1,
+      label: 'Egg',
+      checked: false,
+    },
+    {
+      id: 2,
+      label: 'Gluten',
+      checked: false,
+    },
+    {
+      id: 3,
+      label: 'Grain',
+      checked: false,
+    },
+    {
+      id: 4,
+      label: 'Peanut',
+      checked: false,
+    },
+    {
+      id: 5,
+      label: 'Seafood',
+      checked: false,
+    },
+    {
+      id: 6,
+      label: 'Sesame',
+      checked: false,
+    },
+    {
+      id: 7,
+      label: 'Shellfish',
+      checked: false,
+    },
+    {
+      id: 8,
+      label: 'Soy',
+      checked: false,
+    },
+    {
+      id: 9,
+      label: 'Sulfite',
+      checked: false,
+    },
+    {
+      id: 10,
+      label: 'Tree Nut',
+      checked: false,
+    },
+    {
+      id: 11,
+      label: 'Wheat',
+      checked: false,
+    },
+  ]);
 
-  const [checked, setChecked] = React.useState([false, false]);
+  const onValueChange = (item, index) => {
+    const newCategory = [...categories];
+    newCategory[index].isCheck = !item.isCheck;
+    setCategories(newCategory);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Allergies</Text>
-      <FlexColContainer>
-      <ListItem>
-        <ListItem.CheckBox
-          // Use ThemeProvider to change the defaults of the checkbox
-          checkedColor='#52B175'
-          iconType="material-community"
-          checkedIcon="checkbox-marked"
-          uncheckedIcon="checkbox-blank-outline"
-          checked={checked[0]}
-          onPress={() => setChecked([!checked[0], checked[1]])}
-        />
-        <ListItem.Content>
-          <ListItem.Title>Gluten</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
-      <ListItem>
-        <ListItem.CheckBox
-          // Use ThemeProvider to change the defaults of the checkbox
-          checkedColor='#52B175'
-          iconType="material-community"
-          checkedIcon="checkbox-marked"
-          uncheckedIcon="checkbox-blank-outline"
-          checked={checked[1]}
-          onPress={() => setChecked([checked[0], !checked[1]])}
-        />
-        <ListItem.Content>
-          <ListItem.Title>Dairy</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Eggs</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Soy</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Wheat</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Fish</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Shellfish</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Tree Nuts</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
-        <ListItem>
-          <ListItem.CheckBox
-            // Use ThemeProvider to change the defaults of the checkbox
-            checkedColor='#52B175'
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checked={checked[1]}
-            onPress={() => setChecked([checked[0], !checked[1]])}
-          />
-          <ListItem.Content>
-            <ListItem.Title>Peanuts</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
 
-      </FlexColContainer>
+      {categories.map((item, index) => {
+        return (
+          <CheckBox
+            // Use ThemeProvider to change the defaults of the checkbox
+            checkedColor='#52B175'
+            title={item.label}
+            checked={item.isCheck || false}
+            onPress={(val) => onValueChange(item, index)}
+            key={item.name}
+          />
+        );
+      })}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor:'rgb(240,240,240)'
+    backgroundColor: 'rgb(240,240,240)',
   },
   title: {
     height: 60,
@@ -208,5 +106,3 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
-
-export default AllergenFilters;
