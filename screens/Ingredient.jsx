@@ -1,9 +1,4 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import AddItemBar from '../components/AddItemBar';
 
 export const IngredientScreen = () => {
@@ -21,11 +16,11 @@ export const IngredientScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  ingredientsContainer:{
+  ingredientsContainer: {
     display: 'Flex',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 25,
     marginBottom: 50,
   },
-})
+});
