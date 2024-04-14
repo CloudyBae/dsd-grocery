@@ -10,13 +10,14 @@ import { CartScreen } from './screens/Cart';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
+import { DietaryAllergenFilterScreen } from './screens/DietaryAllergenFilter';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='DietaryAllergenFilter'>
         <Stack.Screen
           name='Splash'
           component={SplashScreen}
@@ -61,6 +62,11 @@ function App() {
         <Stack.Screen
           name='Signup'
           component={SignUpScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='DietaryAllergenFilter'
+          component={DietaryAllergenFilterScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
