@@ -1,9 +1,9 @@
 import { Text } from 'react-native';
 
-export const CartScreen = () => {
+export const ShoppingListScreen = () => {
   return (
     <>
-      <Text>🛒</Text>
+      <Text>📋</Text>
     </>
   );
 };
