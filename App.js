@@ -5,11 +5,12 @@ import { HomeScreen } from './screens/Home';
 import { SplashScreen } from './screens/Splash';
 import { IngredientScreen } from './screens/Ingredient';
 import { RecipeScreen } from './screens/Recipe';
-import { FilterScreen } from './screens/Search';
+import { FilterScreen } from './screens/Filter';
 import { ShoppingListScreen } from './screens/ShoppingList';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
+import { DietaryAllergenFilterScreen } from './screens/DietaryAllergenFilter';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='Search'
+          name='Filter'
           component={FilterScreen}
           options={{ headerShown: false }}
         />
@@ -61,6 +62,11 @@ function App() {
         <Stack.Screen
           name='Signup'
           component={SignUpScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='DietaryAllergenFilter'
+          component={DietaryAllergenFilterScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
