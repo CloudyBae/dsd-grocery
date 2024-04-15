@@ -8,7 +8,6 @@ import {
   Dimensions,
 } from 'react-native';
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
-import Header from '../components/Header';
 import GroceryBag from '../assets/GroceryBag.png';
 import Lemon from '../assets/lemon.png';
 import { Title } from '../components/Typography/index.js';
@@ -22,21 +21,21 @@ export const LoginScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.loginContainer}>
           <View style={styles.titleContainer}>
-            <Image
+            {/* <Image
               source={Lemon}
-              style={[styles.lemonImage, { marginRight: 10 }]}
+              style={{ height: 50, width: 60, marginRight: 10 }}
               resizeMode='contain'
-            />
-            <Title style={{ color: 'white', fontSize: 30 }}>Zest</Title>
-            <Image
+            /> */}
+            <Title style={{ color: 'white', fontSize: 60, fontWeight: 'bold', lineHeight: 70 }}>Zest</Title>
+            {/* <Image
               source={Lemon}
-              style={[styles.lemonImage, { marginLeft: 10 }]}
+              style={{ height: 50, width: 60, marginLeft: 10 }}
               resizeMode='contain'
-            />
+            /> */}
           </View>
           <Image
             source={GroceryBag}
-            style={{ width: screenWidth * 0.8, height: screenHeight * 0.4 }}
+            style={{ width: screenWidth * 0.8, height: screenHeight * 0.4, marginBottom: 20 }}
             resizeMode='contain'
           />
           <ThirdPartySignIn
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
   loginButton: {
-    padding: 10,
+    padding: 15,
   },
   buttonSeparator: {
     height: 10,
@@ -99,9 +98,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  lemonImage: {
-    height: 40,
-    width: 50,
+    padding: 20,
   },
 });
