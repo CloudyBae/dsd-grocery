@@ -1,0 +1,49 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+zbackend/__pycache__/
+zbackend/*/__pycache__/
+zbackend/*/*/__pycache__/
+zbackend/*/*/*/__pycache__/
+.env
+.venv/
+venv/
+zbackend/Taskfile.yml
+
+# Frontend
+__mocks__/
+__tests__/
+.expo
+.vscode
+assets/
+components/
+constants/
+containers/
+dist/
+hooks/
+node_modules/
+routes/
+screens/
+services/
+utils/
+.prettierignore
+.prettierrc.js
+amplifyconfiguration.json
+App.js
+app.json
+aws-exports.js
+babel.config.js
+index.css
+jest.config.js
+LICENSE
+package-lock.json
+package.json
+Pipfile
+Pipfile.lock
+README.md
+Taskfile.yml
