@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   input: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 364,
+    width: '100%',
     height: 67,
     //borderRadius: 19,
     // tintColor: '#52B175',

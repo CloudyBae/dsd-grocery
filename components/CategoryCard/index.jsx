@@ -22,7 +22,7 @@ const CardContainer = styled.View`
   border: 1px solid #ccc;
   border-radius: 18px;
   padding: 28px;
-  margin: 8px;
+
   width: 175px;
   min-height: 170px;
   max-width: 175px;

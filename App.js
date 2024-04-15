@@ -10,13 +10,15 @@ import { CartScreen } from './screens/Cart';
 import { SettingsScreen } from './screens/Settings';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
+import { ExploreScreen } from './screens/Explore';
+import { View } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Explore'>
         <Stack.Screen
           name='Splash'
           component={SplashScreen}
@@ -51,6 +53,11 @@ function App() {
         <Stack.Screen
           name='Settings'
           component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Explore'
+          component={ExploreScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
