@@ -6,3 +6,7 @@ Pipfile.lock
 Taskfile.yml
 *.json
 *.md
+docker-compose.yml
+Dockerfile
+zbackend/
+.dockerignore

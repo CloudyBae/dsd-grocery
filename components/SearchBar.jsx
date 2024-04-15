@@ -23,7 +23,7 @@ const Search = () => {
           borderBottomColor: 'transparent',
           borderTopColor: 'transparent',
         }}
-        searchIcon={{ color: 'rgba(255, 255, 255, 0.5' }}
+        searchIcon={{ color: 'rgba(255, 255, 255, 0.5)' }}
       />
     </View>
   );
