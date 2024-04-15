@@ -26,7 +26,16 @@ export const LoginScreen = () => {
               style={{ height: 50, width: 60, marginRight: 10 }}
               resizeMode='contain'
             /> */}
-            <Title style={{ color: 'white', fontSize: 60, fontWeight: 'bold', lineHeight: 70 }}>Zest</Title>
+            <Title
+              style={{
+                color: 'white',
+                fontSize: 60,
+                fontWeight: 'bold',
+                lineHeight: 70,
+              }}
+            >
+              Zest
+            </Title>
             {/* <Image
               source={Lemon}
               style={{ height: 50, width: 60, marginLeft: 10 }}
@@ -35,7 +44,11 @@ export const LoginScreen = () => {
           </View>
           <Image
             source={GroceryBag}
-            style={{ width: screenWidth * 0.8, height: screenHeight * 0.4, marginBottom: 20 }}
+            style={{
+              width: screenWidth * 0.8,
+              height: screenHeight * 0.4,
+              marginBottom: 20,
+            }}
             resizeMode='contain'
           />
           <ThirdPartySignIn
