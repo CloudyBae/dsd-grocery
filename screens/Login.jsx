@@ -10,7 +10,8 @@ import {
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import Header from '../components/Header';
 import GroceryBag from '../assets/GroceryBag.png';
-
+import Lemon from '../assets/lemon.png';
+import { Title } from '../components/Typography/index.js';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -20,7 +21,19 @@ export const LoginScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.loginContainer}>
-          <Header pageTitle="Zest"/>
+          <View style={styles.titleContainer}>
+            <Image
+              source={Lemon}
+              style={[styles.lemonImage, { marginRight: 10 }]}
+              resizeMode='contain'
+            />
+            <Title style={{ color: 'white', fontSize: 30 }}>Zest</Title>
+            <Image
+              source={Lemon}
+              style={[styles.lemonImage, { marginLeft: 10 }]}
+              resizeMode='contain'
+            />
+          </View>
           <Image
             source={GroceryBag}
             style={{ width: screenWidth * 0.8, height: screenHeight * 0.4 }}
@@ -45,7 +58,7 @@ export const LoginScreen = () => {
             style={styles.loginButton}
             onPress={() => console.log('Google')}
           />
-          <View style={styles.buttonSeparator} /> 
+          <View style={styles.buttonSeparator} />
           <ThirdPartySignIn
             title='Apple'
             icon='apple'
@@ -72,13 +85,23 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   loginContainer: {
+    display: 'flex',
     alignItems: 'center',
-    marginTop: 25,
-    marginBottom: 50,
+    justifyContent: 'center',
+    marginVertical: 40,
   },
   loginButton: {
     padding: 10,
   },
   buttonSeparator: {
-    height: 10, 
-}});
+    height: 10,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  lemonImage: {
+    height: 40,
+    width: 50,
+  },
+});
