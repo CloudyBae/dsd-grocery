@@ -11,11 +11,14 @@ import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import GroceryBag from '../assets/GroceryBag.png';
 import Lemon from '../assets/lemon.png';
 import { Title } from '../components/Typography/index.js';
+import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export const LoginScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -52,13 +55,12 @@ export const LoginScreen = () => {
             resizeMode='contain'
           />
           <ThirdPartySignIn
-            title='Facebook'
-            icon='facebook'
+            title='Home'
             textColor='white'
-            iconColor='white'
-            backgroundColor='blue'
+            icon='home'
+            backgroundColor='orange'
             style={styles.loginButton}
-            onPress={() => console.log('Facebook')}
+            onPress={() => navigation.navigate('Home')}
           />
           <View style={styles.buttonSeparator} />
           <ThirdPartySignIn

@@ -17,11 +17,11 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Splash'>
         <Stack.Screen
           name='Splash'
           component={SplashScreen}
-          options={{ headerTitle: 'Home' }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name='Home'
