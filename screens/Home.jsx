@@ -11,7 +11,6 @@ import RecipeList from '../components/RecipeList';
 import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DietFilter from '../components/DietFilter';
 
 export const HomeScreen = () => {
@@ -26,13 +25,7 @@ export const HomeScreen = () => {
                 accessible={true}
                 accessibilityLabel='Ingredients button was pressed!'
                 onPress={() => navigation.navigate('Settings')}
-              >
-                <MaterialCommunityIcons
-                  name='account-circle'
-                  size={45}
-                  color='black'
-                />
-              </TouchableOpacity>
+              ></TouchableOpacity>
               <View style={styles.macrosContainer}>
                 <Macro macro='Carbs' percentage={20} goal={100} />
                 <Macro macro='Protein' percentage={50} goal={100} />
@@ -45,7 +38,7 @@ export const HomeScreen = () => {
             <FlexContainer>
               <CategoryButton title='Plan meal' />
             </FlexContainer>
-            <RecipeList title='Favorite Recipes' numberOfRecipes={10} />
+            {/* <RecipeList title='Favorite Recipes' numberOfRecipes={10} /> */}
           </View>
         </ScrollView>
         <Nav />
