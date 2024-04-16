@@ -5,7 +5,7 @@ const AcctHeader = () => {
   const name = 'John Smith';
   const email = 'johnsmith@gmail.com';
   return (
-    <View>
+    <View style={styles.headerContainer}>
       <View style={styles.userImg}>
         <Image 
           source={require('../assets/Avatar.png')}
@@ -22,8 +22,13 @@ const AcctHeader = () => {
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+  },
   header: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 50,
   },
   name: {
     fontSize: 56,
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
   },
   userImg: {
     marginLeft: 30,
-    marginRight: 30,
+    marginRight: 60,
     overflow: "hidden",
   }
 });
