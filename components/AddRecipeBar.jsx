@@ -14,7 +14,7 @@ export default AddRecipeBar = (props) => {
     <View style={styles.container}>
       <View style={styles.firstSection}>
         <Image
-          source={require('../assets/recipeTag.png')}
+          source={require('../assets/RecipeTag.png')}
           style={styles.tagImg}
           resizeMode='cover'
         />
