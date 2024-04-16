@@ -41,7 +41,7 @@ const Nav = () => {
         accessibilityLabel='Search button was pressed!'
         onPress={() => navigation.navigate('Settings')}
       >
-        <MaterialCommunityIcons name='account-circle'style={styles.icon} />
+        <MaterialCommunityIcons name='account-circle' style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
