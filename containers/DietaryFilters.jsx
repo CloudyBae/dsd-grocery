@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    fontFamily: 'Gilroy-Bold',
     fontSize: 24,
   },
 });
