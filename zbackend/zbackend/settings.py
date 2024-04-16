@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-    'allauth.socialaccount.providers.apple',
-    'allauth.socialaccount.providers.facebook',
+    "allauth.socialaccount.providers.apple",
+    "allauth.socialaccount.providers.facebook",
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -161,11 +161,11 @@ CORS_ALLOWS_CREDENTIALS = True
 
 SOCIALACCOUNT_PROVIDERS = {}
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_EMAIL_REQUIRED = False
 SOCIALACCOUNT_STORE_TOKENS = True

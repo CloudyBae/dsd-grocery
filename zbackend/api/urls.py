@@ -8,9 +8,3 @@ urlpatterns = [
     path('ingredients/', views.IngredientListCreateAPIView.as_view()),
 ]
 """
-from django.urls import path, include
-from . import views
-
-urlpatterns = [
-    # path('shoppingList/', views.ShoppingListCreate.as_view(), name='shopping-list-create'),
-]
