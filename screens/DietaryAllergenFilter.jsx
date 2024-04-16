@@ -1,9 +1,4 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import DietaryFilters from '../containers/DietaryFilters';
 import AllergenFilters from '../containers/AllergenFilters';
 import AcctHeader from '../components/AcctHeader';
@@ -18,7 +13,6 @@ export const DietaryAllergenFilterScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
-            
             <AcctHeader />
             <DietaryFilters />
             <AllergenFilters />

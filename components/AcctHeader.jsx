@@ -28,7 +28,9 @@ const AcctHeader = () => {
             />
           </TouchableOpacity>
         </Text>
-        <Text style={styles.email} numberOfLines={null}>{email}</Text>
+        <Text style={styles.email} numberOfLines={null}>
+          {email}
+        </Text>
       </View>
     </View>
   );
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#52B175',
     borderLeftColor: 'white',
     borderWidth: 3,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   header: {
     flex: 1,

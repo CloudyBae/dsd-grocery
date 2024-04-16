@@ -99,5 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     fontSize: 24,
+    fontWeight: 'bold',
   },
 });
