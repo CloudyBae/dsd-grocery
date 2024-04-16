@@ -61,7 +61,7 @@ export const LoginScreen = () => {
             backgroundColor='orange'
             style={styles.loginButton}
             onPress={() => navigation.navigate('Home')}
-            />
+          />
           <View style={styles.buttonSeparator} />
           <ThirdPartySignIn
             title='Google'

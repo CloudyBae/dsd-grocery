@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Title } from '../components/Typography/index.js';
 import { useNavigation } from '@react-navigation/native';
 
