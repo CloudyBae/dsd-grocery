@@ -32,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]  # Can configure later to be more secure
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,7 +46,18 @@ INSTALLED_APPS = [
     "corsheaders",
     "authentication",
     "utils",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    'allauth.socialaccount.providers.apple',
+    'allauth.socialaccount.providers.facebook',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -58,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "zbackend.urls"
@@ -147,3 +158,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True  # Can configure later to be more secure
 CORS_ALLOWS_CREDENTIALS = True
+
+SOCIALACCOUNT_PROVIDERS = {}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_STORE_TOKENS = True
