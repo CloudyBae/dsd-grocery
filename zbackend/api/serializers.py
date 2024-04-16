@@ -9,3 +9,13 @@ class IngredientSerializer(serializers.ModelSerializer):
         model = Ingredient
         fields = ['ingredientId']
 """
+"""
+from rest_framework import serializers
+from . import models
+
+
+class ShoppingListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShoppingList
+        fields = ["id", "user_id", "ingredient_id", "quantity", "is_purchased"]
+"""
