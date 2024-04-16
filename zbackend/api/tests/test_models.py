@@ -11,3 +11,14 @@ def ingredient():
 def test_ingredient_id_field(ingredient):
     assert ingredient.ingredientId == 'test_id'
 """
+import pytest
+from api.models import ShoppingList
+
+
+@pytest.fixture
+def shoppingList():
+    return ShoppingList.objects.create(shoppingList="test_id")
+
+
+def test_shoppingList_id_field(shoppingList):
+    assert shoppingList.shoppingListId == "test_id"
