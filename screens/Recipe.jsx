@@ -1,9 +1,15 @@
-import { Text } from 'react-native';
+import React from 'react';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import AddRecipeBar from '../components/AddRecipeBar';
 
 export const RecipeScreen = () => {
   return (
-    <>
-      <Text>recipe</Text>
-    </>
+    <SafeAreaView>
+      <ScrollView>
+        <View>
+          <AddRecipeBar />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
