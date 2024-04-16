@@ -7,7 +7,10 @@ const AcctHeader = () => {
   return (
     <View>
       <View style={styles.userImg}>
-        <Image source={require('../assets/Avatar.png')} />
+        <Image 
+          source={require('../assets/Avatar.png')}
+          style={{width: 120, height: 120, borderRadius: 150 / 2,}}
+        />
       </View>
 
       <View style={styles.header}>
@@ -32,6 +35,8 @@ const styles = StyleSheet.create({
   },
   userImg: {
     marginLeft: 30,
+    marginRight: 30,
+    overflow: "hidden",
   }
 });
 
