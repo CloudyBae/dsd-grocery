@@ -1,17 +1,10 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import DietaryFilters from '../containers/DietaryFilters';
 import AllergenFilters from '../containers/AllergenFilters';
+import AcctHeader from '../components/AcctHeader';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Macro from '../components/Macro';
 
 export const DietaryAllergenFilterScreen = () => {
   const navigation = useNavigation();
@@ -20,14 +13,7 @@ export const DietaryAllergenFilterScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
-            <TouchableOpacity>
-              <MaterialCommunityIcons
-                name='account-circle'
-                size={45}
-                color='black'
-              />
-            </TouchableOpacity>
-
+            <AcctHeader />
             <DietaryFilters />
             <AllergenFilters />
 

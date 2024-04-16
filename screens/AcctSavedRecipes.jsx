@@ -1,4 +1,5 @@
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import AcctHeader from '../components/AcctHeader';
 import AcctRecipeBar from '../components/AcctRecipeBar';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
@@ -11,6 +12,7 @@ export const AcctSavedRecipesScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
+            <AcctHeader />
             <Text style={styles.title}>Saved Recipes</Text>
 
             <AcctRecipeBar />
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginBottom: 50,
     fontFamily: 'Gilroy-Bold',
+    backgroundColor: 'white',
   },
   title: {
     height: 60,
@@ -39,6 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     fontWeight: 'bold',
     fontSize: 24,
+    paddingTop: 20,
   },
   buttonContainer: {
     padding: 20,
