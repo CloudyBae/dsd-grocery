@@ -1,7 +1,8 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import ShoppingListItem from '../components/ShoppingListItem';
 import { Title } from '../components/Typography/index.js';
+import Nav from '../components/Nav';
 
 export const ShoppingListScreen = () => {
   const items = [
@@ -36,24 +37,41 @@ export const ShoppingListScreen = () => {
   ];
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View>
-          <Title
-            style={{
-              color: 'black',
-              fontSize: 40,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              paddingTop: 40,
-              paddingBottom: 20,
-            }}
-          >
-            Shopping List
-          </Title>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.contentContainer}>
+          <Title style={styles.title}>Shopping List</Title>
           <ShoppingListItem items={items} />
         </View>
       </ScrollView>
+      <Nav style={styles.navBar} />
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  contentContainer: {
+    flex: 1,
+    paddingVertical: 40,
+  },
+  title: {
+    color: 'black',
+    fontSize: 40,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingBottom: 20,
+    paddingTop: 20,
+  },
+  navBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+});
