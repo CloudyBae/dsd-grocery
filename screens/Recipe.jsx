@@ -7,9 +7,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import {  useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
-import {  BodySmall, ButtonLarge, Title } from '../components/Typography';
+import { BodySmall, ButtonLarge, Title } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
@@ -46,7 +46,7 @@ export const RecipeScreen = () => {
     ));
   }, [recipe?.extendedIngredients]);
 
-  const InnerHtmlContent = ({value}) => {
+  const InnerHtmlContent = ({ value }) => {
     return <div dangerouslySetInnerHTML={{ __html: value }} />;
   };
 
@@ -64,7 +64,10 @@ export const RecipeScreen = () => {
 
   const listItems = [
     { title: 'Summary', details: <InnerHtmlContent value={recipe?.summary} /> },
-    { title: 'Instructions', details:<InnerHtmlContent value={recipe?.instructions} /> },
+    {
+      title: 'Instructions',
+      details: <InnerHtmlContent value={recipe?.instructions} />,
+    },
     {
       title: 'Ingredients',
       details: <View style={styles.columnContainer}>{ingredients}</View>,
@@ -149,7 +152,9 @@ export const RecipeScreen = () => {
           </View>
         </ScrollView>
         <View style={styles.addToCartButtonContainer}>
-          <Button isFullWidth={true} onPress={() => console.log('Add to Cart')}>Add To Basket</Button>
+          <Button isFullWidth={true} onPress={() => console.log('Add to Cart')}>
+            Add To Basket
+          </Button>
         </View>
       </SafeAreaView>
     </>

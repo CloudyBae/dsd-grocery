@@ -10,10 +10,12 @@ import { AntDesign } from '@expo/vector-icons';
 import { Body, BodySmall } from './Typography';
 
 const Accordion = ({
-  listItem =[{
-    title,
-    details
-  }],
+  listItem = [
+    {
+      title,
+      details,
+    },
+  ],
 }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -31,7 +33,7 @@ const Accordion = ({
               style={styles.cardHeader}
               onPress={() => toggleAccordion(index)}
             >
-              <Body style={{color:'#181725'}}>{item.title}</Body>
+              <Body style={{ color: '#181725' }}>{item.title}</Body>
               <AntDesign
                 name={activeIndex === index ? 'up' : 'down'}
                 size={18}
@@ -40,7 +42,7 @@ const Accordion = ({
             </TouchableOpacity>
             {activeIndex === index && (
               <View style={styles.cardContent}>
-                 <BodySmall>{item.details}</BodySmall>
+                <BodySmall>{item.details}</BodySmall>
               </View>
             )}
           </View>
@@ -51,15 +53,14 @@ const Accordion = ({
 };
 
 const styles = StyleSheet.create({
- 
   container: {
     width: '100%',
   },
   card: {
     borderTopWidth: 1,
     borderTopColor: '#E2E2E2B2',
-    paddingTop: 15, 
-    paddingBottom: 15, 
+    paddingTop: 15,
+    paddingBottom: 15,
     paddingHorizontal: 0,
   },
   cardHeader: {

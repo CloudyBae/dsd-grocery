@@ -28,7 +28,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
 
   const renderRecipe = ({ item }) => {
     return (
-      <Pressable onPress={() => navigation.navigate('Recipe', { id:item.id })}>
+      <Pressable onPress={() => navigation.navigate('Recipe', { id: item.id })}>
         <RecipeCard
           title={item.title}
           image={item.image}

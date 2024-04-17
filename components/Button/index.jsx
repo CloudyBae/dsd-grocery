@@ -31,7 +31,7 @@ const Button = ({
       {isLoading ? (
         <ActivityIndicator color='#ffffff' />
       ) : (
-        <View style={{display:"flex", alignItems:"center", width:"100%"}}>
+        <View style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
           {children && (
             <ButtonText
