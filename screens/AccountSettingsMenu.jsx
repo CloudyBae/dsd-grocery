@@ -54,23 +54,7 @@ export const AccountSettingsMenu = () => {
         <Text style={styles.menuText}>My Details</Text>
       </Pressable>
       <Pressable
-        onPress={() => console.log('Button Pressed')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.menuButton,
-        ]}
-      >
-        <Image
-          source={require('../assets/broc.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <Text style={styles.menuText}>Favorite Ingredients</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('AcctSavedRecipes')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -124,7 +108,6 @@ const styles = StyleSheet.create({
     height: 75,
     width: '90%',
   },
-
   tagImg: {
     height: 30,
     width: 30,

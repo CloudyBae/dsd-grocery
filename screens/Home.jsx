@@ -40,6 +40,7 @@ export const HomeScreen = () => {
               <CategoryButton
                 customButtonStyling={{ padding: 40, borderRadius: 25 }}
                 title='Recipes'
+                onPress={() => navigation.navigate('Recipe')}
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>
@@ -50,7 +51,7 @@ export const HomeScreen = () => {
               <View style={styles.separator}></View>
             </View>
             <DietFilter />
-            {/* <RecipeList numberOfRecipes={10} /> */}
+            <RecipeList numberOfRecipes={10} />
           </View>
         </ScrollView>
         <Nav />
