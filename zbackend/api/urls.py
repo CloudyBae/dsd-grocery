@@ -10,7 +10,7 @@ router.register(
     ShoppingListViewSet,
     basename="user-shoppinglist",
 )
-router.register(r'users/(?P<user_pk>\d+)/macros', MacrosViewSet, basename='user-macros')
+router.register(r"users/(?P<user_pk>\d+)/macros", MacrosViewSet, basename="user-macros")
 
 urlpatterns = [
     path("", include(router.urls)),
