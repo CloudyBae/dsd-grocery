@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated, BasePermission
 from .models import FavoriteRecipes, User, ShoppingList
 from .serializers import FavoriteRecipeSerializer, ShoppingListSerializer
 
+
 class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user
@@ -19,6 +20,7 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
         return ShoppingList.objects.filter(user_id=user_id)
+
 
 @api_view(["GET"])
 def get_favorite_recipes(request, user_id):

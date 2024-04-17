@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import FavoriteRecipes, DietaryPreferences, User, Ingredients, ShoppingList
 
+
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredients
@@ -33,4 +34,3 @@ class FavoriteRecipeSerializer(serializers.ModelSerializer):
             "minutes",
             "likes",
         ]
-
