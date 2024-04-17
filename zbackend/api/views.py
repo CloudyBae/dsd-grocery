@@ -54,3 +54,9 @@ def delete_favorite_recipe(request, user_id, favorite_recipe_id):
     
     favorite_recipe.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+  
+"""
+class ShoppingListCreate(generics.ListCreateAPIView):
+    queryset = ShoppingList.objects.all()
+    serializer_class = ShoppingListSerializer
+"""

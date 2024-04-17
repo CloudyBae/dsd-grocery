@@ -6,13 +6,12 @@ import {
   View,
 } from 'react-native';
 import Nav from '../components/Nav';
-import FlexContainer from '../containers/FlexContainer';
 import RecipeList from '../components/RecipeList';
 import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DietFilter from '../components/DietFilter';
+import { Text } from 'react-native';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
@@ -26,26 +25,32 @@ export const HomeScreen = () => {
                 accessible={true}
                 accessibilityLabel='Ingredients button was pressed!'
                 onPress={() => navigation.navigate('Settings')}
-              >
-                <MaterialCommunityIcons
-                  name='account-circle'
-                  size={45}
-                  color='black'
-                />
-              </TouchableOpacity>
+              ></TouchableOpacity>
               <View style={styles.macrosContainer}>
                 <Macro macro='Carbs' percentage={20} goal={100} />
                 <Macro macro='Protein' percentage={50} goal={100} />
                 <Macro macro='Fat' percentage={70} goal={100} />
               </View>
             </View>
-            <View>
-              <DietFilter />
+            <View style={styles.mainButtonsContainer}>
+              <CategoryButton
+                customButtonStyling={{ padding: 40, borderRadius: 25 }}
+                title='Pantry'
+              />
+              <CategoryButton
+                customButtonStyling={{ padding: 40, borderRadius: 25 }}
+                title='Recipes'
+              />
             </View>
-            <FlexContainer>
-              <CategoryButton title='Plan meal' />
-            </FlexContainer>
-            <RecipeList title='Favorite Recipes' numberOfRecipes={10} />
+            <View style={styles.favoriteRecipesContainer}>
+              <Text style={styles.favoriteRecipesTitle}>Favorite Recipes</Text>
+            </View>
+            <View style={styles.separatorContainer}>
+              <View style={styles.separator}></View>
+              <View style={styles.separator}></View>
+            </View>
+            <DietFilter />
+            <RecipeList numberOfRecipes={10} />
           </View>
         </ScrollView>
         <Nav />
@@ -63,10 +68,34 @@ const styles = StyleSheet.create({
   macrosContainer: {
     backgroundColor: '#72C08F',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     gap: 5,
-    padding: 5,
+    padding: 20,
     borderRadius: 10,
+  },
+  mainButtonsContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    justifyContent: 'space-between',
+  },
+  favoriteRecipesContainer: {
+    alignItems: 'center',
+  },
+  favoriteRecipesTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  separatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+  separator: {
+    height: 2,
+    width: 100,
+    borderColor: '#52B175',
+    backgroundColor: '#52B175',
+    borderWidth: 1,
   },
 });
