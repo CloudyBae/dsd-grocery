@@ -16,11 +16,11 @@ class IngredientSerializer(serializers.ModelSerializer):
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
-    ingredient = IngredientSerializer(read_only=True)
-
     class Meta:
         model = ShoppingList
         fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
+
+        extra_kwargs = {"user": {"read_only": True}, "ingredient": {"required": True}}
 
 
 class MacrosSerializer(serializers.ModelSerializer):
