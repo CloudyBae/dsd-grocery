@@ -1,8 +1,11 @@
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import AcctHeader from '../components/AcctHeader';
 
 export const AccountSettingsMenu = () => {
   return (
+
     <View style={styles.container}>
+        <AcctHeader />
       <View
         style={{
           width: '80%',
@@ -103,7 +106,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    height: '100%',
+    backgroundColor: '#fff'
   },
   menuButton: {
     flexDirection: 'row',
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
     height: 75,
     width: '90%',
   },
+  
   tagImg: {
     height: 30,
     width: 30,
@@ -131,7 +136,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     width: '90%',
-    marginTop: '40%',
+    marginTop: '35%',
     borderRadius: 30,
     borderWidth: 2,
     borderColor: '#96d1ab',
