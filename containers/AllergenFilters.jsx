@@ -84,7 +84,7 @@ export default function AllergenFilters() {
             title={item.label}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
-            key={item.name}
+            key={item.id}
           />
         );
       })}
