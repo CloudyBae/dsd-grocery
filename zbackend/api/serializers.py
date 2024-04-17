@@ -23,9 +23,22 @@ class ShoppingListSerializer(serializers.ModelSerializer):
         fields = ["id", "user_id", "ingredient_id", "quantity", "is_purchased"]
 """
 
+
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
-    preference = serializers.PrimaryKeyRelatedField(queryset=DietaryPreferences.objects.all())
+    preference = serializers.PrimaryKeyRelatedField(
+        queryset=DietaryPreferences.objects.all()
+    )
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = FavoriteRecipes
-        fields = ['servings', 'preference', 'user', 'id', 'name', 'image', 'minutes', 'likes']
+        fields = [
+            "servings",
+            "preference",
+            "user",
+            "id",
+            "name",
+            "image",
+            "minutes",
+            "likes",
+        ]
