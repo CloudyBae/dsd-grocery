@@ -14,6 +14,7 @@ import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
 import Macro from '../components/Macro';
+import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 
 const Detail = ({ title, value }) => {
@@ -30,6 +31,7 @@ const Detail = ({ title, value }) => {
 export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
+  const navigation = useNavigation();
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
@@ -52,20 +54,20 @@ export const RecipeScreen = () => {
   };
 
   const Macros = () => {
-    const percentProtein = recipe?.nutrition?.caloricBreakdown.percentProtein
-    const percentFat = recipe?.nutrition?.caloricBreakdown.percentFat
-    const percentCarbs = recipe?.nutrition?.caloricBreakdown.percentCarbs
+    const percentProtein = recipe?.nutrition?.caloricBreakdown.percentProtein;
+    const percentFat = recipe?.nutrition?.caloricBreakdown.percentFat;
+    const percentCarbs = recipe?.nutrition?.caloricBreakdown.percentCarbs;
 
     return (
       <>
-      <View style={{...styles.rowContainer, width:'100%'}}>
-        <Macro macro='Protein' percentage={percentProtein} goal={100} />
-        <Macro macro='Fat' percentage={percentFat} goal={100} />
-        <Macro macro='Carbs' percentage={percentCarbs} goal={100} />
-      </View>
+        <View style={{ ...styles.rowContainer, width: '100%' }}>
+          <Macro macro='Protein' percentage={percentProtein} goal={100} />
+          <Macro macro='Fat' percentage={percentFat} goal={100} />
+          <Macro macro='Carbs' percentage={percentCarbs} goal={100} />
+        </View>
       </>
     );
-  }
+  };
 
   const onClickFavourite = () => {
     setIsFavourite(!isFavourite);
@@ -91,13 +93,24 @@ export const RecipeScreen = () => {
     },
     {
       title: 'Nutrition',
-      details: <Macros/>,
+      details: <Macros />,
     },
   ];
 
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
+        <Pressable
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Octicons
+            name='chevron-left'
+            size={24}
+            color='white'
+            style={{ margin: 20 }}
+          />
+        </Pressable>
         <Image
           source={{ uri: recipe.image }}
           style={{ width: '100%', height: 200 }}
@@ -119,7 +132,7 @@ export const RecipeScreen = () => {
               </Pressable>
             </View>
             <View style={styles.categoriesContainer}>
-              {
+              {recipe &&
                 recipe?.diets.slice(0, 4).map((category, index) => (
                   <View key={index} style={styles.category}>
                     <BodySmall style={{ color: '#52B175' }}>
@@ -138,13 +151,14 @@ export const RecipeScreen = () => {
 
               {isOpenMoreTags && (
                 <>
-                  {recipe?.diets.slice(4).map((category, index) => (
-                    <View key={index} style={styles.category}>
-                      <BodySmall style={{ color: '#52B175' }}>
-                        {category}
-                      </BodySmall>
-                    </View>
-                  ))}
+                  {recipe &&
+                    recipe?.diets.slice(4).map((category, index) => (
+                      <View key={index} style={styles.category}>
+                        <BodySmall style={{ color: '#52B175' }}>
+                          {category}
+                        </BodySmall>
+                      </View>
+                    ))}
                 </>
               )}
             </View>
@@ -170,7 +184,7 @@ export const RecipeScreen = () => {
         </ScrollView>
         <View style={styles.addToCartButtonContainer}>
           <Button isFullWidth={true} onPress={() => console.log('Add to Cart')}>
-          Add missing ingredients to list
+            Add missing ingredients to list
           </Button>
         </View>
       </SafeAreaView>
@@ -181,6 +195,10 @@ export const RecipeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backButton: {
+    position: 'absolute',
+    zIndex: 1,
   },
   detailContainer: {
     paddingVertical: 0,
