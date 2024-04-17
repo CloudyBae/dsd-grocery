@@ -14,16 +14,14 @@ export const AcctSavedRecipesScreen = () => {
           <View style={styles.homeContainer}>
             <AcctHeader />
             <Text style={styles.title}>Saved Recipes</Text>
-
-            <AcctRecipeBar />
-
+            <AcctRecipeBar onPress={() => navigation.navigate('Recipe')} />
             <View style={styles.buttonContainer}>
               <MainButton title='Save' />
             </View>
           </View>
         </ScrollView>
-        <Nav />
       </View>
+        <Nav />
     </SafeAreaView>
   );
 };

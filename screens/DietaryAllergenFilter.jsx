@@ -22,8 +22,8 @@ export const DietaryAllergenFilterScreen = () => {
             </View>
           </View>
         </ScrollView>
-        <Nav />
       </View>
+        <Nav />
     </SafeAreaView>
   );
 };

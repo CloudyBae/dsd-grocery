@@ -12,6 +12,7 @@ import { SignUpScreen } from './screens/SignUp';
 import { DietaryAllergenFilterScreen } from './screens/DietaryAllergenFilter';
 import { AcctSavedRecipesScreen } from './screens/AcctSavedRecipes';
 import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
+import { AccountDetailsScreen } from './screens/AccountDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +74,11 @@ function App() {
         <Stack.Screen
           name='AcctSavedRecipes'
           component={AcctSavedRecipesScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='AccountDetailsScreen'
+          component={AccountDetailsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

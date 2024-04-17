@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AcctHeader from '../components/AcctHeader';
+import Nav from '../components/Nav';
 
-const AccountDetailsScreen = () => {
+export const AccountDetailsScreen = () => {
   const [username, setUsername] = useState('jsmith');
   const [email, setEmail] = useState('johnsmith@gmail.com');
   const [isEditing, setIsEditing] = useState(false);
@@ -79,6 +80,7 @@ const AccountDetailsScreen = () => {
           )}
         </View>
       </View>
+        <Nav style={styles.navBar} />
     </View>
   );
 };
@@ -118,4 +120,3 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
 });
-export default AccountDetailsScreen;

@@ -4,7 +4,6 @@ import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
 
 export const AccountSettingsMenu = () => {
-
   const navigation = useNavigation();
 
   return (
@@ -38,7 +37,7 @@ export const AccountSettingsMenu = () => {
         <Text style={styles.menuText}>Dietary Preferences</Text>
       </Pressable>
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('AccountDetailsScreen')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -71,7 +70,7 @@ export const AccountSettingsMenu = () => {
       </Pressable>
 
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('Login')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -86,7 +85,7 @@ export const AccountSettingsMenu = () => {
         />
         <Text style={styles.menuText}>Log Out</Text>
       </Pressable>
-      <Nav/>
+      <Nav />
     </View>
   );
 };

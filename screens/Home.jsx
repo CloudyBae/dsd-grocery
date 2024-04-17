@@ -51,11 +51,11 @@ export const HomeScreen = () => {
               <View style={styles.separator}></View>
             </View>
             <DietFilter />
-            <RecipeList numberOfRecipes={10} />
+            {/* <RecipeList numberOfRecipes={10} /> */}
           </View>
         </ScrollView>
-        <Nav />
       </View>
+        <Nav />
     </SafeAreaView>
   );
 };
