@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import AcctHeader from '../components/AcctHeader';
 
 const AccountDetailsScreen = () => {
@@ -18,8 +18,8 @@ const AccountDetailsScreen = () => {
 
   const handleDelete = () => {
     // Perform delete action, like resetting the username to default
-    setUsername('Account Username');
-    setEmail('example@example.com');
+    setUsername('John Smith');
+    setEmail('johnsmith@gmail.com');
     setIsEditing(false);
   };
 
