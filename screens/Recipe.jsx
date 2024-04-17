@@ -184,8 +184,6 @@ const styles = StyleSheet.create({
 
     gap: 5,
     flexWrap: 'wrap',
-    // paddingVertical: 4,
-    // paddingHorizontal: 0,
   },
   category: {
     backgroundColor: 'white',
