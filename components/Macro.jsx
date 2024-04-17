@@ -7,7 +7,7 @@ const Macro = ({ macro, percentage, goal }) => {
   const completed = ((percentage / 100) * goal).toFixed(2);
 
   return (
-    <View >
+    <View>
       <AnimatedCircularProgress
         size={100}
         width={10}
@@ -16,11 +16,9 @@ const Macro = ({ macro, percentage, goal }) => {
         backgroundColor='#ccc'
       >
         {(fill) => (
-          <View style={{display:"flex", alignItems:"center"}}>
+          <View style={{ display: 'flex', alignItems: 'center' }}>
             <ButtonSmall>{completed ? completed : 0}</ButtonSmall>
-            <BodySmall>
-             of {goal ? goal : 0}g
-            </BodySmall>
+            <BodySmall>of {goal ? goal : 0}g</BodySmall>
           </View>
         )}
       </AnimatedCircularProgress>
@@ -33,4 +31,3 @@ const Macro = ({ macro, percentage, goal }) => {
 };
 
 export default Macro;
-
