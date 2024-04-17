@@ -21,7 +21,7 @@ export const AcctSavedRecipesScreen = () => {
           </View>
         </ScrollView>
       </View>
-        <Nav />
+      <Nav />
     </SafeAreaView>
   );
 };

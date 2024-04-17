@@ -80,7 +80,7 @@ export const AccountDetailsScreen = () => {
           )}
         </View>
       </View>
-        <Nav style={styles.navBar} />
+      <Nav style={styles.navBar} />
     </View>
   );
 };
