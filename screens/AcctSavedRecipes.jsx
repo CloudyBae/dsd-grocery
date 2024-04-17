@@ -1,12 +1,11 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import DietaryFilters from '../containers/DietaryFilters';
-import AllergenFilters from '../containers/AllergenFilters';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AcctHeader from '../components/AcctHeader';
+import AcctRecipeBar from '../components/AcctRecipeBar';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
 
-export const DietaryAllergenFilterScreen = () => {
+export const AcctSavedRecipesScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -14,8 +13,9 @@ export const DietaryAllergenFilterScreen = () => {
         <ScrollView>
           <View style={styles.homeContainer}>
             <AcctHeader />
-            <DietaryFilters />
-            <AllergenFilters />
+            <Text style={styles.title}>Saved Recipes</Text>
+
+            <AcctRecipeBar />
 
             <View style={styles.buttonContainer}>
               <MainButton title='Save' />
@@ -33,6 +33,16 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 25,
     marginBottom: 50,
+    fontFamily: 'Gilroy-Bold',
+    backgroundColor: 'white',
+  },
+  title: {
+    height: 60,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    fontWeight: 'bold',
+    fontSize: 24,
+    paddingTop: 20,
   },
   buttonContainer: {
     padding: 20,
@@ -42,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DietaryAllergenFilterScreen;
+export default AcctSavedRecipesScreen;
