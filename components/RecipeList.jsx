@@ -3,10 +3,11 @@ import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 import { SPOONACULAR_API_KEY } from '@env';
+import { useNavigation } from '@react-navigation/native';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
-
+  const navigation = useNavigation();
   const fetchRecipes = async () => {
     try {
       const response = await fetch(
@@ -26,7 +27,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
 
   const renderRecipe = ({ item }) => {
     return (
-      <Pressable onPress={() => console.log('Recipe Detail Page')}>
+      <Pressable onPress={() => navigation.navigate('Recipe', { id: item.id })}>
         <RecipeCard
           title={item.title}
           image={item.image}

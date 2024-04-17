@@ -1,9 +1,25 @@
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import FavoriteRecipes
-from .models import User
-from .serializers import FavoriteRecipeSerializer
+from rest_framework.permissions import IsAuthenticated, BasePermission
+
+from .models import FavoriteRecipes, User, ShoppingList
+from .serializers import FavoriteRecipeSerializer, ShoppingListSerializer
+
+
+class IsOwner(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.user == request.user
+
+
+class ShoppingListViewSet(viewsets.ModelViewSet):
+    queryset = ShoppingList.objects.all()
+    serializer_class = ShoppingListSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_pk"]
+        return ShoppingList.objects.filter(user_id=user_id)
 
 
 @api_view(["GET"])
@@ -68,10 +84,3 @@ def delete_favorite_recipe(request, user_id, favorite_recipe_id):
 
     favorite_recipe.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-"""
-class ShoppingListCreate(generics.ListCreateAPIView):
-    queryset = ShoppingList.objects.all()
-    serializer_class = ShoppingListSerializer
-"""

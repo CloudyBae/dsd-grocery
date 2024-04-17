@@ -1,7 +1,18 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from . import views
+from .views import ShoppingListViewSet
+
+router = DefaultRouter()
+router.register(
+    r"users/(?P<user_pk>\d+)/shoppingList",
+    ShoppingListViewSet,
+    basename="user-shoppinglist",
+)
 
 urlpatterns = [
+    path("", include(router.urls)),
     path(
         "favorite_recipes/<int:user_id>",
         views.get_favorite_recipes,

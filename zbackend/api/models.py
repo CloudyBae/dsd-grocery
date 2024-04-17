@@ -24,9 +24,6 @@ class ShoppingList(models.Model):
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.ingredient} - {self.quantity}"
-
 
 class FavoriteRecipes(models.Model):
     servings = models.IntegerField()
@@ -48,3 +45,9 @@ class Macros(models.Model):
     macro_type = models.CharField(max_length=50)
     ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+# class PlannedRecipes(models.Model):
+# dateField (what date the recipe is for)
+# userId
+# recipeId

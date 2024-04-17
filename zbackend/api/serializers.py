@@ -1,27 +1,19 @@
 from rest_framework import serializers
-from .models import FavoriteRecipes
-from .models import DietaryPreferences
-from .models import User
+from .models import FavoriteRecipes, DietaryPreferences, User, Ingredients, ShoppingList
 
-"""
-from rest_framework import serializers
-from .models import Ingredient
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Ingredient
-        fields = ['ingredientId']
-"""
-"""
-from rest_framework import serializers
-from . import models
+        model = Ingredients
+        fields = ["id", "quantity_available", "preference"]
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
+    ingredient = IngredientSerializer(read_only=True)
+
     class Meta:
         model = ShoppingList
-        fields = ["id", "user_id", "ingredient_id", "quantity", "is_purchased"]
-"""
+        fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
