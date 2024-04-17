@@ -1,7 +1,12 @@
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
+import Nav from '../components/Nav';
 
 export const AccountSettingsMenu = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <AcctHeader />
@@ -17,7 +22,7 @@ export const AccountSettingsMenu = () => {
       />
 
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('DietaryAllergenFilter')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -97,6 +102,7 @@ export const AccountSettingsMenu = () => {
         />
         <Text style={styles.menuText}>Log Out</Text>
       </Pressable>
+      <Nav/>
     </View>
   );
 };
