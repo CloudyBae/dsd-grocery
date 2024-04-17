@@ -56,18 +56,18 @@ export const RecipeScreen = () => {
   const Macros = () => {
     const nutrients = recipe?.nutrition?.nutrients;
     return (
-      <View style={{...styles.columnContainer, alignItems:'flex-start'}}>
-        {nutrients.map(({name, amount, unit,percentOfDailyNeeds }, index) => (
-          <View
-          key={index}
-            style={{ ...styles.rowContainer, gap:5 }}
-          >
+      <View style={{ ...styles.columnContainer, alignItems: 'flex-start' }}>
+        {nutrients.map(({ name, amount, unit, percentOfDailyNeeds }, index) => (
+          <View key={index} style={{ ...styles.rowContainer, gap: 5 }}>
             <Octicons name='dot-fill' size={24} color='#52B175' />
-            <View style={{...styles.rowContainer, gap:5}}>
-            <BodySmall style={{ textTransform: 'uppercase' }}>
-              {name}:
-            </BodySmall>
-            <ButtonLarge>{amount}{unit}</ButtonLarge>
+            <View style={{ ...styles.rowContainer, gap: 5 }}>
+              <BodySmall style={{ textTransform: 'uppercase' }}>
+                {name}:
+              </BodySmall>
+              <ButtonLarge>
+                {amount}
+                {unit}
+              </ButtonLarge>
             </View>
           </View>
         ))}
