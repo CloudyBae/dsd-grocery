@@ -1,11 +1,13 @@
-# Example code of api/serializer.py
-# Remove this example and write your own code
-"""
 from rest_framework import serializers
-from .models import Ingredient
+from .models import FavoriteRecipes
+from .models import DietaryPreferences
+from .models import User
 
-class IngredientSerializer(serializers.ModelSerializer):
+class FavoriteRecipeSerializer(serializers.ModelSerializer):
+    preference = serializers.PrimaryKeyRelatedField(queryset=DietaryPreferences.objects.all())
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
-        model = Ingredient
-        fields = ['ingredientId']
-"""
+        model = FavoriteRecipes
+        fields = ['servings', 'preference', 'user', 'id', 'name', 'image', 'minutes', 'likes']
+
