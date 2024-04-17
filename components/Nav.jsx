@@ -39,9 +39,9 @@ const Nav = () => {
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Search button was pressed!'
-        onPress={() => navigation.navigate('Search')}
+        onPress={() => navigation.navigate('Settings')}
       >
-        <FontAwesome5 name='search' style={styles.icon} />
+        <MaterialCommunityIcons name='account-circle' style={styles.icon} />
       </TouchableOpacity>
     </View>
   );
