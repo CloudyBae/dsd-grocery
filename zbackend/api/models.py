@@ -36,7 +36,8 @@ class Macros(models.Model):
     ingredient = models.ForeignKey(Ingredients, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
 
-#class PlannedRecipes(models.Model):
-    #dateField (what date the recipe is for)
-    #userId
-    #recipeId
+
+# class PlannedRecipes(models.Model):
+# dateField (what date the recipe is for)
+# userId
+# recipeId
