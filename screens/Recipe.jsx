@@ -54,18 +54,24 @@ export const RecipeScreen = () => {
   };
 
   const Macros = () => {
-    const percentProtein = recipe?.nutrition?.caloricBreakdown.percentProtein;
-    const percentFat = recipe?.nutrition?.caloricBreakdown.percentFat;
-    const percentCarbs = recipe?.nutrition?.caloricBreakdown.percentCarbs;
-
+    const nutrients = recipe?.nutrition?.nutrients;
     return (
-      <>
-        <View style={{ ...styles.rowContainer, width: '100%' }}>
-          <Macro macro='Protein' percentage={percentProtein} goal={100} />
-          <Macro macro='Fat' percentage={percentFat} goal={100} />
-          <Macro macro='Carbs' percentage={percentCarbs} goal={100} />
-        </View>
-      </>
+      <View style={{...styles.columnContainer, alignItems:'flex-start'}}>
+        {nutrients.map(({name, amount, unit,percentOfDailyNeeds }, index) => (
+          <View
+          key={index}
+            style={{ ...styles.rowContainer, gap:5 }}
+          >
+            <Octicons name='dot-fill' size={24} color='#52B175' />
+            <View style={{...styles.rowContainer, gap:5}}>
+            <BodySmall style={{ textTransform: 'uppercase' }}>
+              {name}:
+            </BodySmall>
+            <ButtonLarge>{amount}{unit}</ButtonLarge>
+            </View>
+          </View>
+        ))}
+      </View>
     );
   };
 
