@@ -56,6 +56,12 @@ export const ButtonText = ({ children, style }) => {
   return <Text style={[styles.buttonText, style]}>{children}</Text>;
 };
 
+// ButtonText component
+export const ButtonSmall = ({ children, style }) => {
+  useCustomFonts();
+  return <Text style={[styles.buttonSmall, style]}>{children}</Text>;
+};
+
 const styles = StyleSheet.create({
   title: {
     fontFamily: 'Gilroy-Bold',
@@ -92,6 +98,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-Medium',
     fontSize: 18,
     lineHeight: 18,
+    color: '#181725',
+  },
+  buttonSmall: {
+    fontFamily: 'Gilroy-Bold',
+    fontSize: 14,
+    lineHeight: 14,
     color: '#181725',
   },
 });

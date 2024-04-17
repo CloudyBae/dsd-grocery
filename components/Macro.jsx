@@ -1,38 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { Body, BodySmall, ButtonSmall } from './Typography';
 
 const Macro = ({ macro, percentage, goal }) => {
-  const completed = (percentage / 100) * goal;
+  const completed = ((percentage / 100) * goal).toFixed(2);
 
   return (
-    <View style={styles.macroContainer}>
+    <View >
       <AnimatedCircularProgress
         size={100}
-        width={15}
+        width={10}
         fill={percentage}
         tintColor='#52B175'
         backgroundColor='#ccc'
       >
         {(fill) => (
-          <Text>
-            {completed ? completed : 0}/{goal ? goal : 0}g
-          </Text>
+          <View style={{display:"flex", alignItems:"center"}}>
+            <ButtonSmall>{completed ? completed : 0}</ButtonSmall>
+            <BodySmall>
+             of {goal ? goal : 0}g
+            </BodySmall>
+          </View>
         )}
       </AnimatedCircularProgress>
-      <Text>{macro}</Text>
-      <Text>{goal ? goal - completed : 0}g left</Text>
+      <View style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
+        <Body style={{ color: 'black' }}>{macro}</Body>
+        <BodySmall>{goal ? (goal - completed).toFixed(2) : 0}g left</BodySmall>
+      </View>
     </View>
   );
 };
 
 export default Macro;
 
-const styles = StyleSheet.create({
-  macroContainer: {
-    borderWidth: 1,
-    padding: 5,
-    margin: 5,
-    alignItems: 'center',
-  },
-});

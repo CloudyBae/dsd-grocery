@@ -13,6 +13,7 @@ import { BodySmall, ButtonLarge, Title } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
+import Macro from '../components/Macro';
 import { useRoute } from '@react-navigation/native';
 
 const Detail = ({ title, value }) => {
@@ -50,6 +51,22 @@ export const RecipeScreen = () => {
     return <div dangerouslySetInnerHTML={{ __html: value }} />;
   };
 
+  const Macros = () => {
+    const percentProtein = recipe?.nutrition?.caloricBreakdown.percentProtein
+    const percentFat = recipe?.nutrition?.caloricBreakdown.percentFat
+    const percentCarbs = recipe?.nutrition?.caloricBreakdown.percentCarbs
+
+    return (
+      <>
+      <View style={{...styles.rowContainer, width:'100%'}}>
+        <Macro macro='Protein' percentage={percentProtein} goal={100} />
+        <Macro macro='Fat' percentage={percentFat} goal={100} />
+        <Macro macro='Carbs' percentage={percentCarbs} goal={100} />
+      </View>
+      </>
+    );
+  }
+
   const onClickFavourite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -73,8 +90,8 @@ export const RecipeScreen = () => {
       details: <View style={styles.columnContainer}>{ingredients}</View>,
     },
     {
-      title: 'Wine Pairing ',
-      details: recipe.winePairing.pairingText,
+      title: 'Nutrition',
+      details: <Macros/>,
     },
   ];
 
@@ -102,15 +119,15 @@ export const RecipeScreen = () => {
               </Pressable>
             </View>
             <View style={styles.categoriesContainer}>
-              {recipe?.dishTypes.length > 3 &&
-                recipe?.dishTypes.slice(0, 4).map((category, index) => (
+              {
+                recipe?.diets.slice(0, 4).map((category, index) => (
                   <View key={index} style={styles.category}>
                     <BodySmall style={{ color: '#52B175' }}>
                       {category}
                     </BodySmall>
                   </View>
                 ))}
-              {!isOpenMoreTags && recipe.dishTypes.length > 4 && (
+              {!isOpenMoreTags && recipe?.diets.length > 4 && (
                 <Pressable
                   style={styles.category}
                   onPress={() => setOpenMoreTags(true)}
@@ -121,7 +138,7 @@ export const RecipeScreen = () => {
 
               {isOpenMoreTags && (
                 <>
-                  {recipe.dishTypes.slice(4).map((category, index) => (
+                  {recipe?.diets.slice(4).map((category, index) => (
                     <View key={index} style={styles.category}>
                       <BodySmall style={{ color: '#52B175' }}>
                         {category}
@@ -153,7 +170,7 @@ export const RecipeScreen = () => {
         </ScrollView>
         <View style={styles.addToCartButtonContainer}>
           <Button isFullWidth={true} onPress={() => console.log('Add to Cart')}>
-            Add To Basket
+          Add missing ingredients to list
           </Button>
         </View>
       </SafeAreaView>
