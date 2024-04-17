@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
 
 const DietFilter = () => {
@@ -71,27 +77,28 @@ const DietFilter = () => {
       });
   };
   const renderItem = ({ item }) => (
-    <TouchableOpacity
-      style={[
-        styles.categoryContainer,
-        selectedCategory === item.id && styles.selectedCategory,
-      ]}
-      onPress={() => handleDietPrerefence(item)}
-    >
-      <Text
+    <View style={styles.categoryContainer}>
+      <TouchableOpacity
         style={[
-          styles.categoryText,
-          selectedCategory === item.id && styles.selectedCategoryText,
+          styles.categoryButton,
+          selectedCategory === item.id && styles.selectedCategory,
         ]}
+        onPress={() => handleDietPrerefence(item)}
       >
-        {item.category}
-      </Text>
-    </TouchableOpacity>
+        <Text
+          style={[
+            styles.categoryText,
+            selectedCategory === item.id && styles.selectedCategoryText,
+          ]}
+        >
+          {item.category}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 
   return (
     <>
-      <Text style={styles.titleText}>Diet Preference</Text>
       <FlatList horizontal data={categories} renderItem={renderItem} />
     </>
   );
@@ -101,14 +108,18 @@ export default DietFilter;
 
 const styles = StyleSheet.create({
   categoryContainer: {
-    marginRight: 15,
+    marginRight: 20,
+    marginLeft: 30,
+    alignItems: 'center',
+  },
+  categoryButton: {
     marginVertical: 10,
     borderRadius: 8,
-    padding: 10,
+    padding: 7,
     backgroundColor: '#ccc',
   },
   categoryText: {
-    fontSize: 18,
+    fontSize: 15,
   },
   titleText: {
     fontSize: 20,
