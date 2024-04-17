@@ -3,9 +3,8 @@ import AcctHeader from '../components/AcctHeader';
 
 export const AccountSettingsMenu = () => {
   return (
-
     <View style={styles.container}>
-        <AcctHeader />
+      <AcctHeader />
       <View
         style={{
           width: '80%',
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   menuButton: {
     flexDirection: 'row',
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     height: 75,
     width: '90%',
   },
-  
+
   tagImg: {
     height: 30,
     width: 30,
