@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from .models import FavoriteRecipes, DietaryPreferences, User, Ingredients, ShoppingList
+from .models import (
+    FavoriteRecipes,
+    DietaryPreferences,
+    User,
+    Ingredients,
+    ShoppingList,
+    Macros,
+)
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -14,6 +21,12 @@ class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
         fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
+
+
+class MacrosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Macros
+        fields = ["id", "user", "recipe", "macro_type", "ingredient", "quantity"]
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
