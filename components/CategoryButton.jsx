@@ -1,18 +1,25 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const CategoryButton = ({ title, onPress }) => {
+const CategoryButton = ({
+  title,
+  onPress,
+  customButtonStyling,
+  customTextStyling,
+}) => {
   return (
     <TouchableOpacity
-      style={stlyes.categoryButton}
+      style={[stlyes.categoryButton, customButtonStyling]}
       onPress={
         onPress ||
         (() =>
           console.log(
-            'To use this button, ensure that you have set up a callback function (onPress).'
+            `${title} - To use this button, ensure that you have set up a callback function (onPress).`
           ))
       }
     >
-      <Text style={stlyes.titleText}>{title || 'Button'}</Text>
+      <Text style={[stlyes.titleText, customTextStyling]}>
+        {title || 'Button'}
+      </Text>
     </TouchableOpacity>
   );
 };
