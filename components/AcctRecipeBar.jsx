@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default AddRecipeBar = (props) => {
+export default AcctRecipeBar = (props) => {
   const {
     onPress,
     image = 'https://iambaker.net/wp-content/uploads/2020/03/sourdough-bread-4-768x644.jpg',
@@ -44,6 +45,14 @@ export default AddRecipeBar = (props) => {
           {numIngredients + ' '}
           ingredients
         </Text>
+      </View>
+      <View style={styles.removeImg}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => console.log('Remove Button Pressed')}
+        >
+          <MaterialCommunityIcons name='close' size={45} color='black' />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -99,5 +108,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
 
     paddingBottom: 4,
+  },
+  removeImg: {
+    justifyContent: 'flex-end',
+  },
+  iconContainer: {
+    height: 40,
+    width: 40,
   },
 });
