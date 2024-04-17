@@ -1,27 +1,33 @@
 from django.http import Http404
+from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, BasePermission
+
 from .models import ShoppingList
 from .serializers import ShoppingListSerializer
-from .models import Ingredients
 
-class ShoppingListViews(APIView):
-    def get(self, request):
-        try:
-            shoppingList = ShoppingList.objects.all()
-            serializer = ShoppingListSerializer(shoppingList, many=True)
-            return Response(serializer.data)
-        except Exception as ex: 
-            return Response({'Error': str(ex)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-    def post(self, request):
-        try:
-            serializer = ShoppingListSerializer(data = request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as ex:
-            return Response({'Error': str(ex)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+class IsOwner(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.user == request.user
 
+class ShoppingListViewSet(viewsets.ModelViewSet):
+    queryset = ShoppingList.objects.all()
+    serializer_class = ShoppingListSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        shopping_list = queryset.first()
+
+        if not shopping_list:
+            ShoppingList.objects.create(user=request.user)
+            return Response({})
+        
+        serializer = self.get_serializer(shopping_list)
+        return Response(serializer.data)
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_pk']
+        return ShoppingList.objects.filter(user_id=user_id)

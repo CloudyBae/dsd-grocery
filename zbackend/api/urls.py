@@ -1,17 +1,10 @@
-# Example code of api/urls.py
-# Remove this example and write your own code
-"""
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ShoppingListViewSet
+
+router = DefaultRouter()
+router.register(r'users/(?P<user_pk>\d+)/shoppingList', ShoppingListViewSet, basename='user-shoppinglist')
 
 urlpatterns = [
-    path('ingredients/', views.IngredientListCreateAPIView.as_view()),
-]
-"""
-from django.urls import path
-from .views import ShoppingList
-
-urlpatterns = [
-    path('users/{id}/shoppingList', ShoppingList.as_view()),
-    
+    path('', include(router.urls)),
 ]

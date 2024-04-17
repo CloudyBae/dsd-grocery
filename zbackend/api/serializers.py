@@ -1,12 +1,13 @@
 from rest_framework import serializers
-from .models import Ingredients, ShoppingList
-
-class ShoppingListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ShoppingList
-        fields = ['id', 'ingredient', 'quantity', 'is_purchased' ]
+from .models import ShoppingList, Ingredients
 
 class IngredientSerializer(serializers.ModelSerializer):
-    class Meta: 
+    class Meta:
         model = Ingredients
-        fields = ['id', 'quantiy', 'user', 'preference']
+        fields = ['id', 'quantity_available', 'preference']
+
+class ShoppingListSerializer(serializers.ModelSerializer):
+    ingredient = IngredientSerializer(read_only=True)
+    class Meta:
+        model = ShoppingList
+        fields = ['id', 'ingredient', 'quantity', 'is_purchased', 'user']

@@ -22,9 +22,6 @@ class ShoppingList(models.Model):
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.ingredient} - {self.quantity}"
-
 
 class FavoriteRecipes(models.Model):
     servings = models.IntegerField()
