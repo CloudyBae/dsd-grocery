@@ -7,75 +7,64 @@ import {
   StatusBar,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { Body, BodySmall } from './Typography';
 
-const Accordion = () => {
+const Accordion = ({
+  listItem =[{
+    title,
+    details
+  }],
+}) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const list = [
-    {
-      title: 'Product Details',
-      details:
-        'Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a heartful and varied diet.',
-    },
-    {
-      title: 'Nutritions',
-      details:
-        'Calories 94.6. Water 156 grams. Protein 0.43 grams. Carbs 25.1 grams. Sugar 18.9 grams. Fiber 4.37 grams. Fat 0.3 grams.',
-    },
-    {
-      title: 'Review',
-      details: 'Truly, spectacularly delicious!',
-    },
-  ];
-
   return (
-    <>
+    <View style={styles.accordionContainer}>
       <StatusBar />
       <View style={styles.container}>
-        {list.map((item, index) => (
+        {listItem.map((item, index) => (
           <View key={index} style={styles.card}>
             <TouchableOpacity
               style={styles.cardHeader}
               onPress={() => toggleAccordion(index)}
             >
-              <Text style={styles.cardHeader}>{item.title}</Text>
+              <Body style={{color:'#181725'}}>{item.title}</Body>
               <AntDesign
                 name={activeIndex === index ? 'up' : 'down'}
-                size={20}
+                size={18}
                 color='black'
               />
             </TouchableOpacity>
             {activeIndex === index && (
               <View style={styles.cardContent}>
-                <Text style={styles.text}>{item.details}</Text>
+                 <BodySmall>{item.details}</BodySmall>
               </View>
             )}
           </View>
         ))}
       </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+ 
   container: {
-    margin: 16,
-    width: 364,
-    padding: 20,
+    width: '100%',
   },
   card: {
-    backgroundColor: 'white',
-    borderRadius: 13,
-    marginBottom: 15,
+    borderTopWidth: 1,
+    borderTopColor: '#E2E2E2B2',
+    paddingTop: 15, 
+    paddingBottom: 15, 
+    paddingHorizontal: 0,
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 16,
     fontSize: 18,
     fontWeight: 'bold',
   },

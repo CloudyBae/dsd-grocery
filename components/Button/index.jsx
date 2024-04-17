@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonContainer, Enhancer } from './styles';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { ButtonText } from '../Typography';
 
 const Button = ({
@@ -31,7 +31,7 @@ const Button = ({
       {isLoading ? (
         <ActivityIndicator color='#ffffff' />
       ) : (
-        <>
+        <View style={{display:"flex", alignItems:"center", width:"100%"}}>
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
           {children && (
             <ButtonText
@@ -44,7 +44,7 @@ const Button = ({
             </ButtonText>
           )}
           {endEnhancer && <Enhancer>{endEnhancer}</Enhancer>}
-        </>
+        </View>
       )}
     </ButtonContainer>
   );

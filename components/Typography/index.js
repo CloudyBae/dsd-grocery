@@ -58,14 +58,15 @@ export const ButtonText = ({ children, style }) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'Gilroy-Medium',
+    fontFamily: 'Gilroy-Bold',
     fontSize: 24,
-    lineHeight: 18,
+    lineHeight: 24,
     color: '#030303',
   },
   body: {
     fontFamily: 'Gilroy-Regular',
     fontSize: 16,
+    fontWeight: '600',
     lineHeight: 15,
     color: '#7C7C7C',
   },
