@@ -3,8 +3,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, BasePermission
 
-from .models import FavoriteRecipes, User, ShoppingList
-from .serializers import FavoriteRecipeSerializer, ShoppingListSerializer
+from .models import FavoriteRecipes, User, ShoppingList, Macros
+from .serializers import (
+    FavoriteRecipeSerializer,
+    ShoppingListSerializer,
+    MacrosSerializer,
+)
 
 
 class IsOwner(BasePermission):
@@ -20,6 +24,22 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
         return ShoppingList.objects.filter(user_id=user_id)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class MacrosViewSet(viewsets.ModelViewSet):
+    queryset = Macros.objects.all()
+    serializer_class = MacrosSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_pk"]
+        return Macros.objects.filter(user_id=user_id)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 @api_view(["GET"])
