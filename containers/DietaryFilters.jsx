@@ -8,56 +8,67 @@ export default function DietaryFilters() {
       id: 0,
       label: 'Gluten Free',
       checked: false,
+      key: 'Gluten Free',
     },
     {
       id: 1,
       label: 'Ketogenic',
       checked: false,
+      key: 'Ketogenic',
     },
     {
       id: 2,
       label: 'Vegetarian',
       checked: false,
+      key: 'Vegetarian',
     },
     {
       id: 3,
       label: 'Lacto-Vegetarian',
       checked: false,
+      key: 'Lacto-Vegetarian',
     },
     {
       id: 4,
       label: 'Ovo-Vegetarian',
       checked: false,
+      key: 'Ovo-Vegetarian',
     },
     {
       id: 5,
       label: 'Vegan',
       checked: false,
+      key: 'Vegan',
     },
     {
       id: 6,
       label: 'Pescetarian',
       checked: false,
+      key: 'Pescetarian',
     },
     {
       id: 7,
       label: 'Paleo',
       checked: false,
+      key: 'Paleo',
     },
     {
       id: 8,
       label: 'Primal',
       checked: false,
+      key: 'Primal',
     },
     {
       id: 9,
       label: 'Low FODMAP',
       checked: false,
+      key: 'Low FODMAP',
     },
     {
       id: 10,
       label: 'Whole30',
       checked: false,
+      key: 'Whole30',
     },
   ]);
 
@@ -80,7 +91,7 @@ export default function DietaryFilters() {
             title={item.label}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
-            key={item.name}
+            key={item.key}
           />
         );
       })}

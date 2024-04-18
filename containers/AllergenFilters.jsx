@@ -8,61 +8,73 @@ export default function AllergenFilters() {
       id: 0,
       label: 'Dairy',
       checked: false,
+      key: 'Dairy',
     },
     {
       id: 1,
       label: 'Egg',
       checked: false,
+      key: 'Egg',
     },
     {
       id: 2,
       label: 'Gluten',
       checked: false,
+      key: 'Gluten',
     },
     {
       id: 3,
       label: 'Grain',
       checked: false,
+      key: 'Grain',
     },
     {
       id: 4,
       label: 'Peanut',
       checked: false,
+      key: 'Peanut',
     },
     {
       id: 5,
       label: 'Seafood',
       checked: false,
+      key: 'Seafood',
     },
     {
       id: 6,
       label: 'Sesame',
       checked: false,
+      key: 'Sesame'
     },
     {
       id: 7,
       label: 'Shellfish',
       checked: false,
+      key: 'Shellfish',
     },
     {
       id: 8,
       label: 'Soy',
       checked: false,
+      key: 'Soy',
     },
     {
       id: 9,
       label: 'Sulfite',
       checked: false,
+      key: 'Sulfite'
     },
     {
       id: 10,
       label: 'Tree Nut',
       checked: false,
+      key: 'Tree Nut'
     },
     {
-      id: 11,
+      index: 11,
       label: 'Wheat',
       checked: false,
+      key: 'Wheat'
     },
   ]);
 
@@ -83,8 +95,8 @@ export default function AllergenFilters() {
             checkedColor='#52B175'
             title={item.label}
             checked={item.isCheck || false}
-            onPress={(val) => onValueChange(item, index)}
-            key={item.name}
+            onPress={(value) => onValueChange(item, index)}
+            key={item.key}
           />
         );
       })}
