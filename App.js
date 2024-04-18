@@ -2,7 +2,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/Home';
-import { SplashScreen } from './screens/Splash';
 import { IngredientScreen } from './screens/Ingredient';
 import { RecipeScreen } from './screens/Recipe';
 import { FilterScreen } from './screens/Filter';
@@ -19,12 +18,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Splash'>
-        <Stack.Screen
-          name='Splash'
-          component={SplashScreen}
-          options={{ headerShown: false }}
-        />
+      <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen
           name='Home'
           component={HomeScreen}
