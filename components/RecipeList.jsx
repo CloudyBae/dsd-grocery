@@ -39,7 +39,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   };
   return (
     <>
-      {recipes.length === 0 ? (
+      {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
           <Text style={style.noRecipesText}>No recipes found.</Text>
         </View>
