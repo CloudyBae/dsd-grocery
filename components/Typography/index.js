@@ -1,60 +1,94 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import * as Font from 'expo-font';
 import { useFonts } from 'expo-font';
-
-const customFonts = {
-  'Gilroy-Bold': require('../../assets/fonts/Gilroy-Bold.ttf'),
-  'Gilroy-Regular': require('../../assets/fonts/Gilroy-Regular.ttf'),
-  'Gilroy-Medium': require('../../assets/fonts/Gilroy-Medium.ttf'),
-  'Gilroy-Heavy': require('../../assets/fonts/Gilroy-Heavy.ttf'),
-  'Gilroy-Light': require('../../assets/fonts/Gilroy-Light.ttf'),
-};
 
 // Hook for loading fonts
 const useCustomFonts = () => {
-  useFonts(customFonts);
+  const [loaded] = useFonts({
+    'Gilroy-Bold': require('../../assets/fonts/Gilroy-Bold.ttf'),
+    'Gilroy-Regular': require('../../assets/fonts/Gilroy-Regular.ttf'),
+    'Gilroy-Medium': require('../../assets/fonts/Gilroy-Medium.ttf'),
+    'Gilroy-Heavy': require('../../assets/fonts/Gilroy-Heavy.ttf'),
+    'Gilroy-Light': require('../../assets/fonts/Gilroy-Light.ttf'),
+  });
+
+  return loaded;
 };
 
 // Title component
 export const Title = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.title, style]}>{children}</Text>;
 };
 
 // Body component
 export const Body = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.body, style]}>{children}</Text>;
 };
 
 // BodySmall component
 export const BodySmall = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.bodySmall, style]}>{children}</Text>;
 };
 
 // Caption component
 export const Caption = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.caption, style]}>{children}</Text>;
 };
 
 // ButtonLarge component
 export const ButtonLarge = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.buttonLarge, style]}>{children}</Text>;
 };
 
 // ButtonText component
 export const ButtonText = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.buttonText, style]}>{children}</Text>;
 };
 
 // ButtonText component
 export const ButtonSmall = ({ children, style }) => {
-  useCustomFonts();
+  const loaded = useCustomFonts();
+
+  if (!loaded) {
+    return null;
+  }
+
   return <Text style={[styles.buttonSmall, style]}>{children}</Text>;
 };
 

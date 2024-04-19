@@ -16,8 +16,9 @@ import Accordion from '../components/Accordion';
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
-import HTML from 'react-native-render-html';
 import RenderHTML, { defaultSystemFonts } from 'react-native-render-html';
+import React, { useContext } from 'react';
+import AuthContext from '../auth/auth-context';
 
 const Detail = ({ title, value }) => {
   return (
@@ -34,6 +35,7 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
+  const { userId } = useContext(AuthContext);
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
@@ -78,9 +80,33 @@ export const RecipeScreen = () => {
     );
   };
 
-  const onClickFavourite = () => {
-    setIsFavourite(!isFavourite);
-  };
+  // partly working, need to fix connectiong to api
+  useEffect(() => {
+    const onClickFavourite = async () => {
+      setIsFavourite(!isFavourite);
+      try {
+        const response = await fetch(
+          `http://localhost:8000/favorite_recipes/${userId}/save/`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(recipe),
+          }
+        );
+        if (!response.ok) {
+          console.error('Failed to save favorite recipe');
+        }
+      } catch (error) {
+        console.error('Error saving favorite recipe:', error);
+      }
+    };
+
+    onClickFavourite();
+
+    return () => {};
+  }, [isFavourite, recipe, userId]);
 
   if (loading || !recipe) {
     return (
@@ -262,8 +288,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   favoriteButton: {
-    position: 'absolute',
-    top: 40,
-    right: 20,
+    position: 'relative',
+    zIndex: 2,
   },
 });
