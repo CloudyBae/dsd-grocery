@@ -15,13 +15,13 @@ class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
         fields = ["id", "name", "quantity", "user", "preference"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
         fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
-
         extra_kwargs = {"user": {"read_only": True}, "ingredient": {"required": True}}
 
 
@@ -29,6 +29,7 @@ class MacrosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Macro
         fields = ["id", "user", "recipe", "macro_type", "ingredient", "quantity"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):

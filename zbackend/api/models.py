@@ -51,10 +51,10 @@ class FavoriteRecipe(models.Model):
         related_name="favorite_recipes",
         db_index=True,
     )
-    name = models.CharField(max_length=100, default=False)
-    image = models.CharField(max_length=255, default=False)
-    minutes = models.CharField(max_length=100, default=False)
-    likes = models.CharField(max_length=100, default=False)
+    name = models.CharField(max_length=100)
+    image = models.CharField(max_length=255)
+    minutes = models.CharField(max_length=100)
+    likes = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
