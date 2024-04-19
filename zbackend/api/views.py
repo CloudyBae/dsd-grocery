@@ -26,7 +26,7 @@ User = get_user_model()
 
 class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
-        return obj.owner == request.user
+        return obj.user == request.user
 
 
 class ShoppingListViewSet(viewsets.ModelViewSet):
