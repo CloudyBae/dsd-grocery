@@ -30,16 +30,13 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    username = None
+    username = models.CharField(max_length=20, blank=True, null=True, unique=True)
     email = models.EmailField("email address", unique=True)
-    name = models.CharField(max_length=255, null=True, blank=True)
     dietary_preferences = models.ManyToManyField(
         DietaryPreference, blank=True, related_name="users"
     )
-
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
-
     objects = CustomUserManager()
 
     def __str__(self):

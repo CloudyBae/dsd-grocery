@@ -6,6 +6,7 @@ from .models import (
     Ingredient,
     ShoppingList,
     Macro,
+    PlannedRecipe,
 )
 
 User = get_user_model()
@@ -16,6 +17,12 @@ class DietaryPreferenceSerializer(serializers.ModelSerializer):
         model = DietaryPreference
         fields = ["id", "user", "preference_name", "is_selected"]
         extra_kwargs = {"user": {"read_only": True}}
+
+
+class PlannedRecipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlannedRecipe
+        fields = ["id", "user", "date_for"]
 
 
 class IngredientSerializer(serializers.ModelSerializer):
