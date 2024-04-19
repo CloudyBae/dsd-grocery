@@ -12,6 +12,13 @@ from .models import (
 User = get_user_model()
 
 
+class DietaryPreferenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DietaryPreference
+        fields = ["id", "user", "preference_name", "is_selected"]
+        extra_kwargs = {"user": {"read_only": True}}
+
+
 class PlannedRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlannedRecipe

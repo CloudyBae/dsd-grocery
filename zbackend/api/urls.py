@@ -6,6 +6,7 @@ from .views import (
     ShoppingListViewSet,
     MacrosViewSet,
     IngredientViewSet,
+    DietaryPreferenceViewSet,
     PlannedRecipeViewSet,
 )
 
@@ -20,6 +21,11 @@ router.register(
     r"users/(?P<user_pk>\d+)/ingredients",
     IngredientViewSet,
     basename="user-ingredients",
+)
+router.register(
+    r"users/(?P<user_pk>\d+)/dietaryPreferences",
+    DietaryPreferenceViewSet,
+    basename="user-dietaryPreferences",
 )
 
 router.register(
