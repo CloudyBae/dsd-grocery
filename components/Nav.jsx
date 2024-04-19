@@ -24,13 +24,6 @@ const Nav = () => {
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
-        accessibilityLabel='Recipes button was pressed!'
-        onPress={() => navigation.navigate('Recipe')}
-      >
-        <MaterialCommunityIcons name='chef-hat' style={styles.icon} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        accessible={true}
         accessibilityLabel='Shopping list button was pressed!'
         onPress={() => navigation.navigate('ShoppingList')}
       >
@@ -38,8 +31,8 @@ const Nav = () => {
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
-        accessibilityLabel='Search button was pressed!'
-        onPress={() => navigation.navigate('Settings')}
+        accessibilityLabel='Account Settings button was pressed!'
+        onPress={() => navigation.navigate('AccountSettingsMenu')}
       >
         <MaterialCommunityIcons name='account-circle' style={styles.icon} />
       </TouchableOpacity>

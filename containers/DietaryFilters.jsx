@@ -80,7 +80,7 @@ export default function DietaryFilters() {
             title={item.label}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
-            key={item.name}
+            key={item.id}
           />
         );
       })}
