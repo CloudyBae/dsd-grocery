@@ -2,73 +2,85 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
 
-export default function DietaryFilters() {
+const DietaryFilters = () => {
+ 
   const [categories, setCategories] = useState([
     {
       id: 0,
-      label: 'Gluten Free',
+      preference_name: 'Gluten Free',
       checked: false,
       key: 'Gluten Free',
+      name: 'dietFilters'
     },
     {
       id: 1,
-      label: 'Ketogenic',
+      preference_name: 'Ketogenic',
       checked: false,
       key: 'Ketogenic',
+      name: 'dietFilters'
     },
     {
       id: 2,
-      label: 'Vegetarian',
+      preference_name: 'Vegetarian',
       checked: false,
       key: 'Vegetarian',
+      name: 'dietFilters'
     },
     {
       id: 3,
-      label: 'Lacto-Vegetarian',
+      preference_name: 'Lacto-Vegetarian',
       checked: false,
       key: 'Lacto-Vegetarian',
+      name: 'dietFilters'
     },
     {
       id: 4,
-      label: 'Ovo-Vegetarian',
+      preference_name: 'Ovo-Vegetarian',
       checked: false,
       key: 'Ovo-Vegetarian',
+      name: 'dietFilters'
     },
     {
       id: 5,
-      label: 'Vegan',
+      preference_name: 'Vegan',
       checked: false,
       key: 'Vegan',
+      name: 'dietFilters'
     },
     {
       id: 6,
-      label: 'Pescetarian',
+      preference_name: 'Pescetarian',
       checked: false,
       key: 'Pescetarian',
+      name: 'dietFilters'
     },
     {
       id: 7,
-      label: 'Paleo',
+      preference_name: 'Paleo',
       checked: false,
       key: 'Paleo',
+      name: 'dietFilters'
     },
     {
       id: 8,
-      label: 'Primal',
+      preference_name: 'Primal',
       checked: false,
       key: 'Primal',
+      name: 'dietFilters'
     },
     {
       id: 9,
-      label: 'Low FODMAP',
+      preference_name: 'Low FODMAP',
       checked: false,
       key: 'Low FODMAP',
+      name: 'dietFilters'
     },
     {
       id: 10,
-      label: 'Whole30',
+      preference_name: 'Whole30',
       checked: false,
       key: 'Whole30',
+      name: 'dietFilters'
     },
   ]);
 
@@ -88,10 +100,11 @@ export default function DietaryFilters() {
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
             backgroundColor='#f0f0f0'
-            title={item.label}
+            title={item.preference_name}
             checked={item.isCheck || false}
-            onPress={(val) => onValueChange(item, index)}
+            onPress={() => onValueChange(item, index)}
             key={item.key}
+            name={item.name}
           />
         );
       })}
@@ -113,3 +126,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default DietaryFilters;

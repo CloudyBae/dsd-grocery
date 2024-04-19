@@ -1,11 +1,11 @@
-# Example code of authentication/serializers.py
-# Remove this example and write your own code
-"""
 from rest_framework import serializers
-from .models import User
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['userid', 'email']
-"""
+        fields = ["id", "email", "name", "dietary_preferences"]
+        extra_kwargs = {"dietary_preferences": {"required": False}}

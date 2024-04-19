@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Body, BodySmall } from './Typography';
 

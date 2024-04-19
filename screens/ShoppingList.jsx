@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    paddingVertical: 40,
+    paddingVertical: 16,
   },
   title: {
     color: 'black',

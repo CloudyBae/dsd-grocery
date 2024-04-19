@@ -1,80 +1,92 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { CheckBox, ListItem } from '@rneui/themed';
+import { CheckBox } from '@rneui/themed';
 
-export default function AllergenFilters() {
+const AllergenFilters = () => {
   const [categories, setCategories] = useState([
     {
-      id: 0,
-      label: 'Dairy',
+      id: 11,
+      preference_name: 'Dairy',
       checked: false,
       key: 'Dairy',
+      name: 'dietFilters'
     },
     {
-      id: 1,
-      label: 'Egg',
+      id: 12,
+      preference_name: 'Egg',
       checked: false,
       key: 'Egg',
+      name: 'dietFilters'
     },
     {
-      id: 2,
-      label: 'Gluten',
+      id: 13,
+      preference_name: 'Gluten',
       checked: false,
       key: 'Gluten',
+      name: 'dietFilters'
     },
     {
-      id: 3,
-      label: 'Grain',
+      id: 14,
+      preference_name: 'Grain',
       checked: false,
       key: 'Grain',
+      name: 'dietFilters'
     },
     {
-      id: 4,
-      label: 'Peanut',
+      id: 15,
+      preference_name: 'Peanut',
       checked: false,
       key: 'Peanut',
+      name: 'dietFilters'
     },
     {
-      id: 5,
-      label: 'Seafood',
+      id: 16,
+      preference_name: 'Seafood',
       checked: false,
       key: 'Seafood',
+      name: 'dietFilters'
     },
     {
-      id: 6,
-      label: 'Sesame',
+      id: 17,
+      preference_name: 'Sesame',
       checked: false,
-      key: 'Sesame'
+      key: 'Sesame',
+      name: 'dietFilters'
     },
     {
-      id: 7,
-      label: 'Shellfish',
+      id: 18,
+      preference_name: 'Shellfish',
       checked: false,
       key: 'Shellfish',
+      name: 'dietFilters'
     },
     {
-      id: 8,
-      label: 'Soy',
+      id: 19,
+      preference_name: 'Soy',
       checked: false,
       key: 'Soy',
+      name: 'dietFilters'
     },
     {
-      id: 9,
-      label: 'Sulfite',
+      id: 20,
+      preference_name: 'Sulfite',
       checked: false,
-      key: 'Sulfite'
+      key: 'Sulfite',
+      name: 'dietFilters'
     },
     {
-      id: 10,
-      label: 'Tree Nut',
+      id: 21,
+      preference_name: 'Tree Nut',
       checked: false,
-      key: 'Tree Nut'
+      key: 'Tree Nut',
+      name: 'dietFilters'
     },
     {
-      index: 11,
-      label: 'Wheat',
+      id: 22,
+      preference_name: 'Wheat',
       checked: false,
-      key: 'Wheat'
+      key: 'Wheat',
+      name: 'dietFilters'
     },
   ]);
 
@@ -93,10 +105,11 @@ export default function AllergenFilters() {
           <CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
-            title={item.label}
+            title={item.preference_name}
             checked={item.isCheck || false}
-            onPress={(value) => onValueChange(item, index)}
+            onPress={() => onValueChange(item, index)}
             key={item.key}
+            name={item.name}
           />
         );
       })}
@@ -118,3 +131,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default AllergenFilters;

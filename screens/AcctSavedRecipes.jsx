@@ -1,4 +1,11 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+} from 'react-native';
 import AcctHeader from '../components/AcctHeader';
 import AcctRecipeBar from '../components/AcctRecipeBar';
 import MainButton from '../components/MainButton';
@@ -13,17 +20,17 @@ export const AcctSavedRecipesScreen = () => {
         <ScrollView>
           <View style={styles.homeContainer}>
             <AcctHeader />
-            <Text style={styles.title}>Saved Recipes</Text>
-
-            <AcctRecipeBar />
-
+            <Text style={styles.title}>Planned Recipes</Text>
+            <Pressable onPress={() => navigation.navigate('Recipe')}>
+              <AcctRecipeBar />
+            </Pressable>
             <View style={styles.buttonContainer}>
               <MainButton title='Save' />
             </View>
           </View>
         </ScrollView>
-        <Nav />
       </View>
+      <Nav />
     </SafeAreaView>
   );
 };
@@ -31,7 +38,6 @@ export const AcctSavedRecipesScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 10,
-    marginTop: 25,
     marginBottom: 50,
     fontFamily: 'Gilroy-Bold',
     backgroundColor: 'white',

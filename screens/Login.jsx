@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import GroceryBag from '../assets/GroceryBag.png';
-import Lemon from '../assets/lemon.png';
 import { Title } from '../components/Typography/index.js';
 import { useNavigation } from '@react-navigation/native';
 

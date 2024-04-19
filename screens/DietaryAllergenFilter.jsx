@@ -6,6 +6,25 @@ import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
 
+/*
+fetch('https://mywebsite.com/endpoint/', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: 'yourValue',
+    secondParam: 'yourOtherValue',
+  }),
+});
+*/
+
+const handleSubmit = () => {
+  // Submit User data
+  console.log("Submitted")
+} 
+
 export const DietaryAllergenFilterScreen = () => {
   const navigation = useNavigation();
   return (
@@ -18,12 +37,13 @@ export const DietaryAllergenFilterScreen = () => {
             <AllergenFilters />
 
             <View style={styles.buttonContainer}>
-              <MainButton title='Save' />
+              <MainButton title='Save' 
+                onPress={(handleSubmit)}/>
             </View>
           </View>
         </ScrollView>
-        <Nav />
       </View>
+      <Nav />
     </SafeAreaView>
   );
 };
@@ -31,7 +51,6 @@ export const DietaryAllergenFilterScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 10,
-    marginTop: 25,
     marginBottom: 50,
   },
   buttonContainer: {

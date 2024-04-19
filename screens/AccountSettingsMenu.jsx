@@ -1,7 +1,11 @@
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
+import Nav from '../components/Nav';
 
 export const AccountSettingsMenu = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <AcctHeader />
@@ -17,7 +21,7 @@ export const AccountSettingsMenu = () => {
       />
 
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('DietaryAllergenFilter')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -33,7 +37,7 @@ export const AccountSettingsMenu = () => {
         <Text style={styles.menuText}>Dietary Preferences</Text>
       </Pressable>
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('AccountDetailsScreen')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -49,23 +53,7 @@ export const AccountSettingsMenu = () => {
         <Text style={styles.menuText}>My Details</Text>
       </Pressable>
       <Pressable
-        onPress={() => console.log('Button Pressed')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.menuButton,
-        ]}
-      >
-        <Image
-          source={require('../assets/broc.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <Text style={styles.menuText}>Favorite Ingredients</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('AcctSavedRecipes')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -78,11 +66,11 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Favorite Recipes</Text>
+        <Text style={styles.menuText}>Planned Recipes</Text>
       </Pressable>
 
       <Pressable
-        onPress={() => console.log('Button Pressed')}
+        onPress={() => navigation.navigate('Login')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -97,6 +85,7 @@ export const AccountSettingsMenu = () => {
         />
         <Text style={styles.menuText}>Log Out</Text>
       </Pressable>
+      <Nav />
     </View>
   );
 };
@@ -118,7 +107,6 @@ const styles = StyleSheet.create({
     height: 75,
     width: '90%',
   },
-
   tagImg: {
     height: 30,
     width: 30,

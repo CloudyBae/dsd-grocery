@@ -34,12 +34,21 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                customButtonStyling={{ padding: 40, borderRadius: 25 }}
+                customButtonStyling={{
+                  width: '45%',
+                  padding: 40,
+                  borderRadius: 25,
+                }}
                 title='Pantry'
               />
               <CategoryButton
-                customButtonStyling={{ padding: 40, borderRadius: 25 }}
-                title='Recipes'
+                customButtonStyling={{
+                  width: '45%',
+                  padding: 40,
+                  borderRadius: 25,
+                }}
+                title='Plan Meal'
+                onPress={() => navigation.navigate('Filter')}
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>
@@ -53,8 +62,8 @@ export const HomeScreen = () => {
             <RecipeList numberOfRecipes={10} />
           </View>
         </ScrollView>
-        <Nav />
       </View>
+      <Nav />
     </SafeAreaView>
   );
 };
@@ -62,7 +71,6 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 10,
-    marginTop: 25,
     marginBottom: 50,
   },
   macrosContainer: {
