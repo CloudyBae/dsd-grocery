@@ -48,6 +48,7 @@ export const HomeScreen = () => {
                   borderRadius: 25,
                 }}
                 title='Plan Meal'
+                onPress={() => navigation.navigate('Filter')}
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>
