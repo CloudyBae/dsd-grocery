@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SearchBar } from '@rneui/base';
 
 const Search = () => {
@@ -42,8 +42,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 364,
     height: 67,
-    //borderRadius: 19,
-    // tintColor: '#52B175',
     backgroundColor: 'rgb(82, 177, 117)',
   },
 });

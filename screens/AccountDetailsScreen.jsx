@@ -5,7 +5,6 @@ import {
   Text,
   Button,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import AcctHeader from '../components/AcctHeader';
 
