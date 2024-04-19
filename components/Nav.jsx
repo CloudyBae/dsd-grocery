@@ -22,13 +22,13 @@ const Nav = () => {
       >
         <FontAwesome5 name='apple-alt' style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         accessible={true}
         accessibilityLabel='Recipes button was pressed!'
         onPress={() => navigation.navigate('Recipe')}
       >
         <MaterialCommunityIcons name='chef-hat' style={styles.icon} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Shopping list button was pressed!'
