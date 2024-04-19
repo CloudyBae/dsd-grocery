@@ -29,7 +29,7 @@ router.register(
 )
 
 router.register(
-    r"users/(?P<user_pk>)\d+)/plannedRecipes",
+    r"users/((?P<user_pk>)\d+)/plannedRecipes",
     PlannedRecipeViewSet,
     basename="user-plannedRecipes",
 )
