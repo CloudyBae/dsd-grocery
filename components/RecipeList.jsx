@@ -14,7 +14,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     const fetchRecipes = async () => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/api/favorite_recipes/${userId}`
+          'http://127.0.0.1:8000/api/favorite_recipes/${userId}'
         );
         if (!response.ok) {
           throw new Error('Failed to fetch data');
