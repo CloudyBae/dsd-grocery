@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -13,17 +14,30 @@ from .external_apis import (
 )
 
 
-from .models import FavoriteRecipes, User, ShoppingList, Macros
+from .models import FavoriteRecipe, ShoppingList, Macro, Ingredient
 from .serializers import (
     FavoriteRecipeSerializer,
     ShoppingListSerializer,
     MacrosSerializer,
+    IngredientSerializer,
 )
+
+User = get_user_model()
 
 
 class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user
+
+
+class IngredientViewSet(viewsets.ModelViewSet):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_pk"]
+        return Ingredient.objects.filter(user_id=user_id)
 
 
 class ShoppingListViewSet(viewsets.ModelViewSet):
@@ -40,13 +54,13 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
 
 
 class MacrosViewSet(viewsets.ModelViewSet):
-    queryset = Macros.objects.all()
+    queryset = Macro.objects.all()
     serializer_class = MacrosSerializer
     permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
-        return Macros.objects.filter(user_id=user_id)
+        return Macro.objects.filter(user_id=user_id)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -61,7 +75,7 @@ def get_favorite_recipes(request, user_id):
             {"message": "User does not exist"}, status=status.HTTP_404_NOT_FOUND
         )
 
-    favorite_recipes = FavoriteRecipes.objects.filter(user_id=user)
+    favorite_recipes = FavoriteRecipe.objects.filter(user_id=user)
     serializer = FavoriteRecipeSerializer(favorite_recipes, many=True)
     return Response(serializer.data)
 
@@ -87,8 +101,8 @@ def update_favorite_recipe(request, user_id, favorite_recipe_id):
     print(user_id)
     try:
         user = User.objects.get(pk=user_id)
-        favorite_recipe = FavoriteRecipes.objects.get(user=user, id=favorite_recipe_id)
-    except (User.DoesNotExist, FavoriteRecipes.DoesNotExist):
+        favorite_recipe = FavoriteRecipe.objects.get(user=user, id=favorite_recipe_id)
+    except (User.DoesNotExist, FavoriteRecipe.DoesNotExist):
         return Response(
             {"message": "Favorite recipe does not exist"},
             status=status.HTTP_404_NOT_FOUND,
@@ -105,8 +119,8 @@ def update_favorite_recipe(request, user_id, favorite_recipe_id):
 def delete_favorite_recipe(request, user_id, favorite_recipe_id):
     try:
         user = User.objects.get(pk=user_id)
-        favorite_recipe = FavoriteRecipes.objects.get(user=user, id=favorite_recipe_id)
-    except (User.DoesNotExist, FavoriteRecipes.DoesNotExist):
+        favorite_recipe = FavoriteRecipe.objects.get(user=user, id=favorite_recipe_id)
+    except (User.DoesNotExist, FavoriteRecipe.DoesNotExist):
         return Response(
             {"message": "Favorite recipe does not exist"},
             status=status.HTTP_404_NOT_FOUND,

@@ -1,42 +1,45 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import (
-    FavoriteRecipes,
-    DietaryPreferences,
-    User,
-    Ingredients,
+    FavoriteRecipe,
+    DietaryPreference,
+    Ingredient,
     ShoppingList,
-    Macros,
+    Macro,
 )
+
+User = get_user_model()
 
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Ingredients
-        fields = ["id", "quantity_available", "preference"]
+        model = Ingredient
+        fields = ["id", "name", "quantity", "user", "preference"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
         fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
-
         extra_kwargs = {"user": {"read_only": True}, "ingredient": {"required": True}}
 
 
 class MacrosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Macros
+        model = Macro
         fields = ["id", "user", "recipe", "macro_type", "ingredient", "quantity"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
     preference = serializers.PrimaryKeyRelatedField(
-        queryset=DietaryPreferences.objects.all()
+        queryset=DietaryPreference.objects.all()
     )
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
-        model = FavoriteRecipes
+        model = FavoriteRecipe
         fields = [
             "servings",
             "preference",
