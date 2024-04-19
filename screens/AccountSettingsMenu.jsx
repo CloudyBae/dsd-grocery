@@ -66,7 +66,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Favorite Recipes</Text>
+        <Text style={styles.menuText}>Planned Recipes</Text>
       </Pressable>
 
       <Pressable

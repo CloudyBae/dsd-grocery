@@ -20,7 +20,7 @@ export const AcctSavedRecipesScreen = () => {
         <ScrollView>
           <View style={styles.homeContainer}>
             <AcctHeader />
-            <Text style={styles.title}>Saved Recipes</Text>
+            <Text style={styles.title}>Planned Recipes</Text>
             <Pressable onPress={() => navigation.navigate('Recipe')}>
               <AcctRecipeBar />
             </Pressable>
@@ -38,7 +38,6 @@ export const AcctSavedRecipesScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 10,
-    marginTop: 25,
     marginBottom: 50,
     fontFamily: 'Gilroy-Bold',
     backgroundColor: 'white',
