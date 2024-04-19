@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { ButtonSmall } from './Typography';
+import { ButtonLarge } from './Typography';
 
 const CategoryButton = ({
   title,
@@ -19,7 +19,7 @@ const CategoryButton = ({
       }
     >
       <Text style={[stlyes.titleText, customTextStyling]}>
-        <ButtonSmall>{title || 'Button'}</ButtonSmall>
+        <ButtonLarge>{title || 'Button'}</ButtonLarge>
       </Text>
     </TouchableOpacity>
   );
