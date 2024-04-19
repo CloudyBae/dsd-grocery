@@ -14,22 +14,7 @@ export const FilterScreen = () => {
   const [selectedMealTypes, setSelectedMealTypes] = useState([]);
   const [plannedMealDay, setPlannedMealDay] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
-  const mealTypes = [
-    'Main Course',
-    'Side Dish',
-    'Dessert',
-    'Appetizer',
-    'Salad',
-    'Bread',
-    'Breakfast',
-    'Soup',
-    'Beverage',
-    'Sauce',
-    'Marinade',
-    'Fingerfood',
-    'Snack',
-    'Drink',
-  ];
+  const mealTypes = ['Main Course', 'Breakfast', 'Dessert', 'Snack'];
 
   const handleMealTypeSelection = (meal) => {
     setSelectedMealTypes((prevMealTypes) => {
@@ -80,12 +65,13 @@ export const FilterScreen = () => {
         <Text style={styles.title}>Meal Type</Text>
         <View style={styles.mealTypeContainer}>
           {mealTypes.map((meal, index) => (
-            <RadioButton
-              key={index}
-              label={meal}
-              customRadioColor='#52B175'
-              onPress={() => handleMealTypeSelection(meal)}
-            />
+            <View key={index} style={styles.radioButtonContainer}>
+              <RadioButton
+                label={meal}
+                customRadioColor='#52B175'
+                onPress={() => handleMealTypeSelection(meal)}
+              />
+            </View>
           ))}
         </View>
         <View style={styles.calendarContainer}>
@@ -122,7 +108,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   input: {
     padding: 5,
@@ -138,8 +124,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  radioButtonContainer: {
+    width: '50%',
+    marginBottom: 10,
+  },
   calendarContainer: {
-    marginTop: 10,
-    marginBottom: 15,
+    marginTop: 20,
+    marginBottom: 70,
   },
 });
