@@ -34,13 +34,20 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                customButtonStyling={{ padding: 40, borderRadius: 25 }}
+                customButtonStyling={{
+                  width: '45%',
+                  padding: 40,
+                  borderRadius: 25,
+                }}
                 title='Pantry'
               />
               <CategoryButton
-                customButtonStyling={{ padding: 40, borderRadius: 25 }}
-                title='Recipes'
-                onPress={() => navigation.navigate('Recipe')}
+                customButtonStyling={{
+                  width: '45%',
+                  padding: 40,
+                  borderRadius: 25,
+                }}
+                title='Plan Meal'
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>

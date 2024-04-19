@@ -1,18 +1,14 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import * as Font from 'expo-font';
 import { useFonts } from 'expo-font';
-import GilroyBold from '../../assets/fonts/Gilroy-Bold.ttf';
-import GilroyRegular from '../../assets/fonts/Gilroy-Regular.ttf';
-import GilroyMedium from '../../assets/fonts/Gilroy-Medium.ttf';
-import GilroyHeavy from '../../assets/fonts/Gilroy-Heavy.ttf';
-import GilroyLight from '../../assets/fonts/Gilroy-Light.ttf';
 
 const customFonts = {
-  'Gilroy-Bold': GilroyBold,
-  'Gilroy-Regular': GilroyRegular,
-  'Gilroy-Medium': GilroyMedium,
-  'Gilroy-Heavy': GilroyHeavy,
-  'Gilroy-Light': GilroyLight,
+  'Gilroy-Bold': require('../../assets/fonts/Gilroy-Bold.ttf'),
+  'Gilroy-Regular': require('../../assets/fonts/Gilroy-Regular.ttf'),
+  'Gilroy-Medium': require('../../assets/fonts/Gilroy-Medium.ttf'),
+  'Gilroy-Heavy': require('../../assets/fonts/Gilroy-Heavy.ttf'),
+  'Gilroy-Light': require('../../assets/fonts/Gilroy-Light.ttf'),
 };
 
 // Hook for loading fonts
