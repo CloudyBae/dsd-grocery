@@ -1,7 +1,9 @@
 from django.apps import AppConfig
+import importlib
+
 
 class AuthenticationConfig(AppConfig):
-    name = 'authentication'
+    name = "authentication"
 
     def ready(self):
-        import authentication.signals
+        importlib.import_module("authentication.signals")
