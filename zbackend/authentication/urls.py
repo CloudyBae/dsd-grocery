@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import GoogleAuthView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import UserViewSet
+
+router = DefaultRouter()
+router.register(r'profile', UserViewSet, basename='user-profile')
+
 
 urlpatterns = [
-    path("authentication/google-auth/", GoogleAuthView.as_view(), name="google-auth"),
+    path('', include(router.urls)),
 ]
