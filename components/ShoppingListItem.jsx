@@ -12,12 +12,13 @@ const ShoppingListItem = ({ items }) => {
         ingredient: {
           id: 6,
           name: 'Milk',
-          image: 'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
+          image:
+            'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
           quantity: '1.00',
           user: 2,
           preference: 1,
         },
-        quantity: "5.00",
+        quantity: '5.00',
         is_purchased: false,
       },
       {
@@ -25,13 +26,14 @@ const ShoppingListItem = ({ items }) => {
         user: 2,
         ingredient: {
           id: 2,
-          name: "GreenBellPepper",
-          image: 'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
-          quantity: "1.00",
+          name: 'GreenBellPepper',
+          image:
+            'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
+          quantity: '1.00',
           user: 2,
-          preference: 1
+          preference: 1,
         },
-        quantity: "2.00",
+        quantity: '2.00',
         is_purchased: false,
       },
       {
@@ -40,19 +42,20 @@ const ShoppingListItem = ({ items }) => {
         ingredient: {
           id: 1,
           name: 'Apples',
-          image: 'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
+          image:
+            'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
           quantity: '1.00',
           user: 2,
           preference: 1,
         },
-        quantity: "3.00",
-        is_purchased: false, 
+        quantity: '3.00',
+        is_purchased: false,
       },
     ];
 
-    const filteredItems = data.filter(item => !item.is_purchased);
+    const filteredItems = data.filter((item) => !item.is_purchased);
 
-    filteredItems.forEach(item => {
+    filteredItems.forEach((item) => {
       item.quantity = parseInt(item.quantity);
     });
     setShoppingListItem(filteredItems);
