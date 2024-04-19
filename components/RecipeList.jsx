@@ -4,7 +4,6 @@ import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../auth/auth-context';
-import axios from 'axios';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
@@ -49,7 +48,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Text style={style.noRecipesText}>No recipes found.</Text>
+          <Text style={style.noRecipesText}>No Favorite Recipes</Text>
         </View>
       ) : (
         <FlatList
