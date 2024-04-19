@@ -57,3 +57,25 @@ def get_nutrition_information(recipe_id):
     response = requests.get(endpoint, params=params)
     data = response.json()
     return data
+
+
+
+def get_recipes_complex_search(query_params):
+    api_key = os.getenv("SPOONACULAR_API_KEY")
+    base_url = "https://api.spoonacular.com/recipes/complexSearch?"
+    params = {
+        'apiKey': api_key,
+        **query_params
+    }
+    
+    try:
+        response = requests.get(base_url, params=params)
+        print(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f'Failed to retrieve recipes. Status code: {response.status_code}')
+            return None
+    except requests.RequestException as e:
+        print(f'Error making request: {e}')
+        return None

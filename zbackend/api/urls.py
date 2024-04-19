@@ -62,9 +62,11 @@ urlpatterns = [
         views.get_filtered_recipes,
         name="get_filtered_recipes",
     ),
-    path("recipes/<int:recipe_id>/", views.get_recipe_info, name="get_recipe_info"),
-    path(
-        "recipes/summary/<int:recipe_id>/",
+    path("recipes/<int:recipe_id>/",
+         views.get_recipe_info,
+         name="get_recipe_info"
+    ),
+    path("recipes/summary/<int:recipe_id>/",
         views.get_recipe_sumary_info,
         name="get_recipe_summary",
     ),
@@ -83,4 +85,7 @@ urlpatterns = [
         views.get_nutrition_informations,
         name="get_nutrition_information",
     ),
+    path("api/recipes/complex_search/",
+         views.get_recipes_complex_search,
+         name="get_recipes_complex_search"),
 ]

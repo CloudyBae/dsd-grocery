@@ -1,3 +1,6 @@
+import logging
+import os
+
 from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
@@ -11,6 +14,7 @@ from .external_apis import (
     get_ingredient_by_search,
     get_ingredient_information,
     get_nutrition_information,
+    get_recipes_complex_search
 )
 
 
@@ -32,7 +36,7 @@ from .serializers import (
 )
 
 User = get_user_model()
-
+logger = logging.getLogger(__name__)
 
 class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -225,3 +229,47 @@ def get_ingredient_informations(request, ingredient_id):
 def get_nutrition_informations(request, recipe_id):
     nutrition_widget = get_nutrition_information(recipe_id)
     return JsonResponse(nutrition_widget)
+
+
+@api_view(["GET"])
+def get_recipes_complex_search(request):
+    logger.info('function hit')
+    user_id = request.user.id
+    
+    # Dynamic query parameters
+    include_ingredients = request.query_params.get("includeIngredients", "")
+    recipe_type = request.query_params.get("type", "")
+
+    # Static query parameters
+    query_params = {
+        "apiKey": os.getenv("SPOONACULAR_API_KEY"),
+        "includeIngredients": include_ingredients,
+        "type": recipe_type,
+        "instructionsRequired": True,
+        "addRecipeInstructions": True,
+        "addRecipeNutrition": True,
+        "number": 1
+    }
+
+    dietary_preference = _get_dietary_preference(user_id)
+    if dietary_preference:
+        if dietary_preference.diet:
+            query_params["diet"] = dietary_preference.diet
+        if dietary_preference.intolerances:
+            query_params["intolerances"] = dietary_preference.intolerances
+
+    recipes = get_recipes_complex_search(query_params)
+
+    if recipes is not None:
+        return Response(recipes)
+    else:
+        return Response({"error": "Failed to retrieve recipes"},
+                        status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+def _get_dietary_preference(user_id):
+    try:
+        dietary_preference = DietaryPreference.objects.get(user_id=user_id)
+        return dietary_preference
+    except DietaryPreference.DoesNotExist:
+        return None
