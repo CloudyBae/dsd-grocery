@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -13,12 +14,14 @@ from .external_apis import (
 )
 
 
-from .models import FavoriteRecipe, User, ShoppingList, Macro
+from .models import FavoriteRecipe, ShoppingList, Macro
 from .serializers import (
     FavoriteRecipeSerializer,
     ShoppingListSerializer,
     MacrosSerializer,
 )
+
+User = get_user_model()
 
 
 class IsOwner(BasePermission):
