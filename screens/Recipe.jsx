@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import { useMemo, useState } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
@@ -13,16 +14,17 @@ import { BodySmall, ButtonLarge, Title } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
-import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
+import HTML from 'react-native-render-html';
+import RenderHTML, { defaultSystemFonts } from 'react-native-render-html';
 
 const Detail = ({ title, value }) => {
   return (
     <View style={styles.rowContainer}>
       <View style={styles.columnContainer}>
         <BodySmall>{title}</BodySmall>
-        <ButtonLarge> {value}</ButtonLarge>
+        <ButtonLarge>{value}</ButtonLarge>
       </View>
     </View>
   );
@@ -49,8 +51,9 @@ export const RecipeScreen = () => {
     ));
   }, [recipe?.extendedIngredients]);
 
+  const { width } = useWindowDimensions();
   const InnerHtmlContent = ({ value }) => {
-    return <div dangerouslySetInnerHTML={{ __html: value }} />;
+    return <RenderHTML source={{ html: value }} contentWidth={width} />;
   };
 
   const Macros = () => {
@@ -111,9 +114,9 @@ export const RecipeScreen = () => {
           onPress={() => navigation.goBack()}
         >
           <Octicons
-            name='chevron-left'
-            size={24}
-            color='white'
+            name='x-circle-fill'
+            size={26}
+            color='#72C08F'
             style={{ margin: 20 }}
           />
         </Pressable>
@@ -204,6 +207,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
+    top: 40,
     zIndex: 1,
   },
   detailContainer: {
@@ -258,7 +262,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   favoriteButton: {
-    alignItems: 'flex-end',
-    margin: 20,
+    position: 'absolute',
+    top: 40,
+    right: 20,
   },
 });
