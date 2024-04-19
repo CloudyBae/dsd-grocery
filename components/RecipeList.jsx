@@ -1,38 +1,45 @@
+import React, { useContext, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
-import { useEffect, useState } from 'react';
-import { SPOONACULAR_API_KEY } from '@env';
 import { useNavigation } from '@react-navigation/native';
+import AuthContext from '../auth/auth-context';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
-  const fetchRecipes = async () => {
-    try {
-      const response = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${SPOONACULAR_API_KEY}&number=${numberOfRecipes || 1}`
-      );
-      const data = await response.json();
-      console.log('data.recipes: ', data.recipes);
-      setRecipes(data.recipes);
-    } catch (error) {
-      console.log('Error fetching data: ', error);
-    }
-  };
+  const { userId } = useContext(AuthContext);
 
   useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:8000/api/favorite_recipes/${userId}`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        console.log('Favorite recipes data: ', data);
+        setRecipes(data);
+      } catch (error) {
+        console.log('Error fetching favorite recipes: ', error);
+      }
+    };
+
     fetchRecipes();
-  }, []);
+
+    return () => {};
+  }, [userId]);
 
   const renderRecipe = ({ item }) => {
     return (
       <Pressable onPress={() => navigation.navigate('Recipe', { id: item.id })}>
         <RecipeCard
-          title={item.title}
+          title={item.name}
           image={item.image}
-          minutes={item.readyInMinutes || 0}
-          rating={item.aggregateLikes}
+          minutes={item.minutes || 0}
+          rating={item.likes}
         />
       </Pressable>
     );
@@ -41,7 +48,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Text style={style.noRecipesText}>No recipes found.</Text>
+          <Text style={style.noRecipesText}>No Favorite Recipes</Text>
         </View>
       ) : (
         <FlatList
