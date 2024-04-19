@@ -14,11 +14,12 @@ from .external_apis import (
 )
 
 
-from .models import FavoriteRecipe, ShoppingList, Macro
+from .models import FavoriteRecipe, ShoppingList, Macro, PlannedRecipe
 from .serializers import (
     FavoriteRecipeSerializer,
     ShoppingListSerializer,
     MacrosSerializer,
+    PlannedRecipeSerializer,
 )
 
 User = get_user_model()
@@ -27,6 +28,16 @@ User = get_user_model()
 class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user
+
+
+class PlannedRecipeViewSet(viewsets.ModelViewSet):
+    queryset = PlannedRecipe.objects.all()
+    serializer_class = PlannedRecipeSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_pk"]
+        return PlannedRecipe.objects.filter(user_id=user_id)
 
 
 class ShoppingListViewSet(viewsets.ModelViewSet):

@@ -81,7 +81,6 @@ class PlannedRecipe(models.Model):
         db_index=True,
     )
     date_for = models.DateField()
-    recipe = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.recipe.name} on {self.date_for}"

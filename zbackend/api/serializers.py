@@ -6,9 +6,16 @@ from .models import (
     Ingredient,
     ShoppingList,
     Macro,
+    PlannedRecipe,
 )
 
 User = get_user_model()
+
+
+class PlannedRecipeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlannedRecipe
+        fields = ["id", "user", "date_for"]
 
 
 class IngredientSerializer(serializers.ModelSerializer):

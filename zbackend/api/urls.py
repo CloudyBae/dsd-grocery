@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from . import views
-from .views import ShoppingListViewSet, MacrosViewSet
+from .views import ShoppingListViewSet, MacrosViewSet, PlannedRecipeViewSet
 
 router = DefaultRouter()
 router.register(
@@ -11,6 +11,12 @@ router.register(
     basename="user-shoppinglist",
 )
 router.register(r"users/(?P<user_pk>\d+)/macros", MacrosViewSet, basename="user-macros")
+router.register(
+    r"users/(?P<user_pk>)\d+)/plannedRecipes",
+    PlannedRecipeViewSet,
+    basename="user-plannedRecipes",
+)
+
 
 urlpatterns = [
     path("", include(router.urls)),
