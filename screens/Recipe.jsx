@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
-  useWindowDimensions
+  useWindowDimensions,
 } from 'react-native';
 import { useMemo, useState } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
@@ -17,7 +17,7 @@ import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 import HTML from 'react-native-render-html';
-import RenderHTML, {defaultSystemFonts} from 'react-native-render-html'
+import RenderHTML, { defaultSystemFonts } from 'react-native-render-html';
 
 const Detail = ({ title, value }) => {
   return (
@@ -53,12 +53,7 @@ export const RecipeScreen = () => {
 
   const { width } = useWindowDimensions();
   const InnerHtmlContent = ({ value }) => {
-    return (
-      <RenderHTML
-        source={{ html: value }}
-        contentWidth={width}
-      />
-    );
+    return <RenderHTML source={{ html: value }} contentWidth={width} />;
   };
 
   const Macros = () => {
@@ -213,7 +208,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 40,
-    zIndex: 1
+    zIndex: 1,
   },
   detailContainer: {
     paddingVertical: 0,
