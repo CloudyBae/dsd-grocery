@@ -14,7 +14,14 @@ from .external_apis import (
 )
 
 
-from .models import FavoriteRecipe, ShoppingList, Macro, Ingredient, DietaryPreference, PlannedRecipe
+from .models import (
+    FavoriteRecipe,
+    ShoppingList,
+    Macro,
+    Ingredient,
+    DietaryPreference,
+    PlannedRecipe,
+)
 from .serializers import (
     FavoriteRecipeSerializer,
     ShoppingListSerializer,
