@@ -214,10 +214,4 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Basic': {
-            'type': 'basic'
-        }
-    }
-}
+SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": {"Basic": {"type": "basic"}}}

@@ -15,7 +15,8 @@ const AddItemBar = () => {
     {
       id: 1,
       name: 'Milk',
-      image: 'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
+      image:
+        'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
       quantity: '1.00',
       user: 'texasrecordingsunderground@gmail.com',
       preference: '1',
@@ -23,7 +24,8 @@ const AddItemBar = () => {
     {
       id: 2,
       name: 'GreenBellPepper',
-      image: 'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
+      image:
+        'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
       quantity: '1.00',
       user: 'e1254690@student.dcccd.edu',
       preference: '1',
@@ -31,7 +33,8 @@ const AddItemBar = () => {
     {
       id: 3,
       name: 'Beef',
-      image: 'https://m.media-amazon.com/images/I/517+FWG43-L._SX300_SY300_.jpg',
+      image:
+        'https://m.media-amazon.com/images/I/517+FWG43-L._SX300_SY300_.jpg',
       quantity: '1.00',
       user: 'e1254690@student.dcccd.edu',
       preference: '1',
@@ -39,16 +42,16 @@ const AddItemBar = () => {
     {
       id: 4,
       name: 'Apples',
-      image: 'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
+      image:
+        'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
       quantity: '2.00',
       user: 'texasrecordingsunderground@gmail.com',
       preference: '2',
-    }
+    },
   ];
 
   return (
     <View style={styles.container}>
-      
       <View style={styles.firstSection}>
         <Image
           source={require('../assets/IngredientTag.png')}
@@ -56,16 +59,14 @@ const AddItemBar = () => {
           resizeMode='cover'
         />
         <Image
-          source={{ uri: data[0].image || '' }} 
+          source={{ uri: data[0].image || '' }}
           style={styles.productImg}
           resizeMode='cover'
         />
       </View>
       <View style={styles.textSection}>
-        <Text style={styles.headingText}>{data[0].name}</Text> 
-        <Text style={styles.amountText}>
-          {data[0].quantity} 
-        </Text>
+        <Text style={styles.headingText}>{data[0].name}</Text>
+        <Text style={styles.amountText}>{data[0].quantity}</Text>
         <View style={styles.quantityBtnContainer}>
           <Pressable
             onPress={subNum}
