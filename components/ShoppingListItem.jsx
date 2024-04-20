@@ -76,7 +76,7 @@ const ShoppingListItem = ({ items }) => {
             <Text style={styles.headingText}>{item.ingredient.name}</Text>
             <View style={styles.amountContainer}>
               <Text style={styles.amountText}>{item.quantity}</Text>
-              <Text style={styles.unitText}>quantity</Text>
+              <Text style={styles.qtyText}>quantity</Text>
             </View>
           </View>
         </View>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 20,
   },
-  unitText: {
+  qtyText: {
     fontSize: 20,
     marginLeft: 4,
   },
