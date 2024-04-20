@@ -11,31 +11,31 @@ import AcctRecipeBar from '../components/AcctRecipeBar';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
+import { HeaderTitle, Title } from '../components/Typography';
 
-export const AcctSavedRecipesScreen = () => {
-  const navigation = useNavigation();
+export const AcctSavedRecipes = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
-        <ScrollView>
-          <View style={styles.homeContainer}>
-            <AcctHeader />
-            <Text style={styles.title}>Saved Recipes</Text>
-            <Pressable onPress={() => navigation.navigate('Recipe')}>
-              <AcctRecipeBar />
-            </Pressable>
-            <View style={styles.buttonContainer}>
-              <MainButton title='Save' />
-            </View>
-          </View>
-        </ScrollView>
+    <View style={styles.container}>
+      <Title>Saved Recipes</Title>
+      <Pressable onPress={() => navigation.navigate('Recipe')}>
+        <AcctRecipeBar />
+      </Pressable>
+      <View style={styles.buttonContainer}>
+        <MainButton title='Save' />
       </View>
-      <Nav />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    backgroundColor: '#fff',
+    paddingTop: 60,
+    padding: 20,
+  },
   homeContainer: {
     padding: 10,
     marginTop: 25,
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AcctSavedRecipesScreen;
+export default AcctSavedRecipes;

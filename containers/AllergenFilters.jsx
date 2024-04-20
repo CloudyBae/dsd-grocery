@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
+import { Body, Title } from '../components/Typography';
 
 export default function AllergenFilters() {
   const [categories, setCategories] = useState([
@@ -74,14 +75,14 @@ export default function AllergenFilters() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Allergies</Text>
+      <Title>Allergies</Title>
 
       {categories.map((item, index) => {
         return (
           <CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
-            title={item.label}
+            title={<Body color={'#181725'}>{item.label}</Body>}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
             key={item.id}
@@ -94,15 +95,7 @@ export default function AllergenFilters() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: 'rgb(255,255,255)',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    fontSize: 24,
-    fontWeight: 'bold',
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
