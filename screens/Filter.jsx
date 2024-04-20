@@ -11,19 +11,13 @@ import Button from '../components/Button';
 export const FilterScreen = () => {
   const [ingredientText, setIngredientText] = useState('');
   const navigation = useNavigation();
-  const [selectedMealTypes, setSelectedMealTypes] = useState([]);
+  const [selectedMealType, setSelectedMealTypes] = useState([]);
   const [plannedMealDay, setPlannedMealDay] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const mealTypes = ['Main Course', 'Breakfast', 'Dessert', 'Snack'];
 
   const handleMealTypeSelection = (meal) => {
-    setSelectedMealTypes((prevMealTypes) => {
-      if (prevMealTypes.includes(meal)) {
-        return prevMealTypes.filter((item) => item !== meal);
-      } else {
-        return [...prevMealTypes, meal];
-      }
-    });
+    setSelectedMealTypes(meal);
   };
 
   const handleDayPressed = (day) => {
@@ -34,11 +28,12 @@ export const FilterScreen = () => {
   const handleRecipeSubmit = () => {
     const data = {
       ingredient: ingredientText,
-      mealTypes: selectedMealTypes,
+      mealType: selectedMealType,
       plannedDay: plannedMealDay,
     };
 
     console.log('data: ', data);
+    navigation.navigate('Recipe', { recipeData: data });
   };
 
   return (
@@ -69,6 +64,7 @@ export const FilterScreen = () => {
               <RadioButton
                 label={meal}
                 customRadioColor='#52B175'
+                isSelected={selectedMealType.includes(meal)}
                 onPress={() => handleMealTypeSelection(meal)}
               />
             </View>
@@ -89,7 +85,7 @@ export const FilterScreen = () => {
             }}
           />
         </View>
-        <Button children='Find Recipe' onPress={handleRecipeSubmit} />
+        <Button children='Find Recipes' onPress={handleRecipeSubmit} />
       </View>
     </>
   );
@@ -99,7 +95,7 @@ const styles = StyleSheet.create({
   filterHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 25,
+    marginTop: 50,
   },
   mainContainer: {
     padding: 15,
@@ -130,6 +126,6 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     marginTop: 20,
-    marginBottom: 70,
+    marginBottom: 40,
   },
 });

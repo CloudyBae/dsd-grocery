@@ -1,25 +1,28 @@
-import { StyleSheet } from 'react-native';
-import { Text, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const RadioButton = ({ label, customRadioColor, customTextColor, onPress }) => {
-  const [selected, setSelected] = useState('');
-  const handleSelectToggle = () => {
-    setSelected(!selected);
-    onPress(label);
-  };
-
+const RadioButton = ({
+  label,
+  customRadioColor,
+  customTextColor,
+  isSelected,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
-      onPress={handleSelectToggle}
+      onPress={() => onPress(label)}
       style={styles.radioContainer}
     >
       <View
         style={[
           styles.radioCircle,
-          selected && { backgroundColor: customRadioColor || 'black' },
+          {
+            backgroundColor: isSelected
+              ? customRadioColor || 'black'
+              : 'transparent',
+          },
         ]}
-      ></View>
+      />
       <Text style={[styles.labelTitle, { color: customTextColor || 'black' }]}>
         {label || 'label'}
       </Text>
