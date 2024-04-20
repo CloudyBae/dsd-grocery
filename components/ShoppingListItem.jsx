@@ -1,82 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { useState, useEffect } from 'react';
 
-const ShoppingListItem = ({ items }) => {
-  const [shoppingListItem, setShoppingListItem] = useState([]);
+const ShoppingListItem = () => {
+  const [data, setData] = useState([]);
+
+
+  const fetchData = ()=>{
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3030/getShoppingList", requestOptions)
+    .then((response) => response.json())
+    .then((result) => setData(result))
+    .catch((error) => console.log("error", error));
+  };
 
   useEffect(() => {
-    const data = [
-      {
-        id: 1,
-        user: 2,
-        ingredient: {
-          id: 6,
-          name: 'Milk',
-          image:
-            'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
-          quantity: '1.00',
-          user: 2,
-          preference: 1,
-        },
-        quantity: '5.00',
-        is_purchased: false,
-      },
-      {
-        id: 2,
-        user: 2,
-        ingredient: {
-          id: 2,
-          name: 'GreenBellPepper',
-          image:
-            'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
-          quantity: '1.00',
-          user: 2,
-          preference: 1,
-        },
-        quantity: '2.00',
-        is_purchased: false,
-      },
-      {
-        id: 3,
-        user: 2,
-        ingredient: {
-          id: 1,
-          name: 'Apples',
-          image:
-            'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
-          quantity: '1.00',
-          user: 2,
-          preference: 1,
-        },
-        quantity: '3.00',
-        is_purchased: false,
-      },
-    ];
-
-    const filteredItems = data.filter((item) => !item.is_purchased);
-
-    filteredItems.forEach((item) => {
-      item.quantity = parseInt(item.quantity);
-    });
-    setShoppingListItem(filteredItems);
+    fetchData();
   }, []);
 
   return (
     <View>
-      {shoppingListItem.map((item, index) => (
-        <View key={index} style={styles.container}>
+      {data.map((item) => (
+        <View key={item.id} style={styles.container}>
           <View style={styles.firstSection}>
             <Image
-              source={{ uri: item.ingredient.image || '' }}
+              source={{ uri: item.ingredient || '' }}
               style={styles.productImg}
               resizeMode='cover'
             />
           </View>
           <View style={styles.textSection}>
-            <Text style={styles.headingText}>{item.ingredient.name}</Text>
+            <Text style={styles.headingText}>{item.name}</Text>
             <View style={styles.amountContainer}>
               <Text style={styles.amountText}>{item.quantity}</Text>
-              <Text style={styles.qtyText}>quantity</Text>
             </View>
           </View>
         </View>
@@ -94,12 +54,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#fff',
     height: 180,
-    marginBottom: 10,
+    marginBottom: 10, // Add margin between items
   },
   firstSection: {
     flexDirection: 'column',
     alignItems: 'center',
     paddingLeft: 5,
+  },
+  tagImg: {
+    height: 40,
+    width: 120,
+    borderRadius: 10,
+    marginBottom: 2,
   },
   productImg: {
     height: 110,
@@ -125,7 +91,7 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 20,
   },
-  qtyText: {
+  unitText: {
     fontSize: 20,
     marginLeft: 4,
   },
