@@ -86,7 +86,7 @@ export const RecipeScreen = () => {
       setIsFavourite(!isFavourite);
       try {
         const response = await fetch(
-          `http://localhost:8000/favorite_recipes/${userId}/save/`,
+          'http://localhost:8000/favorite_recipes/${userId}/save/',
           {
             method: 'POST',
             headers: {

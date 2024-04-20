@@ -71,7 +71,6 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 10,
-    marginTop: 25,
     marginBottom: 50,
   },
   macrosContainer: {
