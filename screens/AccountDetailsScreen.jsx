@@ -8,9 +8,9 @@ export const AccountDetailsScreen = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    setIsEditing(true);
+  setisEditing(true);
   };
-
+  
   const handleSave = () => {
     // Perform save action, like updating the username on a server
     setIsEditing(false);

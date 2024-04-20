@@ -16,6 +16,7 @@ const Button = ({
   size = 'default',
   shape = 'rounded',
   accessibilityLabel,
+  style
 }) => {
   return (
     <ButtonContainer
@@ -27,6 +28,7 @@ const Button = ({
       shape={shape}
       size={size}
       disabled={disabled}
+      style={style}
     >
       {isLoading ? (
         <ActivityIndicator color='#ffffff' />

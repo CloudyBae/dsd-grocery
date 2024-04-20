@@ -10,6 +10,7 @@ import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
 import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
 import { AccountDetailsScreen } from './screens/AccountDetailsScreen';
+import { AddIngredient } from './screens/AddIngredient';
 
 const Stack = createNativeStackNavigator();
 

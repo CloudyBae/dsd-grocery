@@ -25,6 +25,7 @@ export const SettingsScreen = {
 
 export const AccountSettingsMenu = () => {
   const [showBackButton, setShowBackButton] = useState(false);
+  const navigation = useNavigation();
 
   const [screenOption, setScreenOption] = useState(
     SettingsScreen.AccountSettings

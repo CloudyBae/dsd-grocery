@@ -4,14 +4,21 @@ import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
 import { useState } from 'react';
 import { BodySmall } from '../components/Typography';
+import Button from '../components/Button';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { AddIngredientModal } from './AddIngredient';
 
 const imageUrl =
   'https://snaped.fns.usda.gov/sites/default/files/styles/crop_ratio_7_5/public/seasonal-produce/2018-05/watermelon.jpg?itok=WlQcb2Uh';
 
 export const IngredientScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const navigation = useNavigation();
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [ingredientList] = useState([
+  const ingredientList = [
     {
       id: 1,
       name: 'Banana chips',
@@ -62,7 +69,7 @@ export const IngredientScreen = () => {
       name: 'Watermelon',
       image: imageUrl,
     },
-  ]);
+  ];
 
   const updateSearch = (query) => {
     setSearch(query);
@@ -76,24 +83,62 @@ export const IngredientScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {modalVisible && (
+        <>
+        <AddIngredientModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+        </>
+      )}
+
       <Search updateSearch={updateSearch} value={search} />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.ingredientsContainer}>
-          {searchResults.length > 0 ? (
-            searchResults.map((ingredient) => (
+          {/* {searchResults.length > 0 ? (
+            ingredientList.map((ingredient) => (
               <IngredientCard key={ingredient.id} ingredient={ingredient} />
             ))
           ) : (
             <BodySmall>No results 😭</BodySmall>
-          )}
+          )} */}
+          {ingredientList.map((ingredient) => (
+            <IngredientCard key={ingredient.id} ingredient={ingredient} />
+          ))}
         </View>
       </ScrollView>
+      <View style={styles.addIngredientButton}>
+        <Button
+          shape='rounded'
+          style={{
+            width: 65,
+            height: 65,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onPress={() => setModalVisible(true)}
+        >
+          <View style={styles.rowContainer}>
+            <FontAwesome5
+              name='plus'
+              style={styles.icon}
+              color='#fff'
+              size={26}
+            />
+          </View>
+        </Button>
+      </View>
       <Nav style={styles.navBar} />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  addIngredientButton: {
+    position: 'absolute',
+    bottom: '10%',
+    right: 20,
+  },
   container: {
     paddingTop: 20,
     width: '100%',
@@ -113,5 +158,10 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     flexWrap: 'wrap',
     paddingBottom: 80,
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

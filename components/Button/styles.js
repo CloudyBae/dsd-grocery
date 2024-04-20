@@ -4,6 +4,7 @@ export const ButtonContainer = styled.Pressable`
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-self: center;
   justify-content: center;
   align-self: center;
   min-height: ${(props) => (props.size === 'small' ? '20px' : '45px')};
