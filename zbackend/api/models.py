@@ -15,6 +15,9 @@ class DietaryPreference(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
+    image = models.CharField(
+        max_length=255, default="https://placeholder.pics/svg/300/DEDEDE/555555/image"
+    )
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True

@@ -1,11 +1,42 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { useState, useEffect } from 'react';
 
-const ShoppingListItem = ({ items }) => {
+const ShoppingListItem = () => {
+  const [shoppingListData, setShoppingListData] = useState([]);
+
+  useEffect(() => {
+    const fetchShoppingListData = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow',
+        };
+        const response = await fetch(
+          'http://localhost:3030/getShoppingList',
+          requestOptions
+        );
+        const data = await response.json();
+        setShoppingListData(data);
+      } catch (error) {
+        console.log('Error fetching shopping list data: ', error);
+      }
+    };
+
+    fetchShoppingListData();
+  }, []);
+
+  const highlightItem = (item) => {
+    if (!item.is_purchased) {
+      return { backgroundColor: `#e8c500` };
+    }
+    return {};
+  };
+
   return (
     <View>
-      {items.map((item, index) => (
-        <View key={index} style={styles.container}>
+      {shoppingListData.map((item) => (
+        <View key={item.id} style={[styles.container, highlightItem(item)]}>
           <View style={styles.firstSection}>
             <Image
               source={{ uri: item.image || '' }}
@@ -16,8 +47,7 @@ const ShoppingListItem = ({ items }) => {
           <View style={styles.textSection}>
             <Text style={styles.headingText}>{item.name}</Text>
             <View style={styles.amountContainer}>
-              <Text style={styles.amountText}>{item.qty}</Text>
-              <Text style={styles.unitText}>{item.unit}</Text>
+              <Text style={styles.amountText}>{item.quantity} quantity</Text>
             </View>
           </View>
         </View>
@@ -35,7 +65,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#fff',
     height: 180,
-    marginBottom: 10, // Add margin between items
+    marginBottom: 10,
   },
   firstSection: {
     flexDirection: 'column',
