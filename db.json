@@ -1,9 +1,9 @@
-    {
-      "getShoppingList": [
-        {"id": 1, "user": 2, "ingredient": "1033", "quantity": 2, "is_purchased": false},
-        {"id": 2, "user": 2, "ingredient": "2044", "quantity": 4, "is_purchased": false},
-        {"id": 3, "user": 2, "ingredient": "11215", "quantity": 6, "is_purchased": false},
-        {"id": 4, "user": 3, "ingredient": "20420", "quantity": 1, "is_purchased": true}
+{
+    "getShoppingList": [
+        {"id": 1, "user": 2, "ingredient": "1033", "name": "parmesan", "image": "https://spoonacular.com/cdn/ingredients_100x100/parmesan.jpg", "quantity": 2, "is_purchased": false},
+        {"id": 2, "user": 2, "ingredient": "2044", "name": "basil", "image": "https://spoonacular.com/cdn/ingredients_100x100/basil.jpg", "quantity": 4, "is_purchased": false},
+        {"id": 3, "user": 2, "ingredient": "11215","name": "garlic", "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.png", "quantity": 6, "is_purchased": false},
+        {"id": 4, "user": 3, "ingredient": "20420","name": "pasta", "image": "https://spoonacular.com/cdn/ingredients_100x100/fusilli.jpg", "quantity": 1, "is_purchased": true}
       ],
     
     "getIngredients": [
@@ -12,6 +12,7 @@
       {"id": 3, "name": "garlic", "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.png", "quantity": 6, "user": "2", "preference": 1},
       {"id": 4, "name": "pasta", "image": "https://spoonacular.com/cdn/ingredients_100x100/fusilli.jpg", "quantity": 1, "user": "3", "preference": 1}
     ]
+    
 }
 
 
