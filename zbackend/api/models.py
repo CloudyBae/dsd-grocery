@@ -37,6 +37,8 @@ class ShoppingList(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
+    name = models.CharField(max_length=100)
+    image = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.ingredient.name} ({self.quantity})"
@@ -58,6 +60,7 @@ class FavoriteRecipe(models.Model):
     image = models.CharField(max_length=255)
     minutes = models.CharField(max_length=100)
     likes = models.CharField(max_length=100)
+    recipe = models.IntegerField()
 
     def __str__(self):
         return self.name
