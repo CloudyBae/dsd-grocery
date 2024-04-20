@@ -8,7 +8,7 @@ export const useGetRecipeInfo = (recipeId) => {
   const fetchRecipeInfo = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=true&apiKey=${SPOONACULAR_API_KEY}`
+        `https://api.spoonacular.com/recipes/715538/information?includeNutrition=true&apiKey=${SPOONACULAR_API_KEY}`
       );
       const data = await response.json();
       setRecipe(data);
