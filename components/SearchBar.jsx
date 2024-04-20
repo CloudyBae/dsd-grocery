@@ -1,13 +1,13 @@
-import React  from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SearchBar } from '@rneui/base';
-import {  AntDesign } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const Search = ({ updateSearch, value }) => {
   return (
     <View style={styles.container}>
       <SearchBar
-      id='searchBar'
+        id='searchBar'
         placeholder='Type Here To Search...'
         placeholderTextColor={'#7C7C7C'}
         onChangeText={updateSearch}
