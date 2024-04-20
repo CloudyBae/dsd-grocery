@@ -16,9 +16,8 @@ import Accordion from '../components/Accordion';
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
+import HTML from 'react-native-render-html';
 import RenderHTML, { defaultSystemFonts } from 'react-native-render-html';
-import React, { useContext } from 'react';
-import AuthContext from '../auth/auth-context';
 
 const Detail = ({ title, value }) => {
   return (
@@ -35,7 +34,6 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = useContext(AuthContext);
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
@@ -80,33 +78,33 @@ export const RecipeScreen = () => {
     );
   };
 
-  // partly working, need to fix connectiong to api
+  const onClickFavourite = () => {
+    setIsFavourite(!isFavourite);
+
   useEffect(() => {
-    const onClickFavourite = async () => {
-      setIsFavourite(!isFavourite);
+    const postFavoriteStatus = async () => {
       try {
-        const response = await fetch(
-          'http://localhost:8000/favorite_recipes/${userId}/save/',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(recipe),
-          }
-        );
+        const response = await fetch('http://localhost:3001/fav_recipes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ postFavoriteStatus }),
+        });
         if (!response.ok) {
-          console.error('Failed to save favorite recipe');
+          throw new Error('Failed to update favorite status');
         }
+        console.log('Favorite status updated successfully');
       } catch (error) {
-        console.error('Error saving favorite recipe:', error);
+        console.error('Error updating favorite status:', error);
+        // Handle error here, e.g., show a toast message or revert the state change
       }
     };
+  
+    postFavoriteStatus();
+  }, [isFavourite, id]);
 
-    onClickFavourite();
-
-    return () => {};
-  }, [isFavourite, recipe, userId]);
+};
 
   if (loading || !recipe) {
     return (
@@ -115,6 +113,7 @@ export const RecipeScreen = () => {
       </View>
     );
   }
+
 
   const listItems = [
     { title: 'Summary', details: <InnerHtmlContent value={recipe?.summary} /> },
@@ -288,7 +287,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   favoriteButton: {
-    position: 'relative',
+    position: 'absolute',
+    top: 40,
+    right: 20,
     zIndex: 2,
   },
 });

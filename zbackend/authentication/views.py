@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated
+from django.http import JsonResponse
 
 User = get_user_model()
 
@@ -25,3 +26,17 @@ class UserViewSet(viewsets.ModelViewSet):
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
+
+
+def make_superuser(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')  # Assuming you're sending user_id in the request body
+        try:
+            user = User.objects.get(pk=user_id)
+            user.is_superuser = True
+            user.save()
+            return JsonResponse({'message': 'User is now a superuser'})
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'User does not exist'}, status=400)
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)

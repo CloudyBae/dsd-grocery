@@ -71,6 +71,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'authentication.middleware.SuperuserMiddleware', 
 ]
 
 ROOT_URLCONF = "zbackend.urls"
