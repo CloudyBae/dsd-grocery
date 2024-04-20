@@ -1,11 +1,9 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import UserViewSet
-
-router = DefaultRouter()
-router.register(r"profile", UserViewSet, basename="user-profile")
-
+from . import views
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("dj-rest-auth/", include("dj_rest_auth.urls")),
+    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+    path("dj-rest-auth/google/", views.GoogleLogin.as_view(), name="google_login"),
+    path("google/", views.Callback.as_view()),
 ]
