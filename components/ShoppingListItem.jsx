@@ -32,7 +32,6 @@ const ShoppingListItem = () => {
     }
     return {};
   };
-  
 
   return (
     <View>
@@ -48,7 +47,7 @@ const ShoppingListItem = () => {
           <View style={styles.textSection}>
             <Text style={styles.headingText}>{item.name}</Text>
             <View style={styles.amountContainer}>
-            <Text style={styles.amountText}>{item.quantity} quantity</Text>
+              <Text style={styles.amountText}>{item.quantity} quantity</Text>
             </View>
           </View>
         </View>
