@@ -19,21 +19,21 @@ const Nav = () => {
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Ingredients button was pressed!'
-        onPress={() => navigation.navigate('Ingredient')}
+        onPress={() => navigation.navigate('Ingredients')}
       >
         <FontAwesome5 name='apple-alt' style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Shopping list button was pressed!'
-        onPress={() => navigation.navigate('ShoppingList')}
+        onPress={() => navigation.navigate('Shopping List')}
       >
         <FontAwesome5 name='clipboard-list' style={styles.icon} />
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Account Settings button was pressed!'
-        onPress={() => navigation.navigate('AccountSettingsMenu')}
+        onPress={() => navigation.navigate('Account')}
       >
         <MaterialCommunityIcons name='account-circle' style={styles.icon} />
       </TouchableOpacity>

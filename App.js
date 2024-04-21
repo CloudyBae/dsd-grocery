@@ -20,37 +20,6 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name='Recipe'
-          component={RecipeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Ingredient'
-          component={IngredientScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Filter'
-          component={FilterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='ShoppingList'
-          component={ShoppingListScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='AccountSettingsMenu'
-          component={AccountSettingsMenu}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name='Login'
           component={LoginScreen}
           options={{ headerShown: false }}
@@ -61,18 +30,49 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='DietaryAllergenFilter'
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Ingredients'
+          component={IngredientScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Shopping List'
+          component={ShoppingListScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Account'
+          component={AccountSettingsMenu}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Dietary Preferences & Allergies'
           component={DietaryAllergenFilterScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
-          name='AcctSavedRecipes'
-          component={AcctSavedRecipesScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='AccountDetailsScreen'
+          name='Account Details'
           component={AccountDetailsScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Saved Recipes'
+          component={AcctSavedRecipesScreen}
+          options={{ headerShown: true }}
+        />
+
+        <Stack.Screen
+          name='Recipe'
+          component={RecipeScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Filter'
+          component={FilterScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

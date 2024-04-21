@@ -22,7 +22,7 @@ export const AccountSettingsMenu = () => {
       />
 
       <Pressable
-        onPress={() => navigation.navigate('DietaryAllergenFilter')}
+        onPress={() => navigation.navigate('Dietary Preferences & Allergies')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -35,10 +35,10 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Dietary Preferences</Text>
+        <Text style={styles.menuText}>Dietary Preferences & Allergies</Text>
       </Pressable>
       <Pressable
-        onPress={() => navigation.navigate('AccountDetailsScreen')}
+        onPress={() => navigation.navigate('Account Details')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -51,10 +51,10 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImgId}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>My Details</Text>
+        <Text style={styles.menuText}>Account Details</Text>
       </Pressable>
       <Pressable
-        onPress={() => navigation.navigate('AcctSavedRecipes')}
+        onPress={() => navigation.navigate('Saved Recipes')}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.5 : 1,
@@ -67,7 +67,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Planned Recipes</Text>
+        <Text style={styles.menuText}>Saved Recipes</Text>
       </Pressable>
 
       <Pressable

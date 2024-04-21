@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../components/Typography';
 
 export default function DietaryFilters() {
   const [categories, setCategories] = useState([
@@ -69,7 +70,7 @@ export default function DietaryFilters() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dietary Requirements</Text>
+      <Text style={styles.title}>Dietary Preferences</Text>
 
       {categories.map((item, index) => {
         return (

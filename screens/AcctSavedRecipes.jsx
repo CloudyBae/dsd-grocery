@@ -21,7 +21,7 @@ export const AcctSavedRecipesScreen = () => {
         <ScrollView>
           <View style={styles.homeContainer}>
             <AcctHeader />
-            <Text style={styles.title}>Planned Recipes</Text>
+            {/* <Text style={styles.title}>Saved Recipes</Text> */}
             <Pressable
               onPress={() => navigation.navigate('Recipe', { id: item.id })}
             >
