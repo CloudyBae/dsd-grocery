@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "com.dsdgrocery",
     "name": "dsd-grocery",
     "slug": "dsd-grocery",
     "version": "1.0.0",

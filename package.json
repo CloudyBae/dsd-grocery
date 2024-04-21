@@ -36,7 +36,11 @@
     "react-native-render-html": "^6.3.4",
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "expo-auth-session": "~5.4.0",
+    "expo-crypto": "~12.8.1",
+    "expo-web-browser": "~12.8.2",
+    "expo-linking": "~6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
