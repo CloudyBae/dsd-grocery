@@ -11,87 +11,77 @@ import {
   ButtonText,
   ButtonSmall,
 } from '../components/Typography';
+import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
+
 
 export const AccountSettingsMenu = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+    <View style={styles.innerContainer}>
       <AcctHeader />
-      <View
-        style={{
-          width: '80%',
-          height: 2,
-          backgroundColor: '#96d1ab',
-          alignSelf: 'center',
-        }}
-      />
-
-      <Pressable
-        onPress={() => navigation.navigate('Dietary Preferences & Allergies')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.menuButton,
-        ]}
-      >
-        <Image
-          source={require('../assets/donotenter.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <Body style={styles.menuText}>Dietary Preferences & Allergies</Body>
-      </Pressable>
-      <Pressable
-        onPress={() => navigation.navigate('Account Details')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.menuButton,
-        ]}
-      >
-        <Image
-          source={require('../assets/idcard.png')}
-          style={styles.tagImgId}
-          resizeMode='cover'
-        />
-        <Body style={styles.menuText}>Account Details</Body>
-      </Pressable>
-      <Pressable
-        onPress={() => navigation.navigate('Saved Recipes')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.menuButton,
-        ]}
-      >
-        <Image
-          source={require('../assets/pot.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <Body style={styles.menuText}>Saved Recipes</Body>
-      </Pressable>
+      <View style={styles.menuItemContainer}>
+        <View style={styles.menuItemInnerContainer}>
+        <Pressable
+          onPress={() => navigation.navigate('Dietary Preferences & Allergies')}
+          style={({ pressed }) => [
+            {
+              opacity: pressed ? 0.5 : 1,
+            },
+            styles.menuItem,
+          ]}
+        >
+          <Image
+            source={require('../assets/donotenter.png')}
+            style={styles.menuImg}
+            resizeMode='cover'
+          />
+          <Body>Dietary Preferences & Allergies</Body>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('Account Details')}
+          style={({ pressed }) => [
+            {
+              opacity: pressed ? 0.5 : 1,
+            },
+            styles.menuItem,
+          ]}
+        >
+          <Image
+            source={require('../assets/idcard.png')}
+            style={styles.menuImgId}
+            resizeMode='cover'
+          />
+          <Body>Account Details</Body>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('Saved Recipes')}
+          style={({ pressed }) => [
+            {
+              opacity: pressed ? 0.5 : 1,
+            },
+            styles.menuItem,
+          ]}
+        >
+          <Image
+            source={require('../assets/pot.png')}
+            style={styles.menuImg}
+            resizeMode='cover'
+          />
+          <Body>Saved Recipes</Body>
+        </Pressable>
+      </View>
 
       <Pressable
         onPress={() => navigation.navigate('Login')}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.5 : 1,
-          },
-          styles.logOutButton,
-        ]}
+        style={[styles.buttonContainer, styles.button]}
       >
-        <Image
-          source={require('../assets/logout.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <ButtonText style={styles.menuText}>Log Out</ButtonText>
+      <LogOutIcon style={styles.icon}/>
+      <ButtonText>Log Out</ButtonText>
       </Pressable>
+      </View>
+      </View>
       <Nav />
     </View>
   );
@@ -99,23 +89,49 @@ export const AccountSettingsMenu = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f2f2f2',
+    flex: 1,
   },
-  menuButton: {
+  innerContainer: {
+    marginHorizontal: 16,
+    marginTop: 16,
     alignItems: 'center',
-    flexDirection: 'row',
   },
-  tagImg: {
-    height: 24,
-    width: 24,
-  },
-  tagImgId: {
-    height: 24,
-    width: 24,
-  },
-  logOutButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  menuItemContainer: {
+    alignContent: 'center',
+    backgroundColor: '#fff',
     borderRadius: 18,
+    display: 'flex',
+    justifyContent: 'center',
+    padding: 24,
+    width: '100%',
+    gap: 32,
   },
+  menuItemInnerContainer: {
+    gap: 24
+  },
+  menuItem: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 6,
+  },
+  menuImg: {
+    height: 24,
+    width: 24,
+  },
+  menuImgId: {
+    height: 24,
+    width: 24,
+  },
+  button: {
+    backgroundColor: '#52B175',
+    borderRadius:18,
+    padding: 24,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  icon: {
+    color: '#121212'
+  }
 });
