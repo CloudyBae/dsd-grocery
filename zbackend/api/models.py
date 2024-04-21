@@ -9,6 +9,7 @@ class DietaryPreference(models.Model):
         related_name="dietary_preferences_entries",
         db_index=True,
     )
+    preference_id = models.IntegerField()
     preference_name = models.CharField(max_length=100)
     is_selected = models.BooleanField(default=False)
 
@@ -62,7 +63,7 @@ class FavoriteRecipe(models.Model):
     recipe_id = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.recipe_id})"
 
 
 class Macro(models.Model):

@@ -15,7 +15,7 @@ User = get_user_model()
 class DietaryPreferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = DietaryPreference
-        fields = ["id", "user", "preference_name", "is_selected"]
+        fields = ["id", "user", "preference_id", "preference_name", "is_selected"]
         extra_kwargs = {"user": {"read_only": True}}
 
 
@@ -23,6 +23,7 @@ class PlannedRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlannedRecipe
         fields = ["id", "user", "date_for"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -35,14 +36,14 @@ class IngredientSerializer(serializers.ModelSerializer):
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
-        fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
-        extra_kwargs = {"user": {"read_only": True}, "ingredient": {"required": True}}
+        fields = ["id", "user", "quantity", "is_purchased", "name", "image", "product_id"]
+        extra_kwargs = {"user": {"read_only": True}}
 
 
 class MacrosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Macro
-        fields = ["id", "user", "recipe", "macro_type", "ingredient", "quantity"]
+        fields = ["id", "user", "recipe_id", "macro_name", "quantity"]
         extra_kwargs = {"user": {"read_only": True}}
 
 
@@ -55,12 +56,13 @@ class FavoriteRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = FavoriteRecipe
         fields = [
+            "id",
             "servings",
             "preference",
             "user",
-            "id",
             "name",
             "image",
             "minutes",
             "likes",
+            "recipe_id"
         ]
