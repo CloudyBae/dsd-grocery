@@ -5,10 +5,9 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 import { supabase } from '../lib/supabase';
 
-
 WebBrowser.maybeCompleteAuthSession(); // required for web only
 const redirectTo = makeRedirectUri();
-console.log({ redirectTo })
+console.log({ redirectTo });
 
 const createSessionFromUrl = async (url) => {
   const { params, errorCode } = QueryParams.getQueryParams(url);
@@ -23,11 +22,11 @@ const createSessionFromUrl = async (url) => {
     refresh_token,
   });
   if (error) throw error;
-  console.log('session', data.session)
+  console.log('session', data.session);
   return data.session;
 };
 
-const performOAuth = async () => {
+export const performOAuth = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
@@ -35,10 +34,15 @@ const performOAuth = async () => {
       skipBrowserRedirect: true,
     },
   });
-  if (error) throw error;
+  if (error) {
+    console.error('Error signing in with OAuth:', error);
+    return;
+  }
+
+  console.log('OAuth data:', data);
 
   const res = await WebBrowser.openAuthSessionAsync(
-    data?.url ?? '', 
+    data?.url ?? '',
     redirectTo
   );
 
@@ -64,13 +68,13 @@ const sendMagicLink = async () => {
 export default function Auth() {
   // Handle linking into app from email app.
   const url = Linking.useURL();
-  console.log({ url })
+  console.log({ url });
   if (url) createSessionFromUrl(url);
 
   return (
     <>
-      <Button onPress={performOAuth} title="Sign in with Google" />
-      <Button onPress={sendMagicLink} title="Send Magic Link" />
+      <Button onPress={performOAuth} title='Sign in with Google' />
+      <Button onPress={sendMagicLink} title='Send Magic Link' />
     </>
   );
 }
