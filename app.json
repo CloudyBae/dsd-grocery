@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#52B175"
-      }
+      },
+      "package": "com.anonymous.dsdgrocery"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,9 +32,12 @@
       [
         "expo-font",
         {
-          "fonts": ["../assets/fonts/Gilroy-Bold.ttf"]
+          "fonts": [
+            "../assets/fonts/Gilroy-Bold.ttf"
+          ]
         }
-      ]
+      ],
+      "@react-native-google-signin/google-signin"
     ]
   }
 }

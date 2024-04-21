@@ -55,7 +55,7 @@ export const AuthContextProvider = (props) => {
     }
   };
 
-  const base_url = 'http://127.0.0.1:8000';
+  const base_url = 'http://localhost:8000';
   const contextValue = {
     token: token,
     userId: userId,

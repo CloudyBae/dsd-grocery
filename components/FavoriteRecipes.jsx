@@ -5,7 +5,7 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../auth/auth-context';
 
-const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
+const FavoriteRecipesList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
   const { userId } = useContext(AuthContext);
