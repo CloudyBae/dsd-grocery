@@ -10,7 +10,7 @@ import { AddIngredientModal } from './AddIngredient';
 import AuthContext from '../auth/auth-context';
 
 const imageUrl =
-  'https://snaped.fns.usda.gov/sites/default/files/styles/crop_ratio_7_5/public/seasonal-produce/2018-05/watermelon.jpg?itok=WlQcb2Uh';
+  'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const IngredientScreen = () => {
   const { userId } = useContext(AuthContext);
@@ -27,7 +27,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '200g',
       user: 123,
-      preference: 1
+      preference: 1,
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '100ml',
       user: 456,
-      preference: 2
+      preference: 2,
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '1',
       user: 789,
-      preference: 1
+      preference: 1,
     },
     {
       id: 4,
@@ -51,7 +51,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '2',
       user: 123,
-      preference: 3
+      preference: 3,
     },
     {
       id: 5,
@@ -59,7 +59,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '1',
       user: 456,
-      preference: 2
+      preference: 2,
     },
     {
       id: 6,
@@ -67,7 +67,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '150g',
       user: 789,
-      preference: 1
+      preference: 1,
     },
     {
       id: 7,
@@ -75,7 +75,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '100g',
       user: 123,
-      preference: 3
+      preference: 3,
     },
     {
       id: 8,
@@ -83,7 +83,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '300g',
       user: 456,
-      preference: 2
+      preference: 2,
     },
     {
       id: 9,
@@ -91,7 +91,7 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '2',
       user: 789,
-      preference: 1
+      preference: 1,
     },
     {
       id: 10,
@@ -99,27 +99,23 @@ export const IngredientScreen = () => {
       image: imageUrl,
       quantity: '1',
       user: 123,
-      preference: 3
+      preference: 3,
     },
   ];
-  
 
-
-
-
-useEffect(() => {
-  const fetchIngredients = async () => {
-    setIngredients(ingredientList);
-    // try {
-    //   const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
-    //   const data = await response.json();
-    //   setIngredients(data);
-    // } catch (error) {
-    //   console.error('Error fetching ingredients:', error);
-    // }
-  }
-  fetchIngredients()
-},[])
+  useEffect(() => {
+    const fetchIngredients = async () => {
+      setIngredients(ingredientList);
+      // try {
+      //   const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
+      //   const data = await response.json();
+      //   setIngredients(data);
+      // } catch (error) {
+      //   console.error('Error fetching ingredients:', error);
+      // }
+    };
+    fetchIngredients();
+  }, []);
 
   const updateSearch = (query) => {
     setSearch(query);
@@ -134,10 +130,10 @@ useEffect(() => {
     <SafeAreaView style={styles.container}>
       {modalVisible && (
         <>
-        <AddIngredientModal
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-        />
+          <AddIngredientModal
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </>
       )}
 
@@ -164,7 +160,7 @@ useEffect(() => {
           }}
           onPress={() => setModalVisible(true)}
         >
-          <View style={{...styles.rowContainer, marginTop:5}}>
+          <View style={{ ...styles.rowContainer, marginTop: 5 }}>
             <FontAwesome5
               name='plus'
               style={styles.icon}

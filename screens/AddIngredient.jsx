@@ -12,7 +12,7 @@ export const AddIngredientModal = ({
   onClose,
 }) => {
   const { userId } = useContext(AuthContext);
-  const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState('');
   const [productData, setProductData] = useState({
     productName: '',
     quantity: 0,
@@ -36,7 +36,7 @@ export const AddIngredientModal = ({
 
   const handleSaveProduct = async () => {
     if (!productData.productName || productData.quantity === 0) {
-      setShowError(true);
+      setShowError('Please, fill in all fields');
       return;
     }
 
@@ -52,10 +52,10 @@ export const AddIngredientModal = ({
         }
       );
       if (!response.ok) {
-        console.error('Failed to save ingredient');
+        setShowError('Failed to save ingredient');
       }
-      console.log(response);
     } catch (error) {
+      setShowError('Error saving ingredient');
       console.error('Error saving ingredient:', error);
     }
   };
@@ -113,7 +113,7 @@ export const AddIngredientModal = ({
               }}
             >
               <BodySmall style={{ color: 'red', textAlign: 'center' }}>
-              Please, make sure to fill in all required fields
+             {showError}
               </BodySmall>
             </View>
           )}

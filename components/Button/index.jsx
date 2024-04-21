@@ -16,7 +16,7 @@ const Button = ({
   size = 'default',
   shape = 'rounded',
   accessibilityLabel,
-  style
+  style,
 }) => {
   return (
     <ButtonContainer
