@@ -11,4 +11,10 @@ tasks:
   shell:
     desc: Start Python Virtual Environment
     cmds:
+  
+  mac-init:
+    desc: Initialize Backend with Mac
+    cmds:
+      - pip3 install pipenv
+      - pipenv install --dev
       - pipenv shell
