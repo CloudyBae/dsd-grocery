@@ -21,10 +21,6 @@ export default function MainButton(props) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 18,
-    lineHeight: 21,
-    fontWeight: 'regular',
-    letterSpacing: 0.25,
     color: 'rgb(255, 255, 255)',
   },
   button: {
@@ -32,6 +28,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 364,
     height: 67,
-    borderRadius: 19,
+    borderRadius: 18,
   },
 });

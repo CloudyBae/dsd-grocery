@@ -11,7 +11,7 @@ const AcctHeader = () => {
       <View style={styles.userImg}>
         <Image
           source={require('../assets/Avatar.png')}
-          style={{ width: 60, height: 60, borderRadius: 150 / 2 }}
+          style={{ width: 60, height: 60, borderRadius: 180 / 2 }}
         />
       </View>
 
@@ -40,8 +40,6 @@ const AcctHeader = () => {
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
-    paddingTop: 40,
-    paddingBottom: 40,
     borderTopColor: 'white',
     borderRightColor: 'white',
     borderBottomColor: '#52B175',
@@ -56,21 +54,15 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 1,
-    fontSize: 24,
-    fontWeight: 'bold',
   },
   email: {
     flex: 1,
-    fontSize: 12,
-    fontWeight: 'bold',
   },
   iconContainer: {
     height: 20,
     width: 20,
   },
   userImg: {
-    marginLeft: 30,
-    marginRight: 10,
     overflow: 'hidden',
   },
 });

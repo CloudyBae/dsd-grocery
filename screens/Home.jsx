@@ -36,17 +36,17 @@ export const HomeScreen = () => {
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
                 customButtonStyling={{
-                  width: '45%',
-                  padding: 40,
-                  borderRadius: 25,
+                  // width: '45%',
+                  // padding: 40,
+                  borderRadius: 18,
                 }}
                 title='Pantry'
               />
               <CategoryButton
                 customButtonStyling={{
-                  width: '45%',
-                  padding: 40,
-                  borderRadius: 25,
+                  // width: '45%',
+                  // padding: 40,
+                  borderRadius: 18,
                 }}
                 title='Recipes'
                 onPress={() => navigation.navigate('Filter')}
@@ -71,34 +71,25 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    padding: 10,
-    marginBottom: 50,
   },
   macrosContainer: {
     backgroundColor: '#72C08F',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    gap: 5,
-    padding: 20,
-    borderRadius: 10,
+    // gap: 5,
+    borderRadius: 9,
   },
   mainButtonsContainer: {
     flexDirection: 'row',
-    padding: 10,
     justifyContent: 'space-between',
   },
   favoriteRecipesContainer: {
     alignItems: 'center',
   },
-  favoriteRecipesTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-  },
   separatorContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 10,
   },
   separator: {
     height: 2,

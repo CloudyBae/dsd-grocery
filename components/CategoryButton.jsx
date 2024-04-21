@@ -9,7 +9,7 @@ const CategoryButton = ({
 }) => {
   return (
     <TouchableOpacity
-      style={[stlyes.categoryButton, customButtonStyling]}
+      style={[styles.categoryButton, customButtonStyling]}
       onPress={
         onPress ||
         (() =>
@@ -18,7 +18,7 @@ const CategoryButton = ({
           ))
       }
     >
-      <Text style={[stlyes.titleText, customTextStyling]}>
+      <Text style={[styles.titleText, customTextStyling]}>
         <ButtonLarge>{title || 'Button'}</ButtonLarge>
       </Text>
     </TouchableOpacity>
@@ -27,17 +27,14 @@ const CategoryButton = ({
 
 export default CategoryButton;
 
-const stlyes = StyleSheet.create({
+const styles = StyleSheet.create({
   categoryButton: {
-    padding: 15,
-    margin: 5,
     backgroundColor: '#72C08F',
-    borderRadius: 13,
+    borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
   },
   titleText: {
-    fontSize: 15,
     color: '#0A0A0A',
   },
 });

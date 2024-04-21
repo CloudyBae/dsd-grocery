@@ -72,43 +72,30 @@ const styles = StyleSheet.create({
   firstSection: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingLeft: 5,
   },
   tagImg: {
     height: 40,
     width: 120,
-    borderRadius: 10,
-    marginBottom: 2,
+    borderRadius: 9,
   },
   productImg: {
     height: 110,
     width: 100,
-    marginTop: 2,
-    marginBottom: 2,
-    borderRadius: 5,
+    borderRadius: 4,
   },
   textSection: {
     flex: 1,
-    paddingLeft: 1,
   },
   headingText: {
-    fontSize: 11,
-    fontWeight: 'bold',
   },
   timerView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: 4,
   },
   timerImg: {
     height: 18,
     width: 18,
-  },
-  amountText: {
-    fontSize: 10,
-
-    paddingBottom: 4,
   },
   removeImg: {
     justifyContent: 'flex-end',

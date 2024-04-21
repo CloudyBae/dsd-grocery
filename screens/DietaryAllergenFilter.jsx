@@ -31,12 +31,8 @@ export const DietaryAllergenFilterScreen = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    padding: 10,
-    marginBottom: 50,
   },
   buttonContainer: {
-    padding: 20,
-    marginBottom: 20,
     alignItems: 'center',
     backgroundColor: 'rgb(255,255,255)',
   },

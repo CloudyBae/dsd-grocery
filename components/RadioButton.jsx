@@ -37,18 +37,13 @@ const styles = StyleSheet.create({
   radioContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 5,
-  },
-  labelTitle: {
-    fontSize: 20,
-    marginLeft: 10,
   },
   radioCircle: {
     height: 20,
     width: 20,
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 50,
+    borderRadius: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },

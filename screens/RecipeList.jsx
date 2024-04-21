@@ -23,21 +23,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   recipeContainer: {
-    padding: 10,
-    marginTop: 25,
-    fontFamily: 'Gilroy-Bold',
   },
   scrollContainer: {
     flexGrow: 1,
-    paddingBottom: 60,
   },
   title: {
     height: 60,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    fontWeight: 'bold',
-    fontSize: 24,
-    lineHeight: 25,
   },
   navBar: {
     position: 'absolute',

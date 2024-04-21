@@ -45,34 +45,18 @@ export default AddProductCard = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
     backgroundColor: '#fff',
     borderColor: '#e7e7e7',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 4,
     height: 248,
     width: 173,
     top: 0,
     left: 0,
   },
   productImg: {
-    paddingHorizontal: 60,
     height: 110,
     width: 80,
-  },
-  headingText: {
-    fontSize: 11,
-    fontWeight: 'bold',
-  },
-  amountText: {
-    fontSize: 10,
-    paddingTop: 4,
-    paddingBottom: 8,
-  },
-  priceText: {
-    fontSize: 12,
-    paddingTop: 4,
-    fontWeight: 'bold',
   },
   addButton: {
     flexDirection: 'row',
@@ -80,12 +64,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#53b175',
     borderColor: '#e7e7e7',
-    borderRadius: 5,
+    borderRadius: 4,
     height: 50,
     width: 50,
   },
   buttonText: {
-    fontSize: 24,
     color: '#ffffff',
   },
   bottomCard: {
@@ -93,6 +76,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 12,
   },
 });

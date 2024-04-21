@@ -237,8 +237,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   detailContainer: {
-    paddingVertical: 0,
-    paddingHorizontal: 20,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -258,34 +256,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
 
-    gap: 5,
+    // gap: 5,
     flexWrap: 'wrap',
   },
   category: {
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#52B175',
-    paddingVertical: 0,
-    paddingHorizontal: 6,
-    borderRadius: 5,
-    marginTop: 10,
+    borderRadius: 4,
   },
   addToCartButtonContainer: {
-    padding: 24,
     backgroundColor: 'transparent',
   },
   infoContainer: {
-    marginTop: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  ingredientsContainer: {},
-  ingredientsTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 5,
   },
   favoriteButton: {
     position: 'relative',

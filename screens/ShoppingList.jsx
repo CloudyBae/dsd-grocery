@@ -58,15 +58,10 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    paddingVertical: 16,
   },
   title: {
     color: 'black',
-    fontSize: 40,
-    fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: 20,
-    paddingTop: 20,
   },
   navBar: {
     position: 'absolute',

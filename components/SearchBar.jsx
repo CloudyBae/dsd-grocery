@@ -32,10 +32,6 @@ const Search = () => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 18,
-    lineHeight: 21,
-    fontWeight: '400',
-    letterSpacing: 0.25,
     color: 'rgb(255, 255, 255)',
   },
   input: {

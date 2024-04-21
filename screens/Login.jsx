@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
   loginButton: {
-    padding: 15,
+    // padding: 15,
   },
   buttonSeparator: {
     height: 10,
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
+    // padding: 20,
   },
 });

@@ -96,14 +96,11 @@ export default function AllergenFilters() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
     backgroundColor: 'rgb(255,255,255)',
   },
   title: {
     height: 60,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    fontSize: 24,
-    fontWeight: 'bold',
   },
 });

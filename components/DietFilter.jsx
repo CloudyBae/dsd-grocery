@@ -109,23 +109,11 @@ export default DietFilter;
 
 const styles = StyleSheet.create({
   categoryContainer: {
-    marginRight: 20,
-    marginLeft: 30,
     alignItems: 'center',
   },
   categoryButton: {
-    marginVertical: 10,
     borderRadius: 8,
-    padding: 7,
     backgroundColor: '#ccc',
-  },
-  categoryText: {
-    fontSize: 15,
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 15,
   },
   selectedCategory: {
     backgroundColor: '#52B175',

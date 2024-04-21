@@ -40,22 +40,14 @@ export const AcctSavedRecipesScreen = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    padding: 10,
-    marginBottom: 50,
-    fontFamily: 'Gilroy-Bold',
     backgroundColor: 'white',
   },
   title: {
     height: 60,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    fontWeight: 'bold',
-    fontSize: 24,
-    paddingTop: 20,
   },
   buttonContainer: {
-    padding: 20,
-    marginBottom: 20,
     alignItems: 'center',
     backgroundColor: 'rgb(255,255,255)',
   },

@@ -16,8 +16,6 @@ export const AccountSettingsMenu = () => {
           height: 2,
           backgroundColor: '#96d1ab',
           alignSelf: 'center',
-          marginTop: 10,
-          marginBottom: 15,
         }}
       />
 
@@ -102,7 +100,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingLeft: 30,
     borderWidth: 0,
 
     height: 75,
@@ -111,12 +108,10 @@ const styles = StyleSheet.create({
   tagImg: {
     height: 30,
     width: 30,
-    marginRight: 7,
   },
   tagImgId: {
     height: 30,
     width: 40,
-    marginRight: 7,
   },
   logOutButton: {
     flexDirection: 'row',
@@ -124,8 +119,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     width: '90%',
-    marginTop: '35%',
-    borderRadius: 30,
+    borderRadius: 18,
     borderWidth: 2,
     borderColor: '#96d1ab',
   },

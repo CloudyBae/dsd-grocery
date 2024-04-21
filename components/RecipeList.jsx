@@ -67,20 +67,10 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
 export default RecipeList;
 
 const style = StyleSheet.create({
-  titleText: {
-    fontSize: 25,
-    fontWeight: 'bold',
-  },
   columnWrapper: {
     justifyContent: 'space-between',
-    marginVertical: 5,
-    marginHorizontal: 5,
   },
   noRecipes: {
-    padding: 100,
     alignItems: 'center',
-  },
-  noRecipesText: {
-    fontSize: 18,
   },
 });

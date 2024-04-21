@@ -22,8 +22,6 @@ const CardContainer = styled.View`
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 18px;
-  padding: 28px;
-  margin: 8px;
   width: 175px;
   min-height: 170px;
   max-width: 175px;
@@ -31,7 +29,6 @@ const CardContainer = styled.View`
 `;
 
 const Title = styled.Text`
-  font-weight: bold;
   text-align: center;
 `;
 

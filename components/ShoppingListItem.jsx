@@ -66,46 +66,27 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#fff',
     height: 180,
-    marginBottom: 10,
   },
   firstSection: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingLeft: 5,
   },
   tagImg: {
     height: 40,
     width: 120,
-    borderRadius: 10,
-    marginBottom: 2,
+    borderRadius: 9,
   },
   productImg: {
     height: 110,
     width: 100,
-    marginTop: 2,
-    marginBottom: 2,
-    borderRadius: 5,
+    borderRadius: 4,
   },
   textSection: {
     flex: 1,
-    paddingLeft: 10,
-  },
-  headingText: {
-    fontSize: 25,
-    fontWeight: 'bold',
   },
   amountContainer: {
     flexDirection: 'row',
     alignItems: 'baseline',
-    paddingTop: 10,
-    paddingBottom: 8,
-  },
-  amountText: {
-    fontSize: 20,
-  },
-  unitText: {
-    fontSize: 20,
-    marginLeft: 4,
   },
 });
 

@@ -38,8 +38,6 @@ export const AccountDetailsScreen = () => {
                 height: 1,
                 backgroundColor: '#96d1ab',
                 alignSelf: 'center',
-                marginTop: 10,
-                marginBottom: 15,
               }}
             />
             <Text style={styles.myDetails}>Username</Text>
@@ -88,7 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    marginTop: 30,
   },
   inputSection: {
     flexDirection: 'column',
@@ -105,12 +102,9 @@ const styles = StyleSheet.create({
     flex: 0,
     borderColor: '#96d1ab',
     borderBottomWidth: 1,
-    marginBottom: 5,
-    padding: 10,
     width: 200,
     height: 80,
   },
   editSection: {
-    marginLeft: 20,
   },
 });

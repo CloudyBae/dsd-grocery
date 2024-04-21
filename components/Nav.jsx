@@ -8,7 +8,7 @@ import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall }
 const Nav = () => {
   const navigation = useNavigation();
   return (
-    <View style={[styles.nav, styles.shadowProp]}>
+    <View style={[styles.nav]}>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Home button was pressed!'
@@ -51,18 +51,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     height: 60,
-    paddingBottom: 16,
   },
   icon: {
     color: 'black',
     fontSize: 24,
-    padding: 10,
-  },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
   },
 });
 

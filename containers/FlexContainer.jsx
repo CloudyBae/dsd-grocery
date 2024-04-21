@@ -11,10 +11,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
     flexWrap: 'wrap',
-    gap: 10,
+    // gap: 10,
   },
 });
 

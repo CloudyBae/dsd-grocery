@@ -6,7 +6,7 @@ import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall }
 const Header = ({ pageTitle }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>{pageTitle}</Text>
+      <Title>{pageTitle}</Title>
     </View>
   );
 };
@@ -16,10 +16,6 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  title: {
-    fontFamily: 'Gilroy-Bold',
-    fontSize: 24,
   },
 });
 

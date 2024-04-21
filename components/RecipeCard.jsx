@@ -34,10 +34,8 @@ export default RecipeCard;
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: '#52B175',
-    padding: 10,
-    marginRight: 5,
     alignItems: 'center',
-    borderRadius: 15,
+    borderRadius: 18,
     height: 210,
   },
   image: {
@@ -47,25 +45,19 @@ const styles = StyleSheet.create({
     minWidth: 130,
     maxHeight: 130,
     maxWidth: 130,
-    borderRadius: 15,
+    borderRadius: 18,
   },
   cardDetails: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 3,
+    // gap: 3,
   },
   ratingDetails: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 1,
+    // gap: 1,
   },
   cardTitle: {
-    fontSize: 15,
-    fontWeight: 'bold',
     maxWidth: 150,
-    marginTop: 5,
-  },
-  cardSubTitle: {
-    fontSize: 14,
   },
 });

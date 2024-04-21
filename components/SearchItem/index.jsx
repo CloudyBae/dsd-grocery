@@ -12,7 +12,7 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
           style={{
             width: 100,
             height: 100,
-            borderRadius: 10,
+            borderRadius: 9,
             resizeMode: 'cover',
           }}
           source={{
@@ -26,7 +26,7 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
             height: '100%',
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
-            gap: '6px',
+            // gap: '6px',
           }}
         >
           <ButtonLarge>{title}</ButtonLarge>

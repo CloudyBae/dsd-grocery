@@ -96,24 +96,15 @@ const styles = StyleSheet.create({
   filterHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 50,
   },
   mainContainer: {
-    padding: 15,
     backgroundColor: '#DEDEDE',
   },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
   input: {
-    padding: 5,
     height: 40,
-    borderRadius: 5,
+    borderRadius: 4,
     width: 250,
     backgroundColor: '#fff',
-    marginBottom: 10,
   },
   mealTypeContainer: {
     flexDirection: 'row',
@@ -123,10 +114,7 @@ const styles = StyleSheet.create({
   },
   radioButtonContainer: {
     width: '50%',
-    marginBottom: 10,
   },
   calendarContainer: {
-    marginTop: 20,
-    marginBottom: 40,
   },
 });

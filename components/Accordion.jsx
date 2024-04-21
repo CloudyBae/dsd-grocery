@@ -53,26 +53,18 @@ const styles = StyleSheet.create({
   card: {
     borderTopWidth: 1,
     borderTopColor: '#E2E2E2B2',
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingHorizontal: 0,
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   cardContent: {
-    padding: 5,
   },
   arrowContent: {
-    marginRight: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   text: {
-    fontSize: 16,
   },
 });
 
