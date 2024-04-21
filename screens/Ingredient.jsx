@@ -2,18 +2,21 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import AddItemBar from '../components/AddItemBar';
 import Nav from '../components/Nav';
 
-export const IngredientScreen = () => {
+export const IngredientScreen = ({items}) => {
+  const item = [];
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.ingredientsContainer}>
-          <AddItemBar items={items} />
+          <AddItemBar item={item}/>
         </View>
       </ScrollView>
       <Nav style={styles.navBar} />
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
