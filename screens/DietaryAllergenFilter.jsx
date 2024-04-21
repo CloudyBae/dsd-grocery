@@ -92,14 +92,16 @@ export const DietaryAllergenFilterScreen = () => {
       dietaryFilters: dietaryFiltersData,
     };
 
-    const response = fetch('http://localhost:8000/api/users/{user_pk}/dietaryPreferences/{id}', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(filterData),
-    });
-
+    const response = fetch(
+      'http://localhost:8000/api/users/{user_pk}/dietaryPreferences/{id}',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(filterData),
+      }
+    );
     //if (!response.ok) {
     //  throw new Error('Failed to save filters');
     //}

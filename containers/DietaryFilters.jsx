@@ -3,84 +3,83 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox } from '@rneui/themed';
 
 const DietaryFilters = () => {
- 
   const [categories, setCategories] = useState([
     {
       id: 0,
       preference_name: 'Gluten Free',
       checked: false,
       key: 'Gluten Free',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 1,
       preference_name: 'Ketogenic',
       checked: false,
       key: 'Ketogenic',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 2,
       preference_name: 'Vegetarian',
       checked: false,
       key: 'Vegetarian',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 3,
       preference_name: 'Lacto-Vegetarian',
       checked: false,
       key: 'Lacto-Vegetarian',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 4,
       preference_name: 'Ovo-Vegetarian',
       checked: false,
       key: 'Ovo-Vegetarian',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 5,
       preference_name: 'Vegan',
       checked: false,
       key: 'Vegan',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 6,
       preference_name: 'Pescetarian',
       checked: false,
       key: 'Pescetarian',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 7,
       preference_name: 'Paleo',
       checked: false,
       key: 'Paleo',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 8,
       preference_name: 'Primal',
       checked: false,
       key: 'Primal',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 9,
       preference_name: 'Low FODMAP',
       checked: false,
       key: 'Low FODMAP',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
     {
       id: 10,
       preference_name: 'Whole30',
       checked: false,
       key: 'Whole30',
-      name: 'dietFilters'
+      name: 'dietFilters',
     },
   ]);
 
@@ -110,7 +109,7 @@ const DietaryFilters = () => {
       })}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
