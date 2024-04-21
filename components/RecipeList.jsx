@@ -4,7 +4,15 @@ import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../auth/auth-context';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);

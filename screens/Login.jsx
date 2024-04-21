@@ -10,7 +10,15 @@ import {
 import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import GroceryBag from '../assets/GroceryBag.png';
 import { useNavigation } from '@react-navigation/native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -30,7 +38,7 @@ export const LoginScreen = () => {
             /> */}
             <Title
               style={{
-                color: 'white',
+                color: '#fff',
                 fontSize: 60,
                 fontWeight: 'bold',
                 lineHeight: 70,
@@ -55,7 +63,7 @@ export const LoginScreen = () => {
           />
           <ThirdPartySignIn
             title='Home'
-            textColor='white'
+            textColor='#fff'
             icon='home'
             backgroundColor='orange'
             style={styles.loginButton}
@@ -66,8 +74,8 @@ export const LoginScreen = () => {
             title='Google'
             textColor='gray'
             icon='google'
-            iconColor='black'
-            backgroundColor='white'
+            iconColor='#121212'
+            backgroundColor='#fff'
             style={styles.loginButton}
             onPress={() => console.log('Google')}
           />
@@ -75,9 +83,9 @@ export const LoginScreen = () => {
           <ThirdPartySignIn
             title='Apple'
             icon='apple'
-            textColor='white'
-            iconColor='white'
-            backgroundColor='black'
+            textColor='#fff'
+            iconColor='#fff'
+            backgroundColor='#121212'
             style={styles.loginButton}
             onPress={() => console.log('Apple')}
           />

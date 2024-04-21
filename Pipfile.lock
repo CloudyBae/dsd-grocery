@@ -546,7 +546,7 @@
         }
     },
     "develop": {
-        "black": {
+        "#121212": {
             "hashes": [
                 "sha256:1bb9ca06e556a09f7f7177bc7cb604e5ed2d2df1e9119e4f7d2f1f7071c32e5d",
                 "sha256:21f9407063ec71c5580b8ad975653c66508d6a9f57bd008bb8691d273705adcd",

@@ -1,15 +1,18 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
-const CategoryButton = ({
-  title,
-  onPress,
-  customButtonStyling,
-  customTextStyling,
-}) => {
+const CategoryButton = ({ title, onPress }) => {
   return (
     <TouchableOpacity
-      style={[styles.categoryButton, customButtonStyling]}
+      style={[styles.categoryButton]}
       onPress={
         onPress ||
         (() =>
@@ -29,12 +32,11 @@ export default CategoryButton;
 
 const styles = StyleSheet.create({
   categoryButton: {
-    backgroundColor: '#72C08F',
-    borderRadius: 18,
     alignItems: 'center',
+    backgroundColor: '#52B175',
+    borderRadius: 18,
     justifyContent: 'center',
-  },
-  titleText: {
-    color: '#0A0A0A',
+    width: '45%',
+    height: 96,
   },
 });

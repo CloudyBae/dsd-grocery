@@ -7,9 +7,17 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
 
-export const FilterScreen = () => {
+export const Filter = () => {
   const [ingredientText, setIngredientText] = useState('');
   const navigation = useNavigation();
   const [selectedMealType, setSelectedMealTypes] = useState([]);
@@ -48,7 +56,7 @@ export const FilterScreen = () => {
         >
           <Caption>X</Caption>
         </TouchableOpacity>
-        <Header pageTitle='Filters' />
+        <Header pageTitle='Filter' />
       </View>
       <View style={styles.mainContainer}>
         <Title style={styles.title}>Ingredient</Title>
@@ -115,6 +123,5 @@ const styles = StyleSheet.create({
   radioButtonContainer: {
     width: '50%',
   },
-  calendarContainer: {
-  },
+  calendarContainer: {},
 });

@@ -1,6 +1,14 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 export default AddRecipeBar = (props) => {
   const {
@@ -26,9 +34,7 @@ export default AddRecipeBar = (props) => {
         />
       </View>
       <View style={styles.textSection} numberOfLines={null}>
-        <Title numberOfLines={null}>
-          {name}
-        </Title>
+        <Title numberOfLines={null}>{name}</Title>
         <View style={styles.timerView}>
           <Image
             source={require('../assets/timerImg.png')}

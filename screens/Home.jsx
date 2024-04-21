@@ -11,13 +11,22 @@ import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
-import { Text } from 'react-native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
+import { StatusBar } from 'react-native';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar backgroundColor='#f2f2f2' barStyle='dark-content' />
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
@@ -34,33 +43,23 @@ export const HomeScreen = () => {
               </View>
             </View>
             <View style={styles.mainButtonsContainer}>
+              <CategoryButton title='Pantry' />
               <CategoryButton
-                customButtonStyling={{
-                  // width: '45%',
-                  // padding: 40,
-                  borderRadius: 18,
-                }}
-                title='Pantry'
-              />
-              <CategoryButton
-                customButtonStyling={{
-                  // width: '45%',
-                  // padding: 40,
-                  borderRadius: 18,
-                }}
                 title='Recipes'
                 onPress={() => navigation.navigate('Filter')}
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>
-              <Title style={styles.favoriteRecipesTitle}>Favorite Recipes</Title>
+              <Title style={styles.favoriteRecipesTitle}>
+                Favorite Recipes
+              </Title>
             </View>
-            <View style={styles.separatorContainer}>
-              <View style={styles.separator}></View>
-              <View style={styles.separator}></View>
+            <View style={styles.dietFilterContainer}>
+              <DietFilter />
             </View>
-            <DietFilter />
-            <RecipeList numberOfRecipes={10} />
+            <View style={styles.recipeListContainer}>
+              <RecipeList numberOfRecipes={10} />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -71,31 +70,35 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
+    paddingHorizontal: 16,
+    backgroundColor: '#f2f2f2',
+    paddingTop: 16,
+    flex: 1,
   },
   macrosContainer: {
-    backgroundColor: '#72C08F',
+    backgroundColor: '#fff',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    // gap: 5,
     borderRadius: 9,
+    padding: 16,
   },
   mainButtonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    marginVertical: 48,
   },
   favoriteRecipesContainer: {
-    alignItems: 'center',
+    marginBottom: 16,
   },
-  separatorContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  favoriteRecipesTitle: {
+    borderBottomWidth: 1,
+    paddingBottom: 8,
+    borderColor: '#c2c2c2',
+    width: '100%',
+    marginBottom: 12,
   },
-  separator: {
-    height: 2,
-    width: 100,
-    borderColor: '#52B175',
-    backgroundColor: '#52B175',
-    borderWidth: 1,
+  dietFilterContainer: {
+    marginBottom: 32,
   },
 });

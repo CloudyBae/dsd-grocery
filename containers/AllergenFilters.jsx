@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
 
 export default function AllergenFilters() {
   const [categories, setCategories] = useState([

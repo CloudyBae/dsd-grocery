@@ -3,7 +3,15 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const Nav = () => {
   const navigation = useNavigation();
@@ -15,6 +23,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Home')}
       >
         <FontAwesome5 name='home' style={styles.icon} />
+        <Caption>Home</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -22,6 +31,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Ingredients')}
       >
         <FontAwesome5 name='apple-alt' style={styles.icon} />
+        <Caption>Ingredients</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -29,6 +39,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Shopping List')}
       >
         <FontAwesome5 name='clipboard-list' style={styles.icon} />
+        <Caption>Shopping</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -36,6 +47,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Account')}
       >
         <MaterialCommunityIcons name='account-circle' style={styles.icon} />
+        <Caption>Account</Caption>
       </TouchableOpacity>
     </View>
   );
@@ -43,18 +55,23 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-    position: 'absolute',
-    width: '100%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#c2c2c2',
+    borderTopWidth: 1,
     bottom: 0,
     flexDirection: 'row',
+    height: 70,
     justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    height: 60,
+    position: 'absolute',
+    textAlign: 'center',
+    width: '100%',
   },
   icon: {
-    color: 'black',
+    color: '#121212',
     fontSize: 24,
+    textAlign: 'center',
+    marginBottom: 4,
   },
 });
 

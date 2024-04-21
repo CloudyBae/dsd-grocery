@@ -10,7 +10,15 @@ import {
 } from 'react-native';
 import { useMemo, useState } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
@@ -200,7 +208,7 @@ export const RecipeScreen = () => {
             <View
               style={{
                 ...styles.rowContainer,
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 marginTop: 16,
                 marginBottom: 16,
               }}
@@ -236,8 +244,7 @@ const styles = StyleSheet.create({
     top: 40,
     zIndex: 1,
   },
-  detailContainer: {
-  },
+  detailContainer: {},
   rowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -260,7 +267,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   category: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#52B175',
     borderRadius: 4,
@@ -268,8 +275,7 @@ const styles = StyleSheet.create({
   addToCartButtonContainer: {
     backgroundColor: 'transparent',
   },
-  infoContainer: {
-  },
+  infoContainer: {},
   favoriteButton: {
     position: 'relative',
     zIndex: 2,

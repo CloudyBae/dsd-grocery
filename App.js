@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/Home';
 import { IngredientScreen } from './screens/Ingredient';
 import { RecipeScreen } from './screens/Recipe';
-import { FilterScreen } from './screens/Filter';
+import { Filter } from './screens/Filter';
 import { ShoppingListScreen } from './screens/ShoppingList';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
@@ -72,7 +72,7 @@ function App() {
         />
         <Stack.Screen
           name='Filter'
-          component={FilterScreen}
+          component={Filter}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

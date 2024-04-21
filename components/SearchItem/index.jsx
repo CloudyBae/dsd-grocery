@@ -1,6 +1,14 @@
 import React from 'react';
 import { Image, Pressable } from 'react-native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../Typography';
 import { EvilIcons } from '@expo/vector-icons';
 import { Container, FlexRow, FlexColumn } from './styles';
 
@@ -31,7 +39,7 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
         >
           <ButtonLarge>{title}</ButtonLarge>
           <FlexRow>
-            <EvilIcons name={'clock'} size={24} color='black' />
+            <EvilIcons name={'clock'} size={24} color='#121212' />
             <Caption>{prepTime}</Caption>
           </FlexRow>
         </FlexColumn>

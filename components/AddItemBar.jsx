@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const AddItemBar = () => {
   const [num, setNum] = useState(0);
 
   const subNum = () => {
-    setNum(num - 1);
+    if (num > 0) {
+      setNum(num - 1);
+    }
   };
   const addNum = () => {
     setNum(num + 1);
@@ -18,7 +28,7 @@ const AddItemBar = () => {
       name: 'Milk',
       image:
         'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
-      quantity: '1.00',
+      quantity: `Quantity: ${num}`,
       user: 'texasrecordingsunderground@gmail.com',
       preference: '1',
     },
@@ -27,7 +37,7 @@ const AddItemBar = () => {
       name: 'GreenBellPepper',
       image:
         'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
-      quantity: '1.00',
+      quantity: `Quantity: ${num}`,
       user: 'e1254690@student.dcccd.edu',
       preference: '1',
     },
@@ -36,7 +46,7 @@ const AddItemBar = () => {
       name: 'Beef',
       image:
         'https://m.media-amazon.com/images/I/517+FWG43-L._SX300_SY300_.jpg',
-      quantity: '1.00',
+      quantity: `Quantity: ${num}`,
       user: 'e1254690@student.dcccd.edu',
       preference: '1',
     },
@@ -45,7 +55,7 @@ const AddItemBar = () => {
       name: 'Apples',
       image:
         'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
-      quantity: '2.00',
+      quantity: `Quantity: ${num}`,
       user: 'texasrecordingsunderground@gmail.com',
       preference: '2',
     },
@@ -53,7 +63,7 @@ const AddItemBar = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.firstSection}>
+      <View style={styles.imageSection}>
         <Image
           source={require('../assets/IngredientTag.png')}
           style={styles.tagImg}
@@ -66,33 +76,33 @@ const AddItemBar = () => {
         />
       </View>
       <View style={styles.textSection}>
-        <Title style={styles.headingText}>{data[0].name}</Title>
-        <Body style={styles.amountText}>{data[0].quantity}</Body>
-        <Caption style={styles.quantityBtnContainer}>
-          <Pressable
-            onPress={subNum}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? 0.5 : 1,
-              },
-              styles.subtractButton,
-            ]}
-          >
-            <Body style={styles.buttonText}>-</Body>
-          </Pressable>
-          <Body>{num}</Body>
-          <Pressable
-            onPress={addNum}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? 0.5 : 1,
-              },
-              styles.addButton,
-            ]}
-          >
-            <Body style={styles.buttonText}>+</Body>
-          </Pressable>
-        </Caption>
+        <Title>{data[0].name}</Title>
+        <Body>{data[0].quantity}</Body>
+        <View style={styles.quantityBtnContainer}> 
+            <Pressable
+              onPress={subNum}
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                },
+                styles.subtractButton,
+              ]}
+            >
+              <Body>-</Body>
+            </Pressable>
+            <Body style={{ color: '#121212' }}>{num}</Body>
+            <Pressable
+              onPress={addNum}
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                },
+                styles.addButton,
+              ]}
+            >
+              <Body>+</Body>
+            </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -100,59 +110,61 @@ const AddItemBar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderColor: '#e7e7e7',
-    borderWidth: 1,
     backgroundColor: '#fff',
-    height: 180,
+    borderBottomWidth: 2,
+    borderColor: '#c2c2c2',
+    flexDirection: 'row',
+    gap: 16,
+    padding: 16,
   },
-  firstSection: {
-    flexDirection: 'column',
+  imageSection: {
     alignItems: 'center',
+    flexDirection: 'column',
+    gap: 32,
   },
   tagImg: {
+    borderRadius: 9,
     height: 40,
     width: 120,
-    borderRadius: 9,
   },
   productImg: {
+    borderRadius: 4,
     height: 110,
     width: 100,
-    borderRadius: 4,
   },
   textSection: {
     flex: 1,
+    flexDirection: 'col',
+    gap: 8,
+    justifyContent: 'center'
   },
   quantityBtnContainer: {
-    flex: 0,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 16,
     alignItems: 'center',
-    width: 120,
+    height: 48,
   },
   subtractButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    borderColor: '#e1e1e1',
-    borderWidth: 1,
+    borderColor: '#c2c2c2',
     borderRadius: 9,
-    height: 50,
-    width: 50,
+    borderWidth: 1,
+    color: '#121212',
+    height: 48,
+    justifyContent: 'center',
+    width: 48,
   },
   addButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    borderColor: '#e1e1e1',
-    borderWidth: 1,
+    borderColor: '#c2c2c2',
     borderRadius: 9,
-    height: 50,
-    width: 50,
+    borderWidth: 1,
+    color: '#121212',
+    height: 48,
+    justifyContent: 'center',
+    width: 48,
   },
 });
 

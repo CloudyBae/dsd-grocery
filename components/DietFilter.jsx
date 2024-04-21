@@ -5,9 +5,18 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Pressable,
 } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const DietFilter = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -79,7 +88,7 @@ const DietFilter = () => {
   };
   const renderItem = ({ item }) => (
     <View style={styles.categoryContainer}>
-      <TouchableOpacity
+      <Pressable
         style={[
           styles.categoryButton,
           selectedCategory === item.id && styles.selectedCategory,
@@ -94,7 +103,7 @@ const DietFilter = () => {
         >
           {item.category}
         </BodySmall>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 
@@ -109,11 +118,13 @@ export default DietFilter;
 
 const styles = StyleSheet.create({
   categoryContainer: {
-    alignItems: 'center',
+    marginRight: 16,
+    marginBottom: 8,
   },
   categoryButton: {
-    borderRadius: 8,
-    backgroundColor: '#ccc',
+    borderRadius: 4,
+    backgroundColor: '#d2d2d2',
+    padding: 8,
   },
   selectedCategory: {
     backgroundColor: '#52B175',

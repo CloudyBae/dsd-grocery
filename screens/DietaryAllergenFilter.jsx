@@ -5,7 +5,15 @@ import AcctHeader from '../components/AcctHeader';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../components/Typography';
 
 export const DietaryAllergenFilterScreen = () => {
   const navigation = useNavigation();
@@ -30,8 +38,7 @@ export const DietaryAllergenFilterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  homeContainer: {
-  },
+  homeContainer: {},
   buttonContainer: {
     alignItems: 'center',
     backgroundColor: 'rgb(255,255,255)',

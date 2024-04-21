@@ -1,6 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const RadioButton = ({
   label,
@@ -19,12 +27,14 @@ const RadioButton = ({
           styles.radioCircle,
           {
             backgroundColor: isSelected
-              ? customRadioColor || 'black'
+              ? customRadioColor || '#121212'
               : 'transparent',
           },
         ]}
       />
-      <Caption style={[styles.labelTitle, { color: customTextColor || 'black' }]}>
+      <Caption
+        style={[styles.labelTitle, { color: customTextColor || '#121212' }]}
+      >
         {label || 'label'}
       </Caption>
     </TouchableOpacity>
@@ -41,7 +51,7 @@ const styles = StyleSheet.create({
   radioCircle: {
     height: 20,
     width: 20,
-    borderColor: 'black',
+    borderColor: '#121212',
     borderWidth: 1,
     borderRadius: 40,
     justifyContent: 'center',

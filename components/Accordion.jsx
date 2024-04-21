@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const Accordion = ({
   listItem = [
@@ -31,7 +39,7 @@ const Accordion = ({
               <AntDesign
                 name={activeIndex === index ? 'up' : 'down'}
                 size={18}
-                color='black'
+                color='#121212'
               />
             </TouchableOpacity>
             {activeIndex === index && (
@@ -58,14 +66,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  cardContent: {
-  },
+  cardContent: {},
   arrowContent: {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  text: {
-  },
+  text: {},
 });
 
 export default Accordion;

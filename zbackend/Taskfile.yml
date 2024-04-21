@@ -14,4 +14,4 @@ tasks:
   format:
     desc: Run code formatting
     cmds:
-      - black .
+      - #121212 .

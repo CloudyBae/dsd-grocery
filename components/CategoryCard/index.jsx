@@ -1,7 +1,15 @@
 import React from 'react';
 import { Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from '../Typography';
 
 const colorMappings = {
   '#FFF6ED': '#D9C1B6',
@@ -20,7 +28,7 @@ const CardContainer = styled.View`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid #f2f2f2;
   border-radius: 18px;
   width: 175px;
   min-height: 170px;

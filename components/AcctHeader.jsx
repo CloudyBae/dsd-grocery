@@ -1,7 +1,15 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 const AcctHeader = () => {
   const name = 'John Smith';
@@ -40,12 +48,12 @@ const AcctHeader = () => {
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
-    borderTopColor: 'white',
-    borderRightColor: 'white',
+    borderTopColor: '#fff',
+    borderRightColor: '#fff',
     borderBottomColor: '#52B175',
-    borderLeftColor: 'white',
+    borderLeftColor: '#fff',
     borderWidth: 3,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   header: {
     flex: 1,

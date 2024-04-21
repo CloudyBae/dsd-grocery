@@ -1,7 +1,15 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
+import {
+  Title,
+  Body,
+  BodySmall,
+  Caption,
+  ButtonLarge,
+  ButtonText,
+  ButtonSmall,
+} from './Typography';
 
 export default AcctRecipeBar = (props) => {
   const {
@@ -27,9 +35,7 @@ export default AcctRecipeBar = (props) => {
         />
       </View>
       <View style={styles.textSection} numberOfLines={null}>
-        <Title numberOfLines={null}>
-          {name}
-        </Title>
+        <Title numberOfLines={null}>{name}</Title>
         <View style={styles.timerView}>
           <Image
             source={require('../assets/timerImg.png')}
@@ -52,7 +58,7 @@ export default AcctRecipeBar = (props) => {
           style={styles.iconContainer}
           onPress={() => console.log('Remove Button Pressed')}
         >
-          <MaterialCommunityIcons name='close' size={45} color='black' />
+          <MaterialCommunityIcons name='close' size={45} color='#121212' />
         </TouchableOpacity>
       </View>
     </View>
@@ -86,8 +92,7 @@ const styles = StyleSheet.create({
   textSection: {
     flex: 1,
   },
-  headingText: {
-  },
+  headingText: {},
   timerView: {
     flexDirection: 'row',
     alignItems: 'center',
