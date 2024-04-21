@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-const AddItemBar = () => {
+export const AddItemBar = () => {
   const [num, setNum] = useState(0);
+  const [ingredientListData, setIngredientListData] = useState([]);
 
   const subNum = () => {
     setNum(num - 1);
@@ -11,106 +12,95 @@ const AddItemBar = () => {
     setNum(num + 1);
   };
 
-  const data = [
-    {
-      id: 1,
-      name: 'Milk',
-      image:
-        'https://m.media-amazon.com/images/I/41uC0xBoZ3L._SX300_SY300_QL70_FMwebp_.jpg',
-      quantity: '1.00',
-      user: 'texasrecordingsunderground@gmail.com',
-      preference: '1',
-    },
-    {
-      id: 2,
-      name: 'GreenBellPepper',
-      image:
-        'https://m.media-amazon.com/images/I/41ultdsxF8L._SY300_SX300_QL70_FMwebp_.jpg',
-      quantity: '1.00',
-      user: 'e1254690@student.dcccd.edu',
-      preference: '1',
-    },
-    {
-      id: 3,
-      name: 'Beef',
-      image:
-        'https://m.media-amazon.com/images/I/517+FWG43-L._SX300_SY300_.jpg',
-      quantity: '1.00',
-      user: 'e1254690@student.dcccd.edu',
-      preference: '1',
-    },
-    {
-      id: 4,
-      name: 'Apples',
-      image:
-        'https://m.media-amazon.com/images/I/413SS6wy+cL._SY300_SX300_.jpg',
-      quantity: '2.00',
-      user: 'texasrecordingsunderground@gmail.com',
-      preference: '2',
-    },
-  ];
+  useEffect(() => {
+    const fetchIngredientListData = async () => {
+      try {
+        const requestOptions = {
+          method: 'GET',
+          redirect: 'follow',
+        };
+        const response = await fetch(
+          'http://localhost:3030/getIngredients',
+          requestOptions
+        );
+        const data = await response.json();
+        setIngredientListData(data);
+      } catch (error) {
+        console.log('Error fetching ingredient list data: ', error);
+      }
+    };
+
+    fetchIngredientListData();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <View style={styles.firstSection}>
-        <Image
-          source={require('../assets/IngredientTag.png')}
-          style={styles.tagImg}
-          resizeMode='cover'
-        />
-        <Image
-          source={{ uri: data[0].image || '' }}
-          style={styles.productImg}
-          resizeMode='cover'
-        />
-      </View>
-      <View style={styles.textSection}>
-        <Text style={styles.headingText}>{data[0].name}</Text>
-        <Text style={styles.amountText}>{data[0].quantity}</Text>
-        <View style={styles.quantityBtnContainer}>
-          <Pressable
-            onPress={subNum}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? 0.5 : 1,
-              },
-              styles.subtractButton,
-            ]}
-          >
-            <Text style={styles.buttonText}>-</Text>
-          </Pressable>
-          <Text>{num}</Text>
-          <Pressable
-            onPress={addNum}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? 0.5 : 1,
-              },
-              styles.addButton,
-            ]}
-          >
-            <Text style={styles.buttonText}>+</Text>
-          </Pressable>
+      {ingredientListData.map((item) => (
+        <View key={item.id} style={styles.itemContainer}>
+          <View style={styles.firstSection}>
+            {/* <Image
+              source={require('../assets/IngredientTag.png')}
+              style={styles.tagImg}
+              resizeMode='cover'
+            /> */}
+            <Image
+              source={{ uri: item.image || 'https://placeholder.pics/svg/300/DEDEDE/555555/placeholder' }}
+              style={styles.productImg}
+              resizeMode='cover'
+            />
+          </View>
+          <View style={styles.textSection}>
+            <Text style={styles.headingText}>{item.name}</Text>
+            <Text style={styles.amountText}>{item.quantity} quantity</Text>
+            <View style={styles.quantityBtnContainer}>
+              <Pressable
+                onPress={subNum}
+                style={({ pressed }) => [
+                  {
+                    opacity: pressed ? 0.5 : 1,
+                  },
+                  styles.subtractButton,
+                ]}
+              >
+                <Text style={styles.buttonText}>-</Text>
+              </Pressable>
+              <Text>{num}</Text>
+              <Pressable
+                onPress={addNum}
+                style={({ pressed }) => [
+                  {
+                    opacity: pressed ? 0.5 : 1,
+                  },
+                  styles.addButton,
+                ]}
+              >
+                <Text style={styles.buttonText}>+</Text>
+              </Pressable>
+            </View>
+          </View>
         </View>
-      </View>
+      ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  itemContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderColor: '#e7e7e7',
     borderWidth: 1,
-    backgroundColor: '#fff',
-    height: 180,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   firstSection: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingLeft: 5,
   },
   tagImg: {
     height: 40,
@@ -127,7 +117,7 @@ const styles = StyleSheet.create({
   },
   textSection: {
     flex: 1,
-    paddingLeft: 1,
+    paddingLeft: 10,
   },
   headingText: {
     fontSize: 11,
@@ -139,35 +129,35 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   quantityBtnContainer: {
-    flex: 0,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    fontSize: 14,
-    width: 120,
   },
   subtractButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#ffffff',
     borderColor: '#e1e1e1',
     borderWidth: 1,
     borderRadius: 10,
     height: 50,
     width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 5,
   },
   addButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#ffffff',
     borderColor: '#e1e1e1',
     borderWidth: 1,
     borderRadius: 10,
     height: 50,
     width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 5,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
-export default AddItemBar;
+

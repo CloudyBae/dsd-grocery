@@ -7,7 +7,7 @@ export const IngredientScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.ingredientsContainer}>
-          <AddItemBar />
+          <AddItemBar items={items} />
         </View>
       </ScrollView>
       <Nav style={styles.navBar} />
