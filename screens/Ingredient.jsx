@@ -9,8 +9,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { AddIngredientModal } from './AddIngredient';
 import AuthContext from '../auth/auth-context';
 
-const imageUrl =
-  'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
+const imageUrl = 'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const IngredientScreen = () => {
   const { userId } = useContext(AuthContext);

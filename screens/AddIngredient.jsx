@@ -113,7 +113,7 @@ export const AddIngredientModal = ({
               }}
             >
               <BodySmall style={{ color: 'red', textAlign: 'center' }}>
-             {showError}
+                {showError}
               </BodySmall>
             </View>
           )}
