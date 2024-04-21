@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
 
 const DietFilter = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);

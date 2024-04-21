@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
 
 // Uses the pageTitle prop so it can be changed dynamically per page where called.
 const Header = ({ pageTitle }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { Body, BodySmall, ButtonSmall } from './Typography';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
 
 const Macro = ({ macro, percentage, goal }) => {
   const completed = ((percentage / 100) * goal).toFixed(2);

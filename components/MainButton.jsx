@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
 
 export default function MainButton(props) {
   const { onPress, title = 'Button' } = props;

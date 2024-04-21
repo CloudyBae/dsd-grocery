@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CheckBox } from '@rneui/themed';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from './Typography';
 
 const Checkbox = ({ label, isChecked }) => {
   return (

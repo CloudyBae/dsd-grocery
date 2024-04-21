@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonContainer, Enhancer } from './styles';
 import { ActivityIndicator, View } from 'react-native';
-import { ButtonText } from '../Typography';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../Typography';
 
 const Button = ({
   id,

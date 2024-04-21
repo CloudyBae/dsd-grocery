@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall } from '../Typography';
 
 const colorMappings = {
   '#FFF6ED': '#D9C1B6',
