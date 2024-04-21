@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 export const AccountSettingsMenu = () => {
   const navigation = useNavigation();

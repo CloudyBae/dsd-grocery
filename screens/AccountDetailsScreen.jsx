@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 export const AccountDetailsScreen = () => {
   const [username, setUsername] = useState('jsmith');

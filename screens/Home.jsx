@@ -12,6 +12,7 @@ import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
 import { Text } from 'react-native';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();

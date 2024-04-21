@@ -11,6 +11,7 @@ import AcctRecipeBar from '../components/AcctRecipeBar';
 import MainButton from '../components/MainButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 export const AcctSavedRecipesScreen = () => {
   const navigation = useNavigation();

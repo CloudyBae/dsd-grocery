@@ -1,6 +1,7 @@
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import AddItemBar from '../components/AddItemBar';
 import Nav from '../components/Nav';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 export const IngredientScreen = () => {
   return (

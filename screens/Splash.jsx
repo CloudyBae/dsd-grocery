@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Title } from '../components/Typography/index.js';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 import { useNavigation } from '@react-navigation/native';
 
 export const SplashScreen = () => {

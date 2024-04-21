@@ -11,6 +11,7 @@ import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import GroceryBag from '../assets/GroceryBag.png';
 import { Title } from '../components/Typography/index.js';
 import { useNavigation } from '@react-navigation/native';
+import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  } from '../components/Typography';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
