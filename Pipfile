@@ -16,6 +16,7 @@ psycopg2-binary = "*"
 python-dotenv = "1.0.1"
 django-allauth = "0.61.1"
 drf-yasg = "1.21.7"
+dj-rest-auth = "6.0.0"
 
 [dev-packages]
 pytest = "*"
