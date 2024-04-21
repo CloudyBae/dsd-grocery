@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 import os
 from datetime import timedelta
 
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,19 +48,13 @@ INSTALLED_APPS = [
     "corsheaders",
     "authentication",
     "utils",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
-    "allauth.socialaccount.providers.apple",
-    "allauth.socialaccount.providers.facebook",
     "drf_yasg",
     "rest_framework.authtoken",
 ]
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
+    "authentication.backends.SupabaseBackend",
 )
 
 MIDDLEWARE = [
@@ -71,7 +66,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "allauth.account.middleware.AccountMiddleware",
+    "authentication.middleware.JWTAuthenticationMiddleware",
 ]
 
 ROOT_URLCONF = "zbackend.urls"
@@ -100,7 +95,7 @@ WSGI_APPLICATION = "zbackend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.environ.get("DB_NAME"),
         "USER": os.environ.get("DB_USER"),
         "PASSWORD": os.environ.get("DB_PASS"),
@@ -171,10 +166,6 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
-SOCIALACCOUNT_QUERY_EMAIL = True
-SOCIALACCOUNT_EMAIL_REQUIRED = False
-SOCIALACCOUNT_STORE_TOKENS = True
-
 AUTH_USER_MODEL = "authentication.CustomUser"
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
@@ -185,25 +176,17 @@ SITE_ID = 1
 CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "SCOPE": [
-            "profile",
-            "email",
-        ],
-        "AUTH_PARAMS": {
-            "access_type": "online",
-        },
-    }
-}
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
+        "authentication.backends.SupabaseBackend",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+}
+
+REST_AUTH = {
+    "USE_JWT": True,
 }
 
 SIMPLE_JWT = {
@@ -212,3 +195,5 @@ SIMPLE_JWT = {
 }
 
 SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": {"Basic": {"type": "basic"}}}
+
+SUPABASE_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtbXZwanR1cHN5Y2V5eWV5Zm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM2NjM5MDgsImV4cCI6MjAyOTIzOTkwOH0.08HxGibQaM31UZB3rblwpChdaWdcMmN1_yMMn4DmBj0"

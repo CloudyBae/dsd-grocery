@@ -41,7 +41,7 @@ class ShoppingList(models.Model):
     image = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.ingredient.name} ({self.quantity})"
+        return f"{self.name} ({self.quantity})"
 
 
 class FavoriteRecipe(models.Model):
@@ -74,6 +74,7 @@ class Macro(models.Model):
     macro_type = models.CharField(max_length=50)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.recipe.name} ({self.quantity})"
@@ -87,6 +88,8 @@ class PlannedRecipe(models.Model):
         db_index=True,
     )
     date_for = models.DateField()
+    recipe = models.IntegerField()
+    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.recipe.name} on {self.date_for}"
+        return f"{self.name} on {self.date_for}"

@@ -3,7 +3,6 @@ import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import { Modal } from '../components/Modal';
 import Button from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
-import AuthContext from '../auth/auth-context';
 import { BodySmall } from '../components/Typography';
 
 export const AddIngredientModal = ({
@@ -11,7 +10,7 @@ export const AddIngredientModal = ({
   setModalVisible,
   onClose,
 }) => {
-  const { userId } = useContext(AuthContext);
+  const { userId } = useContext(); // fix later
   const [showError, setShowError] = useState('');
   const [productData, setProductData] = useState({
     productName: '',
