@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, Alert } from 'react-native';
 import { Modal } from '../components/Modal';
 import Button from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
 import AuthContext from '../auth/auth-context';
+import { BodySmall } from '../components/Typography';
 
 export const AddIngredientModal = ({
   modalVisible,
@@ -11,33 +12,37 @@ export const AddIngredientModal = ({
   onClose,
 }) => {
   const { userId } = useContext(AuthContext);
+  const [showError, setShowError] = useState(false);
   const [productData, setProductData] = useState({
     productName: '',
     quantity: 0,
   });
-  
+
   const incrementQuantity = () => {
     setProductData((prevData) => ({
       ...prevData,
       quantity: prevData.quantity + 1,
-    }));  
+    }));
   };
 
   const decrementQuantity = () => {
     if (productData.quantity > 0) {
-     setProductData((prevData) => ({
+      setProductData((prevData) => ({
         ...prevData,
         quantity: prevData.quantity - 1,
       }));
     }
   };
 
-  const handleSaveProduct = async() => {
-    console.log('Product Name:', productData.productName);
-    console.log('Quantity:', productData.quantity);
+  const handleSaveProduct = async () => {
+    if (!productData.productName || productData.quantity === 0) {
+      setShowError(true);
+      return;
+    }
+
     try {
       const response = await fetch(
-        `http://localhost:8000/user/${userId}/ingredients/`,
+        `http://localhost:8000/api/user/1/ingredients/`,
         {
           method: 'POST',
           headers: {
@@ -70,14 +75,16 @@ export const AddIngredientModal = ({
           gap: 8,
           width: '100%',
           marginBottom: 20,
-          gap:15,
+          gap: 15,
         }}
       >
         <TextInput
           style={styles.input}
           placeholder='Enter a product name...'
           value={productData.productName}
-          onChangeText={(text) => setProductData({ ...productData, productName: text })}
+          onChangeText={(text) =>
+            setProductData({ ...productData, productName: text })
+          }
           placeholderTextColor='gray'
         />
 
@@ -89,12 +96,27 @@ export const AddIngredientModal = ({
             <TextInput
               style={styles.counterInput}
               value={productData.quantity.toString()}
-              onChangeText={(text) => setProductData({ ...productData, quantity: parseInt(text) })}
+              onChangeText={(text) =>
+                setProductData({ ...productData, quantity: parseInt(text) })
+              }
             />
             <Button kind='ghost' onPress={incrementQuantity}>
               <AntDesign name='plus' size={24} color='black' />
             </Button>
           </View>
+          {showError && (
+            <View
+              style={{
+                ...styles.rowContainer,
+                justifyContent: 'center',
+                paddingTop: 20,
+              }}
+            >
+              <BodySmall style={{ color: 'red', textAlign: 'center' }}>
+              Please, make sure to fill in all required fields
+              </BodySmall>
+            </View>
+          )}
         </View>
       </View>
       <View

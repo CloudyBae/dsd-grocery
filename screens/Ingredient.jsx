@@ -2,20 +2,20 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import IngredientCard from '../components/IngredientCard';
 import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BodySmall } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { AddIngredientModal } from './AddIngredient';
+import AuthContext from '../auth/auth-context';
 
 const imageUrl =
   'https://snaped.fns.usda.gov/sites/default/files/styles/crop_ratio_7_5/public/seasonal-produce/2018-05/watermelon.jpg?itok=WlQcb2Uh';
 
 export const IngredientScreen = () => {
+  const { userId } = useContext(AuthContext);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const navigation = useNavigation();
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -25,68 +25,101 @@ export const IngredientScreen = () => {
       id: 1,
       name: 'Banana chips',
       image: imageUrl,
+      quantity: '200g',
+      user: 123,
+      preference: 1
     },
     {
       id: 2,
-      name: 'Banana liqueur',
+      name: 'Lucuma',
       image: imageUrl,
+      quantity: '100ml',
+      user: 456,
+      preference: 2
     },
     {
       id: 3,
       name: 'Apple',
       image: imageUrl,
+      quantity: '1',
+      user: 789,
+      preference: 1
     },
     {
       id: 4,
       name: 'Orange',
       image: imageUrl,
+      quantity: '2',
+      user: 123,
+      preference: 3
     },
     {
       id: 5,
       name: 'Lemon',
       image: imageUrl,
+      quantity: '1',
+      user: 456,
+      preference: 2
     },
     {
       id: 6,
       name: 'Strawberry',
       image: imageUrl,
+      quantity: '150g',
+      user: 789,
+      preference: 1
     },
     {
       id: 7,
       name: 'Blueberry',
       image: imageUrl,
+      quantity: '100g',
+      user: 123,
+      preference: 3
     },
     {
       id: 8,
       name: 'Grape',
       image: imageUrl,
+      quantity: '300g',
+      user: 456,
+      preference: 2
     },
     {
       id: 9,
       name: 'Kiwi',
       image: imageUrl,
+      quantity: '2',
+      user: 789,
+      preference: 1
     },
     {
       id: 10,
       name: 'Watermelon',
       image: imageUrl,
+      quantity: '1',
+      user: 123,
+      preference: 3
     },
   ];
+  
 
 
-const fetchIngredients = async () => {
-  try {
-    const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
-    const data = await response.json();
-    setIngredients(data);
-  } catch (error) {
-    console.error('Error fetching ingredients:', error);
-  }
-}
+
 
 useEffect(() => {
+  const fetchIngredients = async () => {
+    setIngredients(ingredientList);
+    // try {
+    //   const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
+    //   const data = await response.json();
+    //   setIngredients(data);
+    // } catch (error) {
+    //   console.error('Error fetching ingredients:', error);
+    // }
+  }
   fetchIngredients()
-},[fetchIngredients])
+},[])
 
   const updateSearch = (query) => {
     setSearch(query);
@@ -94,7 +127,6 @@ useEffect(() => {
     const filteredResults = ingredientList.filter((ingredient) =>
       ingredient.name.toLowerCase().includes(query.toLowerCase())
     );
-
     setSearchResults(filteredResults);
   };
 
@@ -112,16 +144,13 @@ useEffect(() => {
       <Search updateSearch={updateSearch} value={search} />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.ingredientsContainer}>
-          {/* {searchResults.length > 0 ? (
-            ingredientList.map((ingredient) => (
+          {searchResults.length > 0 ? (
+            searchResults.map((ingredient) => (
               <IngredientCard key={ingredient.id} ingredient={ingredient} />
             ))
           ) : (
             <BodySmall>No results 😭</BodySmall>
-          )} */}
-          {ingredientList.map((ingredient) => (
-            <IngredientCard key={ingredient.id} ingredient={ingredient} />
-          ))}
+          )}
         </View>
       </ScrollView>
       <View style={styles.addIngredientButton}>
@@ -135,7 +164,7 @@ useEffect(() => {
           }}
           onPress={() => setModalVisible(true)}
         >
-          <View style={styles.rowContainer}>
+          <View style={{...styles.rowContainer, marginTop:5}}>
             <FontAwesome5
               name='plus'
               style={styles.icon}

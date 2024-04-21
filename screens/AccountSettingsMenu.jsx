@@ -10,10 +10,8 @@ import {
   MaterialCommunityIcons,
 } from '@expo/vector-icons';
 import { SettingOption } from '../components/SettingOption';
-import { AccountSettings } from '../components/AccountSettings';
 import { useState } from 'react';
 import { DietaryAllergenFilter } from './DietaryAllergenFilter';
-import { AcctSavedRecipes } from './AcctSavedRecipes';
 import { AccountDetailsScreen } from './AccountDetailsScreen';
 
 export const SettingsScreen = {
