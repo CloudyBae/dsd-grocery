@@ -34,7 +34,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                   onPress={() => navigation.navigate('Ingredient')}
+                onPress={() => navigation.navigate('Ingredient')}
                 customButtonStyling={{
                   width: '45%',
                   padding: 40,
