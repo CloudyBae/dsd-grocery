@@ -1,15 +1,14 @@
+import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import AddItemBar from '../components/AddItemBar';
 import Nav from '../components/Nav';
 
-export const IngredientScreen = ({items}) => {
-  const item = [];
-
+export const IngredientScreen = ({ingredient}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.ingredientsContainer}>
-          <AddItemBar item={item}/>
+          <AddItemBar item={ingredient}/>
         </View>
       </ScrollView>
       <Nav style={styles.navBar} />
@@ -32,3 +31,4 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 });
+
