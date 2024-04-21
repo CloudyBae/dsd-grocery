@@ -7,7 +7,7 @@ import ThirdPartySignIn from '../components/ThirdPartySignIn';
 
 WebBrowser.maybeCompleteAuthSession();
 const redirectTo = makeRedirectUri();
-console.log({ redirectTo })
+console.log({ redirectTo });
 
 const createSessionFromUrl = async (url) => {
   const { params, errorCode } = QueryParams.getQueryParams(url);
@@ -22,18 +22,18 @@ const createSessionFromUrl = async (url) => {
     refresh_token,
   });
   if (error) throw error;
-  console.log('session', data.session)
+  console.log('session', data.session);
   return data.session;
 };
 
 const performOAuth = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google'
+    provider: 'google',
   });
   if (error) throw error;
 
   const res = await WebBrowser.openAuthSessionAsync(
-    data?.url ?? '', 
+    data?.url ?? '',
     redirectTo
   );
 
@@ -45,7 +45,7 @@ const performOAuth = async () => {
 
 export default function Auth() {
   const url = Linking.useURL();
-  console.log({ url })
+  console.log({ url });
   if (url) createSessionFromUrl(url);
 
   return (
@@ -56,7 +56,7 @@ export default function Auth() {
         icon='google'
         iconColor='black'
         backgroundColor='white'
-        onPress={(performOAuth)}
+        onPress={performOAuth}
       />
     </>
   );

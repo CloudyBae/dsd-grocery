@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 
+
 class SupabaseBackend:
     def authenticate(self, request, supabase_uid=None):
         user_model = get_user_model()
