@@ -11,6 +11,7 @@ import GroceryBag from '../assets/GroceryBag.png';
 import { Title } from '../components/Typography/index.js';
 import { useNavigation } from '@react-navigation/native';
 import Auth from '../components/Auth.jsx';
+import ThirdPartySignIn from '../components/ThirdPartySignIn';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -43,6 +44,15 @@ export const LoginScreen = () => {
             }}
             resizeMode='contain'
           />
+          <ThirdPartySignIn
+            title='Home'
+            textColor='white'
+            icon='home'
+            backgroundColor='orange'
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('Home')}
+          />
+          <View style={styles.buttonSeparator} />
           <Auth />
         </View>
       </ScrollView>
