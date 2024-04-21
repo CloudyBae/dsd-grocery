@@ -1,9 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("dj-rest-auth/", include("dj_rest_auth.urls")),
-    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
-    path("dj-rest-auth/google/", views.GoogleLogin.as_view(), name="google_login"),
-    path("google/", views.Callback.as_view()),
+    path('auth/signup/', views.SignUp.as_view(), name='signup'),
+    path('auth/profile/', views.UserProfileView.as_view(), name='profile'),
 ]
