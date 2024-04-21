@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "com.dsdgrocery",
     "name": "dsd-grocery",
     "slug": "dsd-grocery",
     "version": "1.0.0",
@@ -22,18 +23,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#52B175"
-      }
+      },
+      "package": "com.anonymous.dsdgrocery"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": ["../assets/fonts/Gilroy-Bold.ttf"]
-        }
-      ]
+      "@react-native-google-signin/google-signin"
     ]
   }
 }

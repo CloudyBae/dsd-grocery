@@ -92,7 +92,7 @@ export const DietaryAllergenFilterScreen = () => {
       dietaryFilters: dietaryFiltersData,
     };
 
-    const response = fetch('http://localhost:3001/filters', {
+    const response = fetch('http://localhost:8000/api/users/{user_pk}/dietaryPreferences/{id}', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -169,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DietaryAllergenFilterScreen;
+export default DietaryAllergenFilter;

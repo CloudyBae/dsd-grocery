@@ -1,10 +1,19 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
 import React from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+import { Body, HeaderTitle } from './Typography';
 
 const AcctHeader = () => {
   const name = 'John Smith';
   const email = 'john-smith@gmail.com';
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.userImg}>
@@ -14,23 +23,23 @@ const AcctHeader = () => {
         />
       </View>
 
-      <View style={styles.header} numberOfLines={null}>
-        <Text style={styles.name} numberOfLines={null}>
-          {name}{' '}
-          <TouchableOpacity
+      <View
+        style={{
+          ...styles.columnContainer,
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+        }}
+      >
+        <View style={styles.rowContainer}>
+          <HeaderTitle>{name}</HeaderTitle>
+          <Pressable
             style={styles.iconContainer}
             onPress={() => console.log('Edit Icon Clicked')}
           >
-            <MaterialCommunityIcons
-              name='lead-pencil'
-              size={20}
-              color='#52B175'
-            />
-          </TouchableOpacity>
-        </Text>
-        <Text style={styles.email} numberOfLines={null}>
-          {email}
-        </Text>
+            <EvilIcons name='pencil' size={20} color='#52B175' />
+          </Pressable>
+        </View>
+        <Body> {email}</Body>
       </View>
     </View>
   );
@@ -38,15 +47,26 @@ const AcctHeader = () => {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    width: '100%',
     flexDirection: 'row',
-    paddingTop: 40,
-    paddingBottom: 40,
+    paddingTop: 80,
+    paddingBottom: 50,
     borderTopColor: 'white',
     borderRightColor: 'white',
     borderBottomColor: '#52B175',
     borderLeftColor: 'white',
     borderWidth: 3,
     backgroundColor: 'white',
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  columnContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   header: {
     flex: 1,

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
-import AcctHeader from '../components/AcctHeader';
-import Nav from '../components/Nav';
+import { ButtonLarge } from '../components/Typography';
 
 export const AccountDetailsScreen = () => {
   const [username, setUsername] = useState('jsmith');
@@ -9,7 +8,7 @@ export const AccountDetailsScreen = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    setIsEditing(true);
+    setisEditing(true);
   };
 
   const handleSave = () => {
@@ -25,55 +24,51 @@ export const AccountDetailsScreen = () => {
   };
 
   return (
-    <View style={styles.wholeContainer}>
-      <AcctHeader />
-      <View style={styles.container}>
-        <View styles={styles.inputSection}>
-          <View style={styles.textBoxContainer}>
-            <Text style={styles.myDetails}>My Details</Text>
-            <View
-              style={{
-                width: '100%',
-                height: 1,
-                backgroundColor: '#96d1ab',
-                alignSelf: 'center',
-                marginTop: 10,
-                marginBottom: 15,
-              }}
-            />
-            <Text style={styles.myDetails}>Username</Text>
-            <TextInput
-              style={styles.textBox}
-              value={username}
-              onChangeText={(text) => setUsername(text)}
-              placeholder='Account Username'
-              editable={isEditing}
-            />
-          </View>
-          <View style={styles.textBoxContainer}>
-            <Text style={styles.myDetails}>Email</Text>
-            <TextInput
-              style={styles.textBox}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-              placeholder='Email'
-              editable={isEditing}
-            />
-          </View>
+    <View style={styles.container}>
+      <View styles={styles.inputSection}>
+        <View style={styles.textBoxContainer}>
+          <ButtonLarge>My Details</ButtonLarge>
+          <View
+            style={{
+              width: '100%',
+              height: 1,
+              backgroundColor: '#96d1ab',
+              alignSelf: 'center',
+              marginTop: 10,
+              marginBottom: 15,
+            }}
+          />
+          <ButtonLarge>Username</ButtonLarge>
+          <TextInput
+            style={styles.textBox}
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+            placeholder='Account Username'
+            editable={isEditing}
+          />
         </View>
-
-        <View style={styles.editSection}>
-          {!isEditing ? (
-            <Button title='Edit' onPress={handleEdit} />
-          ) : (
-            <>
-              <Button title='Save' onPress={handleSave} />
-              <Button title='Delete' onPress={handleDelete} />
-            </>
-          )}
+        <View style={styles.textBoxContainer}>
+          <ButtonLarge>Email</ButtonLarge>
+          <TextInput
+            style={styles.textBox}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            placeholder='Email'
+            editable={isEditing}
+          />
         </View>
       </View>
-      <Nav style={styles.navBar} />
+
+      <View style={styles.editSection}>
+        {!isEditing ? (
+          <Button title='Edit' onPress={handleEdit} />
+        ) : (
+          <>
+            <Button title='Save' onPress={handleSave} />
+            <Button title='Delete' onPress={handleDelete} />
+          </>
+        )}
+      </View>
     </View>
   );
 };

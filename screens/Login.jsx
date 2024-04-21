@@ -7,10 +7,11 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import ThirdPartySignIn from '../components/ThirdPartySignIn';
 import GroceryBag from '../assets/GroceryBag.png';
 import { Title } from '../components/Typography/index.js';
 import { useNavigation } from '@react-navigation/native';
+import Auth from '../components/Auth.jsx';
+import ThirdPartySignIn from '../components/ThirdPartySignIn';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -23,11 +24,6 @@ export const LoginScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.loginContainer}>
           <View style={styles.titleContainer}>
-            {/* <Image
-              source={Lemon}
-              style={{ height: 50, width: 60, marginRight: 10 }}
-              resizeMode='contain'
-            /> */}
             <Title
               style={{
                 color: 'white',
@@ -38,11 +34,6 @@ export const LoginScreen = () => {
             >
               Zest
             </Title>
-            {/* <Image
-              source={Lemon}
-              style={{ height: 50, width: 60, marginLeft: 10 }}
-              resizeMode='contain'
-            /> */}
           </View>
           <Image
             source={GroceryBag}
@@ -62,25 +53,7 @@ export const LoginScreen = () => {
             onPress={() => navigation.navigate('Home')}
           />
           <View style={styles.buttonSeparator} />
-          <ThirdPartySignIn
-            title='Google'
-            textColor='gray'
-            icon='google'
-            iconColor='black'
-            backgroundColor='white'
-            style={styles.loginButton}
-            onPress={() => console.log('Google')}
-          />
-          <View style={styles.buttonSeparator} />
-          <ThirdPartySignIn
-            title='Apple'
-            icon='apple'
-            textColor='white'
-            iconColor='white'
-            backgroundColor='black'
-            style={styles.loginButton}
-            onPress={() => console.log('Apple')}
-          />
+          <Auth />
         </View>
       </ScrollView>
     </SafeAreaView>

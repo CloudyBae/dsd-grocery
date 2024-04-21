@@ -9,18 +9,19 @@ class DietaryPreference(models.Model):
         related_name="dietary_preferences_entries",
         db_index=True,
     )
+    preference_id = models.IntegerField()
     preference_name = models.CharField(max_length=100)
     is_selected = models.BooleanField(default=False)
 
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
+    image = models.CharField(
+        max_length=255, default="https://placeholder.pics/svg/300/DEDEDE/555555/image"
+    )
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
-    )
-    preference = models.ForeignKey(
-        DietaryPreference, on_delete=models.SET_NULL, null=True
     )
 
     def __str__(self):
@@ -31,12 +32,16 @@ class ShoppingList(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
+    name = models.CharField(max_length=100)
+    image = models.CharField(
+        max_length=255, default="https://placeholder.pics/svg/300/DEDEDE/555555/image"
+    )
+    product_id = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.ingredient.name} ({self.quantity})"
+        return f"{self.name} ({self.quantity})"
 
 
 class FavoriteRecipe(models.Model):
@@ -55,22 +60,22 @@ class FavoriteRecipe(models.Model):
     image = models.CharField(max_length=255)
     minutes = models.CharField(max_length=100)
     likes = models.CharField(max_length=100)
+    recipe_id = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.recipe_id})"
 
 
 class Macro(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    recipe = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
-    macro_type = models.CharField(max_length=50)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    recipe_id = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
+    macro_name = models.CharField(max_length=50)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.recipe.name} ({self.quantity})"
+        return f"{self.macro_name} ({self.quantity})"
 
 
 class PlannedRecipe(models.Model):
@@ -81,6 +86,8 @@ class PlannedRecipe(models.Model):
         db_index=True,
     )
     date_for = models.DateField()
+    recipe_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.recipe.name} on {self.date_for}"
+        return f"{self.name} on {self.date_for}"

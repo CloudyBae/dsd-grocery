@@ -92,7 +92,7 @@ const DietaryFilters = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dietary Requirements</Text>
+      <Title>Dietary Requirements</Title>
 
       {categories.map((item, index) => {
         return (
@@ -114,16 +114,8 @@ const DietaryFilters = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: 'rgb(255,255,255)',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    fontSize: 24,
-    fontWeight: 'bold',
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
 
