@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import Nav from '../components/Nav';
-import RecipeList from '../components/RecipeList';
+import FavoriteRecipesList from '../components/FavoriteRecipes';
 import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
@@ -34,6 +34,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
+                onPress={() => navigation.navigate('Ingredient')}
                 customButtonStyling={{
                   width: '45%',
                   padding: 40,
@@ -59,7 +60,7 @@ export const HomeScreen = () => {
               <View style={styles.separator}></View>
             </View>
             <DietFilter />
-            <RecipeList numberOfRecipes={10} />
+            <FavoriteRecipesList numberOfRecipes={10} />
           </View>
         </ScrollView>
       </View>

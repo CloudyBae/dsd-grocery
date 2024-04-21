@@ -1,17 +1,17 @@
-# Example code of authentication/backends.py
-# Remove this example and write your own code
-"""
-from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
-class OAuthBackend(BaseBackend):
-    def authenticate(self, request, email=None):
-        # Implement authentication logic using OAuth token or email
+class SupabaseBackend:
+    def authenticate(self, request, supabase_uid=None):
+        user_model = get_user_model()
         try:
-            user = User.objects.get(email=email)
-            return user
-        except User.DoesNotExist:
+            return user_model.objects.get(supabase_uid=supabase_uid)
+        except user_model.DoesNotExist:
             return None
-"""
+
+    def get_user(self, user_id):
+        user_model = get_user_model()
+        try:
+            return user_model.objects.get(pk=user_id)
+        except user_model.DoesNotExist:
+            return None

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { CheckBox, ListItem } from '@rneui/themed';
+import { BodySmall, Body, Title } from '../components/Typography';
 
 export default function DietaryFilters() {
   const [categories, setCategories] = useState([
@@ -69,7 +70,7 @@ export default function DietaryFilters() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dietary Requirements</Text>
+      <Title>Dietary Requirements</Title>
 
       {categories.map((item, index) => {
         return (
@@ -77,7 +78,7 @@ export default function DietaryFilters() {
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
             backgroundColor='#f0f0f0'
-            title={item.label}
+            title={<Body color={'#181725'}>{item.label}</Body>}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
             key={item.id}
@@ -90,15 +91,7 @@ export default function DietaryFilters() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: 'rgb(255,255,255)',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    fontSize: 24,
-    fontWeight: 'bold',
+    display: 'flex',
+    flexDirection: 'column',
   },
 });

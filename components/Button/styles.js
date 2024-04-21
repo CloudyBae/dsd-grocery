@@ -1,18 +1,19 @@
 import styled, { css } from 'styled-components/native';
 
-export const ButtonContainer = styled.TouchableOpacity`
+export const ButtonContainer = styled.Pressable`
   display: flex;
   flex-direction: row;
   align-items: center;
   align-self: center;
+  justify-content: center;
+  align-self: center;
   min-height: ${(props) => (props.size === 'small' ? '20px' : '45px')};
   min-width: ${(props) => (props.size === 'small' ? '20px' : '45px')};
   width: 100%;
-  justify-content: space-between;
   padding: ${(props) => (props.size === 'small' ? '5px 10px' : '15px 15px')};
-  border-radius: ${(props) => (props.shape === 'rounded' ? '18px' : '5px')};
+  border-radius: ${(props) => (props.shape === 'rounded' ? '40px' : '5px')};
   border: ${(props) =>
-    props.kind === 'outline' ? '1px solid #E2E2E2' : 'none'};
+    props.kind === 'outline' ? '1px solid #52B175' : 'none'};
   background-color: ${(props) => {
     switch (props.kind) {
       case 'primary':
@@ -38,6 +39,7 @@ export const ButtonContainer = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   color: ${(props) => {
     switch (props.kind) {
