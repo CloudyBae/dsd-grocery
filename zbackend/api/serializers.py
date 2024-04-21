@@ -28,7 +28,7 @@ class PlannedRecipeSerializer(serializers.ModelSerializer):
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ["id", "name", "image", "quantity", "user", "preference"]
+        fields = ["id", "name", "image", "quantity", "user"]
         extra_kwargs = {"user": {"read_only": True}}
 
 
