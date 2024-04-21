@@ -28,21 +28,21 @@ class PlannedRecipeSerializer(serializers.ModelSerializer):
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ["id", "name", "image", "quantity", "user", "preference"]
+        fields = ["id", "name", "image", "quantity", "user"]
         extra_kwargs = {"user": {"read_only": True}}
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
-        fields = ["id", "user", "ingredient", "quantity", "is_purchased"]
+        fields = ["id", "user", "quantity", "is_purchased"]
         extra_kwargs = {"user": {"read_only": True}, "ingredient": {"required": True}}
 
 
 class MacrosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Macro
-        fields = ["id", "user", "recipe", "macro_type", "ingredient", "quantity"]
+        fields = ["id", "user", "recipe_id", "macro_name", "quantity"]
         extra_kwargs = {"user": {"read_only": True}}
 
 
