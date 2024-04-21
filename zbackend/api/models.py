@@ -22,9 +22,6 @@ class Ingredient(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    preference = models.ForeignKey(
-        DietaryPreference, on_delete=models.SET_NULL, null=True
-    )
 
     def __str__(self):
         return f"{self.name} ({self.quantity})"
@@ -34,11 +31,13 @@ class ShoppingList(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
     name = models.CharField(max_length=100)
-    image = models.CharField(max_length=255)
+    image = models.CharField(
+        max_length=255, default="https://placeholder.pics/svg/300/DEDEDE/555555/image"
+    )
+    product_id = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.name} ({self.quantity})"
@@ -60,7 +59,7 @@ class FavoriteRecipe(models.Model):
     image = models.CharField(max_length=255)
     minutes = models.CharField(max_length=100)
     likes = models.CharField(max_length=100)
-    recipe = models.IntegerField()
+    recipe_id = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -70,14 +69,12 @@ class Macro(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    recipe = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
-    macro_type = models.CharField(max_length=50)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    recipe_id = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
+    macro_name = models.CharField(max_length=50)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
-    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.recipe.name} ({self.quantity})"
+        return f"{self.macro_name} ({self.quantity})"
 
 
 class PlannedRecipe(models.Model):
@@ -88,7 +85,7 @@ class PlannedRecipe(models.Model):
         db_index=True,
     )
     date_for = models.DateField()
-    recipe = models.IntegerField()
+    recipe_id = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
 
     def __str__(self):
