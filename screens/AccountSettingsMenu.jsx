@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
@@ -98,37 +98,24 @@ export const AccountSettingsMenu = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
   },
   menuButton: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    borderWidth: 0,
-
-    height: 75,
-    width: '90%',
+    flexDirection: 'row',
   },
   tagImg: {
-    height: 30,
-    width: 30,
+    height: 24,
+    width: 24,
   },
   tagImgId: {
-    height: 30,
-    width: 40,
+    height: 24,
+    width: 24,
   },
   logOutButton: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    width: '90%',
     borderRadius: 18,
-    borderWidth: 2,
-    borderColor: '#96d1ab',
   },
 });

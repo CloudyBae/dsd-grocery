@@ -48,7 +48,6 @@ export const ShoppingListScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.contentContainer}>
-          {/* <Title style={styles.title}>Shopping List</Title> */}
           <ShoppingListItem items={items} />
         </View>
       </ScrollView>
