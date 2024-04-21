@@ -1,35 +1,57 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View, TextInput } from 'react-native';
 import { Modal } from '../components/Modal';
-import { HeaderTitle, Title } from '../components/Typography';
 import Button from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
+import AuthContext from '../auth/auth-context';
 
 export const AddIngredientModal = ({
   modalVisible,
   setModalVisible,
-  buttonText,
   onClose,
 }) => {
-  const [productName, setProductName] = useState('');
-  const [quantity, setQuantity] = useState(0);
-
-  const handleSaveProduct = () => {
-    console.log('Product Name:', productName);
-    console.log('Quantity:', quantity);
-  };
-
+  const { userId } = useContext(AuthContext);
+  const [productData, setProductData] = useState({
+    productName: '',
+    quantity: 0,
+  });
+  
   const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+    setProductData((prevData) => ({
+      ...prevData,
+      quantity: prevData.quantity + 1,
+    }));  
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
+    if (productData.quantity > 0) {
+     setProductData((prevData) => ({
+        ...prevData,
+        quantity: prevData.quantity - 1,
+      }));
+    }
+  };
+
+  const handleSaveProduct = async() => {
+    console.log('Product Name:', productData.productName);
+    console.log('Quantity:', productData.quantity);
+    try {
+      const response = await fetch(
+        `http://localhost:8000/user/${userId}/ingredients/`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(productData),
+        }
+      );
+      if (!response.ok) {
+        console.error('Failed to save ingredient');
+      }
+      console.log(response);
+    } catch (error) {
+      console.error('Error saving ingredient:', error);
     }
   };
 
@@ -37,9 +59,7 @@ export const AddIngredientModal = ({
     <Modal
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
-      titleText={'Add Product 🍎'}
-      buttonText={buttonText}
-      cancelText='Cancel'
+      titleText={'Add a Product 🍎'}
       onClose={onClose}
       size='100%'
       fullscreen={false}
@@ -48,16 +68,16 @@ export const AddIngredientModal = ({
         style={{
           ...styles.columnContainer,
           gap: 8,
-          marginBottom: 20,
           width: '100%',
+          marginBottom: 20,
+          gap:15,
         }}
       >
-        <HeaderTitle style={styles.label}>Product Name</HeaderTitle>
         <TextInput
           style={styles.input}
           placeholder='Enter a product name...'
-          value={productName}
-          onChangeText={(text) => setProductName(text)}
+          value={productData.productName}
+          onChangeText={(text) => setProductData({ ...productData, productName: text })}
           placeholderTextColor='gray'
         />
 
@@ -68,8 +88,8 @@ export const AddIngredientModal = ({
             </Button>
             <TextInput
               style={styles.counterInput}
-              value={quantity.toString()}
-              onChangeText={(text) => setQuantity(parseInt(text))}
+              value={productData.quantity.toString()}
+              onChangeText={(text) => setProductData({ ...productData, quantity: parseInt(text) })}
             />
             <Button kind='ghost' onPress={incrementQuantity}>
               <AntDesign name='plus' size={24} color='black' />
@@ -101,6 +121,7 @@ export const AddIngredientModal = ({
           }}
           kind='ghost'
           shape='rounded'
+          style={{ paddingBottom: 0 }}
         >
           Cancel
         </Button>
@@ -114,15 +135,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
   },
   label: {
     fontSize: 16,
   },
   counterContainer: {
-    paddingHorizontal: 10,
     alignSelf: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     width: '80%',
     height: 60,
@@ -144,7 +163,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 10,
-    marginBottom: 20,
     paddingHorizontal: 10,
     fontFamily: 'Gilroy-Medium',
   },

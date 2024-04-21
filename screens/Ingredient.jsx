@@ -2,7 +2,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import IngredientCard from '../components/IngredientCard';
 import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BodySmall } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -18,6 +18,8 @@ export const IngredientScreen = () => {
   const navigation = useNavigation();
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+
   const ingredientList = [
     {
       id: 1,
@@ -70,6 +72,21 @@ export const IngredientScreen = () => {
       image: imageUrl,
     },
   ];
+
+
+const fetchIngredients = async () => {
+  try {
+    const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
+    const data = await response.json();
+    setIngredients(data);
+  } catch (error) {
+    console.error('Error fetching ingredients:', error);
+  }
+}
+
+useEffect(() => {
+  fetchIngredients()
+},[fetchIngredients])
 
   const updateSearch = (query) => {
     setSearch(query);

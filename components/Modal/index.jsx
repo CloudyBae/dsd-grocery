@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Alert, Modal as ModalBase, StyleSheet, Text, Pressable, View, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  Alert,
+  Modal as ModalBase,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { Body, Title } from '../Typography';
 import { AntDesign } from '@expo/vector-icons';
 import Button from '../Button';
@@ -9,8 +18,6 @@ export const Modal = ({
   setModalVisible,
   titleText,
   descriptionText,
-  saveButton,
-  cancelButton,
   onClose,
   size,
   fullscreen,
@@ -38,13 +45,12 @@ export const Modal = ({
           style={styles.centeredView}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-         
           <View style={modalStyle}>
-          <View style={styles.columnContainer}>
-            <Title style={styles.modalText}>{titleText}</Title>
-            <Body style={styles.modalText}>{descriptionText}</Body>
-            {children}
-          </View>
+            <View style={styles.columnContainer}>
+              <Title style={styles.modalText}>{titleText}</Title>
+              <Body style={styles.modalText}>{descriptionText}</Body>
+              {children}
+            </View>
           </View>
         </KeyboardAvoidingView>
       </View>
@@ -63,7 +69,7 @@ const styles = StyleSheet.create({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   centeredView: {
     flex: 1,
@@ -78,8 +84,8 @@ const styles = StyleSheet.create({
   modalView: {
     minWidth: '100%',
     backgroundColor: 'white',
-  borderTopEndRadius: 20,
-  borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+    borderTopStartRadius: 20,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 10,
     textAlign: 'center',
   },
   columnContainer: {
