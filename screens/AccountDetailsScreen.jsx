@@ -31,7 +31,7 @@ export const AccountDetailsScreen = () => {
       <View style={styles.container}>
         <View styles={styles.inputSection}>
           <View style={styles.textBoxContainer}>
-            <Text style={styles.myDetails}>My Details</Text>
+            {/* <Text style={styles.myDetails}>My Details</Text> */}
             <View
               style={{
                 width: '100%',
@@ -40,7 +40,7 @@ export const AccountDetailsScreen = () => {
                 alignSelf: 'center',
               }}
             />
-            <Text style={styles.myDetails}>Username</Text>
+            <Body style={styles.myDetails}>Username</Body>
             <TextInput
               style={styles.textBox}
               value={username}
@@ -50,7 +50,7 @@ export const AccountDetailsScreen = () => {
             />
           </View>
           <View style={styles.textBoxContainer}>
-            <Text style={styles.myDetails}>Email</Text>
+            <Body style={styles.myDetails}>Email</Body>
             <TextInput
               style={styles.textBox}
               value={email}

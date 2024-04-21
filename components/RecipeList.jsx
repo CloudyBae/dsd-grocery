@@ -49,7 +49,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Text style={style.noRecipesText}>No Favorite Recipes</Text>
+          <Body style={style.noRecipesText}>No Favorite Recipes</Body>
         </View>
       ) : (
         <FlatList

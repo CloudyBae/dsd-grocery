@@ -18,14 +18,14 @@ export default AddProductCard = (props) => {
       <View>
         <Image source={{ uri: image || '' }} style={styles.productImg} />
 
-        <Text style={styles.headingText}>{name}</Text>
-        <Text style={styles.amountText}>
+        <Title style={styles.headingText}>{name}</Title>
+        <Body style={styles.amountText}>
           {qty}
           {unit}
-        </Text>
+        </Body>
 
         <View style={styles.bottomCard}>
-          <Text style={styles.priceText}>${price}</Text>
+          <Caption style={styles.priceText}>${price}</Caption>
           <Pressable
             onPress={() => console.log('Button Pressed')}
             style={({ pressed }) => [
@@ -35,7 +35,7 @@ export default AddProductCard = (props) => {
               styles.addButton,
             ]}
           >
-            <Text style={styles.buttonText}>{title}</Text>
+            <ButtonText>{title}</ButtonText>
           </Pressable>
         </View>
       </View>

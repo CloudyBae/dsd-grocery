@@ -46,19 +46,19 @@ export const FilterScreen = () => {
           onPress={() => navigation.navigate('Home')}
           style={{ marginHorizontal: 10, marginRight: 150 }}
         >
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>X</Text>
+          <Caption>X</Caption>
         </TouchableOpacity>
         <Header pageTitle='Filters' />
       </View>
       <View style={styles.mainContainer}>
-        <Text style={styles.title}>Ingredient</Text>
+        <Title style={styles.title}>Ingredient</Title>
         <TextInput
           style={styles.input}
           onChangeText={setIngredientText}
           placeholder='Input one ingredient'
           value={ingredientText}
         />
-        <Text style={styles.title}>Meal Type</Text>
+        <Title style={styles.title}>Meal Type</Title>
         <View style={styles.mealTypeContainer}>
           {mealTypes.map((meal, index) => (
             <View key={index} style={styles.radioButtonContainer}>
@@ -72,7 +72,7 @@ export const FilterScreen = () => {
           ))}
         </View>
         <View style={styles.calendarContainer}>
-          <Text style={styles.title}>Planned Meal Day</Text>
+          <Title style={styles.title}>Planned Meal Day</Title>
           <Calendar
             onDayPress={(day) => handleDayPressed(day)}
             minDate={new Date().toISOString().split('T')[0]}

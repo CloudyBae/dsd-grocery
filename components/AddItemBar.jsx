@@ -66,9 +66,9 @@ const AddItemBar = () => {
         />
       </View>
       <View style={styles.textSection}>
-        <Text style={styles.headingText}>{data[0].name}</Text>
-        <Text style={styles.amountText}>{data[0].quantity}</Text>
-        <View style={styles.quantityBtnContainer}>
+        <Title style={styles.headingText}>{data[0].name}</Title>
+        <Body style={styles.amountText}>{data[0].quantity}</Body>
+        <Caption style={styles.quantityBtnContainer}>
           <Pressable
             onPress={subNum}
             style={({ pressed }) => [
@@ -78,9 +78,9 @@ const AddItemBar = () => {
               styles.subtractButton,
             ]}
           >
-            <Text style={styles.buttonText}>-</Text>
+            <Body style={styles.buttonText}>-</Body>
           </Pressable>
-          <Text>{num}</Text>
+          <Body>{num}</Body>
           <Pressable
             onPress={addNum}
             style={({ pressed }) => [
@@ -90,9 +90,9 @@ const AddItemBar = () => {
               styles.addButton,
             ]}
           >
-            <Text style={styles.buttonText}>+</Text>
+            <Body style={styles.buttonText}>+</Body>
           </Pressable>
-        </View>
+        </Caption>
       </View>
     </View>
   );

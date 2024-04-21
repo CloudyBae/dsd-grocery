@@ -70,7 +70,7 @@ export default function DietaryFilters() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dietary Preferences</Text>
+      <Title style={styles.title}>Dietary Preferences</Title>
 
       {categories.map((item, index) => {
         return (

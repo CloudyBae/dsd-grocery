@@ -13,15 +13,15 @@ const RecipeCard = ({ title, image, minutes, rating }) => {
         />
       </View>
       <View>
-        <Text style={styles.cardTitle} numberOfLines={2} ellipsizeMode='tail'>
+        <Title style={styles.cardTitle} numberOfLines={2} ellipsizeMode='tail'>
           {title}
-        </Text>
+        </Title>
       </View>
       <View style={styles.cardDetails}>
-        <Text style={styles.cardSubTitle}>{minutes || '0'} mins</Text>
-        <Text>|</Text>
+        <Caption style={styles.cardSubTitle}>{minutes || '0'} mins</Caption>
+        <Body>|</Body>
         <View style={styles.ratingDetails}>
-          <Text>{rating || '0.0'}</Text>
+          <BodySmall>{rating || '0.0'}</BodySmall>
           <Entypo name='heart' size={20} color='red' />
         </View>
       </View>

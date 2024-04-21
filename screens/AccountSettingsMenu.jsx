@@ -33,7 +33,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Dietary Preferences & Allergies</Text>
+        <Body style={styles.menuText}>Dietary Preferences & Allergies</Body>
       </Pressable>
       <Pressable
         onPress={() => navigation.navigate('Account Details')}
@@ -49,7 +49,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImgId}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Account Details</Text>
+        <Body style={styles.menuText}>Account Details</Body>
       </Pressable>
       <Pressable
         onPress={() => navigation.navigate('Saved Recipes')}
@@ -65,7 +65,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Saved Recipes</Text>
+        <Body style={styles.menuText}>Saved Recipes</Body>
       </Pressable>
 
       <Pressable
@@ -82,7 +82,7 @@ export const AccountSettingsMenu = () => {
           style={styles.tagImg}
           resizeMode='cover'
         />
-        <Text style={styles.menuText}>Log Out</Text>
+        <ButtonText style={styles.menuText}>Log Out</ButtonText>
       </Pressable>
       <Nav />
     </View>

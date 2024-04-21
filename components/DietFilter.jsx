@@ -86,14 +86,14 @@ const DietFilter = () => {
         ]}
         onPress={() => handleDietPrerefence(item)}
       >
-        <Text
+        <BodySmall
           style={[
             styles.categoryText,
             selectedCategory === item.id && styles.selectedCategoryText,
           ]}
         >
           {item.category}
-        </Text>
+        </BodySmall>
       </TouchableOpacity>
     </View>
   );
@@ -117,6 +117,9 @@ const styles = StyleSheet.create({
   },
   selectedCategory: {
     backgroundColor: '#52B175',
+  },
+  categoryText: {
+    color: '#121212',
   },
   selectedCategoryText: {
     color: '#fff',

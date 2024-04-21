@@ -75,7 +75,7 @@ export default function AllergenFilters() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Allergies</Text>
+      <Title style={styles.title}>Allergies</Title>
 
       {categories.map((item, index) => {
         return (

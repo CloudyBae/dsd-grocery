@@ -27,25 +27,25 @@ export default AcctRecipeBar = (props) => {
         />
       </View>
       <View style={styles.textSection} numberOfLines={null}>
-        <Text style={styles.headingText} numberOfLines={null}>
+        <Title numberOfLines={null}>
           {name}
-        </Text>
+        </Title>
         <View style={styles.timerView}>
           <Image
             source={require('../assets/timerImg.png')}
             style={styles.timerImg}
             resizeMode='cover'
           />
-          <Text style={styles.amountText}>
+          <Caption style={styles.amountText}>
             {' ' + numMinutes + ' '}
             minutes
-          </Text>
+          </Caption>
         </View>
 
-        <Text>
+        <Body>
           {numIngredients + ' '}
           ingredients
-        </Text>
+        </Body>
       </View>
       <View style={styles.removeImg}>
         <TouchableOpacity

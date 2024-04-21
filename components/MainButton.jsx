@@ -14,20 +14,20 @@ export default function MainButton(props) {
         styles.button,
       ]}
     >
-      <Text style={styles.text}>{title}</Text>
+      <ButtonText style={styles.buttonText}>{title}</ButtonText>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    color: 'rgb(255, 255, 255)',
-  },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 364,
+    width: '100%',
     height: 67,
     borderRadius: 18,
+  },
+  buttonText: {
+    color: '#fff',
   },
 });

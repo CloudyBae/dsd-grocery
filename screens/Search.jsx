@@ -4,7 +4,7 @@ import { Title, Body, BodySmall, Caption, ButtonLarge, ButtonText, ButtonSmall  
 export const FilterScreen = () => {
   return (
     <>
-      <Text>🔍!!</Text>
+      <Body>🔍!!</Body>
     </>
   );
 };

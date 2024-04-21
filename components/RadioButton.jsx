@@ -24,9 +24,9 @@ const RadioButton = ({
           },
         ]}
       />
-      <Text style={[styles.labelTitle, { color: customTextColor || 'black' }]}>
+      <Caption style={[styles.labelTitle, { color: customTextColor || 'black' }]}>
         {label || 'label'}
-      </Text>
+      </Caption>
     </TouchableOpacity>
   );
 };

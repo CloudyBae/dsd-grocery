@@ -53,7 +53,7 @@ export const HomeScreen = () => {
               />
             </View>
             <View style={styles.favoriteRecipesContainer}>
-              <Text style={styles.favoriteRecipesTitle}>Favorite Recipes</Text>
+              <Title style={styles.favoriteRecipesTitle}>Favorite Recipes</Title>
             </View>
             <View style={styles.separatorContainer}>
               <View style={styles.separator}></View>

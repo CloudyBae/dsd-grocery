@@ -46,9 +46,9 @@ const ShoppingListItem = () => {
             />
           </View>
           <View style={styles.textSection}>
-            <Text style={styles.headingText}>{item.name}</Text>
+            <Title style={styles.headingText}>{item.name}</Title>
             <View style={styles.amountContainer}>
-              <Text style={styles.amountText}>{item.quantity} quantity</Text>
+              <BodySmall style={styles.amountText}>{item.quantity} quantity</BodySmall>
             </View>
           </View>
         </View>

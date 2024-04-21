@@ -111,7 +111,7 @@ export const RecipeScreen = () => {
   if (loading || !recipe) {
     return (
       <View>
-        <Text>Loading...</Text>
+        <Body>Loading...</Body>
       </View>
     );
   }

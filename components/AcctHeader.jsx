@@ -16,7 +16,7 @@ const AcctHeader = () => {
       </View>
 
       <View style={styles.header} numberOfLines={null}>
-        <Text style={styles.name} numberOfLines={null}>
+        <Body style={styles.name} numberOfLines={null}>
           {name}{' '}
           <TouchableOpacity
             style={styles.iconContainer}
@@ -28,10 +28,10 @@ const AcctHeader = () => {
               color='#52B175'
             />
           </TouchableOpacity>
-        </Text>
-        <Text style={styles.email} numberOfLines={null}>
+        </Body>
+        <BodySmall style={styles.email} numberOfLines={null}>
           {email}
-        </Text>
+        </BodySmall>
       </View>
     </View>
   );

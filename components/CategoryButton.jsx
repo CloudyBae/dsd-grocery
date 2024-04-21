@@ -18,9 +18,9 @@ const CategoryButton = ({
           ))
       }
     >
-      <Text style={[styles.titleText, customTextStyling]}>
-        <ButtonLarge>{title || 'Button'}</ButtonLarge>
-      </Text>
+      <ButtonLarge>
+        <ButtonText>{title || 'Button'}</ButtonText>
+      </ButtonLarge>
     </TouchableOpacity>
   );
 };
