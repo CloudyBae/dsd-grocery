@@ -30,14 +30,6 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "../assets/fonts/Gilroy-Bold.ttf"
-          ]
-        }
-      ],
       "@react-native-google-signin/google-signin"
     ]
   }

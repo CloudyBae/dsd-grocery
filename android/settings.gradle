@@ -1,4 +1,4 @@
-rootProject.name = 'dsdgrocery'
+rootProject.name = 'dsd-grocery'
 
 dependencyResolutionManagement {
   versionCatalogs {
