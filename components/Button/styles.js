@@ -1,4 +1,4 @@
-export const ButtonContainer = styled.Pressable`
+export const ButtonContainer = styles.Pressable`
   display: flex;
   flex-direction: row;
   align-items: center;

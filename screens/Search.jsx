@@ -1,6 +1,4 @@
-import {
-  Body,
-} from '../components/Typography';
+import { Body } from '../components/Typography';
 
 export const Filter = () => {
   return (

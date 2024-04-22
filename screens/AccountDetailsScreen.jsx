@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import Nav from '../components/Nav';
-import {
-  Title,
-  ButtonText,
-} from '../components/Typography';
+import { Title, ButtonText } from '../components/Typography';
 
 export const AccountDetailsScreen = () => {
   const [username, setUsername] = useState('jsmith');

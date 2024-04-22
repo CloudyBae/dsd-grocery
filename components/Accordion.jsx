@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import {
-  Body,
-  BodySmall,
-} from './Typography';
+import { Body, BodySmall } from './Typography';
 
 const Accordion = ({
   listItem = [

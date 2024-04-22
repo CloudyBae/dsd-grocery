@@ -1,10 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { useState, useEffect } from 'react';
-import {
-  Title,
-  BodySmall,
-} from './Typography';
+import { Title, BodySmall } from './Typography';
 
 const ShoppingListItem = () => {
   const [shoppingListData, setShoppingListData] = useState([]);

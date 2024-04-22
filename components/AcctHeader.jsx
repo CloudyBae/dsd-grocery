@@ -1,14 +1,6 @@
-import {
-  StyleSheet,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import {
-  Title,
-  Body,
-} from './Typography';
+import { Title, Body } from './Typography';
 
 const AcctHeader = () => {
   const name = 'John Smith';

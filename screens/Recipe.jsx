@@ -9,12 +9,7 @@ import {
 } from 'react-native';
 import { useMemo, useState } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
-import {
-  Title,
-  Body,
-  BodySmall,
-  ButtonLarge,
-} from '../components/Typography';
+import { Title, Body, BodySmall, ButtonLarge } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';

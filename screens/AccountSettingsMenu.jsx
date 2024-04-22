@@ -2,10 +2,7 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
-import {
-  Body,
-  ButtonText,
-} from '../components/Typography';
+import { Body, ButtonText } from '../components/Typography';
 import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
 import DoNotEnter from '../components/Icons/DoNotEnter';
 import IDCard from '../components/Icons/IDCard.jsx';

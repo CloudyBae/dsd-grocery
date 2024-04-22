@@ -1,11 +1,7 @@
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {
-  Title,
-  Body,
-  Caption,
-} from './Typography';
+import { Title, Body, Caption } from './Typography';
 
 export default AcctRecipeBar = (props) => {
   const {

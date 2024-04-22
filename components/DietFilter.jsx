@@ -1,14 +1,7 @@
 import { useState } from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  Pressable,
-} from 'react-native';
+import { FlatList, StyleSheet, View, Pressable } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
-import {
-  BodySmall,
-} from './Typography';
+import { BodySmall } from './Typography';
 
 const DietFilter = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);

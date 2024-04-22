@@ -1,11 +1,6 @@
 import { Image, StyleSheet, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-} from './Typography';
+import { Title, Body, BodySmall, Caption } from './Typography';
 
 const RecipeCard = ({ title, image, minutes, rating }) => {
   const placeholderImage = require('../assets/noImagePlaceholder.png');

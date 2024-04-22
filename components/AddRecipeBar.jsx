@@ -1,10 +1,6 @@
 import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
-import {
-  Title,
-  Body,
-  Caption,
-} from './Typography';
+import { Title, Body, Caption } from './Typography';
 
 export default AddRecipeBar = (props) => {
   const {

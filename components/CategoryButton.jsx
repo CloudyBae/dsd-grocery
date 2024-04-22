@@ -1,8 +1,5 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import {
-  ButtonLarge,
-  ButtonText,
-} from './Typography';
+import { ButtonLarge, ButtonText } from './Typography';
 
 const CategoryButton = ({ title, onPress }) => {
   return (

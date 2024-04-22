@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 import GroceryBag from '../assets/GroceryBag.png';
 import { useNavigation } from '@react-navigation/native';
-import {
-  Title
-} from '../components/Typography';
+import { Title } from '../components/Typography';
 import { StatusBar } from 'react-native';
 import Auth from '../components/Auth.jsx';
 import ThirdPartySignIn from '../components/ThirdPartySignIn';

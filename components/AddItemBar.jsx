@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Pressable } from 'react-native';
-import {
-  Title,
-  Body,
-} from './Typography';
+import { Title, Body } from './Typography';
 
 const AddItemBar = () => {
   const [num, setNum] = useState(0);

@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import {
-  Caption,
-} from './Typography';
+import { Caption } from './Typography';
 
 const RadioButton = ({
   label,

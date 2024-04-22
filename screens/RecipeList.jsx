@@ -1,9 +1,7 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import AddRecipeBar from '../components/AddRecipeBar';
-import {
-  Title,
-} from '../components/Typography';
+import { Title } from '../components/Typography';
 import Nav from '../components/Nav';
 
 export const RecipeScreen = () => {

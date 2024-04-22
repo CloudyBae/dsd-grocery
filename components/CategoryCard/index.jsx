@@ -1,9 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import {
-  Title,
-} from '../Typography';
+import { Title } from '../Typography';
 
 const colorMappings = {
   '#FFF6ED': '#D9C1B6',

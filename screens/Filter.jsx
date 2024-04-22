@@ -7,10 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
-import {
-  Title,
-  Caption,
-} from '../components/Typography';
+import { Title, Caption } from '../components/Typography';
 
 export const Filter = () => {
   const [ingredientText, setIngredientText] = useState('');

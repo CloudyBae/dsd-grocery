@@ -3,9 +3,7 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {
-  Caption,
-} from './Typography';
+import { Caption } from './Typography';
 
 const Nav = () => {
   const navigation = useNavigation();

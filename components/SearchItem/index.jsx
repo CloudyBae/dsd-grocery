@@ -1,9 +1,6 @@
 import React from 'react';
 import { Image, Pressable } from 'react-native';
-import {
-  Caption,
-  ButtonLarge,
-} from '../Typography';
+import { Caption, ButtonLarge } from '../Typography';
 import { EvilIcons } from '@expo/vector-icons';
 import { Container, FlexRow, FlexColumn } from './styles';
 

@@ -1,11 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Pressable } from 'react-native';
-import {
-  Title,
-  Body,
-  Caption,
-  ButtonText,
-} from './Typography';
+import { Title, Body, Caption, ButtonText } from './Typography';
 
 export default AddProductCard = (props) => {
   const {

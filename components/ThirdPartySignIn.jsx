@@ -1,9 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import {
-  ButtonText,
-} from './Typography';
+import { ButtonText } from './Typography';
 
 const ThirdPartySignIn = ({
   title,

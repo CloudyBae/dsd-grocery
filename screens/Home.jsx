@@ -11,9 +11,7 @@ import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
-import {
-  Title,
-} from '../components/Typography';
+import { Title } from '../components/Typography';
 import { StatusBar } from 'react-native';
 
 export const HomeScreen = () => {
