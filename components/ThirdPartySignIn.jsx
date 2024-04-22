@@ -38,9 +38,9 @@ const ThirdPartySignIn = ({
         )}
       </View>
       <View style={styles.titleContainer}>
-        <Text style={{ color: textColor || '#121212', fontSize: 20 }}>
+        <ButtonText style={{ color: textColor || '#121212' }}>
           Continue with {title}
-        </Text>
+        </ButtonText>
       </View>
     </TouchableOpacity>
   );
@@ -50,17 +50,15 @@ export default ThirdPartySignIn;
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: 10,
     borderRadius: 18,
-    width: 320,
-  },
-  iconContainer: {
-    width: 20,
+    flexDirection: 'row',
+    gap: 42,
+    padding: 24,
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#121212',
   },
   titleContainer: {
-    flex: 1,
+    justifyContent: 'center',
   },
 });

@@ -19,6 +19,7 @@ import {
   ButtonText,
   ButtonSmall,
 } from '../components/Typography';
+import { StatusBar } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -28,6 +29,7 @@ export const LoginScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor='#52B175' barStyle='light-content' />
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.loginContainer}>
           <View style={styles.titleContainer}>
@@ -97,7 +99,7 @@ export const LoginScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#72C08F',
+    backgroundColor: '#52B175',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
   loginButton: {
-    // padding: 15,
+    padding: 15,
   },
   buttonSeparator: {
     height: 10,
