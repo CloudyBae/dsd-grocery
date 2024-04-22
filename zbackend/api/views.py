@@ -2,7 +2,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, BasePermission
+# from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.permissions import BasePermission
 from django.http import JsonResponse
 from .external_apis import (
     get_recipes_by_dietary_preferences,
@@ -42,7 +43,7 @@ class IsOwner(BasePermission):
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
     queryset = DietaryPreference.objects.all()
     serializer_class = DietaryPreferenceSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = []
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
@@ -52,7 +53,7 @@ class DietaryPreferenceViewSet(viewsets.ModelViewSet):
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = []
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
@@ -62,7 +63,7 @@ class IngredientViewSet(viewsets.ModelViewSet):
 class PlannedRecipeViewSet(viewsets.ModelViewSet):
     queryset = PlannedRecipe.objects.all()
     serializer_class = PlannedRecipeSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = []
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
@@ -72,7 +73,7 @@ class PlannedRecipeViewSet(viewsets.ModelViewSet):
 class ShoppingListViewSet(viewsets.ModelViewSet):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = []
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
@@ -85,7 +86,7 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
 class MacrosViewSet(viewsets.ModelViewSet):
     queryset = Macro.objects.all()
     serializer_class = MacrosSerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = []
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
