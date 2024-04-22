@@ -87,5 +87,8 @@ urlpatterns = [
         "users/<int:user_id>/dietaryPreferences/<int:preference_id>/update/",
         views.update_dietary_preference,
         name="update_dietary_preference",
-    ),
+    )
+    # path('users/<int:user_id>/shoppingList/create/', 
+    #     views.create_shopping_list, 
+    #     name='create_shopping_list'),
 ]

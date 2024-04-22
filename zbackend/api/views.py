@@ -37,7 +37,7 @@ User = get_user_model()
 
 class AllowUpdateWithoutAuthentication(BasePermission):
     def has_permission(self, request, view):
-        return request.method in ["PUT", "PATCH"]
+        return request.method in ['PUT', 'PATCH', 'POST']
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
@@ -78,9 +78,23 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
         return ShoppingList.objects.filter(user_id=user_id)
+    
+    def perform_create(self, request, *args, **kwargs):
+        data = request.data
+        name = data.get('name')
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        query = Ingredient.objects.filter(name=name)
+        ingredient_values = query.values_list()
+        for item in ingredient_values:
+            ing_name = item[1]
+            if name == ing_name:
+                data['is_purchased'] = True
+
+        serializer = ShoppingListSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MacrosViewSet(viewsets.ModelViewSet):
@@ -116,7 +130,7 @@ class MacrosViewSet(viewsets.ModelViewSet):
         else:
             serializer.save()
 
-
+            
 @api_view(["PUT"])
 @permission_classes([AllowAny])
 def update_dietary_preference(request, user_id, preference_id):
