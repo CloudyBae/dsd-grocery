@@ -2,10 +2,10 @@ from datetime import datetime
 
 from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-# from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.permissions import BasePermission
 from django.http import JsonResponse
 from .external_apis import (
     get_recipes_by_dietary_preferences,
@@ -35,27 +35,19 @@ from .serializers import (
 User = get_user_model()
 
 
-# class IsOwner(BasePermission):
-#     def has_object_permission(self, request, view, obj):
-#         return obj.user == request.user
+class AllowUpdateWithoutAuthentication(BasePermission):
+    def has_permission(self, request, view):
+        return request.method in ['PUT', 'PATCH']
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
     queryset = DietaryPreference.objects.all()
     serializer_class = DietaryPreferenceSerializer
+    permission_classes = [AllowUpdateWithoutAuthentication]
 
     def get_queryset(self):
-        # Assuming you have user information available in the request
         user = self.request.user
         return DietaryPreference.objects.filter(user=user)
-
-    def update(self, request, *args, **kwargs):
-        partial = kwargs.pop("partial", False)
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(serializer.data)
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
@@ -123,6 +115,30 @@ class MacrosViewSet(viewsets.ModelViewSet):
             serializer.save(user=self.request.user)
         else:
             serializer.save()
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+            
+@api_view(["PUT"])
+@permission_classes([AllowAny])
+def update_dietary_preference(request, user_id, preference_id):
+    try:
+        dietary_preference = DietaryPreference.objects.get(
+            user_id=user_id, preference_id=preference_id
+        )
+    except DietaryPreference.DoesNotExist:
+        return Response(
+            {"message": "Dietary preference does not exist"},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    serializer = DietaryPreferenceSerializer(
+        dietary_preference, data=request.data, partial=True
+    )
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET"])
 def get_favorite_recipes(request, user_id):

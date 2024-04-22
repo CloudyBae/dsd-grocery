@@ -1,5 +1,5 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 
 from . import views
 from .views import (
@@ -10,7 +10,7 @@ from .views import (
     PlannedRecipeViewSet,
 )
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(
     r"users/(?P<user_pk>\d+)/shoppingList",
     ShoppingListViewSet,
@@ -82,5 +82,10 @@ urlpatterns = [
         "recipes/nutrition/<int:recipe_id>/",
         views.get_nutrition_informations,
         name="get_nutrition_information",
+    ),
+    path(
+        "users/<int:user_id>/dietaryPreferences/<int:preference_id>/update/",
+        views.update_dietary_preference,
+        name="update_dietary_preference",
     ),
 ]
