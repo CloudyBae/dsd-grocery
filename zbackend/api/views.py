@@ -115,10 +115,8 @@ class MacrosViewSet(viewsets.ModelViewSet):
             serializer.save(user=self.request.user)
         else:
             serializer.save()
-
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
-            
+  
+          
 @api_view(["PUT"])
 @permission_classes([AllowAny])
 def update_dietary_preference(request, user_id, preference_id):
@@ -139,6 +137,7 @@ def update_dietary_preference(request, user_id, preference_id):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(["GET"])
 def get_favorite_recipes(request, user_id):
