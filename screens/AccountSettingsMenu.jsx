@@ -2,11 +2,25 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
-import { Body, ButtonText } from '../components/Typography';
-import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
-import DoNotEnter from '../components/Icons/DoNotEnter';
-import IDCard from '../components/Icons/IDCard.jsx';
-import Pot from '../components/Icons/Pot.jsx';
+import Button from '../components/Button';
+import { MaterialIcons } from '@expo/vector-icons';
+import {
+  Ionicons,
+  AntDesign,
+  MaterialCommunityIcons,
+} from '@expo/vector-icons';
+import { SettingOption } from '../components/SettingOption';
+import { useState } from 'react';
+import { DietaryAllergenFilterScreen } from './DietaryAllergenFilter';
+import { AccountDetailsScreen } from './AccountDetailsScreen';
+import { AcctSavedRecipesScreen } from './AcctSavedRecipes';
+
+export const SettingsScreen = {
+  AccountSettings: 'AccountSettings',
+  DietaryPreferences: 'DietaryPreferences',
+  MyDetails: 'MyDetails',
+  FavoriteRecipes: 'FavoriteRecipes',
+};
 
 export const AccountSettingsMenu = () => {
   const [showBackButton, setShowBackButton] = useState(false);
@@ -17,64 +31,70 @@ export const AccountSettingsMenu = () => {
   );
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.innerContainer}>
-        <AcctHeader />
-        <View style={styles.menuItemContainer}>
-          <View style={styles.menuItemInnerContainer}>
-            <Pressable
-              onPress={() =>
-                navigation.navigate('Dietary Preferences & Allergies')
-              }
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                },
-                styles.menuItem,
-              ]}
-            >
-              <View style={styles.menuIcon}>
-                <DoNotEnter />
-              </View>
-              <Body>Dietary Preferences & Allergies</Body>
-            </Pressable>
-            <Pressable
-              onPress={() => navigation.navigate('Account Details')}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                },
-                styles.menuItem,
-              ]}
-            >
-              <View style={styles.menuIcon}>
-                <IDCard style={styles.menuIcon} />
-              </View>
-              <Body>Account Details</Body>
-            </Pressable>
-            <Pressable
-              onPress={() => navigation.navigate('Saved Recipes')}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                },
-                styles.menuItem,
-              ]}
-            >
-              <View style={styles.menuIcon}>
-                <Pot style={styles.menuIcon} />
-              </View>
-              <Body>Saved Recipes</Body>
-            </Pressable>
-          </View>
+      <AcctHeader />
 
-          <Pressable
-            onPress={() => navigation.navigate('Login')}
-            style={[styles.buttonContainer, styles.button]}
-          >
-            <LogOutIcon style={styles.icon} />
-            <ButtonText>Log Out</ButtonText>
-          </Pressable>
-        </View>
+      {screenOption != SettingsScreen.AccountSettings && (
+        <Pressable
+          style={styles.backButton}
+          onPress={() => setScreenOption(SettingsScreen.AccountSettings)}
+        >
+          <Ionicons
+            name='chevron-back-circle'
+            size={26}
+            color='#72C08F'
+            style={{ margin: 20 }}
+          />
+        </Pressable>
+      )}
+      <View style={styles.menuContainer}>
+        {screenOption === SettingsScreen.AccountSettings && (
+          <>
+            <View style={styles.optionList}>
+              <SettingOption
+                title='Dietary Preferences'
+                icon={<Ionicons name={'ban-outline'} size={18} />}
+                onPress={() =>
+                  setScreenOption(SettingsScreen.DietaryPreferences)
+                }
+              />
+              <SettingOption
+                title='My Details'
+                icon={<AntDesign name={'idcard'} size={18} />}
+                onPress={() => setScreenOption(SettingsScreen.MyDetails)}
+              />
+              <SettingOption
+                title='Favorite Recipes'
+                icon={
+                  <MaterialCommunityIcons
+                    name={'pot-steam-outline'}
+                    size={18}
+                  />
+                }
+                onPress={() => setScreenOption(SettingsScreen.FavoriteRecipes)}
+              />
+            </View>
+            <View style={{ paddingHorizontal: 20 }}>
+              <Button
+                isFullWidth={true}
+                onPress={() => navigation.navigate('Login')}
+                kind='outline'
+                shape='rounded'
+                startEnhancer={
+                  <MaterialIcons name={'logout'} size={18} color='#52B175' />
+                }
+              >
+                Log Out
+              </Button>
+            </View>
+          </>
+        )}
+
+        {screenOption == SettingsScreen.DietaryPreferences && (
+          <DietaryAllergenFilterScreen />
+        )}
+        {screenOption == SettingsScreen.MyDetails && <AccountDetailsScreen />}
+
+        {screenOption == SettingsScreen.FavoriteRecipes && <AcctSavedRecipesScreen />}
       </View>
       <Nav />
     </SafeAreaView>

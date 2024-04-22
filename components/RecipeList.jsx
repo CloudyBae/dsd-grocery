@@ -9,7 +9,7 @@ import { Body } from './Typography';
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
-  const { userId } = useContext(AuthContext);
+  const { userId } = "1";
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -49,7 +49,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Body style={style.noRecipesText}>No Favorite Recipes</Body>
+          <Body>No Favorite Recipes</Body>
         </View>
       ) : (
         <FlatList
