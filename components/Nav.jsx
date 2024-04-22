@@ -8,7 +8,7 @@ import { Caption } from './Typography';
 const Nav = () => {
   const navigation = useNavigation();
   return (
-    <View style={[styles.nav,]}>
+    <View style={[styles.nav]}>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Home button was pressed!'
@@ -47,17 +47,17 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-  alignItems: 'center',
-  backgroundColor: '#fff',
-  borderColor: '#c2c2c2',
-  borderTopWidth: 1,
-  bottom: 0,
-  flexDirection: 'row',
-  height: 70,
-  justifyContent: 'space-around',
-  position: 'absolute',
-  textAlign: 'center',
-  width: '100%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#c2c2c2',
+    borderTopWidth: 1,
+    bottom: 0,
+    flexDirection: 'row',
+    height: 70,
+    justifyContent: 'space-around',
+    position: 'absolute',
+    textAlign: 'center',
+    width: '100%',
   },
   innerNavContainer: {
     // justifyContent: 'space-around',
