@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { CheckBox, ListItem } from '@rneui/themed';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from '../components/Typography';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { CheckBox } from '@rneui/themed';
+import { Title } from '../components/Typography';
 
 export default function DietaryFilters() {
   const [categories, setCategories] = useState([
@@ -77,8 +69,8 @@ export default function DietaryFilters() {
   };
 
   return (
-    <View style={styles.container}>
-      <Title style={styles.title}>Dietary Preferences</Title>
+    <View>
+      <Title>Dietary Preferences</Title>
 
       {categories.map((item, index) => {
         return (
@@ -96,15 +88,3 @@ export default function DietaryFilters() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(255,255,255)',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-});

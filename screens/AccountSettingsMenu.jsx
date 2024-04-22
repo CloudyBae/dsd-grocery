@@ -13,74 +13,75 @@ import {
 } from '../components/Typography';
 import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
 
-
 export const AccountSettingsMenu = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-    <View style={styles.innerContainer}>
-      <AcctHeader />
-      <View style={styles.menuItemContainer}>
-        <View style={styles.menuItemInnerContainer}>
-        <Pressable
-          onPress={() => navigation.navigate('Dietary Preferences & Allergies')}
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.5 : 1,
-            },
-            styles.menuItem,
-          ]}
-        >
-          <Image
-            source={require('../assets/donotenter.png')}
-            style={styles.menuImg}
-            resizeMode='cover'
-          />
-          <Body>Dietary Preferences & Allergies</Body>
-        </Pressable>
-        <Pressable
-          onPress={() => navigation.navigate('Account Details')}
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.5 : 1,
-            },
-            styles.menuItem,
-          ]}
-        >
-          <Image
-            source={require('../assets/idcard.png')}
-            style={styles.menuImgId}
-            resizeMode='cover'
-          />
-          <Body>Account Details</Body>
-        </Pressable>
-        <Pressable
-          onPress={() => navigation.navigate('Saved Recipes')}
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.5 : 1,
-            },
-            styles.menuItem,
-          ]}
-        >
-          <Image
-            source={require('../assets/pot.png')}
-            style={styles.menuImg}
-            resizeMode='cover'
-          />
-          <Body>Saved Recipes</Body>
-        </Pressable>
-      </View>
+      <View style={styles.innerContainer}>
+        <AcctHeader />
+        <View style={styles.menuItemContainer}>
+          <View style={styles.menuItemInnerContainer}>
+            <Pressable
+              onPress={() =>
+                navigation.navigate('Dietary Preferences & Allergies')
+              }
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                },
+                styles.menuItem,
+              ]}
+            >
+              <Image
+                source={require('../assets/donotenter.png')}
+                style={styles.menuImg}
+                resizeMode='cover'
+              />
+              <Body>Dietary Preferences & Allergies</Body>
+            </Pressable>
+            <Pressable
+              onPress={() => navigation.navigate('Account Details')}
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                },
+                styles.menuItem,
+              ]}
+            >
+              <Image
+                source={require('../assets/idcard.png')}
+                style={styles.menuImgId}
+                resizeMode='cover'
+              />
+              <Body>Account Details</Body>
+            </Pressable>
+            <Pressable
+              onPress={() => navigation.navigate('Saved Recipes')}
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? 0.5 : 1,
+                },
+                styles.menuItem,
+              ]}
+            >
+              <Image
+                source={require('../assets/pot.png')}
+                style={styles.menuImg}
+                resizeMode='cover'
+              />
+              <Body>Saved Recipes</Body>
+            </Pressable>
+          </View>
 
-      <Pressable
-        onPress={() => navigation.navigate('Login')}
-        style={[styles.buttonContainer, styles.button]}
-      >
-      <LogOutIcon style={styles.icon}/>
-      <ButtonText>Log Out</ButtonText>
-      </Pressable>
-      </View>
+          <Pressable
+            onPress={() => navigation.navigate('Login')}
+            style={[styles.buttonContainer, styles.button]}
+          >
+            <LogOutIcon style={styles.icon} />
+            <ButtonText>Log Out</ButtonText>
+          </Pressable>
+        </View>
       </View>
       <Nav />
     </View>
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     gap: 32,
   },
   menuItemInnerContainer: {
-    gap: 24
+    gap: 24,
   },
   menuItem: {
     alignItems: 'center',
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#52B175',
-    borderRadius:18,
+    borderRadius: 18,
     padding: 24,
     flexDirection: 'row',
     alignItems: 'center',
@@ -132,6 +133,6 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   icon: {
-    color: '#121212'
-  }
+    color: '#121212',
+  },
 });

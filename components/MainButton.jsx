@@ -1,14 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from './Typography';
+import { StyleSheet, Pressable } from 'react-native';
+import { ButtonText } from './Typography';
 
 export default function MainButton(props) {
   const { onPress, title = 'Button' } = props;
@@ -36,6 +28,6 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   buttonText: {
-    color: '#fff',
+    color: '#121212',
   },
 });

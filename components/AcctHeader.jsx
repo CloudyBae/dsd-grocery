@@ -16,14 +16,13 @@ const AcctHeader = () => {
   const email = 'john-smith@gmail.com';
   return (
     <View style={styles.headerContainer}>
-      
-    <View style={styles.headerInnerContainer}>
-      <View style={styles.userImg}>
-        <Image
-          source={require('../assets/Avatar.png')}
-          style={{ width: 90, height: 90, borderRadius: 180 / 2 }}
-        />
-      </View>
+      <View style={styles.headerInnerContainer}>
+        <View style={styles.userImg}>
+          <Image
+            source={require('../assets/Avatar.png')}
+            style={{ width: 90, height: 90, borderRadius: 180 / 2 }}
+          />
+        </View>
 
         <View style={styles.headerTextContainer} numberOfLines={null}>
           <Title style={styles.name} numberOfLines={null}>
@@ -61,11 +60,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     justifyContent: 'center',
-    gap: 24
+    gap: 24,
   },
   headerTextContainer: {
     gap: 4,
-  }
+  },
 });
 
 export default AcctHeader;

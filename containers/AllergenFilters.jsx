@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { CheckBox, ListItem } from '@rneui/themed';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from '../components/Typography';
+import { View } from 'react-native';
+import { CheckBox } from '@rneui/themed';
+import { Title } from '../components/Typography';
 
 export default function AllergenFilters() {
   const [categories, setCategories] = useState([
@@ -82,8 +74,8 @@ export default function AllergenFilters() {
   };
 
   return (
-    <View style={styles.container}>
-      <Title style={styles.title}>Allergies</Title>
+    <View>
+      <Title>Allergies</Title>
 
       {categories.map((item, index) => {
         return (
@@ -100,15 +92,3 @@ export default function AllergenFilters() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(255,255,255)',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-});

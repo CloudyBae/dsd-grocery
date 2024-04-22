@@ -78,30 +78,30 @@ const AddItemBar = () => {
       <View style={styles.textSection}>
         <Title>{data[0].name}</Title>
         <Body>{data[0].quantity}</Body>
-        <View style={styles.quantityBtnContainer}> 
-            <Pressable
-              onPress={subNum}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                },
-                styles.subtractButton,
-              ]}
-            >
-              <Body>-</Body>
-            </Pressable>
-            <Body style={{ color: '#121212' }}>{num}</Body>
-            <Pressable
-              onPress={addNum}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.5 : 1,
-                },
-                styles.addButton,
-              ]}
-            >
-              <Body>+</Body>
-            </Pressable>
+        <View style={styles.quantityBtnContainer}>
+          <Pressable
+            onPress={subNum}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.5 : 1,
+              },
+              styles.subtractButton,
+            ]}
+          >
+            <Body>-</Body>
+          </Pressable>
+          <Body style={{ color: '#121212' }}>{num}</Body>
+          <Pressable
+            onPress={addNum}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.5 : 1,
+              },
+              styles.addButton,
+            ]}
+          >
+            <Body>+</Body>
+          </Pressable>
         </View>
       </View>
     </View>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'col',
     gap: 8,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   quantityBtnContainer: {
     flexDirection: 'row',
