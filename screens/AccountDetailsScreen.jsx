@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
-import AcctHeader from '../components/AcctHeader';
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Nav from '../components/Nav';
 import {
   Title,
@@ -35,47 +40,57 @@ export const AccountDetailsScreen = () => {
 
   return (
     <View style={styles.wholeContainer}>
-      <AcctHeader />
       <View style={styles.container}>
-        <View styles={styles.inputSection}>
-          <View style={styles.textBoxContainer}>
-            {/* <Text style={styles.myDetails}>My Details</Text> */}
-            <View
-              style={{
-                width: '100%',
-                height: 1,
-                backgroundColor: '#96d1ab',
-                alignSelf: 'center',
-              }}
-            />
-            <Body style={styles.myDetails}>Username</Body>
-            <TextInput
-              style={styles.textBox}
-              value={username}
-              onChangeText={(text) => setUsername(text)}
-              placeholder='Account Username'
-              editable={isEditing}
-            />
-          </View>
-          <View style={styles.textBoxContainer}>
-            <Body style={styles.myDetails}>Email</Body>
-            <TextInput
-              style={styles.textBox}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-              placeholder='Email'
-              editable={isEditing}
-            />
-          </View>
+        <View style={styles.textBoxContainer}>
+          <Title style={styles.myDetails}>Username</Title>
+          <TextInput
+            style={[
+              styles.textBox,
+              isEditing ? styles.textBoxEditing : styles.textBox,
+            ]}
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+            placeholder='Account Username'
+            editable={isEditing}
+          />
+        </View>
+        <View style={styles.textBoxContainer}>
+          <Title style={styles.myDetails}>Email</Title>
+          <TextInput
+            style={[
+              styles.textBox,
+              isEditing ? styles.textBoxEditing : styles.textBox,
+            ]}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            placeholder='Email'
+            editable={isEditing}
+          />
         </View>
 
         <View style={styles.editSection}>
           {!isEditing ? (
-            <Button title='Edit' onPress={handleEdit} />
+            <TouchableOpacity
+              onPress={handleEdit}
+              style={[styles.buttonReset, styles.buttonOutline]}
+            >
+              <ButtonText>Edit</ButtonText>
+            </TouchableOpacity>
           ) : (
             <>
-              <Button title='Save' onPress={handleSave} />
-              <Button title='Delete' onPress={handleDelete} />
+              <TouchableOpacity
+                onPress={handleSave}
+                style={[styles.buttonReset, styles.buttonPrimary]}
+              >
+                <ButtonText>Save</ButtonText>
+              </TouchableOpacity>
+              <TouchableOpacity
+                title='Delete'
+                onPress={handleDelete}
+                style={[styles.buttonReset, styles.buttonOutline]}
+              >
+                <ButtonText>Cancel</ButtonText>
+              </TouchableOpacity>
             </>
           )}
         </View>
@@ -90,28 +105,53 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   container: {
-    flexDirection: 'row',
+    flexDirection: 'col',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    marginHorizontal: 16,
+    flex: 1,
+    gap: 32,
   },
-  inputSection: {
-    flexDirection: 'column',
-    width: '100%',
-  },
-  myDetails: {
-    fontWeight: 'bold',
-    width: 200,
+  editSection: {
+    gap: 16,
   },
   textBoxContainer: {
-    alignItems: 'center',
+    gap: 6,
   },
   textBox: {
-    flex: 0,
-    borderColor: '#96d1ab',
-    borderBottomWidth: 1,
-    width: 200,
-    height: 80,
+    backgroundColor: '#f2f2f2',
+    color: '#a2a2a2',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    fontSize: 16,
   },
-  editSection: {},
+  textBoxEditing: {
+    backgroundColor: '#F1F9F4',
+    color: '#121212',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    fontSize: 16,
+  },
+  buttonReset: {
+    alignItems: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderRadius: 18,
+    borderWidth: 2,
+    flexDirection: 'row',
+    gap: 6,
+    justifyContent: 'center',
+    padding: 24,
+  },
+  buttonOutline: {
+    borderColor: '#c2c2c2',
+  },
+  buttonPrimary: {
+    backgroundColor: '#52B175',
+    borderColor: '#52B175',
+  },
+  buttonDestructive: {
+    backgroundColor: '#D47373',
+    borderColor: '#D47373',
+  },
 });
