@@ -12,9 +12,21 @@ import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
 import { Text } from 'react-native';
+import { useEffect, useState } from 'react';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
+  const [macroData, setMacroData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/users/1/macros')
+      .then((response) => response.json())
+      .then((data) => setMacroData(data))
+      .catch((error) => console.log('Error fetching Macros: ', error));
+  }, []);
+
+  console.log('macroData: ', macroData);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
