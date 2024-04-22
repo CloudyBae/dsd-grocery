@@ -3,7 +3,7 @@ import IngredientCard from '../components/IngredientCard';
 import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
 import { useContext, useEffect, useState } from 'react';
-import { BodySmall } from '../components/Typography';
+import { Body } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AddIngredientModal } from './AddIngredient';
@@ -125,7 +125,8 @@ export const IngredientScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1 }} >
+    <View style={styles.container}>
       {modalVisible && (
         <>
           <AddIngredientModal
@@ -143,7 +144,7 @@ export const IngredientScreen = () => {
               <IngredientCard key={ingredient.id} ingredient={ingredient} />
             ))
           ) : (
-            <BodySmall>No results 😭</BodySmall>
+            <Body>No ingredients found</Body>
           )}
         </View>
       </ScrollView>
@@ -158,17 +159,18 @@ export const IngredientScreen = () => {
           }}
           onPress={() => setModalVisible(true)}
         >
-          <View style={{ ...styles.rowContainer, marginTop: 5 }}>
+          <View style={{ ...styles.rowContainer,  }}>
             <FontAwesome5
               name='plus'
               style={styles.icon}
               color='#fff'
-              size={26}
+              size={24}
             />
           </View>
         </Button>
       </View>
-      <Nav style={styles.navBar} />
+      </View>
+      <Nav/>
     </SafeAreaView>
   );
 };
@@ -176,15 +178,16 @@ export const IngredientScreen = () => {
 const styles = StyleSheet.create({
   addIngredientButton: {
     position: 'absolute',
-    bottom: '10%',
-    right: 20,
+    bottom: '12%',
+    right: '6%',
   },
   container: {
-    paddingTop: 20,
-    width: '100%',
-    flex: 1,
+    backgroundColor: '#fff',
     display: 'flex',
-    backgroundColor: '#FFF',
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    width: '100%',
   },
   ingredientsContainer: {
     display: 'flex',

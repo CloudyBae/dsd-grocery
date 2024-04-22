@@ -9,7 +9,7 @@ const Search = ({ updateSearch, value }) => {
       <SearchBar
         id='searchBar'
         placeholder='Type Here To Search...'
-        placeholderTextColor={'#7C7C7C'}
+        placeholderTextColor={'#727272'}
         onChangeText={updateSearch}
         value={value}
         inputStyle={styles.text}
@@ -29,18 +29,16 @@ const Search = ({ updateSearch, value }) => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: 20,
   },
   input: {
-    justifyContent: 'center',
     alignItems: 'center',
-    height: 51,
-    backgroundColor: '#F2F3F2',
-    borderRadius: 18,
+    backgroundColor: '#f2f2f2',
+    borderRadius: 9,
+    justifyContent: 'center',
   },
 });
 
