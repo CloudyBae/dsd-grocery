@@ -24,7 +24,7 @@ export const AccountSettingsMenu = () => {
     SettingsScreen.AccountSettings
   );
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.innerContainer}>
         <AcctHeader />
         <View style={styles.menuItemContainer}>
