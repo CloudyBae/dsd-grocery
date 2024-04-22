@@ -22,7 +22,7 @@ export default AcctRecipeBar = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.firstSection}>
+      <View style={styles.imageSection}>
         <Image
           source={require('../assets/RecipeTag.png')}
           style={styles.tagImg}
@@ -48,17 +48,14 @@ export default AcctRecipeBar = (props) => {
           </Caption>
         </View>
 
-        <Body>
-          {numIngredients + ' '}
-          ingredients
-        </Body>
+        <Body>Ingredients: {numIngredients}</Body>
       </View>
       <View style={styles.removeImg}>
         <TouchableOpacity
           style={styles.iconContainer}
           onPress={() => console.log('Remove Button Pressed')}
         >
-          <MaterialCommunityIcons name='close' size={45} color='#121212' />
+          <MaterialCommunityIcons name='close' size={48} color='red' />
         </TouchableOpacity>
       </View>
     </View>
@@ -67,22 +64,22 @@ export default AcctRecipeBar = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#e7e7e7',
-    borderWidth: 1,
     backgroundColor: '#fff',
-    height: 180,
+    borderBottomWidth: 2,
+    borderColor: '#c2c2c2',
+    flexDirection: 'row',
+    gap: 16,
+    padding: 16,
   },
-  firstSection: {
-    flexDirection: 'column',
+  imageSection: {
     alignItems: 'center',
+    flexDirection: 'column',
+    gap: 8,
   },
   tagImg: {
+    borderRadius: 4,
     height: 40,
-    width: 120,
-    borderRadius: 9,
+    width: '100%',
   },
   productImg: {
     height: 110,
@@ -91,22 +88,14 @@ const styles = StyleSheet.create({
   },
   textSection: {
     flex: 1,
+    gap: 6,
   },
-  headingText: {},
   timerView: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
   },
   timerImg: {
-    height: 18,
-    width: 18,
-  },
-  removeImg: {
-    justifyContent: 'flex-end',
-  },
-  iconContainer: {
-    height: 40,
-    width: 40,
+    height: 16,
+    width: 16,
   },
 });

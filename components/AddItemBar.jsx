@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   imageSection: {
     alignItems: 'center',
     flexDirection: 'column',
-    gap: 32,
+    gap: 8,
   },
   tagImg: {
-    borderRadius: 9,
+    borderRadius: 4,
     height: 40,
     width: 120,
   },
@@ -136,13 +136,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'col',
     gap: 8,
-    justifyContent: 'center',
   },
   quantityBtnContainer: {
     flexDirection: 'row',
     gap: 16,
     alignItems: 'center',
     height: 48,
+    flex: 1,
+    paddingBottom: 0,
+    marginBottom: 0,
   },
   subtractButton: {
     alignItems: 'center',

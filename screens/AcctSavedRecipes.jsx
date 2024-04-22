@@ -24,20 +24,18 @@ import {
 export const AcctSavedRecipesScreen = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.container}>
       <View style={{ flex: 1 }}>
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.homeContainer}>
-            <AcctHeader />
-            {/* <Text style={styles.title}>Saved Recipes</Text> */}
             <Pressable
               onPress={() => navigation.navigate('Recipe', { id: item.id })}
             >
               <AcctRecipeBar />
             </Pressable>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <MainButton title='Save' />
-            </View>
+            </View> */}
           </View>
         </ScrollView>
       </View>
@@ -47,17 +45,14 @@ export const AcctSavedRecipesScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+  },
   homeContainer: {
-    backgroundColor: '#fff',
-  },
-  title: {
-    height: 60,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  buttonContainer: {
-    alignItems: 'center',
-    backgroundColor: 'rgb(255,255,255)',
+    backgroundColor: '#f2f2f2',
   },
 });
 
