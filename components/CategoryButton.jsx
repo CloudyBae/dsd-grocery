@@ -12,7 +12,7 @@ import {
 const CategoryButton = ({ title, onPress }) => {
   return (
     <TouchableOpacity
-      style={[styles.categoryButton]}
+      style={[styles.buttonReset, styles.buttonOutline, styles.categoryButton]}
       onPress={
         onPress ||
         (() =>
@@ -32,11 +32,32 @@ export default CategoryButton;
 
 const styles = StyleSheet.create({
   categoryButton: {
-    alignItems: 'center',
-    backgroundColor: '#52B175',
-    borderRadius: 18,
-    justifyContent: 'center',
     width: '45%',
     height: 96,
+    borderColor: '#52B175',
+    backgroundColor: '#F1F9F4',
+  },
+  buttonReset: {
+    alignItems: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderRadius: 18,
+    borderWidth: 2,
+    flexDirection: 'row',
+    gap: 6,
+    justifyContent: 'center',
+    padding: 24,
+  },
+  buttonOutline: {
+    borderColor: '#c2c2c2',
+  },
+  buttonPrimary: {
+    backgroundColor: '#52B175',
+    borderColor: '#52B175',
+  },
+  buttonDestructive: {
+    backgroundColor: '#D47373',
+    borderColor: '#D47373',
   },
 });

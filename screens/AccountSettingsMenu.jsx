@@ -36,9 +36,9 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-            <View style={styles.menuIcon}>
-            <DoNotEnter />
-            </View>
+              <View style={styles.menuIcon}>
+                <DoNotEnter />
+              </View>
               <Body>Dietary Preferences & Allergies</Body>
             </Pressable>
             <Pressable
@@ -50,10 +50,9 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-            <View style={styles.menuIcon}>
-            <IDCard style={styles.menuIcon} />
-
-            </View>
+              <View style={styles.menuIcon}>
+                <IDCard style={styles.menuIcon} />
+              </View>
               <Body>Account Details</Body>
             </Pressable>
             <Pressable
@@ -65,9 +64,9 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-            <View style={styles.menuIcon}>
-            <Pot style={styles.menuIcon} />
-          </View>
+              <View style={styles.menuIcon}>
+                <Pot style={styles.menuIcon} />
+              </View>
               <Body>Saved Recipes</Body>
             </Pressable>
           </View>
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
   menuItem: {
     alignItems: 'center',
     flexDirection: 'row',
-    gap: 6,
+    gap: 12,
     justifyContent: 'flex-start',
   },
   button: {
