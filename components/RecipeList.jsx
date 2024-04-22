@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
-  const { userId } = "1";
+  const { userId } = '1';
 
   useEffect(() => {
     const fetchRecipes = async () => {

@@ -15,7 +15,7 @@ export const ShoppingListScreen = () => {
     },
     {
       image:
-        'https://www.eatthis.com/wp-content/uploads/sites/4/2019/11/bleached-white-flour.jpg?quality=82&strip=1&w=640',
+        'https://www.eatthis.com/wp-content/uploads/sites/4/2019/11/bleached-#fff-flour.jpg?quality=82&strip=1&w=640',
       name: 'Flour',
       qty: '1',
       unit: 'kg',
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   title: {
-    color: 'black',
+    color: '#121212',
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',

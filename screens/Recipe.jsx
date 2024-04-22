@@ -34,7 +34,7 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = "1"; // update after backend integration
+  const { userId } = '1'; // update after backend integration
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
@@ -199,7 +199,7 @@ export const RecipeScreen = () => {
             <View
               style={{
                 ...styles.rowContainer,
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 marginTop: 16,
                 marginBottom: 16,
               }}
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   category: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#52B175',
     paddingVertical: 0,

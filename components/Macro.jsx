@@ -4,7 +4,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { Body, BodySmall, ButtonSmall } from './Typography';
 
 const Macro = ({ macro, percentage, goal }) => {
-  const completed = ((percentage / 100) * goal).toFixed(2);
+  const completed = ((percentage / 100) * goal).toFixed(0);
 
   return (
     <View>
@@ -13,18 +13,18 @@ const Macro = ({ macro, percentage, goal }) => {
         width={10}
         fill={percentage}
         tintColor='#52B175'
-        backgroundColor='#ccc'
+        backgroundColor='#f2f2f2'
       >
         {(fill) => (
           <View style={{ display: 'flex', alignItems: 'center' }}>
-            <ButtonSmall>{completed ? completed : 0}</ButtonSmall>
+            <ButtonSmall>{completed ? completed : 0}g</ButtonSmall>
             <BodySmall>of {goal ? goal : 0}g</BodySmall>
           </View>
         )}
       </AnimatedCircularProgress>
       <View style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
-        <Body style={{ color: 'black' }}>{macro}</Body>
-        <BodySmall>{goal ? (goal - completed).toFixed(2) : 0}g left</BodySmall>
+        <Body style={{ color: '#121212' }}>{macro}</Body>
+        <BodySmall>{goal ? (goal - completed).toFixed(0) : 0}g left</BodySmall>
       </View>
     </View>
   );

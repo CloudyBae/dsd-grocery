@@ -51,7 +51,7 @@ export default AcctRecipeBar = (props) => {
           style={styles.iconContainer}
           onPress={() => console.log('Remove Button Pressed')}
         >
-          <MaterialCommunityIcons name='close' size={45} color='black' />
+          <MaterialCommunityIcons name='close' size={45} color='#121212' />
         </TouchableOpacity>
       </View>
     </View>

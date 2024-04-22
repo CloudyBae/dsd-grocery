@@ -26,7 +26,7 @@ export const LoginScreen = () => {
           <View style={styles.titleContainer}>
             <Title
               style={{
-                color: 'white',
+                color: '#fff',
                 fontSize: 60,
                 fontWeight: 'bold',
                 lineHeight: 70,
@@ -46,7 +46,7 @@ export const LoginScreen = () => {
           />
           <ThirdPartySignIn
             title='Home'
-            textColor='white'
+            textColor='#fff'
             icon='home'
             backgroundColor='orange'
             style={styles.loginButton}

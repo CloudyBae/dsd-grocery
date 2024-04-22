@@ -1,15 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { ButtonLarge } from './Typography';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { ButtonText } from './Typography';
 
-const CategoryButton = ({
-  title,
-  onPress,
-  customButtonStyling,
-  customTextStyling,
-}) => {
+const CategoryButton = ({ title, onPress }) => {
   return (
     <TouchableOpacity
-      style={[stlyes.categoryButton, customButtonStyling]}
+      style={[stlyes.categoryButton]}
       onPress={
         onPress ||
         (() =>
@@ -18,9 +13,7 @@ const CategoryButton = ({
           ))
       }
     >
-      <Text style={[stlyes.titleText, customTextStyling]}>
-        <ButtonLarge>{title || 'Button'}</ButtonLarge>
-      </Text>
+      <ButtonText>{title || 'Button'}</ButtonText>
     </TouchableOpacity>
   );
 };
@@ -29,15 +22,13 @@ export default CategoryButton;
 
 const stlyes = StyleSheet.create({
   categoryButton: {
-    padding: 15,
-    margin: 5,
-    backgroundColor: '#53B175',
-    borderRadius: 13,
     alignItems: 'center',
+    backgroundColor: '#F7FCF8',
+    borderColor: '#52B175',
+    borderRadius: 18,
+    borderWidth: 1,
     justifyContent: 'center',
-  },
-  titleText: {
-    fontSize: 15,
-    color: '#0A0A0A',
+    paddingHorizontal: 60,
+    paddingVertical: 40,
   },
 });

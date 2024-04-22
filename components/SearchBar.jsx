@@ -20,7 +20,7 @@ const Search = ({ updateSearch, value }) => {
           borderBottomColor: 'transparent',
           borderTopColor: 'transparent',
         }}
-        searchIcon={<AntDesign name='search1' size={24} color='black' />}
+        searchIcon={<AntDesign name='search1' size={24} color='#121212' />}
       />
       <View></View>
     </View>

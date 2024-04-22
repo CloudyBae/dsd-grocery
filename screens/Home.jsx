@@ -1,66 +1,43 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Nav from '../components/Nav';
 import FavoriteRecipesList from '../components/FavoriteRecipes';
 import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
-import { Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import { Title } from '../components/Typography';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar backgroundColor='#fff' barStyle='dark-content' />
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <View style={styles.homeContainer}>
-            <View>
-              <TouchableOpacity
-                accessible={true}
-                accessibilityLabel='Ingredients button was pressed!'
-                onPress={() => navigation.navigate('Settings')}
-              ></TouchableOpacity>
-              <View style={styles.macrosContainer}>
-                <Macro macro='Carbs' percentage={20} goal={100} />
-                <Macro macro='Protein' percentage={50} goal={100} />
-                <Macro macro='Fat' percentage={70} goal={100} />
+          <View style={styles.screenContainer}>
+            <View style={styles.macrosContainer}>
+              <Macro macro='Carbs' percentage={20} goal={100} />
+              <Macro macro='Protein' percentage={50} goal={100} />
+              <Macro macro='Fat' percentage={70} goal={100} />
+            </View>
+            <View style={styles.innerContainer}>
+              <View style={styles.mainButtonsContainer}>
+                <CategoryButton
+                  onPress={() => navigation.navigate('Ingredients')}
+                  title='Pantry'
+                />
+                <CategoryButton
+                  title='Recipes'
+                  onPress={() => navigation.navigate('Filter')}
+                />
               </View>
+              <View style={styles.favoriteRecipesContainer}>
+                <Title>Favorite Recipes</Title>
+              </View>
+              <DietFilter />
+              <FavoriteRecipesList numberOfRecipes={10} />
             </View>
-            <View style={styles.mainButtonsContainer}>
-              <CategoryButton
-                onPress={() => navigation.navigate('Ingredients')}
-                customButtonStyling={{
-                  width: '45%',
-                  padding: 40,
-                  borderRadius: 25,
-                }}
-                title='Pantry'
-              />
-              <CategoryButton
-                customButtonStyling={{
-                  width: '45%',
-                  padding: 40,
-                  borderRadius: 25,
-                }}
-                title='Recipes'
-                onPress={() => navigation.navigate('Filter')}
-              />
-            </View>
-            <View style={styles.favoriteRecipesContainer}>
-              <Text style={styles.favoriteRecipesTitle}>Favorite Recipes</Text>
-            </View>
-            <View style={styles.separatorContainer}>
-              <View style={styles.separator}></View>
-              <View style={styles.separator}></View>
-            </View>
-            <DietFilter />
-            <FavoriteRecipesList numberOfRecipes={10} />
           </View>
         </ScrollView>
       </View>
@@ -70,41 +47,30 @@ export const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  homeContainer: {
-    padding: 10,
-    marginBottom: 50,
+  screenContainer: {
+    backgroundColor: '#f2f2f2',
+    // padding: 10,
+    // marginBottom: 50,
+  },
+  innerContainer: {
+    paddingHorizontal: 16,
   },
   macrosContainer: {
-    backgroundColor: '#53B175',
+    backgroundColor: '#fff',
+    borderBottomRightRadius: 18,
+    borderBottomLeftRadius: 18,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 5,
-    padding: 20,
-    borderRadius: 10,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
   },
   mainButtonsContainer: {
     flexDirection: 'row',
-    padding: 10,
     justifyContent: 'space-between',
+    paddingVertical: 48,
   },
   favoriteRecipesContainer: {
     alignItems: 'center',
-  },
-  favoriteRecipesTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-  },
-  separatorContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
-  },
-  separator: {
-    height: 2,
-    width: 100,
-    borderColor: '#52B175',
-    backgroundColor: '#52B175',
-    borderWidth: 1,
   },
 });

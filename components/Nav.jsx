@@ -3,17 +3,19 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Caption } from './Typography';
 
 const Nav = () => {
   const navigation = useNavigation();
   return (
-    <View style={[styles.nav, styles.shadowProp]}>
+    <View style={[styles.nav,]}>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel='Home button was pressed!'
         onPress={() => navigation.navigate('Home')}
       >
         <FontAwesome5 name='home' style={styles.icon} />
+        <Caption>Home</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -21,6 +23,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Ingredients')}
       >
         <FontAwesome5 name='apple-alt' style={styles.icon} />
+        <Caption>Ingredients</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -28,6 +31,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Shopping List')}
       >
         <FontAwesome5 name='clipboard-list' style={styles.icon} />
+        <Caption>Shopping</Caption>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
@@ -35,6 +39,7 @@ const Nav = () => {
         onPress={() => navigation.navigate('Account')}
       >
         <MaterialCommunityIcons name='account-circle' style={styles.icon} />
+        <Caption>Account</Caption>
       </TouchableOpacity>
     </View>
   );
@@ -42,26 +47,36 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-    position: 'absolute',
-    width: '100%',
-    bottom: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    height: 60,
-    paddingBottom: 16,
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  borderColor: '#c2c2c2',
+  borderTopWidth: 1,
+  bottom: 0,
+  flexDirection: 'row',
+  height: 70,
+  justifyContent: 'space-around',
+  position: 'absolute',
+  textAlign: 'center',
+  width: '100%',
+  },
+  innerNavContainer: {
+    // justifyContent: 'space-around',
+    // textAlign: 'center',
+    // alignContent: 'center',
+    // alignItems: 'center',
+    // flexDirection: 'row',
+    // padding: 16,
+  },
+  iconContainer: {
+    // alignItems: 'center',
+    // gap: 4,
+    // borderWidth: 1
   },
   icon: {
-    color: 'black',
+    color: '#121212',
     fontSize: 24,
-    padding: 10,
-  },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    textAlign: 'center',
+    marginBottom: 4,
   },
 });
 
