@@ -1,17 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AuthContext from '../auth/auth-context';
 import {
-  Title,
   Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {

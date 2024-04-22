@@ -3,12 +3,6 @@ import { Image } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import {
   Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../Typography';
 
 const colorMappings = {

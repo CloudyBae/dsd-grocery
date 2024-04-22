@@ -1,15 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SearchBar } from '@rneui/base';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from './Typography';
 import { AntDesign } from '@expo/vector-icons';
 
 const Search = ({ updateSearch, value }) => {

@@ -104,13 +104,6 @@ export const IngredientScreen = () => {
   useEffect(() => {
     const fetchIngredients = async () => {
       setIngredients(ingredientList);
-      // try {
-      //   const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
-      //   const data = await response.json();
-      //   setIngredients(data);
-      // } catch (error) {
-      //   console.error('Error fetching ingredients:', error);
-      // }
     };
     fetchIngredients();
   }, []);

@@ -1,19 +1,14 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Title,
   Body,
-  BodySmall,
   Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 export default AcctRecipeBar = (props) => {
   const {
-    onPress,
     image = 'https://iambaker.net/wp-content/uploads/2020/03/sourdough-bread-4-768x644.jpg',
     name = 'A Simple Sourdough Starter Recipe',
     numMinutes = '1440',

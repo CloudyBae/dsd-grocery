@@ -3,12 +3,6 @@ import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import AddRecipeBar from '../components/AddRecipeBar';
 import {
   Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 import Nav from '../components/Nav';
 

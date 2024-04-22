@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
-import { Body, ButtonLarge, HeaderTitle } from './Typography';
+import { ButtonLarge } from './Typography';
 
 export default IngredientCard = ({ ingredient }) => {
   const { id, name, image } = ingredient;

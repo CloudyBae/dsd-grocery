@@ -2,13 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
   ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 const ThirdPartySignIn = ({

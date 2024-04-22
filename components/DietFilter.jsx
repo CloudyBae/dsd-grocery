@@ -2,20 +2,12 @@ import { useState } from 'react';
 import {
   FlatList,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
   Pressable,
 } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
 import {
-  Title,
-  Body,
   BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 const DietFilter = () => {

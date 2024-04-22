@@ -100,11 +100,6 @@ export const DietaryAllergenFilterScreen = () => {
         body: JSON.stringify(filterData),
       }
     );
-    //if (!response.ok) {
-    //  throw new Error('Failed to save filters');
-    //}
-
-    //console.log('Filters saved successfully');
   };
 
   return (

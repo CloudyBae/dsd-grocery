@@ -1,15 +1,10 @@
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
 import {
-  Title,
   Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
   ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
 import DoNotEnter from '../components/Icons/DoNotEnter';
@@ -92,7 +87,6 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 200,
-    // top: 40
     zIndex: 1,
   },
   container: {

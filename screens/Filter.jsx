@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, TextInput } from 'react-native';
+import { TextInput } from 'react-native';
 import { View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
@@ -9,12 +9,7 @@ import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
 import {
   Title,
-  Body,
-  BodySmall,
   Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 
 export const Filter = () => {

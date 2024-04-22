@@ -1,13 +1,10 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import {
   Title,
   Body,
   BodySmall,
   Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 const RecipeCard = ({ title, image, minutes, rating }) => {
@@ -58,12 +55,10 @@ const styles = StyleSheet.create({
   cardDetails: {
     flexDirection: 'row',
     alignItems: 'center',
-    // gap: 3,
   },
   ratingDetails: {
     flexDirection: 'row',
     alignItems: 'center',
-    // gap: 1,
   },
   cardTitle: {
     maxWidth: 150,

@@ -13,12 +13,6 @@ import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
 import {
   Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 import { StatusBar } from 'react-native';
 

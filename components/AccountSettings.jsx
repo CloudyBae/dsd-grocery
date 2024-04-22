@@ -1,7 +1,5 @@
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AcctHeader from './AcctHeader';
-import Nav from './Nav';
 import Button from './Button';
 import { MaterialIcons } from '@expo/vector-icons';
 import {

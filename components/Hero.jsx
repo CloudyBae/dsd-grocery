@@ -1,14 +1,5 @@
 import { Image, StyleSheet, View, Dimensions } from 'react-native';
 import HeroBanner from '../assets/hero.png';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from '../Typography';
 
 const Hero = ({ image }) => {
   const screenWidth = Dimensions.get('window').width;

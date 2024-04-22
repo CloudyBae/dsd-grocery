@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Alert,
   Modal as ModalBase,
   StyleSheet,
-  Text,
-  Pressable,
   View,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
 import { Body, Title } from '../Typography';
-import { AntDesign } from '@expo/vector-icons';
-import Button from '../Button';
 
 export const Modal = ({
   modalVisible,
   setModalVisible,
   titleText,
   descriptionText,
-  onClose,
   size,
   fullscreen,
   children,

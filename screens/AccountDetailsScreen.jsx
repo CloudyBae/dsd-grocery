@@ -2,19 +2,13 @@ import React, { useState } from 'react';
 import {
   View,
   TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import Nav from '../components/Nav';
 import {
   Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
   ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 
 export const AccountDetailsScreen = () => {

@@ -4,13 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
-  Title,
-  Body,
-  BodySmall,
   Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from './Typography';
 
 const Nav = () => {

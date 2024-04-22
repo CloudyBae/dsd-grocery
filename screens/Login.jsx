@@ -10,13 +10,7 @@ import {
 import GroceryBag from '../assets/GroceryBag.png';
 import { useNavigation } from '@react-navigation/native';
 import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
+  Title
 } from '../components/Typography';
 import { StatusBar } from 'react-native';
 import Auth from '../components/Auth.jsx';
@@ -95,6 +89,5 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    // padding: 20,
   },
 });

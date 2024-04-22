@@ -2,13 +2,7 @@ import React from 'react';
 import { ButtonContainer, Enhancer } from './styles';
 import { ActivityIndicator, View } from 'react-native';
 import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
   ButtonText,
-  ButtonSmall,
 } from '../Typography';
 
 const Button = ({

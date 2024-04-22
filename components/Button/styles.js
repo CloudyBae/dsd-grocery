@@ -1,5 +1,3 @@
-// import styled, { css } from 'styled-components/native';
-
 export const ButtonContainer = styled.Pressable`
   display: flex;
   flex-direction: row;
@@ -53,10 +51,3 @@ export const ButtonText = styled.Text`
   }};
   font-size: ${(props) => props.fontSize || '16px'};
 `;
-
-// export const Enhancer = styled.Text`
-//   color: ${(props) => props.color || '#ffffff'};
-//   background-color: ${(props) => props.secondaryColor || '#FFFFFF26'};
-//   padding: 2px 5px;
-//   border-radius: 4px;
-// `;

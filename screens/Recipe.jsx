@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   View,
   useWindowDimensions,
 } from 'react-native';
@@ -14,10 +13,7 @@ import {
   Title,
   Body,
   BodySmall,
-  Caption,
   ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
@@ -261,8 +257,6 @@ const styles = StyleSheet.create({
   categoriesContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-
-    // gap: 5,
     flexWrap: 'wrap',
   },
   category: {

@@ -1,18 +1,13 @@
 import React from 'react';
 import { Image, Pressable } from 'react-native';
 import {
-  Title,
-  Body,
-  BodySmall,
   Caption,
   ButtonLarge,
-  ButtonText,
-  ButtonSmall,
 } from '../Typography';
 import { EvilIcons } from '@expo/vector-icons';
 import { Container, FlexRow, FlexColumn } from './styles';
 
-const SearchItem = ({ image, title, prepTime, type, price }) => {
+const SearchItem = ({ image, title, prepTime }) => {
   return (
     <Container>
       <FlexRow style={{ gap: '8px' }}>
@@ -34,7 +29,6 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
             height: '100%',
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
-            // gap: '6px',
           }}
         >
           <ButtonLarge>{title}</ButtonLarge>
