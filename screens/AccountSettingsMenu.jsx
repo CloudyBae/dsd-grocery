@@ -41,7 +41,7 @@ export const AccountSettingsMenu = () => {
           <Ionicons
             name='chevron-back-circle'
             size={26}
-            color='#72C08F'
+            color='#53B175'
             style={{ margin: 20 }}
           />
         </Pressable>

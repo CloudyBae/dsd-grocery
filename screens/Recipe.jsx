@@ -46,7 +46,7 @@ export const RecipeScreen = () => {
         style={{ ...styles.rowContainer, gridGap: 6, alignSelf: 'flex-start' }}
         key={index}
       >
-        <Octicons name='dot-fill' size={24} color='#72C08F' />
+        <Octicons name='dot-fill' size={24} color='#53B175' />
         <BodySmall key={index}>{ingredient.original}</BodySmall>
       </View>
     ));
@@ -141,7 +141,7 @@ export const RecipeScreen = () => {
           <Octicons
             name='x-circle-fill'
             size={26}
-            color='#72C08F'
+            color='#53B175'
             style={{ margin: 20 }}
           />
         </Pressable>

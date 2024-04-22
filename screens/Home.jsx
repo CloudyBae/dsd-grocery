@@ -34,7 +34,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                onPress={() => navigation.navigate('Ingredient')}
+                onPress={() => navigation.navigate('Ingredients')}
                 customButtonStyling={{
                   width: '45%',
                   padding: 40,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   macrosContainer: {
-    backgroundColor: '#72C08F',
+    backgroundColor: '#53B175',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',

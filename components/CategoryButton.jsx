@@ -31,7 +31,7 @@ const stlyes = StyleSheet.create({
   categoryButton: {
     padding: 15,
     margin: 5,
-    backgroundColor: '#72C08F',
+    backgroundColor: '#53B175',
     borderRadius: 13,
     alignItems: 'center',
     justifyContent: 'center',

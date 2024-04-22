@@ -62,7 +62,7 @@ export const LoginScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#72C08F',
+    backgroundColor: '#53B175',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
