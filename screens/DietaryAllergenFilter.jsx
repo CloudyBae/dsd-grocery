@@ -171,5 +171,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DietaryAllergenFilter;
+export default DietaryAllergenFilterScreen;
 // Inserting a comment so I can commit this
