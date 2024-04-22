@@ -11,8 +11,9 @@ import {
 } from '@expo/vector-icons';
 import { SettingOption } from '../components/SettingOption';
 import { useState } from 'react';
-import { DietaryAllergenFilter } from './DietaryAllergenFilter';
+import { DietaryAllergenFilterScreen } from './DietaryAllergenFilter';
 import { AccountDetailsScreen } from './AccountDetailsScreen';
+import { AcctSavedRecipesScreen } from './AcctSavedRecipes';
 
 export const SettingsScreen = {
   AccountSettings: 'AccountSettings',
@@ -89,11 +90,11 @@ export const AccountSettingsMenu = () => {
         )}
 
         {screenOption == SettingsScreen.DietaryPreferences && (
-          <DietaryAllergenFilter />
+          <DietaryAllergenFilterScreen />
         )}
         {screenOption == SettingsScreen.MyDetails && <AccountDetailsScreen />}
 
-        {screenOption == SettingsScreen.FavoriteRecipes && <AcctSavedRecipes />}
+        {screenOption == SettingsScreen.FavoriteRecipes && <AcctSavedRecipesScreen />}
       </View>
       <Nav />
     </SafeAreaView>
