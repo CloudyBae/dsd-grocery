@@ -1,9 +1,11 @@
+from datetime import datetime
+
 from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 # from rest_framework.permissions import IsAuthenticated, BasePermission
-from rest_framework.permissions import BasePermission
 from django.http import JsonResponse
 from .external_apis import (
     get_recipes_by_dietary_preferences,
@@ -13,8 +15,6 @@ from .external_apis import (
     get_ingredient_information,
     get_nutrition_information,
 )
-
-
 from .models import (
     FavoriteRecipe,
     ShoppingList,
@@ -35,19 +35,27 @@ from .serializers import (
 User = get_user_model()
 
 
-class IsOwner(BasePermission):
-    def has_object_permission(self, request, view, obj):
-        return obj.user == request.user
+# class IsOwner(BasePermission):
+#     def has_object_permission(self, request, view, obj):
+#         return obj.user == request.user
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
     queryset = DietaryPreference.objects.all()
     serializer_class = DietaryPreferenceSerializer
-    permission_classes = []
 
     def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return DietaryPreference.objects.filter(user_id=user_id)
+        # Assuming you have user information available in the request
+        user = self.request.user
+        return DietaryPreference.objects.filter(user=user)
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop("partial", False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
@@ -73,7 +81,7 @@ class PlannedRecipeViewSet(viewsets.ModelViewSet):
 class ShoppingListViewSet(viewsets.ModelViewSet):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
-    permission_classes = []
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user_id = self.kwargs["user_pk"]
@@ -88,13 +96,33 @@ class MacrosViewSet(viewsets.ModelViewSet):
     serializer_class = MacrosSerializer
     permission_classes = []
 
-    def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return Macro.objects.filter(user_id=user_id)
+    def list(self, request, *args, **kwargs):
+        today = datetime.now().date()
+        queryset = self.get_queryset().filter(date=today)
+        my_values = queryset.values_list()
+
+        decimal_values = []
+        for item in my_values:
+            values = [
+                float(val.strip("Decimal(')"))
+                for val in item[5].strip("[]").split(", ")
+            ]
+            decimal_values.append(values)
+
+        sums = [0] * len(decimal_values[0])
+        for values in decimal_values:
+            for i, val in enumerate(values):
+                sums[i] += val
+
+        response_data = {"Protein": sums[0], "Fat": sums[1], "Carbs": sums[2]}
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
+        if self.request.user.is_authenticated:
+            serializer.save(user=self.request.user)
+        else:
+            serializer.save()
 
 @api_view(["GET"])
 def get_favorite_recipes(request, user_id):
