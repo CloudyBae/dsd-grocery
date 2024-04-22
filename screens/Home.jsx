@@ -26,9 +26,14 @@ export const HomeScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar backgroundColor='#f2f2f2' barStyle='dark-content' />
+      <StatusBar backgroundColor='#fff' barStyle='dark-content' />
       <View style={{ flex: 1 }}>
         <ScrollView>
+              <View style={styles.macrosContainer}>
+                <Macro macro='Carbs' percentage={20} goal={100} />
+                <Macro macro='Protein' percentage={50} goal={100} />
+                <Macro macro='Fat' percentage={70} goal={100} />
+              </View>
           <View style={styles.homeContainer}>
             <View>
               <TouchableOpacity
@@ -36,11 +41,6 @@ export const HomeScreen = () => {
                 accessibilityLabel='Ingredients button was pressed!'
                 onPress={() => navigation.navigate('Settings')}
               ></TouchableOpacity>
-              <View style={styles.macrosContainer}>
-                <Macro macro='Carbs' percentage={20} goal={100} />
-                <Macro macro='Protein' percentage={50} goal={100} />
-                <Macro macro='Fat' percentage={70} goal={100} />
-              </View>
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton title='Pantry' />
