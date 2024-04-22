@@ -21,7 +21,7 @@ class DietaryPreferenceSerializer(serializers.ModelSerializer):
 class PlannedRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlannedRecipe
-        fields = ["user", "date_for"]
+        fields = ["user", "date_for", "recipe_id", "name"]
 
 
 class IngredientSerializer(serializers.ModelSerializer):

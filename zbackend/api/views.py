@@ -1,3 +1,5 @@
+import requests
+import os
 from datetime import datetime
 
 from django.contrib.auth import get_user_model
@@ -287,3 +289,53 @@ def get_ingredient_informations(request, ingredient_id):
 def get_nutrition_informations(request, recipe_id):
     nutrition_widget = get_nutrition_information(recipe_id)
     return JsonResponse(nutrition_widget)
+
+
+@api_view(["POST"])
+def find_recipes(request, user_id):
+    ingredient = request.data.get("ingredient")
+    meal_type = request.data.get("meal_type")
+    date_for = request.data.get("date_for")
+
+    api_key = os.getenv("SPOONACULAR_API_KEY")
+    endpoint = "https://api.spoonacular.com/recipes/complexSearch?"
+    params = {
+        "apiKey": api_key,
+        "includeIngredients": ingredient,
+        "type": meal_type,
+        "instructionsRequired": True,
+        "addRecipeInformation": True,
+        "addRecipeNutrition": True,
+        "number": 10,
+    }
+
+    diet_list = []
+    diet_query = DietaryPreference.objects.filter(user=user_id, is_selected=True)
+    diet_values = diet_query.values_list()
+    for item in diet_values:
+        diet_name = item[3]
+        diet_list.append(diet_name)
+
+    diet_string = ",".join(diet_list)
+    params["diet"] = diet_string
+
+    response = requests.get(endpoint, params=params)
+    if response.status_code == 200:
+        results = response.json().get("results", [])
+
+        recipe_list = []
+        for recipe in results:
+            ingredients = recipe.get("nutrition").get("ingredients")
+            recipe_data = {
+                "recipe_id": recipe.get("id"),
+                "image": recipe.get("image"),
+                "name": recipe.get("title"),
+                "ingredient_count": len(ingredients),
+                "time": recipe.get("readyInMinutes"),
+                "date_for": date_for,
+            }
+            recipe_list.append(recipe_data)
+
+        return Response(recipe_list)  # Wrap the list in a Response object
+
+    return Response({"error": "Failed to fetch recipes"}, status=response.status_code)

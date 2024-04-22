@@ -92,4 +92,9 @@ urlpatterns = [
         views.update_dietary_preference,
         name="update_dietary_preference",
     ),
+    path(
+        "recipes/find_recipes/<int:user_id>/",
+        views.find_recipes,
+        name="find_recipes",
+    ),
 ]
