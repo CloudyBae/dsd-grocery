@@ -37,7 +37,7 @@ User = get_user_model()
 
 class AllowUpdateWithoutAuthentication(BasePermission):
     def has_permission(self, request, view):
-        return request.method in ['PUT', 'PATCH', 'POST']
+        return request.method in ["PUT", "PATCH", "POST", "GET"]
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
@@ -75,20 +75,16 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
     serializer_class = ShoppingListSerializer
     permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return ShoppingList.objects.filter(user_id=user_id)
-    
     def perform_create(self, request, *args, **kwargs):
         data = request.data
-        name = data.get('name')
+        name = data.get("name")
 
         query = Ingredient.objects.filter(name=name)
         ingredient_values = query.values_list()
         for item in ingredient_values:
             ing_name = item[1]
             if name == ing_name:
-                data['is_purchased'] = True
+                data["is_purchased"] = True
 
         serializer = ShoppingListSerializer(data=data)
         if serializer.is_valid():
@@ -129,8 +125,16 @@ class MacrosViewSet(viewsets.ModelViewSet):
             serializer.save(user=self.request.user)
         else:
             serializer.save()
- 
-          
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def get_shopping_list(request, user_id, recipe_id):
+    shopping_lists = ShoppingList.objects.filter(user_id=user_id, recipe_id=recipe_id)
+    serializer = ShoppingListSerializer(shopping_lists, many=True)
+    return Response(serializer.data)
+
+
 @api_view(["PUT"])
 @permission_classes([AllowAny])
 def update_dietary_preference(request, user_id, preference_id):

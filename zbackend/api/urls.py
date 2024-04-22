@@ -27,7 +27,6 @@ router.register(
     DietaryPreferenceViewSet,
     basename="user-dietaryPreferences",
 )
-
 router.register(
     r"users/(?P<user_pk>\d+)/plannedRecipes",
     PlannedRecipeViewSet,
@@ -37,6 +36,11 @@ router.register(
 
 urlpatterns = [
     path("", include(router.urls)),
+    path(
+        "<int:recipe_id>/shoppingList/<int:user_id>",
+        views.get_shopping_list,
+        name="get_shopping_list",
+    ),
     path(
         "favorite_recipes/<int:user_id>",
         views.get_favorite_recipes,
@@ -87,8 +91,5 @@ urlpatterns = [
         "users/<int:user_id>/dietaryPreferences/<int:preference_id>/update/",
         views.update_dietary_preference,
         name="update_dietary_preference",
-    )
-    # path('users/<int:user_id>/shoppingList/create/', 
-    #     views.create_shopping_list, 
-    #     name='create_shopping_list'),
+    ),
 ]
