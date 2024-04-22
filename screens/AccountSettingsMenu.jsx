@@ -12,6 +12,9 @@ import {
   ButtonSmall,
 } from '../components/Typography';
 import LogOutIcon from '../components/Icons/LogOutIcon.jsx';
+import DoNotEnter from '../components/Icons/DoNotEnter';
+import IDCard from '../components/Icons/IDCard.jsx';
+import Pot from '../components/Icons/Pot.jsx';
 
 export const AccountSettingsMenu = () => {
   const navigation = useNavigation();
@@ -33,11 +36,9 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-              <Image
-                source={require('../assets/donotenter.png')}
-                style={styles.menuImg}
-                resizeMode='cover'
-              />
+            <View style={styles.menuIcon}>
+            <DoNotEnter />
+            </View>
               <Body>Dietary Preferences & Allergies</Body>
             </Pressable>
             <Pressable
@@ -49,11 +50,10 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-              <Image
-                source={require('../assets/idcard.png')}
-                style={styles.menuImgId}
-                resizeMode='cover'
-              />
+            <View style={styles.menuIcon}>
+            <IDCard style={styles.menuIcon} />
+
+            </View>
               <Body>Account Details</Body>
             </Pressable>
             <Pressable
@@ -65,11 +65,9 @@ export const AccountSettingsMenu = () => {
                 styles.menuItem,
               ]}
             >
-              <Image
-                source={require('../assets/pot.png')}
-                style={styles.menuImg}
-                resizeMode='cover'
-              />
+            <View style={styles.menuIcon}>
+            <Pot style={styles.menuIcon} />
+          </View>
               <Body>Saved Recipes</Body>
             </Pressable>
           </View>
@@ -114,14 +112,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     gap: 6,
-  },
-  menuImg: {
-    height: 24,
-    width: 24,
-  },
-  menuImgId: {
-    height: 24,
-    width: 24,
+    justifyContent: 'flex-start',
   },
   button: {
     alignItems: 'center',

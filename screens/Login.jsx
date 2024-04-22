@@ -48,11 +48,6 @@ export const LoginScreen = () => {
             >
               Zest
             </Title>
-            {/* <Image
-              source={Lemon}
-              style={{ height: 50, width: 60, marginLeft: 10 }}
-              resizeMode='contain'
-            /> */}
           </View>
           <Image
             source={GroceryBag}
