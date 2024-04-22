@@ -129,8 +129,8 @@ class MacrosViewSet(viewsets.ModelViewSet):
             serializer.save(user=self.request.user)
         else:
             serializer.save()
- 
-          
+
+            
 @api_view(["PUT"])
 @permission_classes([AllowAny])
 def update_dietary_preference(request, user_id, preference_id):
