@@ -11,7 +11,7 @@ import { AddIngredientModal } from './AddIngredient';
 const imageUrl = 'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const IngredientScreen = () => {
-  const { userId } = useContext(); // fix later
+  const { userId } = "1"; // update later when backend working
   const [modalVisible, setModalVisible] = useState(false);
 
   const [search, setSearch] = useState('');
