@@ -32,8 +32,21 @@ export const FilterScreen = () => {
       plannedDay: plannedMealDay,
     };
 
-    console.log('data: ', data);
-    navigation.navigate('Recipe', { recipeData: data });
+    fetch('http://localhost:3030/postFindRecipes', {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(result =>{
+      console.log('Success:', result);
+      navigation.navigate('Recipe', { recipeData: data });
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    })
   };
 
   return (
@@ -84,8 +97,10 @@ export const FilterScreen = () => {
               },
             }}
           />
+          <View style = {styles.button}>
+            <Button  children='Find Recipes' onPress={handleRecipeSubmit} />
+            </View>
         </View>
-        <Button children='Find Recipes' onPress={handleRecipeSubmit} />
       </View>
     </>
   );
@@ -126,6 +141,8 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     marginTop: 20,
-    marginBottom: 40,
   },
+  button:{
+    paddingTop: 5,
+  }
 });

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { useState, useEffect } from 'react';
+import axios from 'axios'; 
 
 const ShoppingListItem = () => {
   const [shoppingListData, setShoppingListData] = useState([]);
@@ -8,15 +8,10 @@ const ShoppingListItem = () => {
   useEffect(() => {
     const fetchShoppingListData = async () => {
       try {
-        const requestOptions = {
-          method: 'GET',
-          redirect: 'follow',
-        };
-        const response = await fetch(
-          'http://localhost:3030/getShoppingList',
-          requestOptions
+        const response = await axios.get(
+          'http://localhost:8000/api/users/1/shoppingList/'
         );
-        const data = await response.json();
+        const data = response.data;
         setShoppingListData(data);
       } catch (error) {
         console.log('Error fetching shopping list data: ', error);

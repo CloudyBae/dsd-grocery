@@ -20,9 +20,14 @@
     "@rneui/themed": "^4.0.0-rc.8",
     "@supabase/supabase-js": "^2.42.5",
     "@types/react": "~18.2.45",
+    "axios": "^1.6.8",
     "expo": "~50.0.14",
+    "expo-auth-session": "~5.4.0",
+    "expo-crypto": "~12.8.1",
     "expo-font": "~11.10.3",
+    "expo-linking": "~6.2.2",
     "expo-status-bar": "~1.11.1",
+    "expo-web-browser": "~12.8.2",
     "json-server": "^1.0.0-alpha.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -35,11 +40,7 @@
     "react-native-render-html": "^6.3.4",
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.1.8",
-    "expo-auth-session": "~5.4.0",
-    "expo-crypto": "~12.8.1",
-    "expo-web-browser": "~12.8.2",
-    "expo-linking": "~6.2.2"
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
