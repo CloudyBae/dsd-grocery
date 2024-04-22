@@ -10,7 +10,7 @@ export const AddIngredientModal = ({
   setModalVisible,
   onClose,
 }) => {
-  const { userId } = "1"; // fix when backend integrated
+  const { userId } = '1'; // fix when backend integrated
   const [showError, setShowError] = useState('');
   const [productData, setProductData] = useState({
     productName: '',

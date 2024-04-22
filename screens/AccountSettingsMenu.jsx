@@ -94,7 +94,9 @@ export const AccountSettingsMenu = () => {
         )}
         {screenOption == SettingsScreen.MyDetails && <AccountDetailsScreen />}
 
-        {screenOption == SettingsScreen.FavoriteRecipes && <AcctSavedRecipesScreen />}
+        {screenOption == SettingsScreen.FavoriteRecipes && (
+          <AcctSavedRecipesScreen />
+        )}
       </View>
       <Nav />
     </SafeAreaView>
