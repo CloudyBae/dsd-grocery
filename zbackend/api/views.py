@@ -336,6 +336,6 @@ def find_recipes(request, user_id):
             }
             recipe_list.append(recipe_data)
 
-        return Response(recipe_list)  # Wrap the list in a Response object
+        return Response(recipe_list)
 
     return Response({"error": "Failed to fetch recipes"}, status=response.status_code)
