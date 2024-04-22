@@ -71,6 +71,7 @@ class Macro(models.Model):
     recipe_id = models.CharField(max_length=100)
     macro_names = models.CharField(max_length=255)
     quantities = models.CharField(max_length=255)
+
     def __str__(self):
         return f"Macro data for {self.date} ({self.user})"
 

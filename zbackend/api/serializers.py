@@ -26,6 +26,7 @@ class PlannedRecipeSerializer(serializers.ModelSerializer):
 
 class IngredientSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = Ingredient
         fields = ["name", "image", "quantity", "user"]
@@ -39,11 +40,13 @@ class ShoppingListSerializer(serializers.ModelSerializer):
 
 class MacrosSerializer(serializers.ModelSerializer):
     macro_names = serializers.ListField(child=serializers.CharField())
-    quantities = serializers.ListField(child=serializers.DecimalField(max_digits=10, decimal_places=2))
+    quantities = serializers.ListField(
+        child=serializers.DecimalField(max_digits=10, decimal_places=2)
+    )
 
     class Meta:
         model = Macro
-        fields = ['date', 'user', 'recipe_id', 'macro_names', 'quantities']
+        fields = ["date", "user", "recipe_id", "macro_names", "quantities"]
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
@@ -59,5 +62,5 @@ class FavoriteRecipeSerializer(serializers.ModelSerializer):
             "minutes",
             "likes",
             "recipe_id",
-            "user"
+            "user",
         ]

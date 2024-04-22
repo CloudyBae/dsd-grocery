@@ -37,7 +37,7 @@ User = get_user_model()
 
 class AllowUpdateWithoutAuthentication(BasePermission):
     def has_permission(self, request, view):
-        return request.method in ['PUT', 'PATCH']
+        return request.method in ["PUT", "PATCH"]
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
@@ -115,8 +115,8 @@ class MacrosViewSet(viewsets.ModelViewSet):
             serializer.save(user=self.request.user)
         else:
             serializer.save()
-  
-          
+
+
 @api_view(["PUT"])
 @permission_classes([AllowAny])
 def update_dietary_preference(request, user_id, preference_id):
