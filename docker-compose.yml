@@ -11,4 +11,12 @@ services:
     volumes:
       - ./zbackend:/app
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py wait_for_db &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=aws-0-us-west-1.pooler.supabase.com"
+      - DB_NAME="postgres"
+      - DB_USER="postgres.xmmvpjtupsyceyyeyfma"
+      - DB_PASS="!BestTeam123!"
+      - DB_PORT=5432

@@ -6,16 +6,19 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./zbackend/requirements.txt /tmp/requirements.txt
 COPY ./zbackend/requirements.dev.txt /tmp/requirements.dev.txt
+COPY ./scripts /scripts
 COPY ./zbackend /app
 WORKDIR /app
 EXPOSE 8000
 
+
 ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+
+
     /py/bin/pip install -r /tmp/requirements.txt && \
-    if [ $DEV = "true" ]; \
-    then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+
     fi && \
     rm -rf /tmp && \
     adduser \

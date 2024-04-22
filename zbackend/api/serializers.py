@@ -16,52 +16,51 @@ class DietaryPreferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = DietaryPreference
         fields = ["user", "preference_id", "preference_name", "is_selected"]
-        extra_kwargs = {"user": {"read_only": True}}
 
 
 class PlannedRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlannedRecipe
-        fields = ["user", "date_for"]
-        extra_kwargs = {"user": {"read_only": True}}
+        fields = ["user", "date_for", "recipe_id", "name"]
 
 
 class IngredientSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = Ingredient
         fields = ["name", "image", "quantity", "user"]
-        extra_kwargs = {"user": {"read_only": True}}
 
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
-        fields = ["user", "quantity", "is_purchased", "name", "image", "product_id"]
-        extra_kwargs = {"user": {"read_only": True}}
+        fields = ["recipe_id", "user", "is_purchased", "name", "image", "product_id"]
 
 
 class MacrosSerializer(serializers.ModelSerializer):
+    macro_names = serializers.ListField(child=serializers.CharField())
+    quantities = serializers.ListField(
+        child=serializers.DecimalField(max_digits=10, decimal_places=2)
+    )
+
     class Meta:
         model = Macro
-        fields = ["user", "recipe_id", "macro_name", "quantity"]
-        extra_kwargs = {"user": {"read_only": True}}
+        fields = ["date", "user", "recipe_id", "macro_names", "quantities"]
 
 
 class FavoriteRecipeSerializer(serializers.ModelSerializer):
-    preference = serializers.PrimaryKeyRelatedField(
-        queryset=DietaryPreference.objects.all()
-    )
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = FavoriteRecipe
         fields = [
+            "name",
             "servings",
-            "preference",
-            "user",
             "name",
             "image",
             "minutes",
             "likes",
-            "recipe_id"
+            "recipe_id",
+            "user",
         ]
