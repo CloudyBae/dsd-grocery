@@ -34,7 +34,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
-        fields = ["user", "quantity", "is_purchased", "name", "image", "product_id"]
+        fields = ["recipe_id", "user", "is_purchased", "name", "image", "product_id"]
 
 
 class MacrosSerializer(serializers.ModelSerializer):
