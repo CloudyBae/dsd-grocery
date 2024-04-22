@@ -19,13 +19,24 @@ export const HomeScreen = () => {
   const [macroData, setMacroData] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/users/1/macros')
-      .then((response) => response.json())
-      .then((data) => setMacroData(data))
-      .catch((error) => console.log('Error fetching Macros: ', error));
-  }, []);
+    const fetchMacros = async () => {
+      try {
+        const response = await fetch(
+          'http://localhost:8000/api/users/1/macros/'
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        console.log('Macros data: ', data);
+        setMacroData(data);
+      } catch (error) {
+        console.log('Error fetching Macros: ', error);
+      }
+    };
 
-  console.log('macroData: ', macroData);
+    fetchMacros();
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -39,9 +50,25 @@ export const HomeScreen = () => {
                 onPress={() => navigation.navigate('Settings')}
               ></TouchableOpacity>
               <View style={styles.macrosContainer}>
-                <Macro macro='Carbs' percentage={20} goal={100} />
-                <Macro macro='Protein' percentage={50} goal={100} />
-                <Macro macro='Fat' percentage={70} goal={100} />
+                <Macro
+                  macro='Carbs'
+                  percentage={
+                    macroData && macroData.Carbs ? macroData.Carbs : 0
+                  }
+                  goal={100}
+                />
+                <Macro
+                  macro='Protein'
+                  percentage={
+                    macroData && macroData.Protein ? macroData.Protein : 0
+                  }
+                  goal={100}
+                />
+                <Macro
+                  macro='Fat'
+                  percentage={macroData && macroData.Fat ? macroData.Fat : 0}
+                  goal={100}
+                />
               </View>
             </View>
             <View style={styles.mainButtonsContainer}>
