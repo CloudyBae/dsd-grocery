@@ -8,17 +8,47 @@ import { Filter } from './screens/Filter';
 import { ShoppingListScreen } from './screens/ShoppingList';
 import { LoginScreen } from './screens/Login';
 import { SignUpScreen } from './screens/SignUp';
-import { DietaryAllergenFilterScreen } from './screens/DietaryAllergenFilter';
-import { AcctSavedRecipesScreen } from './screens/AcctSavedRecipes';
 import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
 import { AccountDetailsScreen } from './screens/AccountDetailsScreen';
+import { AddIngredient } from './screens/AddIngredient';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name='Recipe'
+          component={RecipeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Ingredient'
+          component={IngredientScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Filter'
+          component={FilterScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='ShoppingList'
+          component={ShoppingListScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='AccountSettingsMenu'
+          component={AccountSettingsMenu}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name='Login'
           component={LoginScreen}

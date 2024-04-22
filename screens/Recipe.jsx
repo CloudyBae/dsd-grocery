@@ -24,9 +24,8 @@ import Accordion from '../components/Accordion';
 import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
-import RenderHTML, { defaultSystemFonts } from 'react-native-render-html';
+import RenderHTML from 'react-native-render-html';
 import React, { useContext } from 'react';
-import AuthContext from '../auth/auth-context';
 
 const Detail = ({ title, value }) => {
   return (

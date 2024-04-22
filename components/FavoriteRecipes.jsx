@@ -3,21 +3,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from '../auth/auth-context';
-import {
-  Title,
-  Body,
-  BodySmall,
-  Caption,
-  ButtonLarge,
-  ButtonText,
-  ButtonSmall,
-} from './Typography';
 
-const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
+const FavoriteRecipesList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
-  const { userId } = useContext(AuthContext);
+  const { userId } = '8950a7c8-20c3-4d77-9a10-3622e07fd3dd';
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -57,7 +47,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Body style={style.noRecipesText}>No Favorite Recipes</Body>
+          <Text style={style.noRecipesText}>No Favorite Recipes</Text>
         </View>
       ) : (
         <FlatList
@@ -72,13 +62,23 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   );
 };
 
-export default RecipeList;
+export default FavoriteRecipesList;
 
 const style = StyleSheet.create({
+  titleText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
   columnWrapper: {
     justifyContent: 'space-between',
+    marginVertical: 5,
+    marginHorizontal: 5,
   },
   noRecipes: {
+    padding: 100,
     alignItems: 'center',
+  },
+  noRecipesText: {
+    fontSize: 18,
   },
 });

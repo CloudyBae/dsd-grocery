@@ -24,6 +24,7 @@ const Button = ({
   size = 'default',
   shape = 'rounded',
   accessibilityLabel,
+  style,
 }) => {
   return (
     <ButtonContainer
@@ -35,11 +36,20 @@ const Button = ({
       shape={shape}
       size={size}
       disabled={disabled}
+      style={style}
     >
       {isLoading ? (
         <ActivityIndicator color='#ffffff' />
       ) : (
-        <View style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+        >
           {startEnhancer && <Enhancer>{startEnhancer}</Enhancer>}
           {children && (
             <ButtonText

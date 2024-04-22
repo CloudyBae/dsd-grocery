@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { CheckBox } from '@rneui/themed';
-import { Title } from '../components/Typography';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { CheckBox, ListItem } from '@rneui/themed';
+import { BodySmall, Body, Title } from '../components/Typography';
 
 export default function DietaryFilters() {
   const [categories, setCategories] = useState([
@@ -78,7 +78,7 @@ export default function DietaryFilters() {
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
             backgroundColor='#f0f0f0'
-            title={item.label}
+            title={<Body color={'#181725'}>{item.label}</Body>}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
             key={item.id}

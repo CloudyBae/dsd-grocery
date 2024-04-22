@@ -23,7 +23,7 @@ export const AccountDetailsScreen = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    setIsEditing(true);
+    setisEditing(true);
   };
 
   const handleSave = () => {

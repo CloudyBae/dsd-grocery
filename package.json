@@ -1,11 +1,10 @@
 {
   "name": "dsd-grocery",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest",
     "prettier-check": "prettier --check .",
@@ -13,11 +12,13 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.1.3",
-    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-native-google-signin/google-signin": "^11.0.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.8",
+    "@supabase/supabase-js": "^2.42.5",
     "@types/react": "~18.2.45",
     "expo": "~50.0.14",
     "expo-font": "~11.10.3",
@@ -32,8 +33,13 @@
     "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-render-html": "^6.3.4",
+    "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "expo-auth-session": "~5.4.0",
+    "expo-crypto": "~12.8.1",
+    "expo-web-browser": "~12.8.2",
+    "expo-linking": "~6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",

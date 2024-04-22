@@ -82,7 +82,7 @@ export default function AllergenFilters() {
           <CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
             checkedColor='#52B175'
-            title={item.label}
+            title={<Body color={'#181725'}>{item.label}</Body>}
             checked={item.isCheck || false}
             onPress={(val) => onValueChange(item, index)}
             key={item.id}

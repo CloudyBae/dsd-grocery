@@ -1,6 +1,13 @@
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
 import React from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import {
   Title,
   Body,
@@ -14,6 +21,7 @@ import {
 const AcctHeader = () => {
   const name = 'John Smith';
   const email = 'john-smith@gmail.com';
+
   return (
     <View style={styles.headerContainer}>
       <View style={styles.headerInnerContainer}>
@@ -49,6 +57,7 @@ const AcctHeader = () => {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    width: '100%',
     flexDirection: 'row',
     backgroundColor: '#fff',
     height: '50%',

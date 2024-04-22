@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SearchBar } from '@rneui/base';
 import {
@@ -10,44 +10,46 @@ import {
   ButtonText,
   ButtonSmall,
 } from './Typography';
+import { AntDesign } from '@expo/vector-icons';
 
-const Search = () => {
-  const [search, setSearch] = useState('');
-
-  const updateSearch = (search) => {
-    setSearch(search);
-  };
-
+const Search = ({ updateSearch, value }) => {
   return (
-    <View style={{ marginTop: 50 }}>
+    <View style={styles.container}>
       <SearchBar
+        id='searchBar'
         placeholder='Type Here To Search...'
-        placeholderTextColor={'rgba(255, 255, 255, 0.5'}
+        placeholderTextColor={'#7C7C7C'}
         onChangeText={updateSearch}
-        value={search}
+        value={value}
         inputStyle={styles.text}
         inputContainerStyle={styles.input}
         containerStyle={{
+          width: '100%',
           backgroundColor: 'transparent',
           borderBottomColor: 'transparent',
           borderTopColor: 'transparent',
         }}
-        searchIcon={{ color: 'rgba(255, 255, 255, 0.5)' }}
+        searchIcon={<AntDesign name='search1' size={24} color='black' />}
       />
+      <View></View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  text: {
-    color: 'rgb(255, 255, 255)',
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 20,
   },
   input: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 364,
-    height: 67,
-    backgroundColor: 'rgb(82, 177, 117)',
+    height: 51,
+    backgroundColor: '#F2F3F2',
+    borderRadius: 18,
   },
 });
 

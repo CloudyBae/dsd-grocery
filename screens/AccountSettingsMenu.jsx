@@ -17,8 +17,12 @@ import IDCard from '../components/Icons/IDCard.jsx';
 import Pot from '../components/Icons/Pot.jsx';
 
 export const AccountSettingsMenu = () => {
+  const [showBackButton, setShowBackButton] = useState(false);
   const navigation = useNavigation();
 
+  const [screenOption, setScreenOption] = useState(
+    SettingsScreen.AccountSettings
+  );
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -81,10 +85,16 @@ export const AccountSettingsMenu = () => {
         </View>
       </View>
       <Nav />
-    </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
+  backButton: {
+    position: 'absolute',
+    top: 200,
+    // top: 40
+    zIndex: 1,
+  },
   container: {
     backgroundColor: '#f2f2f2',
     flex: 1,

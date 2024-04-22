@@ -26,6 +26,12 @@ export const Title = ({ children, style }) => {
   return <Text style={[styles.title, style]}>{children}</Text>;
 };
 
+// HeaderTitle component
+export const HeaderTitle = ({ children, style }) => {
+  useCustomFonts();
+  return <Text style={[styles.HeaderTitle, style]}>{children}</Text>;
+};
+
 // Body component
 export const Body = ({ children, style }) => {
   const loaded = useCustomFonts();
@@ -98,6 +104,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 24,
     color: '#121212',
+  },
+  HeaderTitle: {
+    fontFamily: 'Gilroy-Bold',
+    fontSize: 20,
+    lineHeight: 18,
+    color: '#030303',
   },
   body: {
     fontFamily: 'Gilroy-Regular',
