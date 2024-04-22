@@ -172,4 +172,3 @@ const styles = StyleSheet.create({
 });
 
 export default DietaryAllergenFilterScreen;
-// Inserting a comment so I can commit this
