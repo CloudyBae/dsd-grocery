@@ -44,18 +44,6 @@ export const HomeScreen = () => {
       <StatusBar backgroundColor='#fff' barStyle='dark-content' />
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <View style={styles.macrosContainer}>
-            <Macro macro='Carbs' percentage={20} goal={100} />
-            <Macro macro='Protein' percentage={50} goal={100} />
-            <Macro macro='Fat' percentage={70} goal={100} />
-          </View>
-          <View style={styles.homeContainer}>
-            <View>
-              <TouchableOpacity
-                accessible={true}
-                accessibilityLabel='Ingredients button was pressed!'
-                onPress={() => navigation.navigate('Settings')}
-              ></TouchableOpacity>
               <View style={styles.macrosContainer}>
                 <Macro
                   macro='Carbs'
@@ -77,6 +65,13 @@ export const HomeScreen = () => {
                   goal={100}
                 />
               </View>
+          <View style={styles.homeContainer}>
+            <View>
+              <TouchableOpacity
+                accessible={true}
+                accessibilityLabel='Ingredients button was pressed!'
+                onPress={() => navigation.navigate('Settings')}
+              ></TouchableOpacity>
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
@@ -117,9 +112,10 @@ const styles = StyleSheet.create({
   macrosContainer: {
     backgroundColor: '#fff',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    borderRadius: 9,
+    borderBottomRightRadius: 18,
+    borderBottomLeftRadius: 18,
     padding: 16,
   },
   mainButtonsContainer: {
