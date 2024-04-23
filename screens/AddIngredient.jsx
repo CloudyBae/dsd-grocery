@@ -41,7 +41,7 @@ export const AddIngredientModal = ({
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/user/${user_id}/ingredients/`,
+        `http://localhost:8000/api/user/1/ingredients/`,
         {
           method: 'POST',
           headers: {
