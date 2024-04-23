@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Image,
+  ActivityIndicator,
+  ScrollView,
+} from 'react-native';
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import { Title, Caption, HeaderTitle, BodySmall } from './Typography';
-import Button from '../components/Button';
 
 const RecipeSummary = ({ image, name, savedOn }) => {
   const placeholderImage = require('../assets/generic_recipe.png');
@@ -73,10 +78,10 @@ const AcctRecipeBar = (props) => {
         }
         const savedRecipesResponse = await response.json();
         setSavedRecipes(savedRecipesResponse);
-        setLoading(false); // Cambiar estado a false cuando la carga se complete
+        setLoading(false);
       } catch (error) {
         console.log('Error fetching saved recipes: ', error);
-        setLoading(false); // Cambiar estado a false en caso de error
+        setLoading(false);
       }
     };
     fetchSavedRecipes();
@@ -103,12 +108,9 @@ const AcctRecipeBar = (props) => {
     <View style={{ backgroundColor: '#fff', padding: 20 }}>
       <Title>Saved Recipes</Title>
       {savedRecipes.map((recipe) => (
-        <View
-          style={{ ...styles.columnContainer, width: '100%' }}
-          key={recipe.recipe_id}
-        >
+        <ScrollView key={recipe.recipe_id}>
           <RecipeSummary name={recipe.name} savedOn={recipe.date_for} />
-        </View>
+        </ScrollView>
       ))}
     </View>
   );

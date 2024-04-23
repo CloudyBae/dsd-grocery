@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
-import { Body, ButtonLarge, HeaderTitle } from './Typography';
+import { ButtonLarge } from './Typography';
 
 export default IngredientCard = ({ ingredient }) => {
   const { id, name, image } = ingredient;
@@ -20,7 +20,7 @@ export default IngredientCard = ({ ingredient }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     borderColor: '#e7e7e7',
     borderRadius: 18,

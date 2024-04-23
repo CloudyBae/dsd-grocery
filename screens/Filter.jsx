@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, TextInput } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { TextInput } from 'react-native';
 import { View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../components/Header';
 import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
+import { Title } from '../components/Typography';
 
 export const FilterScreen = () => {
   const [ingredientText, setIngredientText] = useState('');
@@ -38,26 +38,15 @@ export const FilterScreen = () => {
 
   return (
     <>
-      <View style={styles.filterHeader}>
-        <TouchableOpacity
-          accessible={true}
-          accessibilityLabel='Back to home'
-          onPress={() => navigation.navigate('Home')}
-          style={{ marginHorizontal: 10, marginRight: 150 }}
-        >
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>X</Text>
-        </TouchableOpacity>
-        <Header pageTitle='Filters' />
-      </View>
       <View style={styles.mainContainer}>
-        <Text style={styles.title}>Ingredient</Text>
+        <Title style={styles.filterTitles}>Ingredient</Title>
         <TextInput
           style={styles.input}
           onChangeText={setIngredientText}
           placeholder='Input one ingredient'
           value={ingredientText}
         />
-        <Text style={styles.title}>Meal Type</Text>
+        <Title style={styles.filterTitles}>Meal Type</Title>
         <View style={styles.mealTypeContainer}>
           {mealTypes.map((meal, index) => (
             <View key={index} style={styles.radioButtonContainer}>
@@ -71,7 +60,7 @@ export const FilterScreen = () => {
           ))}
         </View>
         <View style={styles.calendarContainer}>
-          <Text style={styles.title}>Planned Meal Day</Text>
+          <Title style={styles.filterTitles}>Planned Meal Day</Title>
           <Calendar
             onDayPress={(day) => handleDayPressed(day)}
             minDate={new Date().toISOString().split('T')[0]}
@@ -97,9 +86,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 50,
   },
+  filterTitles: {
+    marginBottom: 20,
+  },
   mainContainer: {
     padding: 15,
-    backgroundColor: '#DEDEDE',
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 30,
@@ -107,12 +99,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    padding: 5,
     height: 40,
-    borderRadius: 5,
-    width: 250,
-    backgroundColor: '#fff',
     marginBottom: 10,
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    fontFamily: 'Gilroy-Medium',
+    marginBottom: 20,
   },
   mealTypeContainer: {
     flexDirection: 'row',

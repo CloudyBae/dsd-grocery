@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { USER_API_IP_URL } from '@env';
+import { Caption } from './Typography';
 
 const FavoriteRecipesList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
@@ -47,7 +48,7 @@ const FavoriteRecipesList = ({ title, scrollEnabled, numberOfRecipes }) => {
     <>
       {recipes?.length === 0 ? (
         <View style={style.noRecipes}>
-          <Text style={style.noRecipesText}>No Favorite Recipes</Text>
+          <Caption>No Favorite Recipes</Caption>
         </View>
       ) : (
         <FlatList
