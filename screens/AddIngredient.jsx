@@ -4,6 +4,7 @@ import { Modal } from '../components/Modal';
 import Button from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
 import { BodySmall } from '../components/Typography';
+import { USER_API_IP_URL } from '@env';
 
 export const AddIngredientModal = ({
   modalVisible,
@@ -41,7 +42,7 @@ export const AddIngredientModal = ({
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/user/${user_id}/ingredients/`,
+        `http://${USER_API_IP_URL}$:8000/api/user/1/ingredients/`,
         {
           method: 'POST',
           headers: {

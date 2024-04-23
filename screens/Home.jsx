@@ -14,6 +14,7 @@ import DietFilter from '../components/DietFilter';
 import { Title } from '../components/Typography';
 import { StatusBar } from 'react-native';
 import { useEffect, useState } from 'react';
+import { USER_API_IP_URL } from '@env';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ export const HomeScreen = () => {
     const fetchMacros = async () => {
       try {
         const response = await fetch(
-          'http://locahost:8000/api/users/1/macros/'
+          `http://${USER_API_IP_URL}:8000/api/users/1/macros/`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch data');

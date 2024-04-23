@@ -18,6 +18,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 import RenderHTML from 'react-native-render-html';
 import React, { useContext } from 'react';
+import { USER_API_IP_URL } from '@env';
 
 const Detail = ({ title, value }) => {
   return (
@@ -85,7 +86,7 @@ export const RecipeScreen = () => {
       setIsFavourite(!isFavourite);
       try {
         const response = await fetch(
-          'http://localhost:8000/favorite_recipes/${userId}/save/',
+          `http://${USER_API_IP_URL}:8000/favorite_recipes/1/save/`,
           {
             method: 'POST',
             headers: {

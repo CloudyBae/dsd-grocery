@@ -5,6 +5,7 @@ import { CheckBox } from '@rneui/themed';
 import CategoryButton from '../components/CategoryButton';
 import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
+import { USER_API_IP_URL } from '@env';
 
 export const DietaryAllergenFilterScreen = () => {
   const navigation = useNavigation();
@@ -93,7 +94,7 @@ export const DietaryAllergenFilterScreen = () => {
     };
 
     const response = fetch(
-      'http://localhost:8000/api/users/{user_pk}/dietaryPreferences/{id}',
+      `http://${USER_API_IP_URL}:8000/api/users/{user_pk}/dietaryPreferences/{id}`,
       {
         method: 'POST',
         headers: {

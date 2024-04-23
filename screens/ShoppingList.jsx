@@ -10,6 +10,7 @@ import {
 import ShoppingListItem from '../components/ShoppingListItem';
 import { Title } from '../components/Typography/index.js';
 import Nav from '../components/Nav';
+import { USER_API_IP_URL } from '@env';
 
 export const ShoppingListScreen = () => {
 
@@ -26,7 +27,7 @@ export const ShoppingListScreen = () => {
           redirect: 'follow',
         };
         const response = await fetch(
-          'http://localhost:8000/api/${recipe_id}/shoppingList/1',
+          `http://${USER_API_IP_URL}:8000/api/${id}/shoppingList/1`,
           requestOptions
         );
         const data = await response.json();

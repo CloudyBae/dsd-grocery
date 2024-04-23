@@ -7,7 +7,7 @@ import { Body } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AddIngredientModal } from './AddIngredient';
-
+import { USER_API_IP_URL } from '@env';
 const imageUrl = 'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const IngredientScreen = () => {
@@ -101,19 +101,19 @@ export const IngredientScreen = () => {
     },
   ];
 
-  useEffect(() => {
-    const fetchIngredients = async () => {
-      setIngredients(ingredientList);
-      // try {
-      //   const response = await fetch(  `http://localhost:8000/user/${userId}/ingredients/`,);
-      //   const data = await response.json();
-      //   setIngredients(data);
-      // } catch (error) {
-      //   console.error('Error fetching ingredients:', error);
-      // }
-    };
-    fetchIngredients();
-  }, []);
+  // useEffect(() => {
+  //   const fetchIngredients = async () => {
+  //     setIngredients(ingredientList);
+  //     // try {
+  //     //   const response = await fetch(  `http://${USER_API_IP_URL}/user/${userId}/ingredients/`,);
+  //     //   const data = await response.json();
+  //     //   setIngredients(data);
+  //     // } catch (error) {
+  //     //   console.error('Error fetching ingredients:', error);
+  //     // }
+  //   };
+  //   fetchIngredients();
+  // }, []);
 
   const updateSearch = (query) => {
     setSearch(query);
