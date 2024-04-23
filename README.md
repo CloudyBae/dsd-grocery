@@ -12,6 +12,22 @@ Zest will analyze the groceries you have on hand, help build out a shopping list
 
 [![Zest Introduction Video](http://img.youtube.com/vi/j5szZXsyxWs/0.jpg)](http://www.youtube.com/watch?v=j5szZXsyxWs "Zest Introduction Video")
 
+## Contributors
+
+Meet the team behind Zest:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/bae-yoojin/">
+        <img src="https://media.licdn.com/dms/image/D5603AQFCAqmx2XiFQA/profile-displayphoto-shrink_400_400/0/1711556780176?e=1719446400&v=beta&t=ZkMxgPDj8BpIsLlnxJ9q1300T5NphX0DVW5vTuTBfmM" width="100px;" alt="Profile Picture"/><br />
+        <sub><b>Yoo Jin Bae</b></sub>
+      </a><br />
+    </td>
+    <!-- Repeat the above block for each contributor -->
+  </tr>
+</table>
+
 ## Technologies
 
 Zest is built with a robust stack designed for high performance and scalability. Below is a breakdown of the core technologies and tools used for development:
@@ -37,4 +53,3 @@ Zest is built with a robust stack designed for high performance and scalability.
 
     External APIs:
         Edamam & Spoonacular: These APIs are integrated to provide extensive recipe data and nutritional analysis, enhancing the app's recipe recommendation and dietary tracking features.
-
