@@ -12,7 +12,6 @@ import { Title } from '../components/Typography/index.js';
 import Nav from '../components/Nav';
 
 export const ShoppingListScreen = () => {
-
   const route = useRoute();
   const { id } = route.params;
 
@@ -43,7 +42,6 @@ export const ShoppingListScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.contentContainer}>
-
           {/* <Title style={styles.title}>Shopping List</Title> */}
 
           {shoppingListData.map((item) => (
@@ -65,7 +63,6 @@ export const ShoppingListScreen = () => {
           ))}
 
           <ShoppingListItem items={items} />
-
         </View>
       </ScrollView>
       <Nav />
