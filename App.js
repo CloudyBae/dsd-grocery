@@ -8,6 +8,7 @@ import { IngredientScreen } from './screens/Ingredients';
 import { LoginScreen } from './screens/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { RecipeScreen } from './screens/Recipe';
+import { RecipeListScreen } from './screens/RecipeList';
 import { ShoppingListScreen } from './screens/ShoppingList';
 import DietaryAllergenFilterScreen from './screens/DietaryAllergenFilter';
 
@@ -35,6 +36,11 @@ function App() {
         <Stack.Screen
           name='Recipe'
           component={RecipeScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='RecipeList'
+          component={RecipeListScreen}
           options={{ headerShown: true }}
         />
         <Stack.Screen

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   Pressable,
@@ -8,7 +9,7 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
 import { BodySmall, ButtonLarge, Title } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
@@ -17,7 +18,6 @@ import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import { useRoute } from '@react-navigation/native';
 import RenderHTML from 'react-native-render-html';
-import React, { useContext } from 'react';
 import { USER_API_IP_URL } from '@env';
 
 const Detail = ({ title, value }) => {
@@ -35,13 +35,15 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = '1'; // update after backend integration
+  const { userId } = '1'; 
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
   const { recipe, loading } = useGetRecipeInfo(id);
+  console.log('RecipeScreen:', id);
   const ingredients = useMemo(() => {
     if (!recipe || !recipe.extendedIngredients) return null;
+    console.log('Recipe Screen Return:', recipe)
     return recipe?.extendedIngredients.map((ingredient, index) => (
       <View
         style={{ ...styles.rowContainer, gridGap: 6, alignSelf: 'flex-start' }}
@@ -80,41 +82,29 @@ export const RecipeScreen = () => {
     );
   };
 
-  // partly working, need to fix connectiong to api
-  useEffect(() => {
-    const onClickFavourite = async () => {
-      setIsFavourite(!isFavourite);
-      try {
-        const response = await fetch(
-          `http://${USER_API_IP_URL}:8000/favorite_recipes/1/save/`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(recipe),
-          }
-        );
-        if (!response.ok) {
-          console.error('Failed to save favorite recipe');
+  const onClickFavourite = async () => {
+    setIsFavourite(!isFavourite);
+    try {
+      const response = await fetch(
+        `http://${USER_API_IP_URL}:8000/favorite_recipes/1/save/`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(recipe),
         }
-      } catch (error) {
-        console.error('Error saving favorite recipe:', error);
+      );
+      if (!response.ok) {
+        console.error('Failed to save favorite recipe');
       }
-    };
+    } catch (error) {
+      console.error('Error saving favorite recipe:', error);
+    }
+  };
 
-    onClickFavourite();
-
-    return () => {};
-  }, [isFavourite, recipe, userId]);
-
-  if (loading || !recipe) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
+  useEffect(() => {
+  }, []);
 
   const listItems = [
     { title: 'Summary', details: <InnerHtmlContent value={recipe?.summary} /> },
@@ -147,71 +137,69 @@ export const RecipeScreen = () => {
           />
         </Pressable>
         <Image
-          source={{ uri: recipe.image }}
+          source={recipe && recipe.image ? { uri: recipe.image } : require('../assets/noImagePlaceholder.png')}
           style={{ width: '100%', height: 200 }}
           resizeMode='cover'
         />
         <ScrollView style={styles.detailContainer}>
           <View style={styles.infoContainer}>
-            <View style={styles.rowContainer}>
-              <Title>{recipe.title}</Title>
-              <Pressable
-                style={styles.favoriteButton}
-                onPress={onClickFavourite}
-              >
-                <Octicons
-                  name={isFavourite ? 'heart-fill' : 'heart'}
-                  size={22}
-                  color={isFavourite ? '#e63946' : '#7C7C7C'}
-                />
-              </Pressable>
-            </View>
-            <View style={styles.categoriesContainer}>
-              {recipe &&
-                recipe?.diets.slice(0, 4).map((category, index) => (
-                  <View key={index} style={styles.category}>
-                    <BodySmall style={{ color: '#52B175' }}>
-                      {category}
-                    </BodySmall>
-                  </View>
-                ))}
-              {!isOpenMoreTags && recipe?.diets.length > 4 && (
-                <Pressable
-                  style={styles.category}
-                  onPress={() => setOpenMoreTags(true)}
-                >
-                  <BodySmall style={{ color: '#52B175' }}>+</BodySmall>
-                </Pressable>
-              )}
-
-              {isOpenMoreTags && (
-                <>
-                  {recipe &&
-                    recipe?.diets.slice(4).map((category, index) => (
-                      <View key={index} style={styles.category}>
-                        <BodySmall style={{ color: '#52B175' }}>
-                          {category}
-                        </BodySmall>
-                      </View>
-                    ))}
-                </>
-              )}
-            </View>
-            <View
-              style={{
-                ...styles.rowContainer,
-                justifyContent: 'space-between',
-                marginTop: 16,
-                marginBottom: 16,
-              }}
+            <Title>{recipe && recipe.title}</Title>
+            <Pressable
+              style={styles.favoriteButton}
+              onPress={onClickFavourite}
             >
-              <Detail title='Prep' value={`${recipe.readyInMinutes}m`} />
-              <Detail title='Servings' value={recipe.servings} />
-              <Detail
-                title='Health Score'
-                value={recipe?.healthScore?.toFixed(2)}
+              <Octicons
+                name={isFavourite ? 'heart-fill' : 'heart'}
+                size={22}
+                color={isFavourite ? '#e63946' : '#7C7C7C'}
               />
-            </View>
+            </Pressable>
+          </View>
+          <View style={styles.categoriesContainer}>
+            {recipe &&
+              recipe?.diets.slice(0, 4).map((category, index) => (
+                <View key={index} style={styles.category}>
+                  <BodySmall style={{ color: '#52B175' }}>
+                    {category}
+                  </BodySmall>
+                </View>
+              ))}
+            {!isOpenMoreTags && recipe?.diets.length > 4 && (
+              <Pressable
+                style={styles.category}
+                onPress={() => setOpenMoreTags(true)}
+              >
+                <BodySmall style={{ color: '#52B175' }}>+</BodySmall>
+              </Pressable>
+            )}
+
+            {isOpenMoreTags && (
+              <>
+                {recipe &&
+                  recipe?.diets.slice(4).map((category, index) => (
+                    <View key={index} style={styles.category}>
+                      <BodySmall style={{ color: '#52B175' }}>
+                        {category}
+                      </BodySmall>
+                    </View>
+                  ))}
+              </>
+            )}
+          </View>
+          <View
+            style={{
+              ...styles.rowContainer,
+              justifyContent: 'space-between',
+              marginTop: 16,
+              marginBottom: 16,
+            }}
+          >
+            <Detail title='Prep' value={recipe ? `${recipe.readyInMinutes || recipe.cookingMinutes}m` : ''} />
+            <Detail title='Servings' value={recipe ? `${recipe.servings}m` : ''} />
+            <Detail
+              title='Health Score'
+              value={recipe?.healthScore?.toFixed(2)}
+            />
           </View>
           <View style={styles.ingredientsContainer}>
             <Accordion listItem={listItems} />
@@ -226,6 +214,7 @@ export const RecipeScreen = () => {
     </>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -292,3 +281,5 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
 });
+
+export default RecipeScreen;

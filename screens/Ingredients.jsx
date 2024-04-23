@@ -27,7 +27,7 @@ export const IngredientScreen = () => {
   const fetchIngredients = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/users/${userId}/ingredients/`
+        `http://${USER_API_IP_URL}:8000/api/users/1/ingredients/`
       );
       const data = await response.json();
       console.log(data);
@@ -42,7 +42,7 @@ export const IngredientScreen = () => {
 
   useEffect(() => {
     fetchIngredients();
-  }, [userId, fetchIngredients]);
+  }, [userId]);
 
   const updateSearch = (query) => {
     setSearch(query);

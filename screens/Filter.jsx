@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { TextInput } from 'react-native';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
+import Header from '../components/Header';
 import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
-import { Title } from '../components/Typography';
+import { USER_API_IP_URL } from '@env';
 
 export const FilterScreen = () => {
   const [ingredientText, setIngredientText] = useState('');
@@ -25,28 +24,47 @@ export const FilterScreen = () => {
     setPlannedMealDay(day.dateString);
   };
 
-  const handleRecipeSubmit = () => {
+  const handleRecipeSubmit = async () => {
     const data = {
       ingredient: ingredientText,
       mealType: selectedMealType,
       plannedDay: plannedMealDay,
     };
 
-    console.log('data: ', data);
-    navigation.navigate('Recipe', { recipeData: data });
+    try {
+      const response = await fetch(`http://${USER_API_IP_URL}:8000/api/recipes/find_recipes/1/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+  
+      const responseData = await response.json();
+      console.log('Filter Screen:', responseData);
+  
+      navigation.navigate('RecipeList', { recipeData: responseData });
+    } catch (error) {
+      console.error('Error submitting data:', error.message);
+    }
   };
 
   return (
     <>
+      <Header pageTitle='Filters' />
       <View style={styles.mainContainer}>
-        <Title style={styles.filterTitles}>Ingredient</Title>
+        <Text style={styles.title}>Ingredient</Text>
         <TextInput
           style={styles.input}
           onChangeText={setIngredientText}
           placeholder='Input one ingredient'
           value={ingredientText}
         />
-        <Title style={styles.filterTitles}>Meal Type</Title>
+        <Text style={styles.title}>Meal Type</Text>
         <View style={styles.mealTypeContainer}>
           {mealTypes.map((meal, index) => (
             <View key={index} style={styles.radioButtonContainer}>
@@ -60,7 +78,7 @@ export const FilterScreen = () => {
           ))}
         </View>
         <View style={styles.calendarContainer}>
-          <Title style={styles.filterTitles}>Planned Meal Day</Title>
+          <Text style={styles.title}>Planned Meal Day</Text>
           <Calendar
             onDayPress={(day) => handleDayPressed(day)}
             minDate={new Date().toISOString().split('T')[0]}
@@ -81,39 +99,26 @@ export const FilterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  filterHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 50,
-  },
-  filterTitles: {
-    marginBottom: 20,
-  },
   mainContainer: {
+    flex: 1,
     padding: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#DEDEDE',
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   input: {
+    padding: 5,
     height: 40,
-    marginBottom: 10,
-    backgroundColor: '#fff',
-    paddingHorizontal: 10,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    fontFamily: 'Gilroy-Medium',
-    marginBottom: 20,
+    backgroundColor: '#fff',
+    marginBottom: 10,
   },
   mealTypeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   radioButtonContainer: {
     width: '50%',
@@ -121,6 +126,6 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     marginTop: 20,
-    marginBottom: 40,
   },
 });
+

@@ -1,16 +1,33 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
+import React from 'react'; // Import useEffect from react
+import { SafeAreaView, ScrollView, View, StyleSheet, Pressable } from 'react-native';
 import AddRecipeBar from '../components/AddRecipeBar';
 import { Title } from '../components/Typography/index.js';
 import Nav from '../components/Nav';
+import { useNavigation } from '@react-navigation/native';
 
-export const RecipeScreen = () => {
+export const RecipeListScreen = ({ route }) => {
+  const { recipeData } = route.params;
+  const navigation = useNavigation();
+
+  const handleRecipePress = (recipeId) => {
+    navigation.navigate('Recipe', { id: recipeId });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.recipeContainer}>
           <Title style={styles.title}>Recipes</Title>
-          <AddRecipeBar />
+          {recipeData.map((recipe, index) => (
+            <Pressable key={index} onPress={() => handleRecipePress(recipe.recipe_id)}>
+              <AddRecipeBar
+                name={recipe.name}
+                image={recipe.image}
+                numMinutes={recipe.time}
+                numIngredients={recipe.ingredient_count}
+              />
+            </Pressable>
+          ))}
         </View>
       </ScrollView>
       <Nav style={styles.navBar} />
@@ -47,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecipeScreen;
+export default RecipeListScreen;
