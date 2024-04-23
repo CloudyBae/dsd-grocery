@@ -47,6 +47,8 @@ Meet the team behind Zest:
         <sub><b>Acir Rudson</b></sub>
       </a><br />
     </td>
+    </tr>
+    <tr>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/dinavillanueva/">
         <img src="https://media.licdn.com/dms/image/C4E03AQGi9Al3RrlfCg/profile-displayphoto-shrink_400_400/0/1638644414380?e=1719446400&v=beta&t=h3IV5kP5nFoL6W8pDrEMqDyJJd1EtDotrqbelCPIB2Y" width="100px;" alt="Profile Picture"/><br />
@@ -71,7 +73,7 @@ Meet the team behind Zest:
         <sub><b>Christopher Cluney</b></sub>
       </a><br />
     </td>
-  </tr>
+    </tr>
 </table>
 
 ## Technologies
