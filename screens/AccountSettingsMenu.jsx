@@ -38,11 +38,7 @@ export const AccountSettingsMenu = () => {
           style={styles.backButton}
           onPress={() => setScreenOption(SettingsScreen.AccountSettings)}
         >
-          <Ionicons
-            name='chevron-back-circle'
-            size={48}
-            color='#53B175'
-          />
+          <Ionicons name='chevron-back-circle' size={48} color='#53B175' />
         </Pressable>
       )}
       <View style={styles.menuContainer}>
@@ -106,8 +102,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '33%',
     left: 12,
-    // top: 200,
-    // top: 40,
     zIndex: 1,
   },
   container: {
@@ -120,10 +114,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#fff',
-  },
-  optionList: {
-    // display: 'flex',
-    // flexDirection: 'column',
-    // backgroundColor: 'red',
   },
 });

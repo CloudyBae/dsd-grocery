@@ -25,22 +25,22 @@ export const AccountDetailsScreen = () => {
 
   return (
     <View style={styles.container}>
-    <Title>My Details</Title>
+      <Title>My Details</Title>
       <View style={styles.inputSection}>
-        
-      <View style={styles.inputContainer}>
+        <View style={styles.inputContainer}>
           <Body>Username</Body>
           <TextInput
-          style={[
-            styles.textBox,
-            isEditing ? styles.textBoxEditing : styles.textBox,
-          ]}
+            style={[
+              styles.textBox,
+              isEditing ? styles.textBoxEditing : styles.textBox,
+            ]}
             value={username}
             onChangeText={(text) => setUsername(text)}
             placeholder='Account Username'
             editable={isEditing}
-          /></View>
-          <View style={styles.inputContainer}>
+          />
+        </View>
+        <View style={styles.inputContainer}>
           <Body>Email</Body>
           <TextInput
             style={[
@@ -51,23 +51,31 @@ export const AccountDetailsScreen = () => {
             onChangeText={(text) => setEmail(text)}
             placeholder='Email'
             editable={isEditing}
-          /></View>
+          />
+        </View>
       </View>
 
       <View style={styles.editSection}>
         {!isEditing ? (
-          <TouchableOpacity onPress={handleEdit} style={[styles.buttonReset, styles.buttonOutline]}>
+          <TouchableOpacity
+            onPress={handleEdit}
+            style={[styles.buttonReset, styles.buttonOutline]}
+          >
             <ButtonText>Edit</ButtonText>
           </TouchableOpacity>
         ) : (
           <>
-            <TouchableOpacity onPress={handleSave} style={[styles.buttonReset, styles.buttonPrimary]}>
-
-            <ButtonText>Save</ButtonText>
+            <TouchableOpacity
+              onPress={handleSave}
+              style={[styles.buttonReset, styles.buttonPrimary]}
+            >
+              <ButtonText>Save</ButtonText>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleDelete} style={[styles.buttonReset, styles.buttonOutline]}>
-
-            <ButtonText>Cancel</ButtonText>
+            <TouchableOpacity
+              onPress={handleDelete}
+              style={[styles.buttonReset, styles.buttonOutline]}
+            >
+              <ButtonText>Cancel</ButtonText>
             </TouchableOpacity>
           </>
         )}
@@ -78,22 +86,14 @@ export const AccountDetailsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#fff',
-    // marginTop: 30,
     marginHorizontal: 16,
     gap: 24,
   },
   inputSection: {
-    // flexDirection: 'column',
-    // width: '100%',
-    gap: 16
+    gap: 16,
   },
   inputContainer: {
-    // alignItems: 'center',
-    gap: 4
+    gap: 4,
   },
   textBox: {
     borderWidth: 1,
@@ -112,9 +112,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   editSection: {
-    // marginLeft: 20,
-    gap: 20
-  },  
+    gap: 20,
+  },
   buttonReset: {
     alignItems: 'center',
     alignItems: 'center',

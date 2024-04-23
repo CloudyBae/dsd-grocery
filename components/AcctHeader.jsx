@@ -1,13 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
-import { EvilIcons } from '@expo/vector-icons';
 import { Body, Title } from './Typography';
 
 const AcctHeader = () => {
@@ -17,17 +9,17 @@ const AcctHeader = () => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-      <View style={styles.userImg}>
-        <Image
-          source={require('../assets/Avatar.png')}
-          style={{ width: 110, height: 110, borderRadius: 150 / 2 }}
-        />
-      </View>
-      <View style={styles.innerTextContainer}>
+        <View style={styles.userImg}>
+          <Image
+            source={require('../assets/Avatar.png')}
+            style={{ width: 110, height: 110, borderRadius: 150 / 2 }}
+          />
+        </View>
+        <View style={styles.innerTextContainer}>
           <Title>{name}</Title>
-        <Body>{email}</Body>
+          <Body>{email}</Body>
         </View>
-        </View>
+      </View>
     </View>
   );
 };
@@ -35,9 +27,7 @@ const AcctHeader = () => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    // paddingHorizontal: 16,
     backgroundColor: '#fff',
-    // paddingVertical: 16,
     height: '40%',
   },
   innerContainer: {

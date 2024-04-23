@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AccountDetailsScreen } from './screens/AccountDetailsScreen';
 import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
-import { AddIngredient } from './screens/AddIngredient';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FilterScreen } from './screens/Filter';
 import { HomeScreen } from './screens/Home';
@@ -10,7 +9,6 @@ import { LoginScreen } from './screens/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { RecipeScreen } from './screens/Recipe';
 import { ShoppingListScreen } from './screens/ShoppingList';
-import { SignUpScreen } from './screens/SignUp';
 import DietaryAllergenFilterScreen from './screens/DietaryAllergenFilter';
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +16,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen
           name='Login'
           component={LoginScreen}

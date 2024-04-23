@@ -125,52 +125,52 @@ export const IngredientScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }} >
-    <View style={styles.container}>
-      {modalVisible && (
-        <>
-          <AddIngredientModal
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-          />
-        </>
-      )}
-
-      <Search updateSearch={updateSearch} value={search} />
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.ingredientsContainer}>
-          {searchResults.length > 0 ? (
-            searchResults.map((ingredient) => (
-              <IngredientCard key={ingredient.id} ingredient={ingredient} />
-            ))
-          ) : (
-            <Body>No ingredients found</Body>
-          )}
-        </View>
-      </ScrollView>
-      <View style={styles.addIngredientButton}>
-        <Button
-          shape='rounded'
-          style={{
-            width: 65,
-            height: 65,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={() => setModalVisible(true)}
-        >
-          <View style={{ ...styles.rowContainer,  }}>
-            <FontAwesome5
-              name='plus'
-              style={styles.icon}
-              color='#fff'
-              size={20}
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {modalVisible && (
+          <>
+            <AddIngredientModal
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
             />
+          </>
+        )}
+
+        <Search updateSearch={updateSearch} value={search} />
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.ingredientsContainer}>
+            {searchResults.length > 0 ? (
+              searchResults.map((ingredient) => (
+                <IngredientCard key={ingredient.id} ingredient={ingredient} />
+              ))
+            ) : (
+              <Body>No ingredients found</Body>
+            )}
           </View>
-        </Button>
+        </ScrollView>
+        <View style={styles.addIngredientButton}>
+          <Button
+            shape='rounded'
+            style={{
+              width: 65,
+              height: 65,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => setModalVisible(true)}
+          >
+            <View style={{ ...styles.rowContainer }}>
+              <FontAwesome5
+                name='plus'
+                style={styles.icon}
+                color='#fff'
+                size={20}
+              />
+            </View>
+          </Button>
+        </View>
       </View>
-      </View>
-      <Nav/>
+      <Nav />
     </SafeAreaView>
   );
 };

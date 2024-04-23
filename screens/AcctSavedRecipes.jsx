@@ -6,7 +6,6 @@ import {
   Pressable,
 } from 'react-native';
 import AcctRecipeBar from '../components/AcctRecipeBar';
-import Nav from '../components/Nav';
 import { useNavigation } from '@react-navigation/native';
 
 export const AcctSavedRecipesScreen = () => {
@@ -24,7 +23,6 @@ export const AcctSavedRecipesScreen = () => {
           </View>
         </ScrollView>
       </View>
-      {/* <Nav /> */}
     </SafeAreaView>
   );
 };
