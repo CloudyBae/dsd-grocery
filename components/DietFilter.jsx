@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import {
-  FlatList,
-  Pressable,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
 import { BodySmall } from './Typography';
 
