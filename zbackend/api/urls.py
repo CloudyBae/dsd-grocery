@@ -1,5 +1,5 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 
 from . import views
 from .views import (
@@ -10,7 +10,7 @@ from .views import (
     PlannedRecipeViewSet,
 )
 
-router = DefaultRouter()
+router = SimpleRouter()
 router.register(
     r"users/(?P<user_pk>\d+)/shoppingList",
     ShoppingListViewSet,
@@ -27,7 +27,6 @@ router.register(
     DietaryPreferenceViewSet,
     basename="user-dietaryPreferences",
 )
-
 router.register(
     r"users/(?P<user_pk>\d+)/plannedRecipes",
     PlannedRecipeViewSet,
@@ -37,6 +36,11 @@ router.register(
 
 urlpatterns = [
     path("", include(router.urls)),
+    path(
+        "<int:recipe_id>/shoppingList/<int:user_id>",
+        views.get_shopping_list,
+        name="get_shopping_list",
+    ),
     path(
         "favorite_recipes/<int:user_id>",
         views.get_favorite_recipes,
@@ -82,5 +86,15 @@ urlpatterns = [
         "recipes/nutrition/<int:recipe_id>/",
         views.get_nutrition_informations,
         name="get_nutrition_information",
+    ),
+    path(
+        "users/<int:user_id>/dietaryPreferences/<int:preference_id>/update/",
+        views.update_dietary_preference,
+        name="update_dietary_preference",
+    ),
+    path(
+        "recipes/find_recipes/<int:user_id>/",
+        views.find_recipes,
+        name="find_recipes",
     ),
 ]

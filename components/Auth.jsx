@@ -39,11 +39,32 @@ const performOAuth = async () => {
 
   if (res.type === 'success') {
     const { url } = res;
-    await createSessionFromUrl(url);
+    const session = await createSessionFromUrl(url);
+    try {
+      const response = await fetch('http://192.168.254.14:8081/auth/signup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          payload: 'test',
+        }),
+      });
+
+      // Log the response directly
+      console.log('Response status:', response.status);
+      const responseBody = await response.text();
+      console.log('Response body:', responseBody);
+
+      const responseData = JSON.parse(responseBody);
+      console.log('Parsed response data:', responseData);
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
   }
 };
 
-export default function Auth() {
+const Auth = () => {
   const url = Linking.useURL();
   console.log({ url });
   if (url) createSessionFromUrl(url);
@@ -54,10 +75,12 @@ export default function Auth() {
         title='Google'
         textColor='gray'
         icon='google'
-        iconColor='black'
-        backgroundColor='white'
+        iconColor='#121212'
+        backgroundColor='#fff'
         onPress={performOAuth}
       />
     </>
   );
-}
+};
+
+export default Auth;

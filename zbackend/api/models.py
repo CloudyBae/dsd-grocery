@@ -29,10 +29,10 @@ class Ingredient(models.Model):
 
 
 class ShoppingList(models.Model):
+    recipe_id = models.CharField(max_length=100)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_purchased = models.BooleanField(default=False)
     name = models.CharField(max_length=100)
     image = models.CharField(
@@ -41,14 +41,12 @@ class ShoppingList(models.Model):
     product_id = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.name} ({self.quantity})"
+        return f"{self.name} ({self.product_id})"
 
 
 class FavoriteRecipe(models.Model):
+    name = models.CharField(max_length=100)
     servings = models.IntegerField()
-    preference = models.ForeignKey(
-        DietaryPreference, on_delete=models.CASCADE, related_name="favorite_recipes"
-    )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -56,7 +54,6 @@ class FavoriteRecipe(models.Model):
         related_name="favorite_recipes",
         db_index=True,
     )
-    name = models.CharField(max_length=100)
     image = models.CharField(max_length=255)
     minutes = models.CharField(max_length=100)
     likes = models.CharField(max_length=100)
@@ -70,12 +67,13 @@ class Macro(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, db_index=True
     )
-    recipe_id = models.ForeignKey(FavoriteRecipe, on_delete=models.CASCADE)
-    macro_name = models.CharField(max_length=50)
-    quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateField()
+    recipe_id = models.CharField(max_length=100)
+    macro_names = models.CharField(max_length=255)
+    quantities = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.macro_name} ({self.quantity})"
+        return f"Macro data for {self.date} ({self.user})"
 
 
 class PlannedRecipe(models.Model):

@@ -3,12 +3,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AuthContext from '../auth/auth-context';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
   const navigation = useNavigation();
-  const { userId } = useContext(AuthContext);
+  const { userId } = '1';
 
   useEffect(() => {
     const fetchRecipes = async () => {

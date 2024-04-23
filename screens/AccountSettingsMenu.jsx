@@ -1,7 +1,14 @@
-import { View, StyleSheet, Image, Pressable, SafeAreaView } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
+import LogOutIcon from '../components/Icons/LogOutIcon';
 import Button from '../components/Button';
 import { MaterialIcons } from '@expo/vector-icons';
 import {
@@ -11,8 +18,10 @@ import {
 } from '@expo/vector-icons';
 import { SettingOption } from '../components/SettingOption';
 import { useState } from 'react';
-import { DietaryAllergenFilter } from './DietaryAllergenFilter';
+import { DietaryAllergenFilterScreen } from './DietaryAllergenFilter';
 import { AccountDetailsScreen } from './AccountDetailsScreen';
+import { AcctSavedRecipesScreen } from './AcctSavedRecipes';
+import { ButtonText } from '../components/Typography';
 
 export const SettingsScreen = {
   AccountSettings: 'AccountSettings',
@@ -29,7 +38,7 @@ export const AccountSettingsMenu = () => {
     SettingsScreen.AccountSettings
   );
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1 }}>
       <AcctHeader />
 
       {screenOption != SettingsScreen.AccountSettings && (
@@ -37,12 +46,7 @@ export const AccountSettingsMenu = () => {
           style={styles.backButton}
           onPress={() => setScreenOption(SettingsScreen.AccountSettings)}
         >
-          <Ionicons
-            name='chevron-back-circle'
-            size={26}
-            color='#72C08F'
-            style={{ margin: 20 }}
-          />
+          <Ionicons name='chevron-back-circle' size={48} color='#53B175' />
         </Pressable>
       )}
       <View style={styles.menuContainer}>
@@ -51,14 +55,14 @@ export const AccountSettingsMenu = () => {
             <View style={styles.optionList}>
               <SettingOption
                 title='Dietary Preferences'
-                icon={<Ionicons name={'ban-outline'} size={18} />}
+                icon={<Ionicons name={'ban-outline'} size={24} />}
                 onPress={() =>
                   setScreenOption(SettingsScreen.DietaryPreferences)
                 }
               />
               <SettingOption
                 title='My Details'
-                icon={<AntDesign name={'idcard'} size={18} />}
+                icon={<AntDesign name={'idcard'} size={24} />}
                 onPress={() => setScreenOption(SettingsScreen.MyDetails)}
               />
               <SettingOption
@@ -73,27 +77,27 @@ export const AccountSettingsMenu = () => {
               />
             </View>
             <View style={{ paddingHorizontal: 20 }}>
-              <Button
-                isFullWidth={true}
-                onPress={() => navigation.navigate('Login')}
-                kind='outline'
-                shape='rounded'
-                startEnhancer={
-                  <MaterialIcons name={'logout'} size={18} color='#52B175' />
-                }
-              >
-                Log Out
-              </Button>
+              <View style={{ marginTop: 48 }}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Login')}
+                  style={[styles.buttonReset, styles.buttonOutline]}
+                >
+                  <LogOutIcon />
+                  <ButtonText>Log Out</ButtonText>
+                </TouchableOpacity>
+              </View>
             </View>
           </>
         )}
 
         {screenOption == SettingsScreen.DietaryPreferences && (
-          <DietaryAllergenFilter />
+          <DietaryAllergenFilterScreen />
         )}
         {screenOption == SettingsScreen.MyDetails && <AccountDetailsScreen />}
 
-        {screenOption == SettingsScreen.FavoriteRecipes && <AcctSavedRecipes />}
+        {screenOption == SettingsScreen.FavoriteRecipes && (
+          <AcctSavedRecipesScreen />
+        )}
       </View>
       <Nav />
     </SafeAreaView>
@@ -102,8 +106,8 @@ export const AccountSettingsMenu = () => {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    top: 200,
-    // top: 40
+    top: '33%',
+    left: 12,
     zIndex: 1,
   },
   container: {
@@ -114,14 +118,30 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
     height: '100%',
-    paddingBottom: 300,
     backgroundColor: '#fff',
   },
-  optionList: {
-    display: 'flex',
-    flexDirection: 'column',
+  buttonReset: {
+    alignItems: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderRadius: 18,
+    borderWidth: 2,
+    flexDirection: 'row',
+    gap: 6,
+    justifyContent: 'center',
+    padding: 24,
+  },
+  buttonOutline: {
+    borderColor: '#c2c2c2',
+  },
+  buttonPrimary: {
+    backgroundColor: '#52B175',
+    borderColor: '#52B175',
+  },
+  buttonDestructive: {
+    backgroundColor: '#D47373',
+    borderColor: '#D47373',
   },
 });

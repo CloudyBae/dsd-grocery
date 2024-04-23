@@ -1,9 +1,13 @@
+import requests
+import os
+from datetime import datetime
+
 from django.contrib.auth import get_user_model
 from rest_framework import status, viewsets
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
-# from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.permissions import AllowAny
 from rest_framework.permissions import BasePermission
 from django.http import JsonResponse
 from .external_apis import (
@@ -14,8 +18,6 @@ from .external_apis import (
     get_ingredient_information,
     get_nutrition_information,
 )
-
-
 from .models import (
     FavoriteRecipe,
     ShoppingList,
@@ -36,19 +38,19 @@ from .serializers import (
 User = get_user_model()
 
 
-class IsOwner(BasePermission):
-    def has_object_permission(self, request, view, obj):
-        return obj.user == request.user
+class AllowUpdateWithoutAuthentication(BasePermission):
+    def has_permission(self, request, view):
+        return request.method in ["PUT", "PATCH", "POST", "GET"]
 
 
 class DietaryPreferenceViewSet(viewsets.ModelViewSet):
     queryset = DietaryPreference.objects.all()
     serializer_class = DietaryPreferenceSerializer
-    permission_classes = []
+    permission_classes = [AllowUpdateWithoutAuthentication]
 
     def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return DietaryPreference.objects.filter(user_id=user_id)
+        user = self.request.user
+        return DietaryPreference.objects.filter(user=user)
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
@@ -74,14 +76,24 @@ class PlannedRecipeViewSet(viewsets.ModelViewSet):
 class ShoppingListViewSet(viewsets.ModelViewSet):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
-    permission_classes = []
+    permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return ShoppingList.objects.filter(user_id=user_id)
+    def perform_create(self, request, *args, **kwargs):
+        data = request.data
+        name = data.get("name")
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        query = Ingredient.objects.filter(name=name)
+        ingredient_values = query.values_list()
+        for item in ingredient_values:
+            ing_name = item[1]
+            if name == ing_name:
+                data["is_purchased"] = True
+
+        serializer = ShoppingListSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MacrosViewSet(viewsets.ModelViewSet):
@@ -89,12 +101,63 @@ class MacrosViewSet(viewsets.ModelViewSet):
     serializer_class = MacrosSerializer
     permission_classes = []
 
-    def get_queryset(self):
-        user_id = self.kwargs["user_pk"]
-        return Macro.objects.filter(user_id=user_id)
+    def list(self, request, *args, **kwargs):
+        today = datetime.now().date()
+        queryset = self.get_queryset().filter(date=today)
+        my_values = queryset.values_list()
+
+        decimal_values = []
+        for item in my_values:
+            values = [
+                float(val.strip("Decimal(')"))
+                for val in item[5].strip("[]").split(", ")
+            ]
+            decimal_values.append(values)
+
+        sums = [0] * len(decimal_values[0])
+        for values in decimal_values:
+            for i, val in enumerate(values):
+                sums[i] += val
+
+        response_data = {"Protein": sums[0], "Fat": sums[1], "Carbs": sums[2]}
+
+        return Response(response_data, status=status.HTTP_200_OK)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        if self.request.user.is_authenticated:
+            serializer.save(user=self.request.user)
+        else:
+            serializer.save()
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def get_shopping_list(request, user_id, recipe_id):
+    shopping_lists = ShoppingList.objects.filter(user_id=user_id, recipe_id=recipe_id)
+    serializer = ShoppingListSerializer(shopping_lists, many=True)
+    return Response(serializer.data)
+
+
+@api_view(["PUT"])
+@permission_classes([AllowAny])
+def update_dietary_preference(request, user_id, preference_id):
+    try:
+        dietary_preference = DietaryPreference.objects.get(
+            user_id=user_id, preference_id=preference_id
+        )
+    except DietaryPreference.DoesNotExist:
+        return Response(
+            {"message": "Dietary preference does not exist"},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    serializer = DietaryPreferenceSerializer(
+        dietary_preference, data=request.data, partial=True
+    )
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET"])
@@ -227,3 +290,53 @@ def get_ingredient_informations(request, ingredient_id):
 def get_nutrition_informations(request, recipe_id):
     nutrition_widget = get_nutrition_information(recipe_id)
     return JsonResponse(nutrition_widget)
+
+
+@api_view(["POST"])
+def find_recipes(request, user_id):
+    ingredient = request.data.get("ingredient")
+    meal_type = request.data.get("meal_type")
+    date_for = request.data.get("date_for")
+
+    api_key = os.getenv("SPOONACULAR_API_KEY")
+    endpoint = "https://api.spoonacular.com/recipes/complexSearch?"
+    params = {
+        "apiKey": api_key,
+        "includeIngredients": ingredient,
+        "type": meal_type,
+        "instructionsRequired": True,
+        "addRecipeInformation": True,
+        "addRecipeNutrition": True,
+        "number": 10,
+    }
+
+    diet_list = []
+    diet_query = DietaryPreference.objects.filter(user=user_id, is_selected=True)
+    diet_values = diet_query.values_list()
+    for item in diet_values:
+        diet_name = item[3]
+        diet_list.append(diet_name)
+
+    diet_string = ",".join(diet_list)
+    params["diet"] = diet_string
+
+    response = requests.get(endpoint, params=params)
+    if response.status_code == 200:
+        results = response.json().get("results", [])
+
+        recipe_list = []
+        for recipe in results:
+            ingredients = recipe.get("nutrition").get("ingredients")
+            recipe_data = {
+                "recipe_id": recipe.get("id"),
+                "image": recipe.get("image"),
+                "name": recipe.get("title"),
+                "ingredient_count": len(ingredients),
+                "time": recipe.get("readyInMinutes"),
+                "date_for": date_for,
+            }
+            recipe_list.append(recipe_data)
+
+        return Response(recipe_list)
+
+    return Response({"error": "Failed to fetch recipes"}, status=response.status_code)

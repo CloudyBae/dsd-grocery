@@ -32,7 +32,7 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = '1';
+  const { userId } = '1'; // update after backend integration
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
   const [isMacro, setIsMacro] = useState(false);
