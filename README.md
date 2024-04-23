@@ -1,18 +1,18 @@
 ![Zest Logo](image.png)
 
 
-#Zest: Spritz Up Your Meals
+# Zest: Spritz Up Your Meals
 
 
 Zest is a grocery management tool with built-in ingredient tracker, recipe integration, and macro calculator.
 
 Zest will analyze the groceries you have on hand, help build out a shopping list for meal prepping, and give a detailed list of macros such as protein, carbs, etc. If a user enters items they have in the fridge, Zest can generate a list of recipes based on those ingredients.
 
-##Watch our video to learn about the development process and see Zest in action!
+## Watch our video to learn about the development process and see Zest in action!
 
 [![Zest Introduction Video](http://img.youtube.com/vi/j5szZXsyxWs/0.jpg)](http://www.youtube.com/watch?v=j5szZXsyxWs "Zest Introduction Video")
 
-##Technologies
+## Technologies
 
 Zest is built with a robust stack designed for high performance and scalability. Below is a breakdown of the core technologies and tools used for development:
 
