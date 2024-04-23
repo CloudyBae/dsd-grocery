@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { Body, BodySmall, ButtonSmall } from './Typography';
 
 const Macro = ({ macro, percentage, goal }) => {
-  const completed = ((percentage / 100) * goal).toFixed(2);
+  const completed = ((percentage / 100) * goal).toFixed(1);
+  const remaining = (goal - completed).toFixed(1);
+  const unit = goal > 999 ? 'kg' : 'g';
 
   return (
     <View>
@@ -17,14 +19,19 @@ const Macro = ({ macro, percentage, goal }) => {
       >
         {(fill) => (
           <View style={{ display: 'flex', alignItems: 'center' }}>
-            <ButtonSmall>{completed ? completed : 0}</ButtonSmall>
-            <BodySmall>of {goal ? goal : 0}g</BodySmall>
+            <ButtonSmall>{isNaN(completed) ? 0 : completed}</ButtonSmall>
+            <BodySmall>
+              of {goal || 0}
+              {unit}
+            </BodySmall>
           </View>
         )}
       </AnimatedCircularProgress>
       <View style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
         <Body style={{ color: 'black' }}>{macro}</Body>
-        <BodySmall>{goal ? (goal - completed).toFixed(2) : 0}g left</BodySmall>
+        <BodySmall>
+          {remaining > 0 ? `${remaining}g left` : 'Goal Achieved!'}
+        </BodySmall>
       </View>
     </View>
   );

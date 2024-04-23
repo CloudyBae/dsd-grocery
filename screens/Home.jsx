@@ -12,9 +12,32 @@ import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
 import DietFilter from '../components/DietFilter';
 import { Text } from 'react-native';
+import { useEffect, useState } from 'react';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
+  const [macroData, setMacroData] = useState(null);
+
+  useEffect(() => {
+    const fetchMacros = async () => {
+      try {
+        const response = await fetch(
+          'http://locahost:8000/api/users/1/macros/'
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        console.log('Macros data: ', data);
+        setMacroData(data);
+      } catch (error) {
+        console.log('Error fetching Macros: ', error);
+      }
+    };
+
+    fetchMacros();
+  }, []);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -27,9 +50,25 @@ export const HomeScreen = () => {
                 onPress={() => navigation.navigate('Settings')}
               ></TouchableOpacity>
               <View style={styles.macrosContainer}>
-                <Macro macro='Carbs' percentage={20} goal={100} />
-                <Macro macro='Protein' percentage={50} goal={100} />
-                <Macro macro='Fat' percentage={70} goal={100} />
+                <Macro
+                  macro='Carbs'
+                  percentage={
+                    macroData && macroData.Carbs ? macroData.Carbs : 0
+                  }
+                  goal={100}
+                />
+                <Macro
+                  macro='Protein'
+                  percentage={
+                    macroData && macroData.Protein ? macroData.Protein : 0
+                  }
+                  goal={100}
+                />
+                <Macro
+                  macro='Fat'
+                  percentage={macroData && macroData.Fat ? macroData.Fat : 0}
+                  goal={100}
+                />
               </View>
             </View>
             <View style={styles.mainButtonsContainer}>

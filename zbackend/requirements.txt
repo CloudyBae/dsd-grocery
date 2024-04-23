@@ -10,3 +10,4 @@ dj-rest-auth==6.0.0
 sqlparse==*
 psycopg2-binary==*
 python-dotenv==1.0.1
+uwsgi>=2.0.19<2.1
