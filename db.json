@@ -11,7 +11,11 @@
       {"id": 2, "name": "basil", "image": "https://spoonacular.com/cdn/ingredients_100x100/basil.jpg", "quantity": 4, "user": "2", "preference": 1},
       {"id": 3, "name": "garlic", "image": "https://spoonacular.com/cdn/ingredients_100x100/garlic.png", "quantity": 6, "user": "2", "preference": 1},
       {"id": 4, "name": "pasta", "image": "https://spoonacular.com/cdn/ingredients_100x100/fusilli.jpg", "quantity": 1, "user": "3", "preference": 1}
-    ]
+    ], 
+    "postShoppingList":[],
+    "postFavorites": [],
+    "postMacro": [],
+    "postPlannedRecipe": []
     
 }
 
