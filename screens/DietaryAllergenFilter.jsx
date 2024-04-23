@@ -114,8 +114,6 @@ export const DietaryAllergenFilterScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
-            <AcctHeader />
-            <View style={styles.container}>
               <Text style={styles.title}>Dietary Requirements</Text>
 
               {categories.map((item, index) => {
@@ -133,7 +131,6 @@ export const DietaryAllergenFilterScreen = () => {
                   />
                 );
               })}
-            </View>
 
             <View style={styles.buttonContainer}>
               <CategoryButton title='Save' onPress={() => handleSave()} />
@@ -148,7 +145,8 @@ export const DietaryAllergenFilterScreen = () => {
 
 const styles = StyleSheet.create({
   homeContainer: {
-    padding: 10,
+    padding: 40,
+    paddingTop:0,
     marginBottom: 50,
   },
   buttonContainer: {

@@ -1,95 +1,166 @@
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title, Body, Caption } from './Typography';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
+import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import { Title, Caption, HeaderTitle, BodySmall } from './Typography';
+import Button from '../components/Button';
 
-export default AcctRecipeBar = (props) => {
-  const {
-    image = 'https://iambaker.net/wp-content/uploads/2020/03/sourdough-bread-4-768x644.jpg',
-    name = 'A Simple Sourdough Starter Recipe',
-    numMinutes = '1440',
-    numIngredients = '2',
-  } = props;
-
+const RecipeSummary = ({ image, name, savedOn }) => {
+  const placeholderImage = require('../assets/generic_recipe.png');
   return (
-    <View style={{ backgroundColor: '#fff' }}>
-      <Title style={{ marginLeft: 16 }}>Saved Recipes</Title>
-      <View style={styles.container}>
-        <View style={styles.imageSection}>
+    <View style={styles.container}>
+      <View style={{ ...styles.rowContainer, gap: 10, height: '100%' }}>
+        <View style={styles.columnContainer}>
           <Image
-            source={require('../assets/RecipeTag.png')}
-            style={styles.tagImg}
-            resizeMode='cover'
-          />
-          <Image
-            source={{ uri: image || '' }}
-            style={styles.productImg}
+            source={placeholderImage ?? image}
+            style={styles.recipeImage}
             resizeMode='cover'
           />
         </View>
-        <View style={styles.textSection} numberOfLines={null}>
-          <Title numberOfLines={null}>{name}</Title>
-          <View style={styles.timerView}>
-            <Image
-              source={require('../assets/timerImg.png')}
-              style={styles.timerImg}
-              resizeMode='cover'
-            />
-            <Caption style={styles.amountText}>
-              {' ' + numMinutes + ' '}
-              minutes
-            </Caption>
+        <View
+          style={{
+            ...styles.columnContainer,
+            alignItems: 'flex-start',
+            justifyContent: 'space-around',
+            height: '100%',
+          }}
+        >
+          <View
+            style={{
+              ...styles.columnContainer,
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+          >
+            <HeaderTitle style={{ fontSize: 16, width: '70%' }}>
+              {name}
+            </HeaderTitle>
+            <View
+              style={{
+                ...styles.rowContainer,
+                justifyContent: 'flex-start',
+                alignItems: 'space-around',
+                gap: 6,
+              }}
+            >
+              <FontAwesome name='bookmark-o' color='#7C7C7C' size={18} />
+              <Caption style={{ color: '#7C7C7C' }}>Saved on {savedOn}</Caption>
+            </View>
+          </View>
+          <View style={{...styles.rowContainer, gap:40}}>
+          <View style={styles.tagBox}>
+            <BodySmall style={{ color: '#fff' }}>Generic Recipe</BodySmall>
+            <MaterialCommunityIcons name='pot-steam' color='#fff' size={18} />
           </View>
 
-          <Body>Ingredients: {numIngredients}</Body>
-        </View>
-        <View style={styles.removeImg}>
-          <TouchableOpacity
-            style={styles.iconContainer}
-            onPress={() => console.log('Remove Button Pressed')}
-          >
-            <MaterialCommunityIcons name='close' size={48} color='red' />
-          </TouchableOpacity>
+            <Button kind='ghost' size='small' style={{ padding: 0 }}>
+            <FontAwesome name='trash-o' color='#000' size={18} />
+            </Button>
+          </View>
         </View>
       </View>
     </View>
   );
 };
 
+const AcctRecipeBar = (props) => {
+  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const  userId  = '1';
+
+  useEffect(() => {
+    const fetchSavedRecipes = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/users/${userId}/plannedRecipes/`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch response');
+        }
+        const savedRecipesResponse = await response.json();
+        setSavedRecipes(savedRecipesResponse);
+        setLoading(false); // Cambiar estado a false cuando la carga se complete
+      } catch (error) {
+        console.log('Error fetching saved recipes: ', error);
+        setLoading(false); // Cambiar estado a false en caso de error
+      }
+    };
+    fetchSavedRecipes();
+  }, [userId]);
+
+  if (loading) {
+    return (
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator size="large" color="#52B175" />
+      </View>
+    );
+  }
+  if (!savedRecipes.length && !loading) {
+    return (
+      <View style={styles.loaderContainer}>
+        <Caption style={{textAlign:'center'}}>
+          You have no saved recipes. Save recipes to view them here.
+        </Caption>
+      </View>
+    );
+  }
+
+  return (
+    <View style={{ backgroundColor: '#fff', padding: 20 }}>
+      <Title>Saved Recipes</Title>
+      {savedRecipes.map((recipe) => (
+        <View style={{ ...styles.columnContainer, width: '100%' }} key={recipe.recipe_id}>
+          <RecipeSummary
+            name={recipe.name}
+            savedOn={recipe.date_for}
+          />
+        </View>
+      ))}
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+    flexWrap: 'wrap',
     backgroundColor: '#fff',
     borderBottomWidth: 2,
     borderColor: '#c2c2c2',
-    flexDirection: 'row',
     gap: 16,
     padding: 16,
+    paddingLeft: 0,
   },
-  imageSection: {
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
+  },
+  columnContainer: {
+    display: 'flex',
     flexDirection: 'column',
-    gap: 8,
+    alignItems: 'center',
   },
-  tagImg: {
-    borderRadius: 4,
-    height: 40,
-    width: '100%',
-  },
-  productImg: {
-    height: 110,
+  recipeImage: {
+    height: 100,
     width: 100,
     borderRadius: 4,
   },
-  textSection: {
-    flex: 1,
-    gap: 6,
-  },
-  timerView: {
+  tagBox: {
     flexDirection: 'row',
-    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 5,
+    backgroundColor: '#F28A74',
+    borderRadius: 4,
+    padding: 2,
   },
-  timerImg: {
-    height: 16,
-    width: 16,
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 30,
   },
 });
+
+export default AcctRecipeBar;

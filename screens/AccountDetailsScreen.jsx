@@ -69,7 +69,7 @@ export const AccountDetailsScreen = () => {
               onPress={handleSave}
               style={[styles.buttonReset, styles.buttonPrimary]}
             >
-              <ButtonText>Save</ButtonText>
+              <ButtonText style={{color:'#fff'}}>Save</ButtonText>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={handleDelete}
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     fontSize: 16,
     color: '#727272',
+    fontFamily: 'Gilroy-Regular'
   },
   textBoxEditing: {
     backgroundColor: '#F1F9F4',
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 8,
     fontSize: 16,
+    fontFamily: 'Gilroy-Regular'
   },
   editSection: {
     gap: 20,
