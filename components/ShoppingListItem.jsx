@@ -1,31 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { useState, useEffect } from 'react';
 
 const ShoppingListItem = () => {
-  const [shoppingListData, setShoppingListData] = useState([]);
-
-  useEffect(() => {
-    const fetchShoppingListData = async () => {
-      try {
-        const requestOptions = {
-          method: 'GET',
-          redirect: 'follow',
-        };
-        const response = await fetch(
-          'http://localhost:3030/getShoppingList',
-          requestOptions
-        );
-        const data = await response.json();
-        setShoppingListData(data);
-      } catch (error) {
-        console.log('Error fetching shopping list data: ', error);
-      }
-    };
-
-    fetchShoppingListData();
-  }, []);
-
   const highlightItem = (item) => {
     if (!item.is_purchased) {
       return { backgroundColor: `#e8c500` };
@@ -47,7 +23,7 @@ const ShoppingListItem = () => {
           <View style={styles.textSection}>
             <Text style={styles.headingText}>{item.name}</Text>
             <View style={styles.amountContainer}>
-              <Text style={styles.amountText}>{item.quantity} quantity</Text>
+              <Text style={styles.amountText}>{item.qty} quantity</Text>
             </View>
           </View>
         </View>
