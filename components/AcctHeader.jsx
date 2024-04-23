@@ -8,89 +8,49 @@ import {
 } from 'react-native';
 import React from 'react';
 import { EvilIcons } from '@expo/vector-icons';
-import { Body, HeaderTitle } from './Typography';
+import { Body, Title } from './Typography';
 
 const AcctHeader = () => {
   const name = 'John Smith';
   const email = 'john-smith@gmail.com';
 
   return (
-    <View style={styles.headerContainer}>
+    <View style={styles.container}>
+      <View style={styles.innerContainer}>
       <View style={styles.userImg}>
         <Image
           source={require('../assets/Avatar.png')}
-          style={{ width: 60, height: 60, borderRadius: 150 / 2 }}
+          style={{ width: 110, height: 110, borderRadius: 150 / 2 }}
         />
       </View>
-
-      <View
-        style={{
-          ...styles.columnContainer,
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-        }}
-      >
-        <View style={styles.rowContainer}>
-          <HeaderTitle>{name}</HeaderTitle>
-          <Pressable
-            style={styles.iconContainer}
-            onPress={() => console.log('Edit Icon Clicked')}
-          >
-            <EvilIcons name='pencil' size={20} color='#52B175' />
-          </Pressable>
+      <View style={styles.innerTextContainer}>
+          <Title>{name}</Title>
+        <Body>{email}</Body>
         </View>
-        <Body> {email}</Body>
-      </View>
+        </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    paddingTop: 80,
-    paddingBottom: 50,
-    borderTopColor: '#fff',
-    borderRightColor: '#fff',
-    borderBottomColor: '#52B175',
-    borderLeftColor: '#fff',
-    borderWidth: 3,
+  container: {
+    justifyContent: 'center',
+    // paddingHorizontal: 16,
     backgroundColor: '#fff',
+    // paddingVertical: 16,
+    height: '40%',
   },
-  rowContainer: {
+  innerContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    gap: 12,
+    backgroundColor: '#fff',
+    padding: 56,
+    borderRadius: 18,
   },
-  columnContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  header: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  name: {
-    flex: 1,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  email: {
-    flex: 1,
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  iconContainer: {
-    height: 20,
-    width: 20,
-  },
-  userImg: {
-    marginLeft: 30,
-    marginRight: 10,
-    overflow: 'hidden',
+  innerTextContainer: {
+    gap: 4,
   },
 });
 

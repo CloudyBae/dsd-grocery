@@ -30,7 +30,7 @@ export const AccountSettingsMenu = () => {
     SettingsScreen.AccountSettings
   );
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1 }}>
       <AcctHeader />
 
       {screenOption != SettingsScreen.AccountSettings && (
@@ -40,9 +40,8 @@ export const AccountSettingsMenu = () => {
         >
           <Ionicons
             name='chevron-back-circle'
-            size={26}
+            size={48}
             color='#53B175'
-            style={{ margin: 20 }}
           />
         </Pressable>
       )}
@@ -52,14 +51,14 @@ export const AccountSettingsMenu = () => {
             <View style={styles.optionList}>
               <SettingOption
                 title='Dietary Preferences'
-                icon={<Ionicons name={'ban-outline'} size={18} />}
+                icon={<Ionicons name={'ban-outline'} size={24} />}
                 onPress={() =>
                   setScreenOption(SettingsScreen.DietaryPreferences)
                 }
               />
               <SettingOption
                 title='My Details'
-                icon={<AntDesign name={'idcard'} size={18} />}
+                icon={<AntDesign name={'idcard'} size={24} />}
                 onPress={() => setScreenOption(SettingsScreen.MyDetails)}
               />
               <SettingOption
@@ -80,7 +79,7 @@ export const AccountSettingsMenu = () => {
                 kind='outline'
                 shape='rounded'
                 startEnhancer={
-                  <MaterialIcons name={'logout'} size={18} color='#52B175' />
+                  <MaterialIcons name={'logout'} size={24} color='#52B175' />
                 }
               >
                 Log Out
@@ -105,8 +104,10 @@ export const AccountSettingsMenu = () => {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    top: 200,
-    // top: 40
+    top: '33%',
+    left: 12,
+    // top: 200,
+    // top: 40,
     zIndex: 1,
   },
   container: {
@@ -117,14 +118,12 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
     height: '100%',
-    paddingBottom: 300,
     backgroundColor: '#fff',
   },
   optionList: {
-    display: 'flex',
-    flexDirection: 'column',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // backgroundColor: 'red',
   },
 });

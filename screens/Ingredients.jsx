@@ -164,7 +164,7 @@ export const IngredientScreen = () => {
               name='plus'
               style={styles.icon}
               color='#fff'
-              size={24}
+              size={20}
             />
           </View>
         </Button>

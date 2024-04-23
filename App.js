@@ -62,7 +62,7 @@ function App() {
         <Stack.Screen
           name='Account'
           component={AccountSettingsMenu}
-          options={{ headerShown: true }}
+          options={{ headerShown: false }}
         />
         {/* <Stack.Screen
           name='Signup'
