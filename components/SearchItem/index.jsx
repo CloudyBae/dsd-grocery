@@ -31,7 +31,7 @@ const SearchItem = ({ image, title, prepTime, type, price }) => {
         >
           <ButtonLarge>{title}</ButtonLarge>
           <FlexRow>
-            <EvilIcons name={'clock'} size={24} color='black' />
+            <EvilIcons name={'clock'} size={24} color='#121212' />
             <Caption>{prepTime}</Caption>
           </FlexRow>
         </FlexColumn>

@@ -12,6 +12,7 @@ import { Title } from '../components/Typography/index.js';
 import Nav from '../components/Nav';
 
 export const ShoppingListScreen = () => {
+
   const route = useRoute();
   const { id } = route.params;
 
@@ -42,6 +43,7 @@ export const ShoppingListScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.contentContainer}>
+
           {/* <Title style={styles.title}>Shopping List</Title> */}
 
           {shoppingListData.map((item) => (
@@ -61,9 +63,12 @@ export const ShoppingListScreen = () => {
               </View>
             </View>
           ))}
+
+          <ShoppingListItem items={items} />
+
         </View>
       </ScrollView>
-      <Nav style={styles.navBar} />
+      <Nav />
     </SafeAreaView>
   );
 };
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   title: {
-    color: 'black',
+    color: '#121212',
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',

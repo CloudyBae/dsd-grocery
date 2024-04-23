@@ -16,7 +16,7 @@ export const SettingOption = ({ title, icon, onPress }) => {
         {icon}
         <Body style={{ color: '#181725' }}>{title}</Body>
       </View>
-      <Ionicons name='chevron-forward' size={24} color='black' />
+      <Ionicons name='chevron-forward' size={24} color='#121212' />
     </Pressable>
   );
 };
