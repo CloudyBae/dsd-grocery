@@ -1,124 +1,53 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import IngredientCard from '../components/IngredientCard';
 import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Body } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AddIngredientModal } from './AddIngredient';
 import { USER_API_IP_URL } from '@env';
-const imageUrl = 'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const IngredientScreen = () => {
-  const { userId } = '1'; // update later when backend working
+  const userId = '1'; // update later when backend working
   const [modalVisible, setModalVisible] = useState(false);
 
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const ingredientList = [
-    {
-      id: 1,
-      name: 'Banana chips',
-      image: imageUrl,
-      quantity: '200g',
-      user: 123,
-      preference: 1,
-    },
-    {
-      id: 2,
-      name: 'Lucuma',
-      image: imageUrl,
-      quantity: '100ml',
-      user: 456,
-      preference: 2,
-    },
-    {
-      id: 3,
-      name: 'Apple',
-      image: imageUrl,
-      quantity: '1',
-      user: 789,
-      preference: 1,
-    },
-    {
-      id: 4,
-      name: 'Orange',
-      image: imageUrl,
-      quantity: '2',
-      user: 123,
-      preference: 3,
-    },
-    {
-      id: 5,
-      name: 'Lemon',
-      image: imageUrl,
-      quantity: '1',
-      user: 456,
-      preference: 2,
-    },
-    {
-      id: 6,
-      name: 'Strawberry',
-      image: imageUrl,
-      quantity: '150g',
-      user: 789,
-      preference: 1,
-    },
-    {
-      id: 7,
-      name: 'Blueberry',
-      image: imageUrl,
-      quantity: '100g',
-      user: 123,
-      preference: 3,
-    },
-    {
-      id: 8,
-      name: 'Grape',
-      image: imageUrl,
-      quantity: '300g',
-      user: 456,
-      preference: 2,
-    },
-    {
-      id: 9,
-      name: 'Kiwi',
-      image: imageUrl,
-      quantity: '2',
-      user: 789,
-      preference: 1,
-    },
-    {
-      id: 10,
-      name: 'Watermelon',
-      image: imageUrl,
-      quantity: '1',
-      user: 123,
-      preference: 3,
-    },
-  ];
+  const fetchIngredients = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/users/${userId}/ingredients/`
+      );
+      const data = await response.json();
+      console.log(data);
+      setIngredients(data);
+      setSearchResults(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching ingredients:', error);
+      setLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   const fetchIngredients = async () => {
-  //     setIngredients(ingredientList);
-  //     // try {
-  //     //   const response = await fetch(  `http://${USER_API_IP_URL}/user/${userId}/ingredients/`,);
-  //     //   const data = await response.json();
-  //     //   setIngredients(data);
-  //     // } catch (error) {
-  //     //   console.error('Error fetching ingredients:', error);
-  //     // }
-  //   };
-  //   fetchIngredients();
-  // }, []);
+  useEffect(() => {
+    fetchIngredients();
+  }, [userId, fetchIngredients]);
 
   const updateSearch = (query) => {
     setSearch(query);
 
-    const filteredResults = ingredientList.filter((ingredient) =>
+    const filteredResults = ingredients.filter((ingredient) =>
       ingredient.name.toLowerCase().includes(query.toLowerCase())
     );
     setSearchResults(filteredResults);
@@ -132,22 +61,38 @@ export const IngredientScreen = () => {
             <AddIngredientModal
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
+              fetchIngredients={fetchIngredients}
             />
           </>
         )}
 
         <Search updateSearch={updateSearch} value={search} />
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.ingredientsContainer}>
-            {searchResults.length > 0 ? (
-              searchResults.map((ingredient) => (
-                <IngredientCard key={ingredient.id} ingredient={ingredient} />
-              ))
-            ) : (
-              <Body>No ingredients found</Body>
-            )}
+        {loading ? (
+          <View style={styles.loaderContainer}>
+            <ActivityIndicator size='large' color='#52B175' />
           </View>
-        </ScrollView>
+        ) : (
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.ingredientsContainer}>
+              {searchResults.length > 0 ? (
+                searchResults.map((ingredient) => (
+                  <IngredientCard key={ingredient.id} ingredient={ingredient} />
+                ))
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    marginTop: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Body>No ingredients found</Body>
+                </View>
+              )}
+            </View>
+          </ScrollView>
+        )}
         <View style={styles.addIngredientButton}>
           <Button
             shape='rounded'
@@ -206,5 +151,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 30,
   },
 });

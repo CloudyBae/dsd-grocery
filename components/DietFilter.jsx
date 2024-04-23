@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
 import { BodySmall } from './Typography';
 
@@ -72,8 +77,8 @@ const DietFilter = () => {
       });
   };
   const renderItem = ({ item }) => (
-    <View style={styles.categoryContainer}>
-      <TouchableOpacity
+    <View style={{ marginRight: 10 }}>
+      <Pressable
         style={[
           styles.categoryButton,
           selectedCategory === item.id && styles.selectedCategory,
@@ -88,14 +93,14 @@ const DietFilter = () => {
         >
           {item.category}
         </BodySmall>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 
   return (
-    <>
+    <View style={{ gap: 10 }}>
       <FlatList horizontal data={categories} renderItem={renderItem} />
-    </>
+    </View>
   );
 };
 
@@ -105,19 +110,21 @@ const styles = StyleSheet.create({
   categoryContainer: {
     marginRight: 16,
     marginBottom: 8,
+    marginTop: 8,
   },
   categoryButton: {
     borderRadius: 4,
-    backgroundColor: '#d2d2d2',
+    backgroundColor: '#F2F2F2',
     paddingVertical: 4,
-    paddingHorizontal: 2,
+    paddingHorizontal: 10,
   },
   categoryText: {
-    color: '#121212',
+    color: '#000',
+    fontWeight: 'bold',
   },
   titleText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginTop: 15,
   },
   selectedCategory: {
