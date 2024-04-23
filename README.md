@@ -1,5 +1,8 @@
-Zest: Spritz Up Your Meals
 ![Zest Logo](image.png)
+
+
+Zest: Spritz Up Your Meals
+
 
 Zest is a grocery management tool with built-in ingredient tracker, recipe integration, and macro calculator.
 
