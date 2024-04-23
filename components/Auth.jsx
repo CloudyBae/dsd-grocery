@@ -75,8 +75,8 @@ const Auth = () => {
         title='Google'
         textColor='gray'
         icon='google'
-        iconColor='black'
-        backgroundColor='white'
+        iconColor='#121212'
+        backgroundColor='#fff'
         onPress={performOAuth}
       />
     </>

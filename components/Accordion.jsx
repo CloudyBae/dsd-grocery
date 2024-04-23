@@ -31,7 +31,7 @@ const Accordion = ({
               <AntDesign
                 name={activeIndex === index ? 'up' : 'down'}
                 size={18}
-                color='black'
+                color='#121212'
               />
             </TouchableOpacity>
             {activeIndex === index && (

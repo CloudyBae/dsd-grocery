@@ -26,7 +26,7 @@ export const SplashScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#72C08F',
+    backgroundColor: '#53B175',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    color: '#72C08F',
+    color: '#53B175',
   },
 });
 

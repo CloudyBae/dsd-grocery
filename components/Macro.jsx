@@ -15,10 +15,10 @@ const Macro = ({ macro, percentage, goal }) => {
         width={10}
         fill={percentage}
         tintColor='#52B175'
-        backgroundColor='#ccc'
+        backgroundColor='#f2f2f2'
       >
         {(fill) => (
-          <View style={{ display: 'flex', alignItems: 'center' }}>
+          <View style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <ButtonSmall>{isNaN(completed) ? 0 : completed}</ButtonSmall>
             <BodySmall>
               of {goal || 0}
@@ -27,8 +27,10 @@ const Macro = ({ macro, percentage, goal }) => {
           </View>
         )}
       </AnimatedCircularProgress>
-      <View style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
-        <Body style={{ color: 'black' }}>{macro}</Body>
+      <View
+        style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 8 }}
+      >
+        <Body style={{ color: '#121212' }}>{macro}</Body>
         <BodySmall>
           {remaining > 0 ? `${remaining}g left` : 'Goal Achieved!'}
         </BodySmall>
