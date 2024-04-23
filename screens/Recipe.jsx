@@ -8,16 +8,14 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react'; // Added useEffect here
 import { useGetRecipeInfo } from '../hooks/useGetRecipeInfo';
 import { BodySmall, ButtonLarge, Title } from '../components/Typography';
 import { Octicons } from '@expo/vector-icons';
 import Accordion from '../components/Accordion';
 import Button from '../components/Button';
-import { useNavigation } from '@react-navigation/native';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native'; // Combined imports
 import RenderHTML from 'react-native-render-html';
-import React, { useContext } from 'react';
 
 const Detail = ({ title, value }) => {
   return (
@@ -34,9 +32,12 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = useContext(AuthContext);
+  const { userId } = '1';
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
+  const [isMacro, setIsMacro] = useState(false);
+  const [isPlannedRecipe, setIsPlannedRecipe] = useState(false);
+  const [isShoppingList, setIsShoppingList] = useState(false);
 
   const { recipe, loading } = useGetRecipeInfo(id);
   const ingredients = useMemo(() => {
@@ -46,7 +47,7 @@ export const RecipeScreen = () => {
         style={{ ...styles.rowContainer, gridGap: 6, alignSelf: 'flex-start' }}
         key={index}
       >
-        <Octicons name='dot-fill' size={24} color='#72C08F' />
+        <Octicons name='dot-fill' size={24} color='#53B175' />
         <BodySmall key={index}>{ingredient.original}</BodySmall>
       </View>
     ));
@@ -79,13 +80,13 @@ export const RecipeScreen = () => {
     );
   };
 
-  // partly working, need to fix connectiong to api
+  // POST FAVORITE
   useEffect(() => {
     const onClickFavourite = async () => {
       setIsFavourite(!isFavourite);
       try {
         const response = await fetch(
-          'http://localhost:8000/favorite_recipes/${userId}/save/',
+          'http://localhost:3030/postFavorites',
           {
             method: 'POST',
             headers: {
@@ -106,6 +107,86 @@ export const RecipeScreen = () => {
 
     return () => {};
   }, [isFavourite, recipe, userId]);
+
+  // POST MACRO
+  useEffect(() => {
+    const onClickMacro = async () => {
+      setIsMacro(!isMacro); 
+      try {
+        const response = await fetch(
+          'http://localhost:3030/postMacro',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ isMacro }), 
+          }
+        );
+        if (!response.ok) {
+          console.error('Failed to save macro');
+        }
+      } catch (error) {
+        console.error('Error saving macro:', error);
+      }
+    };
+  
+    onClickMacro();
+  
+    return () => {};
+  }, [isMacro]);
+
+  // POST PlANNED RECIPE
+  useEffect(() => {
+    const onClickPlannedRecipes = async () => {
+      setIsPlannedRecipe(!isPlannedRecipe);
+      try {
+        const response = await fetch(
+          'http://localhost:3030/postPlannedRecipe',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ isPlannedRecipe }), 
+          }
+        );
+        if (!response.ok) {
+          console.error('Failed to save planned recipe');
+        }
+      } catch (error) {
+        console.error('Error saving planned recipe:', error);
+      }
+    };
+
+  }, [isPlannedRecipe]);
+
+// POST SHOPPING LIST
+useEffect(() => {
+  const onClickShoppingList = async () => {
+    setIsShoppingList(!isShoppingList);
+    try {
+      const response = await fetch(
+        'http://localhost:3030/postShoppingList',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ isShoppingList }), 
+        }
+      );
+      if (!response.ok) {
+        console.error('Failed to save shopping list');
+      }
+    } catch (error) {
+      console.error('Error saving shopping list:', error);
+    }
+  };
+  
+  onClickShoppingList(); 
+
+}, [isShoppingList]);
 
   if (loading || !recipe) {
     return (
@@ -141,7 +222,7 @@ export const RecipeScreen = () => {
           <Octicons
             name='x-circle-fill'
             size={26}
-            color='#72C08F'
+            color='#53B175'
             style={{ margin: 20 }}
           />
         </Pressable>
@@ -199,7 +280,7 @@ export const RecipeScreen = () => {
             <View
               style={{
                 ...styles.rowContainer,
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 marginTop: 16,
                 marginBottom: 16,
               }}
@@ -217,7 +298,7 @@ export const RecipeScreen = () => {
           </View>
         </ScrollView>
         <View style={styles.addToCartButtonContainer}>
-          <Button isFullWidth={true} onPress={() => console.log('Add to Cart')}>
+          <Button isFullWidth={true} onPress={() => { setIsPlannedRecipe(!isPlannedRecipe); setIsMacro(!isMacro); setIsShoppingList(!isShoppingList) }}>
             Add missing ingredients to list
           </Button>
         </View>
@@ -225,6 +306,7 @@ export const RecipeScreen = () => {
     </>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -261,7 +343,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   category: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#52B175',
     paddingVertical: 0,
