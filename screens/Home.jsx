@@ -104,7 +104,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                onPress={() => navigation.navigate('Ingredient')}
+                onPress={() => navigation.navigate('Ingredients')}
                 title='Pantry'
                 icon='kitchen'
               />
