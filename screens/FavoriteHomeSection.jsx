@@ -1,7 +1,7 @@
-import { ScrollView } from 'react-native-gesture-handler';
+
 import DietFilter from '../components/DietFilter';
 import FavoriteRecipesList from '../components/FavoriteRecipes';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Title } from '../components/Typography';
 
 export const FavoriteHomeSection = (props) => {
