@@ -114,7 +114,6 @@ export const DietaryAllergenFilterScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
-            <AcctHeader />
             <View style={styles.container}>
               <Text style={styles.title}>Dietary Requirements</Text>
 

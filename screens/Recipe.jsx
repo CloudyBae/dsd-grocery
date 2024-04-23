@@ -34,9 +34,11 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = '1'; // update after backend integration
+  const { userId } = '1';
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
+  const [isMacro, setIsMacro] = useState(false);
+  const [isPlannedRecipe, setIsPlannedRecipe] = useState(false);
 
   const { recipe, loading } = useGetRecipeInfo(id);
   const ingredients = useMemo(() => {
@@ -79,13 +81,13 @@ export const RecipeScreen = () => {
     );
   };
 
-  // partly working, need to fix connectiong to api
+  // POST FAVORITE
   useEffect(() => {
     const onClickFavourite = async () => {
       setIsFavourite(!isFavourite);
       try {
         const response = await fetch(
-          'http://localhost:8000/favorite_recipes/${userId}/save/',
+          'http://localhost:3030/postFavorites',
           {
             method: 'POST',
             headers: {
@@ -106,6 +108,65 @@ export const RecipeScreen = () => {
 
     return () => {};
   }, [isFavourite, recipe, userId]);
+
+  // POST MACRO
+  useEffect(() => {
+    const onClickMacro = async () => {
+      setIsMacro(!isMacro); 
+      try {
+        const response = await fetch(
+          'http://localhost:3030/postMacro',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ isMacro }), 
+          }
+        );
+        if (!response.ok) {
+          console.error('Failed to save macro');
+        }
+      } catch (error) {
+        console.error('Error saving macro:', error);
+      }
+    };
+  
+    onClickMacro();
+  
+    return () => {};
+  }, [isMacro]);
+
+//POST PlANNED RECIPE
+useEffect(() => {
+  const onClickPlannedRecipes = async () => {
+    setIsPlannedRecipe(!isPlannedRecipe);
+    try {
+      const response = await fetch(
+        'http://localhost:3030/postPlannedRecipe',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ isPlannedRecipe }), 
+        }
+      );
+      if (!response.ok) {
+        console.error('Failed to save planned recipe');
+      }
+    } catch (error) {
+      console.error('Error saving planned recipe:', error);
+    }
+  };
+
+  onClickPlannedRecipes();
+
+}, [isPlannedRecipe]);
+
+//
+
+  
 
   if (loading || !recipe) {
     return (
