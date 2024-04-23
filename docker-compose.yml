@@ -15,8 +15,11 @@ services:
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=aws-0-us-west-1.pooler.supabase.com"
-      - DB_NAME="postgres"
-      - DB_USER="postgres.xmmvpjtupsyceyyeyfma"
-      - DB_PASS="!BestTeam123!"
-      - DB_PORT=5432
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+      - DEBUG=1
+
+volumes:
+  dev-static-data:

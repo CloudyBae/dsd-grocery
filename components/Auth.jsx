@@ -44,20 +44,20 @@ const performOAuth = async () => {
       const response = await fetch('http://192.168.254.14:8081/auth/signup/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          payload: "test"
-        })
+        body: JSON.stringify({
+          payload: 'test',
+        }),
       });
-    
+
       // Log the response directly
-      console.log("Response status:", response.status);
+      console.log('Response status:', response.status);
       const responseBody = await response.text();
-      console.log("Response body:", responseBody);
-    
+      console.log('Response body:', responseBody);
+
       const responseData = JSON.parse(responseBody);
-      console.log("Parsed response data:", responseData);
+      console.log('Parsed response data:', responseData);
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -81,6 +81,6 @@ const Auth = () => {
       />
     </>
   );
-}
+};
 
 export default Auth;

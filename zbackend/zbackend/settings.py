@@ -32,8 +32,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]  # Can configure later to be more secure
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -100,7 +98,7 @@ DATABASES = {
         "USER": os.environ.get("DB_USER"),
         "PASSWORD": os.environ.get("DB_PASS"),
         "HOST": os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT"),
+        "PORT": 5432,
     }
 }
 
@@ -154,9 +152,23 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_ALL_ORIGINS = True  # Can configure later to be more secure
-CORS_ALLOWS_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ["access-control-allow-origin", "content-type"]
+
+CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+# CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ["*"]
+# CORS_ALLOW_ALL_ORIGINS = True  # Can configure later to be more secure
+# CORS_ALLOWS_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost",
+    "http://192.168.254.14:8081",
+    "http://localhost:8081",
+)
+
+MEDIA_URL = "/media/"
+STATIC_URL = "/django_static/"
+STATIC_ROOT = BASE_DIR / "django_static"
 
 SOCIALACCOUNT_PROVIDERS = {}
 
@@ -172,10 +184,6 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_UNIQUE_EMAIL = True
 
 SITE_ID = 1
-
-CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
