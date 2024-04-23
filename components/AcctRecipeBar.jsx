@@ -47,15 +47,9 @@ const RecipeSummary = ({ image, name, savedOn }) => {
               <Caption style={{ color: '#7C7C7C' }}>Saved on {savedOn}</Caption>
             </View>
           </View>
-          <View style={{...styles.rowContainer, gap:40}}>
           <View style={styles.tagBox}>
-            <BodySmall style={{ color: '#fff' }}>Generic Recipe</BodySmall>
             <MaterialCommunityIcons name='pot-steam' color='#fff' size={18} />
-          </View>
-
-            <Button kind='ghost' size='small' style={{ padding: 0 }}>
-            <FontAwesome name='trash-o' color='#000' size={18} />
-            </Button>
+            <BodySmall style={{ color: '#fff' }}>Generic Recipe</BodySmall>
           </View>
         </View>
       </View>
@@ -65,8 +59,8 @@ const RecipeSummary = ({ image, name, savedOn }) => {
 
 const AcctRecipeBar = (props) => {
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const [loading, setLoading] = useState(true); 
-  const  userId  = '1';
+  const [loading, setLoading] = useState(true);
+  const userId = '1';
 
   useEffect(() => {
     const fetchSavedRecipes = async () => {
@@ -91,14 +85,14 @@ const AcctRecipeBar = (props) => {
   if (loading) {
     return (
       <View style={styles.loaderContainer}>
-        <ActivityIndicator size="large" color="#52B175" />
+        <ActivityIndicator size='large' color='#52B175' />
       </View>
     );
   }
   if (!savedRecipes.length && !loading) {
     return (
       <View style={styles.loaderContainer}>
-        <Caption style={{textAlign:'center'}}>
+        <Caption style={{ textAlign: 'center' }}>
           You have no saved recipes. Save recipes to view them here.
         </Caption>
       </View>
@@ -109,11 +103,11 @@ const AcctRecipeBar = (props) => {
     <View style={{ backgroundColor: '#fff', padding: 20 }}>
       <Title>Saved Recipes</Title>
       {savedRecipes.map((recipe) => (
-        <View style={{ ...styles.columnContainer, width: '100%' }} key={recipe.recipe_id}>
-          <RecipeSummary
-            name={recipe.name}
-            savedOn={recipe.date_for}
-          />
+        <View
+          style={{ ...styles.columnContainer, width: '100%' }}
+          key={recipe.recipe_id}
+        >
+          <RecipeSummary name={recipe.name} savedOn={recipe.date_for} />
         </View>
       ))}
     </View>

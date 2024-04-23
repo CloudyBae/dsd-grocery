@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CheckBox } from '@rneui/themed';
-import {  Body, Title } from '../components/Typography';
+import { Body, Title } from '../components/Typography';
 
 export default function DietaryFilters() {
   const [categories, setCategories] = useState([

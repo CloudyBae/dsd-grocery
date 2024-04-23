@@ -114,23 +114,23 @@ export const DietaryAllergenFilterScreen = () => {
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.homeContainer}>
-              <Text style={styles.title}>Dietary Requirements</Text>
+            <Text style={styles.title}>Dietary Requirements</Text>
 
-              {categories.map((item, index) => {
-                return (
-                  <CheckBox
-                    // Use ThemeProvider to change the defaults of the checkbox
-                    checkedColor='#52B175'
-                    backgroundColor='#f0f0f0'
-                    title={item.preference_name}
-                    checked={item.isCheck || false}
-                    onPress={() => onValueChange(item, index)}
-                    key={item.key}
-                    name={item.name}
-                    id={item.id}
-                  />
-                );
-              })}
+            {categories.map((item, index) => {
+              return (
+                <CheckBox
+                  // Use ThemeProvider to change the defaults of the checkbox
+                  checkedColor='#52B175'
+                  backgroundColor='#f0f0f0'
+                  title={item.preference_name}
+                  checked={item.isCheck || false}
+                  onPress={() => onValueChange(item, index)}
+                  key={item.key}
+                  name={item.name}
+                  id={item.id}
+                />
+              );
+            })}
 
             <View style={styles.buttonContainer}>
               <CategoryButton title='Save' onPress={() => handleSave()} />
@@ -146,7 +146,7 @@ export const DietaryAllergenFilterScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     padding: 40,
-    paddingTop:0,
+    paddingTop: 0,
     marginBottom: 50,
   },
   buttonContainer: {
