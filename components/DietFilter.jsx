@@ -1,12 +1,7 @@
 import { useState } from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { SPOONACULAR_API_KEY } from '@env';
+import { BodySmall } from './Typography';
 
 const DietFilter = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -85,14 +80,14 @@ const DietFilter = () => {
         ]}
         onPress={() => handleDietPrerefence(item)}
       >
-        <Text
+        <BodySmall
           style={[
             styles.categoryText,
             selectedCategory === item.id && styles.selectedCategoryText,
           ]}
         >
           {item.category}
-        </Text>
+        </BodySmall>
       </TouchableOpacity>
     </View>
   );
@@ -108,18 +103,17 @@ export default DietFilter;
 
 const styles = StyleSheet.create({
   categoryContainer: {
-    marginRight: 20,
-    marginLeft: 30,
-    alignItems: 'center',
+    marginRight: 16,
+    marginBottom: 8,
   },
   categoryButton: {
-    marginVertical: 10,
-    borderRadius: 8,
-    padding: 7,
-    backgroundColor: '#ccc',
+    borderRadius: 4,
+    backgroundColor: '#d2d2d2',
+    paddingVertical: 4,
+    paddingHorizontal: 2,
   },
   categoryText: {
-    fontSize: 15,
+    color: '#121212',
   },
   titleText: {
     fontSize: 20,
