@@ -1,7 +1,14 @@
-import { View, StyleSheet, Image, Pressable, SafeAreaView } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
+import LogOutIcon from '../components/Icons/LogOutIcon';
 import Button from '../components/Button';
 import { MaterialIcons } from '@expo/vector-icons';
 import {
@@ -14,6 +21,7 @@ import { useState } from 'react';
 import { DietaryAllergenFilterScreen } from './DietaryAllergenFilter';
 import { AccountDetailsScreen } from './AccountDetailsScreen';
 import { AcctSavedRecipesScreen } from './AcctSavedRecipes';
+import { ButtonText } from '../components/Typography';
 
 export const SettingsScreen = {
   AccountSettings: 'AccountSettings',
@@ -69,17 +77,15 @@ export const AccountSettingsMenu = () => {
               />
             </View>
             <View style={{ paddingHorizontal: 20 }}>
-              <Button
-                isFullWidth={true}
-                onPress={() => navigation.navigate('Login')}
-                kind='outline'
-                shape='rounded'
-                startEnhancer={
-                  <MaterialIcons name={'logout'} size={24} color='#52B175' />
-                }
-              >
-                Log Out
-              </Button>
+              <View style={{ marginTop: 48 }}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Login')}
+                  style={[styles.buttonReset, styles.buttonOutline]}
+                >
+                  <LogOutIcon />
+                  <ButtonText>Log Out</ButtonText>
+                </TouchableOpacity>
+              </View>
             </View>
           </>
         )}
@@ -114,5 +120,28 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#fff',
+  },
+  buttonReset: {
+    alignItems: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderRadius: 18,
+    borderWidth: 2,
+    flexDirection: 'row',
+    gap: 6,
+    justifyContent: 'center',
+    padding: 24,
+  },
+  buttonOutline: {
+    borderColor: '#c2c2c2',
+  },
+  buttonPrimary: {
+    backgroundColor: '#52B175',
+    borderColor: '#52B175',
+  },
+  buttonDestructive: {
+    backgroundColor: '#D47373',
+    borderColor: '#D47373',
   },
 });

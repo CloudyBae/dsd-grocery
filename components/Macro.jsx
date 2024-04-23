@@ -27,7 +27,9 @@ const Macro = ({ macro, percentage, goal }) => {
           </View>
         )}
       </AnimatedCircularProgress>
-      <View style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 8 }}>
+      <View
+        style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 8 }}
+      >
         <Body style={{ color: '#121212' }}>{macro}</Body>
         <BodySmall>
           {remaining > 0 ? `${remaining}g left` : 'Goal Achieved!'}

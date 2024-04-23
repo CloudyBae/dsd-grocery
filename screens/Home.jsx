@@ -44,27 +44,25 @@ export const HomeScreen = () => {
       <StatusBar backgroundColor='#fff' barStyle='dark-content' />
       <View style={{ flex: 1 }}>
         <ScrollView>
-              <View style={styles.macrosContainer}>
-                <Macro
-                  macro='Carbs'
-                  percentage={
-                    macroData && macroData.Carbs ? macroData.Carbs : 0
-                  }
-                  goal={100}
-                />
-                <Macro
-                  macro='Protein'
-                  percentage={
-                    macroData && macroData.Protein ? macroData.Protein : 0
-                  }
-                  goal={100}
-                />
-                <Macro
-                  macro='Fat'
-                  percentage={macroData && macroData.Fat ? macroData.Fat : 0}
-                  goal={100}
-                />
-              </View>
+          <View style={styles.macrosContainer}>
+            <Macro
+              macro='Carbs'
+              percentage={macroData && macroData.Carbs ? macroData.Carbs : 0}
+              goal={100}
+            />
+            <Macro
+              macro='Protein'
+              percentage={
+                macroData && macroData.Protein ? macroData.Protein : 0
+              }
+              goal={100}
+            />
+            <Macro
+              macro='Fat'
+              percentage={macroData && macroData.Fat ? macroData.Fat : 0}
+              goal={100}
+            />
+          </View>
           <View style={styles.homeContainer}>
             <View>
               <TouchableOpacity
