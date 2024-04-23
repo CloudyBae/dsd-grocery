@@ -15,7 +15,7 @@ const ThirdPartySignIn = ({
       style={[
         styles.buttonContainer,
         { backgroundColor: backgroundColor },
-        backgroundColor === 'white' || backgroundColor === undefined
+        backgroundColor === '#fff' || backgroundColor === undefined
           ? { borderWidth: 1 }
           : null,
       ]}
@@ -23,13 +23,13 @@ const ThirdPartySignIn = ({
     >
       <View style={styles.iconContainer}>
         {icon ? (
-          <FontAwesome name={icon} size={24} color={iconColor || 'black'} />
+          <FontAwesome name={icon} size={24} color={iconColor || '#121212'} />
         ) : (
           <Text>-</Text>
         )}
       </View>
       <View style={styles.titleContainer}>
-        <Text style={{ color: textColor || 'black', fontSize: 20 }}>
+        <Text style={{ color: textColor || '#121212', fontSize: 20 }}>
           Continue with {title}
         </Text>
       </View>

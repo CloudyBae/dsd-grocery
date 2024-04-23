@@ -90,7 +90,7 @@ export const AddIngredientModal = ({
         <View style={{ ...styles.columnContainer, alignItems: 'flex-start' }}>
           <View style={{ ...styles.rowContainer, ...styles.counterContainer }}>
             <Button kind='ghost' onPress={decrementQuantity}>
-              <AntDesign name='minus' size={24} color='black' />
+              <AntDesign name='minus' size={24} color='#121212' />
             </Button>
             <TextInput
               style={styles.counterInput}
@@ -100,7 +100,7 @@ export const AddIngredientModal = ({
               }
             />
             <Button kind='ghost' onPress={incrementQuantity}>
-              <AntDesign name='plus' size={24} color='black' />
+              <AntDesign name='plus' size={24} color='#121212' />
             </Button>
           </View>
           {showError && (
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   counterContainer: {
     alignSelf: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     width: '80%',
     height: 60,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Gilroy-Bold',
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   input: {
     width: '80%',

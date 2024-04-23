@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen } from './screens/Home';
-import { IngredientScreen } from './screens/Ingredient';
-import { RecipeScreen } from './screens/Recipe';
-import { FilterScreen } from './screens/Filter';
-import { ShoppingListScreen } from './screens/ShoppingList';
-import { LoginScreen } from './screens/Login';
-import { SignUpScreen } from './screens/SignUp';
-import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
 import { AccountDetailsScreen } from './screens/AccountDetailsScreen';
-import { AddIngredient } from './screens/AddIngredient';
+import { AccountSettingsMenu } from './screens/AccountSettingsMenu';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FilterScreen } from './screens/Filter';
+import { HomeScreen } from './screens/Home';
+import { IngredientScreen } from './screens/Ingredients';
+import { LoginScreen } from './screens/Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { RecipeScreen } from './screens/Recipe';
+import { ShoppingListScreen } from './screens/ShoppingList';
+import DietaryAllergenFilterScreen from './screens/DietaryAllergenFilter';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,52 +18,55 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name='Recipe'
-          component={RecipeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Ingredient'
-          component={IngredientScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Filter'
-          component={FilterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='ShoppingList'
-          component={ShoppingListScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='AccountSettingsMenu'
-          component={AccountSettingsMenu}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name='Login'
           component={LoginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='Ingredients'
+          component={IngredientScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Recipe'
+          component={RecipeScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Filter'
+          component={FilterScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Shopping List'
+          component={ShoppingListScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Account Details'
+          component={AccountDetailsScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='DietaryAllergenFilterScreen'
+          component={DietaryAllergenFilterScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name='Account'
+          component={AccountSettingsMenu}
+          options={{ headerShown: false }}
+        />
+        {/* <Stack.Screen
           name='Signup'
           component={SignUpScreen}
           options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name='AccountDetailsScreen'
-          component={AccountDetailsScreen}
-          options={{ headerShown: false }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

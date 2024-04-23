@@ -3,7 +3,7 @@ import IngredientCard from '../components/IngredientCard';
 import Nav from '../components/Nav';
 import Search from '../components/SearchBar';
 import { useContext, useEffect, useState } from 'react';
-import { BodySmall } from '../components/Typography';
+import { Body } from '../components/Typography';
 import Button from '../components/Button';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AddIngredientModal } from './AddIngredient';
@@ -125,50 +125,52 @@ export const IngredientScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {modalVisible && (
-        <>
-          <AddIngredientModal
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-          />
-        </>
-      )}
-
-      <Search updateSearch={updateSearch} value={search} />
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.ingredientsContainer}>
-          {searchResults.length > 0 ? (
-            searchResults.map((ingredient) => (
-              <IngredientCard key={ingredient.id} ingredient={ingredient} />
-            ))
-          ) : (
-            <BodySmall>No results 😭</BodySmall>
-          )}
-        </View>
-      </ScrollView>
-      <View style={styles.addIngredientButton}>
-        <Button
-          shape='rounded'
-          style={{
-            width: 65,
-            height: 65,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={() => setModalVisible(true)}
-        >
-          <View style={{ ...styles.rowContainer, marginTop: 5 }}>
-            <FontAwesome5
-              name='plus'
-              style={styles.icon}
-              color='#fff'
-              size={26}
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {modalVisible && (
+          <>
+            <AddIngredientModal
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
             />
+          </>
+        )}
+
+        <Search updateSearch={updateSearch} value={search} />
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.ingredientsContainer}>
+            {searchResults.length > 0 ? (
+              searchResults.map((ingredient) => (
+                <IngredientCard key={ingredient.id} ingredient={ingredient} />
+              ))
+            ) : (
+              <Body>No ingredients found</Body>
+            )}
           </View>
-        </Button>
+        </ScrollView>
+        <View style={styles.addIngredientButton}>
+          <Button
+            shape='rounded'
+            style={{
+              width: 65,
+              height: 65,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => setModalVisible(true)}
+          >
+            <View style={{ ...styles.rowContainer }}>
+              <FontAwesome5
+                name='plus'
+                style={styles.icon}
+                color='#fff'
+                size={20}
+              />
+            </View>
+          </Button>
+        </View>
       </View>
-      <Nav style={styles.navBar} />
+      <Nav />
     </SafeAreaView>
   );
 };
@@ -176,15 +178,16 @@ export const IngredientScreen = () => {
 const styles = StyleSheet.create({
   addIngredientButton: {
     position: 'absolute',
-    bottom: '10%',
-    right: 20,
+    bottom: '12%',
+    right: '6%',
   },
   container: {
-    paddingTop: 20,
-    width: '100%',
-    flex: 1,
+    backgroundColor: '#fff',
     display: 'flex',
-    backgroundColor: '#FFF',
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    width: '100%',
   },
   ingredientsContainer: {
     display: 'flex',

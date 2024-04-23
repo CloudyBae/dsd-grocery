@@ -18,12 +18,14 @@ const RadioButton = ({
           styles.radioCircle,
           {
             backgroundColor: isSelected
-              ? customRadioColor || 'black'
+              ? customRadioColor || '#121212'
               : 'transparent',
           },
         ]}
       />
-      <Text style={[styles.labelTitle, { color: customTextColor || 'black' }]}>
+      <Text
+        style={[styles.labelTitle, { color: customTextColor || '#121212' }]}
+      >
         {label || 'label'}
       </Text>
     </TouchableOpacity>
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   radioCircle: {
     height: 20,
     width: 20,
-    borderColor: 'black',
+    borderColor: '#121212',
     borderWidth: 1,
     borderRadius: 50,
     justifyContent: 'center',
