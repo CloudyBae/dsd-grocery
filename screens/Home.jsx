@@ -16,33 +16,27 @@ import { useEffect, useState } from 'react';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
-  // const [macroData, setMacroData] = useState(null);
+  const [macroData, setMacroData] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchMacros = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         'http://172.25.192.1:8081/api/users/1/macros/'
-  //       );
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch data');
-  //       }
-  //       const data = await response.json();
-  //       console.log('Macros data: ', data);
-  //       setMacroData(data);
-  //     } catch (error) {
-  //       console.log('Error fetching Macros: ', error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchMacros = async () => {
+      try {
+        const response = await fetch(
+          'http://locahost:8000/api/users/1/macros/'
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        console.log('Macros data: ', data);
+        setMacroData(data);
+      } catch (error) {
+        console.log('Error fetching Macros: ', error);
+      }
+    };
 
-  //   fetchMacros();
-  // }, []);
-
-  const macroData = {
-    Protein: 42.45,
-    Fat: 176.25,
-    Carbs: 81.30000000000001,
-  };
+    fetchMacros();
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
