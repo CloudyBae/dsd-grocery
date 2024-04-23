@@ -85,16 +85,13 @@ export const RecipeScreen = () => {
     const onClickFavourite = async () => {
       setIsFavourite(!isFavourite);
       try {
-        const response = await fetch(
-          'http://localhost:3030/postFavorites',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(recipe),
-          }
-        );
+        const response = await fetch('http://localhost:3030/postFavorites', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(recipe),
+        });
         if (!response.ok) {
           console.error('Failed to save favorite recipe');
         }
@@ -111,18 +108,15 @@ export const RecipeScreen = () => {
   // POST MACRO
   useEffect(() => {
     const onClickMacro = async () => {
-      setIsMacro(!isMacro); 
+      setIsMacro(!isMacro);
       try {
-        const response = await fetch(
-          'http://localhost:3030/postMacro',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ isMacro }), 
-          }
-        );
+        const response = await fetch('http://localhost:3030/postMacro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ isMacro }),
+        });
         if (!response.ok) {
           console.error('Failed to save macro');
         }
@@ -130,9 +124,9 @@ export const RecipeScreen = () => {
         console.error('Error saving macro:', error);
       }
     };
-  
+
     onClickMacro();
-  
+
     return () => {};
   }, [isMacro]);
 
@@ -148,7 +142,7 @@ export const RecipeScreen = () => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ isPlannedRecipe }), 
+            body: JSON.stringify({ isPlannedRecipe }),
           }
         );
         if (!response.ok) {
@@ -158,35 +152,30 @@ export const RecipeScreen = () => {
         console.error('Error saving planned recipe:', error);
       }
     };
-
   }, [isPlannedRecipe]);
 
-// POST SHOPPING LIST
-useEffect(() => {
-  const onClickShoppingList = async () => {
-    setIsShoppingList(!isShoppingList);
-    try {
-      const response = await fetch(
-        'http://localhost:3030/postShoppingList',
-        {
+  // POST SHOPPING LIST
+  useEffect(() => {
+    const onClickShoppingList = async () => {
+      setIsShoppingList(!isShoppingList);
+      try {
+        const response = await fetch('http://localhost:3030/postShoppingList', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ isShoppingList }), 
+          body: JSON.stringify({ isShoppingList }),
+        });
+        if (!response.ok) {
+          console.error('Failed to save shopping list');
         }
-      );
-      if (!response.ok) {
-        console.error('Failed to save shopping list');
+      } catch (error) {
+        console.error('Error saving shopping list:', error);
       }
-    } catch (error) {
-      console.error('Error saving shopping list:', error);
-    }
-  };
-  
-  onClickShoppingList(); 
+    };
 
-}, [isShoppingList]);
+    onClickShoppingList();
+  }, [isShoppingList]);
 
   if (loading || !recipe) {
     return (
@@ -298,7 +287,14 @@ useEffect(() => {
           </View>
         </ScrollView>
         <View style={styles.addToCartButtonContainer}>
-          <Button isFullWidth={true} onPress={() => { setIsPlannedRecipe(!isPlannedRecipe); setIsMacro(!isMacro); setIsShoppingList(!isShoppingList) }}>
+          <Button
+            isFullWidth={true}
+            onPress={() => {
+              setIsPlannedRecipe(!isPlannedRecipe);
+              setIsMacro(!isMacro);
+              setIsShoppingList(!isShoppingList);
+            }}
+          >
             Add missing ingredients to list
           </Button>
         </View>
@@ -306,7 +302,6 @@ useEffect(() => {
     </>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {

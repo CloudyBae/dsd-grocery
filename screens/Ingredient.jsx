@@ -174,7 +174,6 @@ export const IngredientScreen = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   addIngredientButton: {
     position: 'absolute',
@@ -207,4 +206,3 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
-

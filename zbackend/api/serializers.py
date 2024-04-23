@@ -63,5 +63,5 @@ class FavoriteRecipeSerializer(serializers.ModelSerializer):
             "image",
             "minutes",
             "likes",
-            "recipe_id"
+            "recipe_id",
         ]

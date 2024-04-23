@@ -44,7 +44,11 @@ export const AddItemBar = () => {
               resizeMode='cover'
             /> */}
             <Image
-              source={{ uri: item.image || 'https://placeholder.pics/svg/300/DEDEDE/555555/placeholder' }}
+              source={{
+                uri:
+                  item.image ||
+                  'https://placeholder.pics/svg/300/DEDEDE/555555/placeholder',
+              }}
               style={styles.productImg}
               resizeMode='cover'
             />
@@ -159,5 +163,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-
