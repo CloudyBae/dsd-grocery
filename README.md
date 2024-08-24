@@ -20,30 +20,30 @@ Meet the team behind Zest:
   <tr>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/bae-yoojin/">
-        <img src="https://media.licdn.com/dms/image/D5603AQFCAqmx2XiFQA/profile-displayphoto-shrink_400_400/0/1711556780176?e=1719446400&v=beta&t=ZkMxgPDj8BpIsLlnxJ9q1300T5NphX0DVW5vTuTBfmM" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/yoon.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Yoo Jin Bae</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/stephthomp/">
-        <img src="https://media.licdn.com/dms/image/D5635AQGfxBs5vTt2QQ/profile-framedphoto-shrink_400_400/0/1709677358791?e=1714507200&v=beta&t=y1sMJ-P92m1QVp5G0Hia8rkT8Uz96LjJzCwI5jwBM6k" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/stephanie.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Stephanie Thompson</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/aaryan-das/">
-        <img src="https://media.licdn.com/dms/image/D5603AQHYViwIymsh-w/profile-displayphoto-shrink_400_400/0/1704486978483?e=1719446400&v=beta&t=bbDm6qs_vMQWQvEuesV1g6aDL4P89EXKxRuzKNXoZn4" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/aaryan.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Aaryan Das</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/christine-hoang-profile/">
-        <img src="https://media.licdn.com/dms/image/D5603AQGExGf0D4scgQ/profile-displayphoto-shrink_400_400/0/1710947655283?e=1719446400&v=beta&t=20e0qq4Bkpj8ZkiwB8wrrQilheluWVbQq2OZILXJCpA" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/christine.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Christine Hoang</b></sub>
       </a><br />
       <td align="center" width="200">
       <a href="https://www.linkedin.com/in/acir-rudson/">
-        <img src="https://media.licdn.com/dms/image/D4D03AQF5HpnkN-W87Q/profile-displayphoto-shrink_400_400/0/1678756658767?e=1719446400&v=beta&t=gcFlYFR-ms1lDj192-iBlLYLglTl9khIQvFYKQ7eb2Y" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/acir.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Acir Rudson</b></sub>
       </a><br />
     </td>
@@ -51,25 +51,25 @@ Meet the team behind Zest:
     <tr>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/dinavillanueva/">
-        <img src="https://media.licdn.com/dms/image/C4E03AQGi9Al3RrlfCg/profile-displayphoto-shrink_400_400/0/1638644414380?e=1719446400&v=beta&t=h3IV5kP5nFoL6W8pDrEMqDyJJd1EtDotrqbelCPIB2Y" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/dina.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Dina Rocio Villanueva Quevedo</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/ryanfurrer/">
-        <img src="https://media.licdn.com/dms/image/D4E03AQHLpQNIJ0yncg/profile-displayphoto-shrink_400_400/0/1706234525939?e=1719446400&v=beta&t=P5zRH5OdnHdDN6uMW9eicFBIv68ZaJZ10RbiPbNCB6g" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/ryan.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Ryan Furrer</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/prescott-lawani/">
-        <img src="https://media.licdn.com/dms/image/D5635AQHUqjK-Ke3VyA/profile-framedphoto-shrink_400_400/0/1706976777953?e=1714507200&v=beta&t=bHK2-1A2wl7A1DFieWq713xnJYbZnBAkfADEf6KCc00" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/prescott.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Prescott Lawani</b></sub>
       </a><br />
     </td>
     <td align="center" width="200">
       <a href="https://www.linkedin.com/in/christophercluney/">
-        <img src="https://media.licdn.com/dms/image/D5603AQFv34etr8RA0Q/profile-displayphoto-shrink_400_400/0/1709700424660?e=1719446400&v=beta&t=MsltnuixemT0mzg0rh4RVujgflLO0Fiz3kqdJI4wCsM" width="100px;" alt="Profile Picture"/><br />
+        <img src="./assets/teampics/chris.jpg" width="100px;" alt="Profile Picture"/><br />
         <sub><b>Christopher Cluney</b></sub>
       </a><br />
     </td>
