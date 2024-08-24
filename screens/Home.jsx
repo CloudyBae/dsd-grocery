@@ -1,4 +1,5 @@
 import {
+  Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -6,14 +7,15 @@ import {
   View,
 } from 'react-native';
 import Nav from '../components/Nav';
-import FavoriteRecipesList from '../components/FavoriteRecipes';
 import CategoryButton from '../components/CategoryButton';
 import Macro from '../components/Macro';
 import { useNavigation } from '@react-navigation/native';
-import DietFilter from '../components/DietFilter';
 import { Title } from '../components/Typography';
 import { StatusBar } from 'react-native';
 import { useEffect, useState } from 'react';
+import { USER_API_IP_URL } from '@env';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { FavoriteHomeSection } from './FavoriteHomeSection';
 
 export const HomeScreen = () => {
   const navigation = useNavigation();
@@ -23,7 +25,7 @@ export const HomeScreen = () => {
     const fetchMacros = async () => {
       try {
         const response = await fetch(
-          'http://locahost:8000/api/users/1/macros/'
+          `http://${USER_API_IP_URL}:8000/api/users/1/macros/`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch data');
@@ -42,6 +44,35 @@ export const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar backgroundColor='#fff' barStyle='dark-content' />
+
+      <View
+        style={{ ...styles.columnContainer, paddingTop: 20, paddingBottom: 20 }}
+      >
+        <View
+          style={{
+            ...styles.columnContainer,
+            paddingTop: 20,
+            paddingBottom: 20,
+          }}
+        >
+          <FontAwesome5
+            name='lemon'
+            style={styles.icon}
+            size={30}
+            color='#52B175'
+          />
+          <Title style={{ fontSize: 28, marginTop: 6 }}>Welcome to Zest!</Title>
+        </View>
+        <Image
+          source={require('../assets/recipe_banner.png')}
+          style={{
+            width: '100%',
+            height: 100,
+            borderRadius: 10,
+          }}
+          resizeMode='cover'
+        />
+      </View>
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View style={styles.macrosContainer}>
@@ -73,25 +104,17 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.mainButtonsContainer}>
               <CategoryButton
-                onPress={() => navigation.navigate('Ingredient')}
+                onPress={() => navigation.navigate('Ingredients')}
                 title='Pantry'
+                icon='kitchen'
               />
               <CategoryButton
                 title='Recipes'
+                icon='soup-kitchen'
                 onPress={() => navigation.navigate('Filter')}
               />
             </View>
-            <View style={styles.favoriteRecipesContainer}>
-              <Title style={styles.favoriteRecipesTitle}>
-                Favorite Recipes
-              </Title>
-            </View>
-            <View style={styles.dietFilterContainer}>
-              <DietFilter />
-            </View>
-            <View style={styles.recipeListContainer}>
-              <FavoriteRecipesList numberOfRecipes={10} />
-            </View>
+            <FavoriteHomeSection />
           </View>
         </ScrollView>
       </View>
@@ -103,9 +126,16 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   homeContainer: {
     paddingHorizontal: 16,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
     paddingTop: 16,
     flex: 1,
+  },
+  columnContainer: {
+    backgroundColor: '#fff',
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   macrosContainer: {
     backgroundColor: '#fff',
@@ -119,10 +149,10 @@ const styles = StyleSheet.create({
   mainButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginVertical: 48,
+    // marginVertical: 48,
   },
   favoriteRecipesContainer: {
-    marginBottom: 16,
+    // marginBottom: 16,
   },
   favoriteRecipesTitle: {
     borderBottomWidth: 1,

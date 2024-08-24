@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import RecipeCard from './RecipeCard';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { USER_API_IP_URL } from '@env';
 
 const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
   const [recipes, setRecipes] = useState([]);
@@ -13,7 +14,7 @@ const RecipeList = ({ title, scrollEnabled, numberOfRecipes }) => {
     const fetchRecipes = async () => {
       try {
         const response = await fetch(
-          'http://localhost:8000/api/favorite_recipes/${userId}'
+          `http://${USER_API_IP_URL}:8000/api/favorite_recipes/${userId}`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch data');

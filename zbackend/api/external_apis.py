@@ -14,16 +14,17 @@ def get_recipes_by_dietary_preferences(dietary_preferences):
 
 def get_recipe_information(recipe_id):
     api_key = os.getenv("SPOONACULAR_API_KEY")
-    endpoint = f"https://api.spoonacular.com/recipes/{recipe_id}/information"
+    endpoint = f"https://api.spoonacular.com/recipes/{recipe_id}/information?inclueNutrition=true"
     params = {"apiKey": api_key}
     response = requests.get(endpoint, params=params)
     data = response.json()
+    print(data)
     return data
 
 
 def get_recipe_summary(recipe_id):
     api_key = os.getenv("SPOONACULAR_API_KEY")
-    endpoint = f"https://api.spoonacular.com/recipes/{recipe_id}/summary"
+    endpoint = f"https://api.spoonacular.com/food/ingredients/{recipe_id}/information?inclueNutrition=true"
     params = {"apiKey": api_key}
     response = requests.get(endpoint, params=params)
     data = response.json()

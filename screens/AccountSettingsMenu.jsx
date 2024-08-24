@@ -9,8 +9,6 @@ import { useNavigation } from '@react-navigation/native';
 import AcctHeader from '../components/AcctHeader';
 import Nav from '../components/Nav';
 import LogOutIcon from '../components/Icons/LogOutIcon';
-import Button from '../components/Button';
-import { MaterialIcons } from '@expo/vector-icons';
 import {
   Ionicons,
   AntDesign,

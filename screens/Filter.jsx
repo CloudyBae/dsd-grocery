@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, TextInput } from 'react-native';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import RadioButton from '../components/RadioButton';
 import Button from '../components/Button';
+import { USER_API_IP_URL } from '@env';
 
 export const FilterScreen = () => {
   const [ingredientText, setIngredientText] = useState('');
@@ -25,30 +24,38 @@ export const FilterScreen = () => {
     setPlannedMealDay(day.dateString);
   };
 
-  const handleRecipeSubmit = () => {
+  const handleRecipeSubmit = async () => {
     const data = {
       ingredient: ingredientText,
       mealType: selectedMealType,
       plannedDay: plannedMealDay,
     };
 
-    console.log('data: ', data);
-    navigation.navigate('Recipe', { recipeData: data });
+    try {
+      const response = await fetch(`http://${USER_API_IP_URL}:8000/api/recipes/find_recipes/1/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+  
+      const responseData = await response.json();
+      console.log('Filter Screen:', responseData);
+  
+      navigation.navigate('RecipeList', { recipeData: responseData });
+    } catch (error) {
+      console.error('Error submitting data:', error.message);
+    }
   };
 
   return (
     <>
-      <View style={styles.filterHeader}>
-        <TouchableOpacity
-          accessible={true}
-          accessibilityLabel='Back to home'
-          onPress={() => navigation.navigate('Home')}
-          style={{ marginHorizontal: 10, marginRight: 150 }}
-        >
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>X</Text>
-        </TouchableOpacity>
-        <Header pageTitle='Filters' />
-      </View>
+      <Header pageTitle='Filters' />
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Ingredient</Text>
         <TextInput
@@ -92,33 +99,26 @@ export const FilterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  filterHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 50,
-  },
   mainContainer: {
+    flex: 1,
     padding: 15,
     backgroundColor: '#DEDEDE',
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   input: {
     padding: 5,
     height: 40,
     borderRadius: 5,
-    width: 250,
     backgroundColor: '#fff',
     marginBottom: 10,
   },
   mealTypeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
   radioButtonContainer: {
     width: '50%',
@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     marginTop: 20,
-    marginBottom: 40,
   },
 });
+

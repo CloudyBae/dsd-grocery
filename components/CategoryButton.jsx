@@ -1,10 +1,11 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { ButtonText } from './Typography';
+import { ButtonLarge } from './Typography';
+import { MaterialIcons } from '@expo/vector-icons';
 
-const CategoryButton = ({ title, onPress }) => {
+const CategoryButton = ({ title, icon, onPress }) => {
   return (
     <TouchableOpacity
-      style={[stlyes.categoryButton]}
+      style={[styes.categoryButton]}
       onPress={
         onPress ||
         (() =>
@@ -13,14 +14,15 @@ const CategoryButton = ({ title, onPress }) => {
           ))
       }
     >
-      <ButtonText>{title || 'Button'}</ButtonText>
+      <MaterialIcons name={icon} size={24} color='#72C08F' />
+      <ButtonLarge>{title || 'Button'}</ButtonLarge>
     </TouchableOpacity>
   );
 };
 
 export default CategoryButton;
 
-const stlyes = StyleSheet.create({
+const styes = StyleSheet.create({
   categoryButton: {
     alignItems: 'center',
     backgroundColor: '#F7FCF8',
@@ -29,6 +31,7 @@ const stlyes = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     paddingHorizontal: 60,
-    paddingVertical: 40,
+    paddingVertical: 30,
+    gap: 5,
   },
 });

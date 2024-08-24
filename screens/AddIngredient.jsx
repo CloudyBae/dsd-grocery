@@ -1,19 +1,24 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import { Modal } from '../components/Modal';
 import Button from '../components/Button';
 import { AntDesign } from '@expo/vector-icons';
 import { BodySmall } from '../components/Typography';
+import { USER_API_IP_URL } from '@env';
+
+const defaultIngredientImage =
+  'https://cdn-icons-png.freepik.com/512/6981/6981367.png';
 
 export const AddIngredientModal = ({
   modalVisible,
   setModalVisible,
   onClose,
+  fetchIngredients,
 }) => {
   const { userId } = '1'; // fix when backend integrated
   const [showError, setShowError] = useState('');
   const [productData, setProductData] = useState({
-    productName: '',
+    name: '',
     quantity: 0,
   });
 
@@ -34,25 +39,31 @@ export const AddIngredientModal = ({
   };
 
   const handleSaveProduct = async () => {
-    if (!productData.productName || productData.quantity === 0) {
+    if (!productData.name || productData.quantity === 0) {
       setShowError('Please, fill in all fields');
       return;
     }
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/user/${user_id}/ingredients/`,
+        `http://${USER_API_IP_URL}:8000/api/users/1/ingredients/`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(productData),
+          body: JSON.stringify({
+            ...productData,
+            user: '1',
+            image: defaultIngredientImage,
+          }),
         }
       );
       if (!response.ok) {
         setShowError('Failed to save ingredient');
       }
+      fetchIngredients();
+      setModalVisible(false);
     } catch (error) {
       setShowError('Error saving ingredient');
       console.error('Error saving ingredient:', error);
@@ -63,7 +74,7 @@ export const AddIngredientModal = ({
     <Modal
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
-      titleText={'Add a Product 🍎'}
+      titleText='Add a Product 🍎'
       onClose={onClose}
       size='100%'
       fullscreen={false}
@@ -80,9 +91,9 @@ export const AddIngredientModal = ({
         <TextInput
           style={styles.input}
           placeholder='Enter a product name...'
-          value={productData.productName}
+          value={productData.name}
           onChangeText={(text) =>
-            setProductData({ ...productData, productName: text })
+            setProductData({ ...productData, name: text })
           }
           placeholderTextColor='gray'
         />
@@ -162,7 +173,7 @@ const styles = StyleSheet.create({
   },
   counterContainer: {
     alignSelf: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     width: '80%',
     height: 60,
