@@ -32,21 +32,24 @@ export const FilterScreen = () => {
     };
 
     try {
-      const response = await fetch(`http://${USER_API_IP_URL}:8000/api/recipes/find_recipes/1/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-  
+      const response = await fetch(
+        `http://${USER_API_IP_URL}:8000/api/recipes/find_recipes/1/`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
       if (!response.ok) {
         throw new Error('Failed to submit');
       }
-  
+
       const responseData = await response.json();
       console.log('Filter Screen:', responseData);
-  
+
       navigation.navigate('RecipeList', { recipeData: responseData });
     } catch (error) {
       console.error('Error submitting data:', error.message);
@@ -128,4 +131,3 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-
