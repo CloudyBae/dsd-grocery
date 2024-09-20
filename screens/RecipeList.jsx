@@ -1,5 +1,11 @@
 import React from 'react'; // Import useEffect from react
-import { SafeAreaView, ScrollView, View, StyleSheet, Pressable } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 import AddRecipeBar from '../components/AddRecipeBar';
 import { Title } from '../components/Typography/index.js';
 import Nav from '../components/Nav';
@@ -19,7 +25,10 @@ export const RecipeListScreen = ({ route }) => {
         <View style={styles.recipeContainer}>
           <Title style={styles.title}>Recipes</Title>
           {recipeData.map((recipe, index) => (
-            <Pressable key={index} onPress={() => handleRecipePress(recipe.recipe_id)}>
+            <Pressable
+              key={index}
+              onPress={() => handleRecipePress(recipe.recipe_id)}
+            >
               <AddRecipeBar
                 name={recipe.name}
                 image={recipe.image}

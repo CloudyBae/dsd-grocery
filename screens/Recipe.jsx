@@ -35,7 +35,7 @@ export const RecipeScreen = () => {
   const route = useRoute();
   const { id } = route.params;
   const navigation = useNavigation();
-  const { userId } = '1'; 
+  const { userId } = '1';
   const [isFavourite, setIsFavourite] = useState(false);
   const [isOpenMoreTags, setOpenMoreTags] = useState(false);
 
@@ -43,7 +43,7 @@ export const RecipeScreen = () => {
   console.log('RecipeScreen:', id);
   const ingredients = useMemo(() => {
     if (!recipe || !recipe.extendedIngredients) return null;
-    console.log('Recipe Screen Return:', recipe)
+    console.log('Recipe Screen Return:', recipe);
     return recipe?.extendedIngredients.map((ingredient, index) => (
       <View
         style={{ ...styles.rowContainer, gridGap: 6, alignSelf: 'flex-start' }}
@@ -103,8 +103,7 @@ export const RecipeScreen = () => {
     }
   };
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   const listItems = [
     { title: 'Summary', details: <InnerHtmlContent value={recipe?.summary} /> },
@@ -137,17 +136,18 @@ export const RecipeScreen = () => {
           />
         </Pressable>
         <Image
-          source={recipe && recipe.image ? { uri: recipe.image } : require('../assets/noImagePlaceholder.png')}
+          source={
+            recipe && recipe.image
+              ? { uri: recipe.image }
+              : require('../assets/noImagePlaceholder.png')
+          }
           style={{ width: '100%', height: 200 }}
           resizeMode='cover'
         />
         <ScrollView style={styles.detailContainer}>
           <View style={styles.infoContainer}>
             <Title>{recipe && recipe.title}</Title>
-            <Pressable
-              style={styles.favoriteButton}
-              onPress={onClickFavourite}
-            >
+            <Pressable style={styles.favoriteButton} onPress={onClickFavourite}>
               <Octicons
                 name={isFavourite ? 'heart-fill' : 'heart'}
                 size={22}
@@ -159,9 +159,7 @@ export const RecipeScreen = () => {
             {recipe &&
               recipe?.diets.slice(0, 4).map((category, index) => (
                 <View key={index} style={styles.category}>
-                  <BodySmall style={{ color: '#52B175' }}>
-                    {category}
-                  </BodySmall>
+                  <BodySmall style={{ color: '#52B175' }}>{category}</BodySmall>
                 </View>
               ))}
             {!isOpenMoreTags && recipe?.diets.length > 4 && (
@@ -194,8 +192,18 @@ export const RecipeScreen = () => {
               marginBottom: 16,
             }}
           >
-            <Detail title='Prep' value={recipe ? `${recipe.readyInMinutes || recipe.cookingMinutes}m` : ''} />
-            <Detail title='Servings' value={recipe ? `${recipe.servings}m` : ''} />
+            <Detail
+              title='Prep'
+              value={
+                recipe
+                  ? `${recipe.readyInMinutes || recipe.cookingMinutes}m`
+                  : ''
+              }
+            />
+            <Detail
+              title='Servings'
+              value={recipe ? `${recipe.servings}m` : ''}
+            />
             <Detail
               title='Health Score'
               value={recipe?.healthScore?.toFixed(2)}
@@ -214,7 +222,6 @@ export const RecipeScreen = () => {
     </>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {

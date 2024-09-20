@@ -1,4 +1,3 @@
-
 import DietFilter from '../components/DietFilter';
 import FavoriteRecipesList from '../components/FavoriteRecipes';
 import { StyleSheet, View, ScrollView } from 'react-native';
